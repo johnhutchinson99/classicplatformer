@@ -4,7 +4,7 @@
  * 
  * The Entity class contains generic methods and variables that will be used for any entity in the game (Player, Enemies)
  * This class primarily contains code related to the position of the Entity but more functionality will be added in later releases
- *
+ * Additionally, this class contains the world object, which will allow children to access it.
  * 
  *
  */

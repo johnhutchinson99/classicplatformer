@@ -11,7 +11,7 @@
  * This class extends Entity.
  * This class keeps track of player data, such as remainingAttacks allowed by the player, position, player name, player alive or dead state, and the state of the surrounding world.
  * The player is able to track enemies in the world, allowing for collision detection and attacks.
- *
+ * In the next release, the player will be capable of jumping.
  * 
  *
  */
@@ -122,6 +122,3 @@ private Enemy whoIsThere(int checkX,int checkY) {
 
 
 }
-
-
-//TODO Prevent player from moving past domain of world
