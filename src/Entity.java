@@ -11,29 +11,45 @@
 
 
 public class Entity {
-public int x;
-public int y;
+private int x;
+private int y;
+private World world;
 
 
-
-public Entity(int startX,int startY) {
+public Entity(int startX,int startY,World newWorld) {
 	x = startX;
 	y = startY;
+	world = newWorld;
 }
 
 
 
 public void setXCoord(int newX) {
+	if(x<=world.getfinalDestinationXCoord()) {
 	x = newX;
+	}
 }
+
 public void setYCoord(int newY) {
-	y = newY;
+	if(x<=world.getfinalDestinationXCoord()) {
+		x = newY;
+	}
 }
+
+
+public void moveOffScreen() {
+	x = 1000;
+	y = 1000;
+}
+
 public int getXCoord() {
 	return x;
 }
 public int getYCoord() {
 	return y;
+}
+public World getWorld() {
+	return world;
 }
 
 

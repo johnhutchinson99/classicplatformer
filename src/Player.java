@@ -25,8 +25,6 @@ public class Player extends Entity {
 private String playerName;
 private int remainingAttacks;
 private boolean isAlive;
-private World world;
-
 
 
 
@@ -37,11 +35,8 @@ private World world;
 
 public Player(int startX, int startY, World newWorld,int allowedAttacks) {
 	
-	super(startX,startY);
+	super(startX,startY,newWorld);
 	
-	
-	if(newWorld!=null)
-		world=newWorld;
 	
 	if(remainingAttacks>0) 
 		remainingAttacks = allowedAttacks;
@@ -53,32 +48,24 @@ public Player(String newName,int startX, int startY, World newWorld,int allowedA
 	
 	this(startX,startY,newWorld,allowedAttacks);
 	if(newName!=null)
-		playerName = null;
+		playerName = newName;
 	
 }
 
 
 public void moveRight(int translate) {
-	if(translate>0) {
-		x+=translate;
-	}
+	setXCoord(getXCoord()+translate);
 }
 public void moveLeft(int translate) {
-	if(translate>0) {
-		x-=translate;
-	}
+	setXCoord(getXCoord()-translate);
 	
 }
 public void moveUp(int translate) {
-	if(translate>0) {
-		y-=translate;
-	}
+	setYCoord(getYCoord()-translate);
 	
 }
 public void moveDown(int translate) {
-	if(translate>0) {
-		y+=translate;
-	}
+	setYCoord(getYCoord()+translate);
 	
 }
 public boolean isColliding() {
@@ -127,7 +114,7 @@ public void jump() {
 
 
 private Enemy whoIsThere(int checkX,int checkY) {
-	for(Enemy toTest:world.getEnemies()) {
+	for(Enemy toTest:getWorld().getEnemies()) {
 		if(toTest.getX()==checkX&&toTest.getY()==checkY) {
 			return toTest;
 		}
