@@ -34,6 +34,8 @@ public class World {
 		int playerXCoord = player.getXCoord();
 		int playerYCoord = player.getYCoord();
 		
+		ArrayList<String> allWorldContents = new ArrayList<String>();
+
 	    // The character array for the world
 	    char[][] allWorldContents = new char[worldMaxXCoord+1][worldMaxYCoord+1];
 	    
