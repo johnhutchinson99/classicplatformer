@@ -1,3 +1,13 @@
+/**
+ * 
+ * @author John Hutchinson
+ * 
+ * The Entity class contains generic methods and variables that will be used for any entity in the game (Player, Enemies)
+ * This class primarily contains code related to the position of the Entity but more functionality will be added in later releases
+ *
+ * 
+ *
+ */
 
 
 public class Entity {
@@ -13,16 +23,16 @@ public Entity(int startX,int startY) {
 
 
 
-public void setX(int newX) {
+public void setXCoord(int newX) {
 	x = newX;
 }
-public void setY(int newY) {
+public void setYCoord(int newY) {
 	y = newY;
 }
-public int getX() {
+public int getXCoord() {
 	return x;
 }
-public int getY() {
+public int getYCoord() {
 	return y;
 }
 
