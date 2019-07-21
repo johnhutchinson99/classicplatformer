@@ -70,7 +70,7 @@ public void moveDown(int translate) {
 }
 public boolean isColliding() {
 
-	if(whoIsThere(x,y)!=null) {
+	if(whoIsThere(getXCoord(),getYCoord())!=null) {
 		return true;
 	}
 	
@@ -78,28 +78,24 @@ public boolean isColliding() {
 }
 public void attack() {
 	//Checking left
-	Enemy left = WhoIsThere(x-1,y);
+	Enemy left = WhoIsThere(getXCoord()-1,getYCoord());
 	if(left!=null) {
-		left.setXCoord(100); //Putting enemies off screen (will be reimplemented)
-		left.setYCoord(100);
+		left.moveOffScreen();
 	}
 	
-	Enemy right = WhoIsThere(x+1,y);
+	Enemy right = WhoIsThere(getXCoord()+1,getYCoord());
 	if(right!=null) {
-		right.setXCoord(100); //Putting enemies off screen (will be reimplemented)
-		right.setYCoord(100);
+		right.moveOffScreen();
 	}
 	
-	Enemy up = WhoIsThere(x,y-1);
+	Enemy up = WhoIsThere(getXCoord(),getYCoord()-1);
 	if(up!=null) {
-		up.setXCoord(100); //Putting enemies off screen (will be reimplemented)
-		up.setYCoord(100);
+		up.moveOffScreen();
 	}
 	
-	Enemy down = WhoIsThere(x,y+1);
+	Enemy down = WhoIsThere(getXCoord(),getYCoord()+1);
 	if(down!=null) {
-		down.setXCoord(100); //Putting enemies off screen (will be reimplemented)
-		down.setYCoord(100);
+		down.moveOffScreen();
 	}
 	
 	
@@ -115,7 +111,7 @@ public void jump() {
 
 private Enemy whoIsThere(int checkX,int checkY) {
 	for(Enemy toTest:getWorld().getEnemies()) {
-		if(toTest.getX()==checkX&&toTest.getY()==checkY) {
+		if(toTest.getXCoord()==checkX&&toTest.getYCoord()==checkY) {
 			return toTest;
 		}
 	}

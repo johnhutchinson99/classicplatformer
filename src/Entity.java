@@ -11,42 +11,42 @@
 
 
 public class Entity {
-private int x;
-private int y;
+private int xCoord;
+private int yCoord;
 private World world;
 
 
 public Entity(int startX,int startY,World newWorld) {
-	x = startX;
-	y = startY;
+	xCoord = startX;
+	yCoord = startY;
 	world = newWorld;
 }
 
 
 
 public void setXCoord(int newX) {
-	if(x<=world.getfinalDestinationXCoord()) {
-	x = newX;
+	if(xCoord<=world.getfinalDestinationXCoord()) {
+	xCoord = newX;
 	}
 }
 
 public void setYCoord(int newY) {
-	if(x<=world.getfinalDestinationXCoord()) {
-		x = newY;
+	if(yCoord<=world.getfinalDestinationYCoord()) {
+		yCoord = newY;
 	}
 }
 
 
 public void moveOffScreen() {
-	x = 1000;
-	y = 1000;
+	xCoord = 1000;
+	yCoord = 1000;
 }
 
 public int getXCoord() {
-	return x;
+	return xCoord;
 }
 public int getYCoord() {
-	return y;
+	return yCoord;
 }
 public World getWorld() {
 	return world;
@@ -54,7 +54,7 @@ public World getWorld() {
 
 
 public String toString() {
-	return (x+","+y);
+	return (xCoord+","+yCoord);
 }
 
 
