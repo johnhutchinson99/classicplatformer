@@ -38,8 +38,6 @@ public class World {
 	    // The character array for the world
 	    char[][] allWorldContents = new char[worldMaxXCoord+1][worldMaxYCoord+1];
 	    
-	    
-	    
 	    // Initializing the world with space char
 	    for (int i = 0; i < worldMaxXCoord; i++) {
 			for(int j = 0; j < worldMaxYCoord; j++) {
@@ -59,7 +57,6 @@ public class World {
 	    	allWorldContents[anEnemy.getXCoord()][anEnemy.getYCoord()] = 'E';
 	    }
 	    
-	    
 	    // Make the top and bottom borders. 
 	    String horizontalBorder = "##";
 	    for(int i = 0; i < worldMaxYCoord; i++) {
@@ -77,7 +74,6 @@ public class World {
 	        System.out.println(worldContentsString);
 	    }
 	    System.out.println(horizontalBorder);
-		
 	}
 	
 }
