@@ -24,16 +24,20 @@ public Entity(int startX,int startY,World newWorld) {
 
 
 
-public void setXCoord(int newX) {
-	if(xCoord<=world.getfinalDestinationXCoord()) {
+public boolean setXCoord(int newX) { //Returns true if coordinates were changed successfully. Returns false if coordinates could not be changed (likely due to coordinates being outside of bounds)
+	if(xCoord<=world.getWorldMaxXCoord()) {
 	xCoord = newX;
+	return true;
 	}
+	return false;
 }
 
-public void setYCoord(int newY) {
-	if(yCoord<=world.getfinalDestinationYCoord()) {
+public boolean setYCoord(int newY) { //Returns true if coordinates were changed successfully. Returns false if coordinates could not be changed (likely due to coordinates being outside of bounds)
+	if(yCoord<=world.getWorldMaxYCoord()) {
 		yCoord = newY;
+		return true;
 	}
+	return false;
 }
 
 
