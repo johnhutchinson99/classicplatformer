@@ -22,9 +22,9 @@
 
 
 public class Player extends Entity {
-private String playerName;
-private int remainingAttacks;
-private boolean isAlive;
+private String playerName; //Optional, will be implemented later
+private int remainingAttacks; //How many more times a player is allowed to attack an enemy
+private boolean isAlive; //Whether or not there is a game over
 
 
 
@@ -76,24 +76,35 @@ public boolean isColliding() {
 	
 	return false;
 }
+
+
+public boolean isAlive() {
+	if(isAlive&&!isColliding()) {
+		return true;
+	}
+	return  false;
+}
+
+
+
 public void attack() {
 	//Checking left
-	Enemy left = WhoIsThere(getXCoord()-1,getYCoord());
+	Enemy left = whoIsThere(getXCoord()-1,getYCoord());
 	if(left!=null) {
 		left.moveOffScreen();
 	}
 	
-	Enemy right = WhoIsThere(getXCoord()+1,getYCoord());
+	Enemy right = whoIsThere(getXCoord()+1,getYCoord());
 	if(right!=null) {
 		right.moveOffScreen();
 	}
 	
-	Enemy up = WhoIsThere(getXCoord(),getYCoord()-1);
+	Enemy up = whoIsThere(getXCoord(),getYCoord()-1);
 	if(up!=null) {
 		up.moveOffScreen();
 	}
 	
-	Enemy down = WhoIsThere(getXCoord(),getYCoord()+1);
+	Enemy down = whoIsThere(getXCoord(),getYCoord()+1);
 	if(down!=null) {
 		down.moveOffScreen();
 	}
