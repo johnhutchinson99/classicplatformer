@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class World {
-
+	
 	private int worldMaxXCoord = 20;
 	private int worldMaxYCoord = 20;
 	
@@ -30,7 +30,10 @@ public class World {
 	 * @param player - The main character/player of the game (to be drawn).
 	 */
 	public void drawWorld(Player player) {
-		
+		/*
+		 * Once we get everything running, I'm going to split this into 2 methods:
+		 * an updateWorldContents method and a drawWorld method 
+		 */
 		int playerXCoord = player.getXCoord();
 		int playerYCoord = player.getYCoord();
 		

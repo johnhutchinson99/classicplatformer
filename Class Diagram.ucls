@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="World" project="classicplatformer" file="/classicplatformer/src/World.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="169" width="152" x="445" y="488"/>    
+    <position height="-1" width="-1" x="252" y="140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="Gameplay" project="classicplatformer" file="/classicplatformer/src/Gameplay.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="133" width="131" x="445" y="207"/>    
+    <position height="-1" width="-1" x="258" y="368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="Entity" project="classicplatformer" file="/classicplatformer/src/Entity.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="241" width="130" x="616" y="207"/>    
+    <position height="-1" width="-1" x="502" y="138"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,25 +30,25 @@
   </class>  
   <class id="4" language="java" name="Player" project="classicplatformer" file="/classicplatformer/src/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="295" width="165" x="637" y="488"/>    
+    <position height="-1" width="-1" x="500" y="512"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="5">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="6">    
+  <association id="5">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="7" name="world"/>      
-      <multiplicity id="8" minimum="0" maximum="1"/>    
+      <attribute id="6" name="world"/>      
+      <multiplicity id="7" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
