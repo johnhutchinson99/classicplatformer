@@ -20,6 +20,8 @@ public class World {
 	 	- add final destination (place where you reach to either win the game/go to the next world)
 	 	- make an array which contains the enemies (listOfEnemies)
 	 	- make a method that checks whether the player (param) is at the final destination and return boolean
+	 	
+	 	test test
 	*/
 	
 	
