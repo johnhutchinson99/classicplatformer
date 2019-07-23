@@ -1,4 +1,10 @@
-
+/**
+ * Level One of our classic platformer game.
+ * 
+ * Objects in the level one world are created and the play method
+ * allows the player to interact with the world.
+ *
+ */
 public class LevelOne extends World {
 
 	private final int LEVELWORLDMAXXCOORD = 9;
@@ -10,14 +16,25 @@ public class LevelOne extends World {
 	private final int LEVELGOALXCOORD = 9;
 	private final int LEVELGOALYCOORD = 0;
 
+	private boolean levelWin;
+	
+	
 	public LevelOne() {
 	}
 
-	public LevelOne(int maxX, int maxY, int startX, int startY, int finalX, int finalY) {
-		super(maxX, maxY, startX, startY, finalX, finalY);
+	public LevelOne(int wolrdMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
+		super(wolrdMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
 	}
 
-	public void playLevelOne() {
+	
+	/**
+	 * The playLevelOne method allows the main player to interact in the level one world.
+	 * The method draws out the world and continuously ask the player for input until
+	 * the player has won (reached the final destination) or the player has lost (been killed).
+	 * 
+	 * @return levelWin - The boolean which returns true if the level has been won, false otherwise. 
+	 */
+	public boolean playLevelOne() {
 
 		LevelOne level = new LevelOne(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
 				LEVELGOALXCOORD, LEVELGOALYCOORD);
@@ -33,16 +50,21 @@ public class LevelOne extends World {
 		
 		
 		Player mainPlayer = new Player(level, 5);
-
 		
-		System.out.print(mainPlayer.getYCoord());
-
-		while (mainPlayer.isAlive()) {
+		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer) ) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
-			
-			
 		}
+		
+		// After the loop for level play ends, check if player won/is stil alive
+		if (mainPlayer.isAlive()){
+			levelWin = true;
+		} else {
+			levelWin = false;
+		}
+		
+		return levelWin;
+			
 	}
 
 }

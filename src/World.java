@@ -93,9 +93,13 @@ public class World {
 		listOfEnemies.add(anEnemy);
 	}
 	
-	
-	
-
+	public boolean isPlayerAtGoal(Player player) {
+		if (player.getXCoord() == goalXCoord && player.getYCoord() == goalYCoord) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	/**
 	 * Draws the world (player, enemies, final destination)
@@ -106,7 +110,10 @@ public class World {
 	public void drawWorld(Player player, int worldMaxXCoord, int worldMaxYCoord, int goalXCoord, int goalYCoord) {
 		/*
 		 * Once we get everything running, I'm going to split this into 2 methods:
-		 * an updateWorldContents method and a drawWorld method 
+		 * an updateWorldContents method and a drawWorld method.
+		 * 
+		 * Also, this can only take world sizes up to 9x9 since the
+		 * axis will display differently otherwise.  
 		 */
 		int playerXCoord = player.getXCoord();
 		int playerYCoord = player.getYCoord();

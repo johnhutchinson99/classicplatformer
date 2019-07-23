@@ -38,6 +38,12 @@ public class Gameplay {
 		);
 	}
 
+	/**
+	 * The main program which runs the game by calling and playing each level.
+	 * After the levels are finished playing, announce whether the game has been won/lost.
+	 * 
+	 * @param args - The standard parameter for a main method. 
+	 */
 	public static void main(String[] args) {
 
 		Gameplay game = new Gameplay();
@@ -51,19 +57,20 @@ public class Gameplay {
 		game.delayGame(1000);
 
 		// Ask for player name (to be utilized for later story-mode)
-		// System.out.print("To begin, please enter your name: ");
-		// Scanner keyboardInput = new Scanner(System.in);
-		// String name = keyboardInput.next();
+			// System.out.print("To begin, please enter your name: ");
+			// Scanner keyboardInput = new Scanner(System.in);
+			// String name = keyboardInput.next();
 
 		// Print or announce gameplay begins
 		System.out.print("Let the game begin!");
 
-		// Start playing level one
-		levelOne.playLevelOne();
-		
-		// need a way to prevent starting where enemies?
-
-		// Game over (lose or win) >> TODO: method to check game win/lose?
+		// Start playing level one (we only have 1 level in this demo)
+		// After playing the level, announce whether the player has won or lost.
+		if ( levelOne.playLevelOne() ) {
+			System.out.print("Game Won!");
+		} else {
+			System.out.print("Game Lost");
+		}
 
 	}
 
