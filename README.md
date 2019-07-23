@@ -20,6 +20,6 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  5. Now that the project is imported into Eclipse, run the project by right-clicking "Gameplay.java" in the Eclipse Package Explorer and choosing "Run As" >> "Java Application".
 
 ### Compiling and Running: Using Command Line
- 1.
- 2.
- 3.
+ 1. Set present working directory to the src directory
+ 2. run "javac *.java"
+ 3. run "java Gameplay"
