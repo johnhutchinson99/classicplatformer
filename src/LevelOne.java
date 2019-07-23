@@ -24,8 +24,6 @@ public class LevelOne extends World {
 
 		Player mainPlayer = new Player(level, 5);
 
-		System.out.print(mainPlayer.getYCoord());
-
 		while (mainPlayer.isAlive()) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
