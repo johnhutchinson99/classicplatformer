@@ -22,11 +22,17 @@ public Entity(World newWorld) {
 }
 
 
-
+/**
+ * Setter for an entities x coordinate position. 
+ * @param newX - The x coordinate position to put the entity in. 
+ */
 public void setXCoord(int newX) { //Returns true if coordinates were changed successfully. Returns false if coordinates could not be changed (likely due to coordinates being outside of bounds)
 	xCoord = newX;
 }
-
+/**
+ * Setter for an entities y coordinate position. 
+ * @param newY - The y coordinate position to put the entity in. 
+ */
 public void setYCoord(int newY) { //Returns true if coordinates were changed successfully. Returns false if coordinates could not be changed (likely due to coordinates being outside of bounds)
 
 		yCoord = newY;
@@ -34,18 +40,32 @@ public void setYCoord(int newY) { //Returns true if coordinates were changed suc
 }
 
 
-
+/**
+ * Getter for an entities x coordinate. 
+ * @return The x coordinate of the entity. 
+ */
 public int getXCoord() {
 	return xCoord;
 }
+/**
+ * Getter for an entities y coordinate. 
+ * @return The y coordinate of the entity. 
+ */
 public int getYCoord() {
 	return yCoord;
 }
+/**
+ * Getter for the world the entity is in. 
+ * @return The world the entity is in.  
+ */
 public World getWorld() {
 	return world;
 }
 
-
+/**
+ * To string method to print the entity's x and y coordinate. 
+ * @return The string of the entity's x and y coordinate.
+ */
 public String toString() {
 	return (xCoord+","+yCoord);
 }

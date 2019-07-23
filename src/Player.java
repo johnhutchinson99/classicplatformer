@@ -49,22 +49,41 @@ public Player(String newName, World newWorld,int allowedAttacks) {
 	
 }
 
-
+/**
+ * Setter for moving player right. 
+ * @param translate - The amount you want to move/translate the player by. 
+ */
 public void moveRight(int translate) {
 	setXCoord(getXCoord()+translate);
 }
+/**
+ * Setter for moving player left. 
+ * @param translate - The amount you want to move/translate the player by. 
+ */
 public void moveLeft(int translate) {
 	setXCoord(getXCoord()-translate);
 	
 }
+/**
+ * Setter for moving player up. 
+ * @param translate - The amount you want to move/translate the player by. 
+ */
 public void moveUp(int translate) {
 	setYCoord(getYCoord()-translate);
 	
 }
+/**
+ * Setter for moving player down. 
+ * @param translate - The amount you want to move/translate the player by. 
+ */
 public void moveDown(int translate) {
 	setYCoord(getYCoord()+translate);
 	
 }
+/**
+ * Checks if player is colliding with other objects (e.g. enemies).
+ * @return boolean true if colliding, false otherwise. 
+ */
 public boolean isColliding() {
 
 	if(whoIsThere(getXCoord(),getYCoord())!=null) {
@@ -74,7 +93,10 @@ public boolean isColliding() {
 	return false;
 }
 
-
+/**
+ * Checks if player is alive.
+ * @return boolean true if alive, false otherwise.
+ */
 public boolean isAlive() {
 	if(isAlive&&!isColliding()) {
 		return true;
@@ -83,7 +105,11 @@ public boolean isAlive() {
 }
 
 
-
+/**
+ * Attacks the enemies in coordinates/"squares" surrounding the
+ * player. Attacking enemies means removing/killing enemies from
+ * the list of enemies (i.e. they die with a single attack). 
+ */
 public void attack() {
 	
 	
@@ -113,12 +139,20 @@ public void attack() {
 
 }
 
-
+/**
+ * A jump feature that is yet to be implemented. 
+ */
 public void jump() {
 	//TODO implement for next release
 }
 
 
+/**
+ * Checks if enemy is at the given X and Y coordinates.
+ * @param checkX - The X coordinate to check. 
+ * @param checkY - The Y coordinate to check.
+ * @return The enemy, if present.
+ */
 private Enemy whoIsThere(int checkX,int checkY) {
 	for(Enemy toTest:getWorld().getListOfEnemies()) {
 		
@@ -134,7 +168,11 @@ private Enemy whoIsThere(int checkX,int checkY) {
 
 
 
-
+/**
+ * Asks user/player for instructions on what to do with character.
+ * Opens an input space that allows the user to instruct the program
+ * to move the player left/right or attack. 
+ */
 public void askUserInstruction() {
 
 	Scanner keyboard = new Scanner(System.in);
