@@ -22,12 +22,29 @@ public class LevelOne extends World {
 		LevelOne level = new LevelOne(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
 				LEVELGOALXCOORD, LEVELGOALYCOORD);
 
+		
+		Enemy enemy1 = new Enemy(level);
+		Enemy enemy2 = new Enemy(level);
+		
+		addToListOfEnemies(enemy1);
+		addToListOfEnemies(enemy2);
+		
+			System.out.println(enemy1.toString());
+		
+		
 		Player mainPlayer = new Player(level, 5);
+
+		
+		System.out.print(mainPlayer.getYCoord());
 
 		while (mainPlayer.isAlive()) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
+			
+			
 		}
 	}
 
 }
+
+
