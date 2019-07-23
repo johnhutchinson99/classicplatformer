@@ -88,6 +88,13 @@ public class World {
 	public void setGoalYCoord(int goalYCoord) {
 		this.goalYCoord = goalYCoord;
 	}
+	
+	public void addToListOfEnemies(Enemy anEnemy) {
+		listOfEnemies.add(anEnemy);
+	}
+	
+	
+	
 
 
 	/**
@@ -122,9 +129,9 @@ public class World {
 	    
 	    // Add enemies to the world
 	    // TODO: check if this works with Pawan's array
-//	    for (Enemy anEnemy : listOfEnemies) {
-//	    	allWorldContents[anEnemy.getYCoord()][anEnemy.getXCoord()] = 'E';
-//	    }
+	    for (Enemy anEnemy : listOfEnemies) {
+	    	allWorldContents[anEnemy.getYCoord()][anEnemy.getXCoord()] = 'E';
+	    }
 	    
 	    // Make the top and bottom borders. 
 	    String horizontalBorder = "  #";
