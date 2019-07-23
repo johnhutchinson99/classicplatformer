@@ -16,9 +16,9 @@ private int yCoord;
 private World world;
 
 
-public Entity(int startX,int startY,World newWorld) {
-	xCoord = startX;
-	yCoord = startY;
+public Entity(World newWorld) {
+	xCoord = newWorld.getStartXCoord();
+	yCoord = newWorld.getStartYCoord();
 	world = newWorld;
 }
 

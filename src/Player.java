@@ -1,7 +1,4 @@
-
-
-
-
+import java.util.Scanner;
 
 /**
  * 
@@ -33,9 +30,9 @@ private boolean isAlive; //Whether or not there is a game over
 
 
 
-public Player(int startX, int startY, World newWorld,int allowedAttacks) {
+public Player(World newWorld,int allowedAttacks) {
 	
-	super(startX,startY,newWorld);
+	super(newWorld);
 	
 	
 	if(remainingAttacks>0) 
@@ -44,9 +41,9 @@ public Player(int startX, int startY, World newWorld,int allowedAttacks) {
 	isAlive = true;
 }
 
-public Player(String newName,int startX, int startY, World newWorld,int allowedAttacks) {
+public Player(String newName, World newWorld,int allowedAttacks) {
 	
-	this(startX,startY,newWorld,allowedAttacks);
+	this(newWorld,allowedAttacks);
 	if(newName!=null)
 		playerName = newName;
 	
@@ -121,7 +118,7 @@ public void jump() {
 
 
 private Enemy whoIsThere(int checkX,int checkY) {
-	for(Enemy toTest:getWorld().getEnemies()) {
+	for(Enemy toTest:getWorld().getListOfEnemies()) {
 		if(toTest.getXCoord()==checkX&&toTest.getYCoord()==checkY) {
 			return toTest;
 		}
@@ -131,5 +128,33 @@ private Enemy whoIsThere(int checkX,int checkY) {
 			
 }
 
+
+
+
+public void askUserInstruction() {
+
+	Scanner keyboard = new Scanner(System.in);
+
+	System.out.println(
+			"Enter L to move left. \n" + "Enter R to move right. \n" + "Enter A to attack surrounding squares. ");
+
+	String userInput = keyboard.nextLine();
+
+	switch (userInput) {
+	case "L":
+		this.moveLeft(1);
+		break;
+	case "R":
+		this.moveRight(1);
+		break;
+	case "A":
+		this.attack();
+		break;
+	default:
+		System.out.print("Input not valid. Please try again.");
+		break;
+	}
+
+}
 
 }
