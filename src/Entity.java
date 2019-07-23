@@ -26,15 +26,14 @@ public Entity(World newWorld) {
  * Setter for an entities x coordinate position. 
  * @param newX - The x coordinate position to put the entity in. 
  */
-public void setXCoord(int newX) { //Returns true if coordinates were changed successfully. Returns false if coordinates could not be changed (likely due to coordinates being outside of bounds)
+public void setXCoord(int newX) { 
 	xCoord = newX;
 }
 /**
  * Setter for an entities y coordinate position. 
  * @param newY - The y coordinate position to put the entity in. 
  */
-public void setYCoord(int newY) { //Returns true if coordinates were changed successfully. Returns false if coordinates could not be changed (likely due to coordinates being outside of bounds)
-
+public void setYCoord(int newY) { 
 		yCoord = newY;
 
 }
