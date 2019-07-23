@@ -85,25 +85,27 @@ public boolean isAlive() {
 
 
 public void attack() {
-	//Checking left
+	
+	
+	
 	Enemy left = whoIsThere(getXCoord()-1,getYCoord());
 	if(left!=null) {
-		left.moveOffScreen();
+		getWorld().removeFromListOfEnemies(left);
 	}
 	
 	Enemy right = whoIsThere(getXCoord()+1,getYCoord());
 	if(right!=null) {
-		right.moveOffScreen();
+		getWorld().removeFromListOfEnemies(right);
 	}
 	
 	Enemy up = whoIsThere(getXCoord(),getYCoord()-1);
 	if(up!=null) {
-		up.moveOffScreen();
+		getWorld().removeFromListOfEnemies(up);
 	}
 	
 	Enemy down = whoIsThere(getXCoord(),getYCoord()+1);
 	if(down!=null) {
-		down.moveOffScreen();
+		getWorld().removeFromListOfEnemies(down);
 	}
 	
 	
@@ -119,8 +121,10 @@ public void jump() {
 
 private Enemy whoIsThere(int checkX,int checkY) {
 	for(Enemy toTest:getWorld().getListOfEnemies()) {
+		
 		if(toTest.getXCoord()==checkX&&toTest.getYCoord()==checkY) {
 			return toTest;
+			
 		}
 	}
 	

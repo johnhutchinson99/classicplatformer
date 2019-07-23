@@ -15,15 +15,17 @@ public class World {
 	
 	
 	
-	/* 
-	 	Additional TODO:
-	 	- javadoc the class / any methods made
-	 	- make an array which contains the enemies (listOfEnemies)
-	 	- make a method that checks whether the player (param) is at the final destination and return boolean
-	 	- split the draw method
-	 	
-	*/
 	
+	 	
+	
+	
+	
+	
+	/**
+	 * This class contains information about the current world
+	 * This class stores important data such as the maximum X and Y of a level, the starting position of a player and the location of the goal. 
+	 	This class also stores enemies in an arraylist.
+	 */
 	public World() {
 		
 	}
@@ -91,6 +93,9 @@ public class World {
 	
 	public void addToListOfEnemies(Enemy anEnemy) {
 		listOfEnemies.add(anEnemy);
+	}
+	public void removeFromListOfEnemies(Enemy anEnemy) {
+		listOfEnemies.remove(anEnemy);
 	}
 	
 	
