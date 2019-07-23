@@ -62,14 +62,14 @@ public class Gameplay {
 			// String name = keyboardInput.next();
 
 		// Print or announce gameplay begins
-		System.out.print("Let the game begin!");
+		System.out.print("Let the game begin!\n");
 
 		// Start playing level one (we only have 1 level in this demo)
 		// After playing the level, announce whether the player has won or lost.
 		if ( levelOne.playLevelOne() ) {
-			System.out.print("Game Won!");
+			System.out.print("CONGRATULATIONS! YOU HAVE WON!");
 		} else {
-			System.out.print("Game Lost");
+			System.out.print("YOU HAVE DIED. GAME OVER");
 		}
 
 	}

@@ -24,8 +24,8 @@ public class LevelOne extends World {
 	public LevelOne() {
 	}
 
-	public LevelOne(int wolrdMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
-		super(wolrdMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
+	public LevelOne(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
+		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
 	}
 
 	
@@ -50,21 +50,24 @@ public class LevelOne extends World {
 		addToListOfEnemies(enemy2);
 		addToListOfEnemies(enemy3);
 		
-		
-		
 		Player mainPlayer = new Player(this, 5);
-		
+
+		// The loop which "plays" the game (i.e. draws then asks for user input)
+		// Until the player dies or has reached the goal destination
 		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer) ) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
 		}
 		
-		// After the loop for level play ends, check if player won/is stil alive
+		// After the loop for level play ends, check if player won/is still alive
 		if (mainPlayer.isAlive()){
 			levelWin = true;
 		} else {
 			levelWin = false;
 		}
+		
+		// Draw the world a final time before ending the level
+		super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 		
 		return levelWin;
 			
