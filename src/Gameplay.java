@@ -49,7 +49,8 @@ public class Gameplay {
 		Gameplay game = new Gameplay();
 
 		LevelOne levelOne = new LevelOne();
-
+		LevelTwo levelTwo = new LevelTwo();
+		
 		// Game Intro / Instructions
 		System.out.println("Welcome to The-Game-That-Does-Not-Have-a-Name-Yet! \n");
 		game.delayGame(1000);
@@ -66,7 +67,7 @@ public class Gameplay {
 
 		// Start playing level one (we only have 1 level in this demo)
 		// After playing the level, announce whether the player has won or lost.
-		if ( levelOne.playLevelOne() ) {
+		if ( levelOne.playLevelOne() && levelTwo.playLevelTwo()) {
 			System.out.print("CONGRATULATIONS! YOU HAVE WON!");
 		} else {
 			System.out.print("YOU HAVE DIED. GAME OVER");
