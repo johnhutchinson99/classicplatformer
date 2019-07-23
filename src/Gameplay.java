@@ -1,9 +1,8 @@
-
 /**
- 	The Gameplay class contains the main method which runs the game.
- 		Here, instances of player, enemies, and world are created.
- 		In this text-based version, the draw method from the world
- 		class is called upon to show the world. 
+ 	Gameplay contains the main method which runs the game.
+ 		Gameplay controls the timing of the introduction to the game
+ 		and runs each level of the game. 
+ 		The current version of the game is the text-based console version.
  */
 
 import java.util.Scanner;
@@ -42,8 +41,8 @@ public class Gameplay {
 	public static void main(String[] args) {
 
 		Gameplay game = new Gameplay();
-		World worldOne = new World();
-		Player mainPlayer = new Player();
+
+		LevelOne levelOne = new LevelOne();
 
 		// Game Intro / Instructions
 		System.out.println("Welcome to The-Game-That-Does-Not-Have-a-Name-Yet! \n");
@@ -52,27 +51,17 @@ public class Gameplay {
 		game.delayGame(1000);
 
 		// Ask for player name (to be utilized for later story-mode)
-		System.out.print("To begin, please enter your name: ");
-		Scanner keyboardInput = new Scanner(System.in);
-		String name = keyboardInput.next();
+		// System.out.print("To begin, please enter your name: ");
+		// Scanner keyboardInput = new Scanner(System.in);
+		// String name = keyboardInput.next();
 
 		// Print or announce gameplay begins
 		System.out.print("Let the game begin!");
 
-		// Loop while game active / alive
-		// Draw world
-		do {
-			worldOne.drawWorld(mainPlayer);
-			
-			// method to prompt for user input?
-			
-		} while (mainPlayer.isAlive());
+		// Start playing level one
+		levelOne.playLevelOne();
 		
-		// TODO: make sure isAlive has default value
-
-		// Check colliding somewhere in here...? >> isAlive() method already does this
 		// need a way to prevent starting where enemies?
-		// Prompt for user input
 
 		// Game over (lose or win) >> TODO: method to check game win/lose?
 
