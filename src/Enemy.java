@@ -23,9 +23,6 @@ public class Enemy extends Entity{
 		
 	}
 	
-	//public Enemy (Enemy toCopy) {
-	//
-	//}
 	
 	
 	
@@ -43,7 +40,8 @@ public class Enemy extends Entity{
 		setXCoord(r.nextInt(getWorld().getWorldMaxXCoord()));
 		setYCoord(r.nextInt(getWorld().getWorldMaxYCoord()));
 		
-		setYCoord(0);
+		
+		
 		
 		
 		

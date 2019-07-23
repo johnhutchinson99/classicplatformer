@@ -1,19 +1,21 @@
 /**
  * Level One of our classic platformer game.
  * 
- * Objects in the level one world are created and the play method
- * allows the player to interact with the world.
- *
+ * This class contains the code needed to generate the first level.
+ * This includes level size as well as player and enemy generation.
+ * The play method allows the player to interact with the world.
+ * 
  */
+
 public class LevelOne extends World {
 
-	private final int LEVELWORLDMAXXCOORD = 9;
-	private final int LEVELWORLDMAXYCOORD = 5;
+	private final int LEVELWORLDMAXXCOORD = 16;
+	private final int LEVELWORLDMAXYCOORD = 1;
 
 	private final int LEVELSTARTXCOORD = 0;
 	private final int LEVELSTARTYCOORD = 0;
 
-	private final int LEVELGOALXCOORD = 9;
+	private final int LEVELGOALXCOORD = 16;
 	private final int LEVELGOALYCOORD = 0;
 
 	private boolean levelWin;
@@ -42,14 +44,15 @@ public class LevelOne extends World {
 		
 		Enemy enemy1 = new Enemy(level);
 		Enemy enemy2 = new Enemy(level);
+		Enemy enemy3 = new Enemy(level);
 		
 		addToListOfEnemies(enemy1);
 		addToListOfEnemies(enemy2);
+		addToListOfEnemies(enemy3);
 		
-			System.out.println(enemy1.toString());
 		
 		
-		Player mainPlayer = new Player(level, 5);
+		Player mainPlayer = new Player(this, 5);
 		
 		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer) ) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
