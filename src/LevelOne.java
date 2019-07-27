@@ -7,6 +7,8 @@
  * 
  */
 
+// TODO make instances private?
+
 public class LevelOne extends World {
 
 	private final int LEVELWORLDMAXXCOORD = 16;

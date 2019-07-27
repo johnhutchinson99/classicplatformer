@@ -6,6 +6,8 @@
 
 import java.util.ArrayList;
 
+// TODO: Make sure start and goal are within world dimensions
+
 public class World {
 	
 	private int worldMaxXCoord;
@@ -37,7 +39,11 @@ public class World {
 	 * @return listOfEnemies - a list of enemies.
 	 */
 	public ArrayList<Enemy> getListOfEnemies() {
-		return listOfEnemies;
+		ArrayList<Enemy> returnedListofEnemies = new ArrayList<Enemy>();
+		for (Enemy enemy : listOfEnemies) {
+			returnedListOfEnemies.add(new Enemy(enemy));
+		}
+		return returedListOfEnemies;
 	}
 	
 	/**
@@ -54,8 +60,8 @@ public class World {
 	 * 
 	 * @param worldMaxXCoord - The desired max X coordinate. 
 	 */
-	public void setWorldMaxXCoord(int worldMaxXCoord) {
-		this.worldMaxXCoord = worldMaxXCoord;
+	public void setWorldMaxXCoord(int maxXCoord) {
+		worldMaxXCoord = maxXCoord;
 	}
 
 	/**
@@ -72,8 +78,8 @@ public class World {
 	 * 
 	 * @param worldMaxXYoord - The desired max Y coordinate.
 	 */
-	public void setWorldMaxYCoord(int worldMaxYCoord) {
-		this.worldMaxYCoord = worldMaxYCoord;
+	public void setWorldMaxYCoord(int maxYCoord) {
+		worldMaxYCoord = maxYCoord;
 	}
 	
 	/**
@@ -90,8 +96,8 @@ public class World {
 	 * 
 	 * @param startXCoord - The player's desired starting X coordinate. 
 	 */
-	public void setStartXCoord(int startXCoord) {
-		this.startXCoord = startXCoord;
+	public void setStartXCoord(int XCoord) {
+		startXCoord = XCoord;
 	}
 
 	/**
@@ -108,8 +114,8 @@ public class World {
 	 * 
 	 * @param startXCoord - The player's desired starting Y coordinate. 
 	 */
-	public void setStartYCoord(int startYCoord) {
-		this.startYCoord = startYCoord;
+	public void setStartYCoord(int YCoord) {
+		startYCoord = YCoord;
 	}
 	
 	/**
@@ -126,8 +132,8 @@ public class World {
 	 * 
 	 * @param goalXCoord - The desired goal X coordinate for the player to reach. 
 	 */
-	public void setGoalXCoord(int goalXCoord) {
-		this.goalXCoord = goalXCoord;
+	public void setGoalXCoord(int XCoord) {
+		goalXCoord = XCoord;
 	}
 
 	/**
@@ -144,8 +150,8 @@ public class World {
 	 * 
 	 * @param goalYCoord - The desired goal Y coordinate for the player to reach. 
 	 */
-	public void setGoalYCoord(int goalYCoord) {
-		this.goalYCoord = goalYCoord;
+	public void setGoalYCoord(int YCoord) {
+		goalYCoord = YCoord;
 	}
 	
 	/**
@@ -154,6 +160,8 @@ public class World {
 	 * @param anEnemy - The enemy to add to the world.
 	 */
 	public void addToListOfEnemies(Enemy anEnemy) {
+		// We do want this privacy leak in? Since we want the same enemy so we can remove later??
+		// TODO: Need to consider this more thoroughly
 		listOfEnemies.add(anEnemy);
 	}
 	
@@ -179,6 +187,20 @@ public class World {
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * Creates platforms in the game. 
+	 */
+	public void createPlatform() {
+		// pass
+	}
+	
+	/**
+	 * Creates the walls of the world.
+	 */
+	public void createWalls() {
+		// pass
 	}
 
 	/**
