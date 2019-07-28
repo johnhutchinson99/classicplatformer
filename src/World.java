@@ -19,6 +19,8 @@ public class World {
 	private int goalXCoord;
 	private int goalYCoord;
 	
+	private ArrayList<String> platformCoordinates = new ArrayList<String>();
+	
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
 	
 	public World() {
@@ -35,6 +37,18 @@ public class World {
 	}
 	
 	/**
+	 * Getter for platformCoordinates (the arraylist containing all platform coordinates in the world). 
+	 * @return platformCoordinates - All the coordinates of platforms. 
+	 */
+	public ArrayList<String> getPlatformCoordinates() {
+		ArrayList<String> returnedPlatformCoordinates = new ArrayList<String>();
+		for (String coordinates : platformCoordinates) {
+			returnedPlatformCoordinates.add(coordinates);
+		}
+		return returnedPlatformCoordinates;
+	}
+	
+	/**
 	 * Getter for listOfEnemies (the arraylist containing all enemies in the world). 
 	 * @return listOfEnemies - a list of enemies.
 	 */
@@ -45,6 +59,8 @@ public class World {
 		}
 		return returedListOfEnemies;
 	}
+	
+	
 	
 	/**
 	 * Getter for the world's max X coordinate (world size).
@@ -190,17 +206,18 @@ public class World {
 	}
 	
 	/**
-	 * Creates platforms in the game. 
+	 * Creates platforms in the world by adding them to the array of platforms
+	 * @param xCoord - The leftmost x coordinate of the platform. 
+	 * @param yCoord - The topmost y coordinate of the platform. 
+	 * @param width - The width of the platform.
+	 * @param height - The height of the platform. 
 	 */
-	public void createPlatform() {
-		// pass
-	}
-	
-	/**
-	 * Creates the walls of the world.
-	 */
-	public void createWalls() {
-		// pass
+	public void createPlatform(int xCoord, int yCoord, int width, int height) {
+		for (int i = xCoord; i <= (xCoord+width); i++) {
+			for (int j = yCoord; j < (yCoord+height); j++) {
+				platformCoordinates.add(i +", "+ j); 
+			}
+		}
 	}
 
 	/**

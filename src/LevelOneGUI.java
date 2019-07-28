@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Level One of the GUI version of our classic platformer game.
  * 
@@ -10,14 +12,15 @@
 
 public class LevelOneGUI extends World {
 
-	private final int LEVELWORLDMAXXCOORD = 16;
-	private final int LEVELWORLDMAXYCOORD = 1;
+	private final int LEVELWORLDMAXXCOORD = 1000;
+	private final int LEVELWORLDMAXYCOORD = 500;
 
 	private final int LEVELSTARTXCOORD = 0;
 	private final int LEVELSTARTYCOORD = 0;
 
 	private final int LEVELGOALXCOORD = 16;
 	private final int LEVELGOALYCOORD = 0;
+	
 
 	private boolean levelWin;
 
@@ -49,14 +52,25 @@ public class LevelOneGUI extends World {
 		addToListOfEnemies(enemy1);
 		addToListOfEnemies(enemy2);
 		addToListOfEnemies(enemy3);
+		
+		createPlatform(500, 100, 100, 10); // TODO: Get rid of magic numbers?
 
 		Player mainPlayer = new Player(this, 5);
+		
+		ArrayList<String> platforms = level.getPlatformCoordinates();
 
 		// This will update the enemy position while the game is running
 		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer)) {
 			enemy1.Update();
 			enemy2.Update();
 			enemy3.Update();
+			
+			int xCoord // = input from GUI or player move;
+			int yCoord // = input from GUI or player move;
+			
+			if (! platforms.contains(xCoord +","+ yCoord)) {
+				mainPlayer.Update();
+			}
 		}
 
 		// After the loop for level play ends, check if player won/is still alive
