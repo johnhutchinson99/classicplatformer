@@ -139,4 +139,12 @@ public void walkRight() {
 
 
 
+/**
+ * 
+ * @return physics Object
+ */
+public Physics getPhysics() {
+	return myPhysics;
+}
+
 }
