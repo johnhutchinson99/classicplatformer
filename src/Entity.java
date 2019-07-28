@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  * 
@@ -25,8 +27,7 @@ public Entity(World newWorld) {
 	jumpPower = 1;
 	
 	
-	
-	myPhysics.setYAcceleration(newWorld.getGravityAcceleration());
+	applyGravity();
 	
 }
 
@@ -62,6 +63,56 @@ public int getXCoord() {
 public int getYCoord() {
 	return myPhysics.getYPosition();
 }
+
+/**
+ * Updates gravity(acceleration) when called
+ * Run inside walk and jump methods
+ */
+private void applyGravity() {
+	
+	
+	
+	ArrayList<String> coordinates= world.getPlatformCoordinates();
+	
+	//I don't really understand how platforms work so I'm doing it how I think it is.
+	//Will likely be reimplemented
+	
+	int playerX = myPhysics.getXPosition();
+	int underPlayerY = myPhysics.getYPosition()+1; //Underneath player
+	
+	
+	
+	
+	for(String toParse:coordinates) {
+		int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')));
+		int y = Integer.parseInt(toParse.substring(toParse.indexOf('c')+1,toParse.length()));
+		
+		if(x==playerX&&y==underPlayerY) {
+			//Player is on playform
+			return;
+		}
+		
+		
+	}
+	
+	//Player is not on a platform
+	
+	myPhysics.setYAcceleration(-1*Physics.GRAVITY);
+	
+	
+	
+	
+	
+	
+	}
+
+
+
+
+
+
+
+
 /**
  * Getter for the world the entity is in. 
  * @return The world the entity is in.  
@@ -122,19 +173,23 @@ public String toString() {
  * Initiate an Entity jump based on it's jumping power
  */
 public void jump() {
+	
 	myPhysics.setYVelocity(-1*jumpPower);
+	applyGravity();
 }
 /**
  * Make the Entity walk to the left of the screen based on walking speed
  */
 public void walkLeft() {
 	myPhysics.setXVelocity(-1*walkSpeed);
+	applyGravity();
 }
 /**
  * Make the Entity walk to the right of the screen based on walking speed
  */
 public void walkRight() {
 	myPhysics.setXVelocity(walkSpeed);
+	applyGravity();
 }
 
 

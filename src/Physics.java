@@ -5,6 +5,10 @@
  *
  */
 public class Physics {
+	
+public static final int GRAVITY = 5;	
+	
+	
 private int xPosition; //Units: pixels
 private int yPosition;
 
