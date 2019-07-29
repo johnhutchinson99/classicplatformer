@@ -115,15 +115,14 @@ public class GUI extends Application{
         
         
         LevelOneGUI levelOne = new LevelOneGUI();
-        
+        levelOne.playLevelOne();
         playerRectangle = new Rectangle(10,25);
         
         
         layout3.getChildren().add(playerRectangle);
         
+       
         
-        playerRectangle.setX(0.0+levelOne.getPlayer().getXCoord());
-        playerRectangle.setY(0.0+levelOne.getPlayer().getYCoord());
         
         
         

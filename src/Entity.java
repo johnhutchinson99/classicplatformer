@@ -84,8 +84,8 @@ private void applyGravity() {
 	
 	
 	for(String toParse:coordinates) {
-		int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')));
-		int y = Integer.parseInt(toParse.substring(toParse.indexOf('c')+1,toParse.length()));
+		int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')).trim());
+		int y = Integer.parseInt(toParse.substring(toParse.indexOf(',')+1,toParse.length()).trim());
 		
 		if(x==playerX&&y==underPlayerY) {
 			//Player is on playform
