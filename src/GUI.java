@@ -17,7 +17,12 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
-
+/**
+ * 
+ * @author pawan
+ *
+ * Description: Set up the stage for the game
+ */
 public class GUI extends Application{
 
 	public static void main(String[] args) {
@@ -52,7 +57,7 @@ public class GUI extends Application{
         //then you set to your node
         root.setBackground(new Background(myBI));
         
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(root, 1000, 500);
         
         // Scene 2
 		VBox layout2 = new VBox();
@@ -77,7 +82,9 @@ public class GUI extends Application{
         Insets insets2 = new Insets(10);
 		BorderPane.setMargin(Inst, insets2);
 		layout2.getChildren().add(borderPane2);
-		scene2= new Scene(layout2,500, 500);
+		scene2= new Scene(layout2,1000, 500);
+		
+		// Scene 3
 		
         primaryStage.setTitle("Sqiggy");
         primaryStage.setScene(scene);
