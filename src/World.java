@@ -48,6 +48,28 @@ public class World {
 		return returnedPlatformCoordinates;
 	}
 	
+	
+	
+	public boolean isAPlatform(int checkX, int checkY) {
+
+		ArrayList<String> coordinates= getPlatformCoordinates();
+		for(String toParse:coordinates) {
+			int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')));
+			int y = Integer.parseInt(toParse.substring(toParse.indexOf('c')+1,toParse.length()));
+			
+			if(x==checkX&&y==checkY) {
+				return true;
+			}
+			
+			
+		}
+		
+		
+		return false;
+	}	
+	
+	
+	
 	/**
 	 * Getter for listOfEnemies (the arraylist containing all enemies in the world). 
 	 * @return listOfEnemies - a list of enemies.

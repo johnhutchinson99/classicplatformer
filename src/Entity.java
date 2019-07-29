@@ -107,6 +107,9 @@ private void applyGravity() {
 	}
 
 
+		
+
+
 
 
 

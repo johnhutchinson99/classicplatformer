@@ -84,7 +84,7 @@ public void moveDown(int translate) {
  * Checks if player is colliding with other objects (e.g. enemies).
  * @return boolean true if colliding, false otherwise. 
  */
-public boolean isColliding() {
+public boolean isCollidingWithEnemy() {
 
 	if(whoIsThere(getXCoord(),getYCoord())!=null) {
 		return true;
@@ -93,12 +93,14 @@ public boolean isColliding() {
 	return false;
 }
 
+
+
 /**
  * Checks if player is alive.
  * @return boolean true if alive, false otherwise.
  */
 public boolean isAlive() {
-	if(isAlive&&!isColliding()) {
+	if(isAlive&&!isCollidingWithEnemy()) {
 		return true;
 	}
 	return  false;
@@ -139,12 +141,7 @@ public void attack() {
 
 }
 
-/**
- * A jump feature that is yet to be implemented. 
- */
-public void jump() {
-	//TODO implement for next release
-}
+
 
 
 /**
@@ -166,6 +163,20 @@ private Enemy whoIsThere(int checkX,int checkY) {
 			
 }
 
+
+
+
+private void updateGravity() {
+	if(getWorld().isAPlatform(getXCoord(), getYCoord())) {
+		getPhysics().fullStop();
+		getXCoord();
+	}
+}
+
+
+public void update() {
+	updateGravity();
+}
 
 
 /**

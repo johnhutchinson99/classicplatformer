@@ -266,7 +266,16 @@ public boolean isGoingDown() {
 	return false;
 }
 
+/**
+ * Kills all momentum and accleration
+ */
 
+public void fullStop() {
+	xAcceleration = 0;
+	yAcceleration = 0;
+	xVelocity = 0;
+	yVelocity = 0;
+}
 
 
 
