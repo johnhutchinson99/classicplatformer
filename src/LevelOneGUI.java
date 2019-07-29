@@ -24,10 +24,10 @@ public class LevelOneGUI extends World {
 
 	private boolean levelWin;
 
-	public LevelOne() {
+	public LevelOneGUI() {
 	}
 
-	public LevelOne(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
+	public LevelOneGUI(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
 		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
 	}
 
@@ -61,16 +61,16 @@ public class LevelOneGUI extends World {
 
 		// This will update the enemy position while the game is running
 		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer)) {
-			enemy1.Update();
-			enemy2.Update();
-			enemy3.Update();
+			enemy1.move();
+			enemy2.move();
+			enemy3.move();
 			
-			int xCoord // = input from GUI or player move;
-			int yCoord // = input from GUI or player move;
+		//	int xCoord // = input from GUI or player move;
+		//	int yCoord // = input from GUI or player move;
 			
-			if (! platforms.contains(xCoord +","+ yCoord)) {
-				mainPlayer.Update();
-			}
+
+				mainPlayer.update();
+			//TODO player input and movement
 		}
 
 		// After the loop for level play ends, check if player won/is still alive
