@@ -86,17 +86,22 @@ public class GUI extends Application{
 		scene2= new Scene(layout2,1000, 500);
 		
 		// Scene 3
-		/*
-        BackgroundImage mainBI= new BackgroundImage(new Image("https://ak5.picdn.net/shutterstock/videos/1012154675/thumb/4.jpg",500,500,false,true),
+		
+        BackgroundImage mainBI2= new BackgroundImage(new Image("https://ak5.picdn.net/shutterstock/videos/1012154675/thumb/4.jpg",500,500,false,true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                   BackgroundSize.DEFAULT);
        
         //then you set to your node
 		VBox layout3 = new VBox();
-        layout3.setBackground(new Background(mainBI));
-        scene3= new Scene(layout2,1000, 500);
-		*/
-        primaryStage.setTitle("Sqiggy");
+        layout3.setBackground(new Background(mainBI2));
+        Text fit = new Text("");
+        BorderPane borderPane3 = new BorderPane();
+        borderPane3.setTop(fit);
+        layout3.getChildren().add(borderPane3);
+        
+        scene3= new Scene(layout3,1000, 500);
+		
+        primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
