@@ -1,7 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.util.List;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,15 +17,24 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Rectangle;
 /**
  * 
  * @author pawan
  *
  * Description: Set up the stage for the game
  */
+
+
+
+
+
+
+
 public class GUI extends Application{
 	
 	Scene scene1, scene2, scene3;
+	Rectangle playerRectangle;
 	
 	public static void main(String[] args) {
         launch(args);
@@ -106,10 +112,35 @@ public class GUI extends Application{
        
         
         scene3= new Scene(layout3,1000, 500);
+        
+        
+        LevelOneGUI levelOne = new LevelOneGUI();
+        
+        playerRectangle = new Rectangle(10,25);
+        
+        
+        layout3.getChildren().add(playerRectangle);
+        
+        
+        playerRectangle.setX(0.0+levelOne.getPlayer().getXCoord());
+        playerRectangle.setY(0.0+levelOne.getPlayer().getYCoord());
+        
+        
+        
+        
+        
 		
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+	
+	
+	public void renderPlayer() {
+
+	}
+	
+	
+	
 }

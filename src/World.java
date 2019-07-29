@@ -22,6 +22,8 @@ public class World {
 	private ArrayList<String> platformCoordinates = new ArrayList<String>();
 	
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
+		
+	private Player player;
 	
 	public World() {
 		
@@ -240,6 +242,16 @@ public class World {
 		}
 	}
 
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player p) {
+		player = p;
+	}
+	
+
+	
+	
 	/**
 	 * Draws the world (player, enemies, final destination)
 	 * in the text-based version of our game.

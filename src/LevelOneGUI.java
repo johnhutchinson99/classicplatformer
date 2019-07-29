@@ -55,12 +55,12 @@ public class LevelOneGUI extends World {
 		
 		createPlatform(500, 100, 100, 10); // TODO: Get rid of magic numbers?
 
-		Player mainPlayer = new Player(this, 5);
+		setPlayer(new Player(this, 5));
 		
 		ArrayList<String> platforms = level.getPlatformCoordinates();
 
 		// This will update the enemy position while the game is running
-		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer)) {
+		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
 			enemy1.move();
 			enemy2.move();
 			enemy3.move();
@@ -69,12 +69,12 @@ public class LevelOneGUI extends World {
 		//	int yCoord // = input from GUI or player move;
 			
 
-				mainPlayer.update();
+				getPlayer().update();
 			//TODO player input and movement
 		}
 
 		// After the loop for level play ends, check if player won/is still alive
-		if (mainPlayer.isAlive()) {
+		if (getPlayer().isAlive()) {
 			levelWin = true;
 		} else {
 			levelWin = false;
