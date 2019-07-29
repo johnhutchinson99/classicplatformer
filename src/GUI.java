@@ -15,6 +15,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 /**
@@ -85,9 +86,22 @@ public class GUI extends Application{
 		scene2= new Scene(layout2,1000, 500);
 		
 		// Scene 3
-		
+		/*
+        BackgroundImage mainBI= new BackgroundImage(new Image("https://ak5.picdn.net/shutterstock/videos/1012154675/thumb/4.jpg",500,500,false,true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                  BackgroundSize.DEFAULT);
+       
+        //then you set to your node
+		VBox layout3 = new VBox();
+        layout3.setBackground(new Background(mainBI));
+        scene3= new Scene(layout2,1000, 500);
+		*/
         primaryStage.setTitle("Sqiggy");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+	
+	public void playerSetUp() {
+		
+	}
 }
