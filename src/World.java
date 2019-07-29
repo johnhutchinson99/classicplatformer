@@ -53,11 +53,9 @@ public class World {
 	 * @return listOfEnemies - a list of enemies.
 	 */
 	public ArrayList<Enemy> getListOfEnemies() {
-		ArrayList<Enemy> returnedListofEnemies = new ArrayList<Enemy>();
-		for (Enemy enemy : listOfEnemies) {
-			returnedListOfEnemies.add(new Enemy(enemy));
-		}
-		return returedListOfEnemies;
+		ArrayList<Enemy> returnedListOfEnemies = new ArrayList<Enemy>(listOfEnemies);
+		
+		return returnedListOfEnemies;
 	}
 	
 	
