@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -25,11 +27,13 @@ import javafx.scene.control.Button;
  * Description: Set up the stage for the game
  */
 public class GUI extends Application{
-
+	
+	Scene scene1, scene2, scene3;
+	
 	public static void main(String[] args) {
         launch(args);
     }
-	Scene scene1, scene2, scene3;
+	
 	@Override
     public void start(Stage primaryStage) {
 		//Scene 1
@@ -99,14 +103,13 @@ public class GUI extends Application{
         borderPane3.setTop(fit);
         layout3.getChildren().add(borderPane3);
         
+       
+        
         scene3= new Scene(layout3,1000, 500);
 		
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-	
-	public void playerSetUp() {
-		
-	}
+
 }
