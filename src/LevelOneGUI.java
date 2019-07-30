@@ -102,7 +102,7 @@ public class LevelOneGUI extends World {
 			
 			
 			
-			getPlayer().setXCoord(getPlayer().getXCoord());
+			getPlayer().setXCoord(getPlayer().getXCoord() + 1);
 			
 			
 	}

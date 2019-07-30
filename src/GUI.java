@@ -1,4 +1,5 @@
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 /**
  * 
@@ -32,6 +34,8 @@ import javafx.scene.shape.Rectangle;
 
 
 public class GUI extends Application{
+	
+	LevelOneGUI levelOne = new LevelOneGUI();
 	
 	Scene scene1, scene2, scene3;
 	Rectangle playerRectangle;
@@ -114,7 +118,7 @@ public class GUI extends Application{
         scene3= new Scene(layout3,1000, 500);
         
         
-        LevelOneGUI levelOne = new LevelOneGUI();
+//        LevelOneGUI levelOne = new LevelOneGUI();
         levelOne.playLevelOne();
         playerRectangle = new Rectangle(10,25);
         
@@ -124,24 +128,37 @@ public class GUI extends Application{
          	levelOne.update();        
         
         
-         	playerRectangle.setX(levelOne.getPlayer().getXCoord());
+         	playerRectangle.setX(0);
          	playerRectangle.setY(levelOne.getPlayer().getYCoord());
+
+            AnimationTimer timer = new MyTimer();
+            timer.start();
          	
-		
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        
-        
-        
-        
-        
-        
-        
-        
     }
+	
+    private class MyTimer extends AnimationTimer {
 
+        @Override
+        public void handle(long now) {
+        
+            doHandle();
+        }
+
+        private void doHandle() {
+
+        	levelOne.update();   
+            playerRectangle.setX(levelOne.getPlayer().getXCoord());
+
+            if (levelOne.getPlayer().getXCoord() == 1000) {
+                stop();
+                System.out.println("Animation stopped");
+            }
+        }
+    }
 	
 	
 	public void renderPlayer() {
