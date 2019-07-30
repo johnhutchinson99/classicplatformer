@@ -1,6 +1,7 @@
 # README: Classic Platformer - Version 0.0.2
 
 GITHUB LINK: https://github.com/johnhutchinson99/classicplatformer
+
 This is a classic platformer game that is being created for a computer science course project.
 
 In this game, your character is placed in a world map and must avoid enemies/obstacles in order to reach a final destination.
