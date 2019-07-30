@@ -94,11 +94,25 @@ public void moveDown(int translate) {
  * @return boolean true if colliding, false otherwise. 
  */
 public boolean isCollidingWithEnemy() {
-
+	if(getWorld().getWorldMaxXCoord()>100) {// Runs when the world is large
+		
+		for(int i = getXCoord()-5;i<getXCoord()+6;i++) {
+			if(whoIsThere(i,getYCoord())!=null) {
+				return true;
+			}
+		}
+		
+		
+		
+		
+		
+	}else {
+		
+	
 	if(whoIsThere(getXCoord(),getYCoord())!=null) {
 		return true;
 	}
-	
+	}
 	return false;
 }
 
@@ -124,7 +138,7 @@ public boolean isAlive() {
 public void attack() {
 	
 	
-	
+
 	Enemy left = whoIsThere(getXCoord()-1,getYCoord());
 	if(left!=null) {
 		getWorld().removeFromListOfEnemies(left);
@@ -145,7 +159,7 @@ public void attack() {
 		getWorld().removeFromListOfEnemies(down);
 	}
 	
-	
+
 
 
 }

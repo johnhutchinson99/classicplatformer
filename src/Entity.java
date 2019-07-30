@@ -23,7 +23,7 @@ public Entity(World newWorld) {
 	myPhysics = new Physics(newWorld.getStartXCoord(),newWorld.getStartXCoord(),newWorld.getWorldMaxXCoord(),newWorld.getWorldMaxYCoord());
 	world = newWorld;
 	
-	walkSpeed = 0.4;
+	walkSpeed = 0.2;
 	jumpPower = 0;
 	
 	
