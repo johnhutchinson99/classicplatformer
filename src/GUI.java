@@ -151,7 +151,11 @@ public class GUI extends Application{
 				levelOne.getPlayer().walkLeft();
 				break;
 				
-			
+			case "k":
+				levelOne.getPlayer().attack();
+			break;
+			//case " ":
+			//	levelOne.getPlayer().jump();
 			
 			}
 		}
@@ -195,11 +199,16 @@ public class GUI extends Application{
         	levelOne.getPlayer().update();
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
+            levelOne.getEnemy1().setXCoord(100);
             enemyRectangle.setX(levelOne.getEnemy1().getXCoord());
             enemyRectangle.setY(levelOne.getEnemy1().getYCoord());
             if (!levelOne.getPlayer().isAlive()) {
             	System.exit(0);
             }
+            
+            
+            System.out.println(levelOne.getPlayer().toString()+" PLAYER");
+            System.out.println(levelOne.getEnemy1().toString()+" ENEMy");
         }
     }
 	

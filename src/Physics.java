@@ -6,7 +6,7 @@
  */
 public class Physics {
 	
-public static final double GRAVITY = 0.05;	
+public static final double GRAVITY = 0.02;	
 	
 private int maxXPosition;
 private int maxYPosition;
