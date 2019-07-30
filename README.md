@@ -37,6 +37,14 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  2. Run "java GUI"
  
 ## Running Tests
+### Running JUnit Test in Eclipse
  1. Follow Step 1 of "Accessing Demo 2 - Compiling and Running: Using Eclipse"
- 2. In the Eclipse Package Explorer, right-click "PhysicsTest.java", hover over "Run As", then select "JUnit Test". 
+ 2. Ensure that the JUnit 4 library is included in the Java Build Path of the project. 
+ 3. In the Eclipse Package Explorer, right-click "PhysicsTest.java", hover over "Run As", then select "JUnit Test".
+ 
+### Running JUnit Test in Command Line
+ 1. Follow Step 1 of "Accessing Demo 2 - Compiling and Running: Using Eclipse"
+ 2. Download [junit-4.12.jar](https://mvnrepository.com/artifact/junit/junit/4.12) and [hamcrest-core-1.3.jar](http://www.java2s.com/Code/Jar/h/Downloadhamcrestcore13jar.htm) and place them in the src folder. 
+ 3. In the command line, change the working directory to the src folder and compile using "javac -cp .:junit-4.12.jar:hamcrest-core-1.3.jar *.java"
+ 4. Run "java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore PhysicsTest"
  
