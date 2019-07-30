@@ -22,8 +22,14 @@ public class LevelOneGUI extends World {
 	private static final int LEVELGOALXCOORD = 16;
 	private static final int LEVELGOALYCOORD = 0;
 	
+	private Enemy enemy1 = new Enemy(this);
 
 	private boolean levelWin;
+	
+	public Enemy getEnemy() {
+		return enemy1;
+	}
+	
 
 	public LevelOneGUI() {
 		super(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
@@ -52,7 +58,6 @@ public class LevelOneGUI extends World {
 	public boolean playLevelOne() {
 
 
-		Enemy enemy1 = new Enemy(this);
 		Enemy enemy2 = new Enemy(this);
 		Enemy enemy3 = new Enemy(this);
 

@@ -12,6 +12,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -40,10 +41,9 @@ public class GUI extends Application{
 	
 	LevelOneGUI levelOne = new LevelOneGUI();
 	
-	boolean goLeft, goRight;
-	
 	Scene scene1, scene2, scene3;
 	Rectangle playerRectangle;
+	Rectangle enemyRectangle;
 	
 	public static void main(String[] args) {
         launch(args);
@@ -126,36 +126,21 @@ public class GUI extends Application{
 //        LevelOneGUI levelOne = new LevelOneGUI();
         levelOne.playLevelOne();
         playerRectangle = new Rectangle(10,25);
+        playerRectangle.setFill(Color.GREEN);
+        
+        enemyRectangle = new Rectangle(10,25);
+        enemyRectangle.setFill(Color.RED);
         
         borderPane3.getChildren().add(playerRectangle);
-        
+        borderPane3.getChildren().add(enemyRectangle);
        
-         	levelOne.update();        
-        
-        
-         	playerRectangle.setX(0);
-         	playerRectangle.setY(levelOne.getPlayer().getYCoord());
-
-            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    switch (event.getCode()) {
-                        case LEFT:  goLeft  = true; break;
-                        case RIGHT: goRight  = true; break;
-                    }
-                }
-            });
-
-            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    switch (event.getCode()) {
-                        case LEFT:  goLeft  = false; break;
-                        case RIGHT: goRight  = false; break;
-                    }
-                }
-            });
+         	levelOne.update();    
          	
+            enemyRectangle.setX(0);
+            enemyRectangle.setY(0);
+        
+         	playerRectangle.setX(levelOne.getPlayer().getXCoord());
+         	playerRectangle.setY(levelOne.getPlayer().getYCoord());
          	
             AnimationTimer timer = new MyTimer();
             timer.start();
@@ -185,7 +170,7 @@ public class GUI extends Application{
 			@Override
 			public void handle(KeyEvent event) {
 				levelOne.getPlayer().stop();
-				
+				levelOne.update();
 			}
         	
         });    
@@ -217,10 +202,9 @@ public class GUI extends Application{
         	levelOne.getPlayer().update();
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
-            if (levelOne.getPlayer().getXCoord() == 1000) {
-                stop();
-                System.out.println("Animation stopped");
-            }
+            enemyRectangle.setX(levelOne.getEnemy().getXCoord());
+            enemyRectangle.setY(levelOne.getEnemy().getYCoord());
+
         }
     }
 	
