@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -96,7 +97,7 @@ public void moveDown(int translate) {
 public boolean isCollidingWithEnemy() {
 	if(getWorld().getWorldMaxXCoord()>100) {// Runs when the world is large
 		
-		for(int i = getXCoord()-10;i<getXCoord()+10;i++) {
+		for(int i = getXCoord()-20;i<getXCoord()+20;i++) {
 			if(whoIsThere(i,getYCoord())!=null) {
 				return true;
 			}
@@ -137,7 +138,8 @@ public boolean isAlive() {
  */
 public void attack() {
 	
-	
+if(getWorld().getWorldMaxXCoord()<100) {
+	System.out.println("This should not run");
 
 	Enemy left = whoIsThere(getXCoord()-1,getYCoord());
 	if(left!=null) {
@@ -158,7 +160,14 @@ public void attack() {
 	if(down!=null) {
 		getWorld().removeFromListOfEnemies(down);
 	}
-	
+}else {
+		ArrayList<Enemy> enemyList = getWorld().getListOfEnemies();
+		System.out.println(getWorld().getListOfEnemies().size());
+		for(Enemy e: enemyList) {
+			getWorld().removeFromListOfEnemies(e);
+		}
+		System.out.println(getWorld().getListOfEnemies().size());
+	}
 
 
 

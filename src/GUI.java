@@ -56,12 +56,12 @@ public class GUI extends Application{
 		
         VBox root = new VBox(); // The Root contains everything and is set up vertically
         Text Title = new Text("Hero Game"); // Welcome screen title 
-        BorderPane.setAlignment(Title, Pos.TOP_CENTER); // Set Allignment for the 'Title'
+        BorderPane.setAlignment(Title, Pos.TOP_CENTER); // Set Alignment for the 'Title'
         Title.setFont(Font.font("Verdana", FontWeight.BOLD, 70));
  
-        Button startButton = new Button("Start"); // Creat new button
+        Button startButton = new Button("Start"); // Create new button
 		startButton.setOnAction(e -> primaryStage.setScene(scene2)); // Set action and eventHandler
-        BorderPane.setAlignment(startButton,Pos.CENTER);      // Set Allignement for the startButton    
+        BorderPane.setAlignment(startButton,Pos.CENTER);      // Set Alignment for the startButton    
          
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(startButton);
@@ -81,12 +81,12 @@ public class GUI extends Application{
         
         // Scene 2
 		VBox layout2 = new VBox();
-		Text Inst = new Text("INSTRUCTIONS: \n" + "Good luck");
+		Text Inst = new Text("INSTRUCTIONS: \n" + "Press D to move forward.\n Press A to move backward. \n Press K to attack\n Good luck");
 		BorderPane.setAlignment(Inst, Pos.CENTER);
 		
-		Button startGameButton = new Button("Start"); // Creat new button
+		Button startGameButton = new Button("Start"); // Create new button
 		startGameButton.setOnAction(e -> primaryStage.setScene(scene3)); // Set action and eventHandler
-        BorderPane.setAlignment(startGameButton,Pos.BOTTOM_CENTER);      // Set Allignement for the startButton    
+        BorderPane.setAlignment(startGameButton,Pos.BOTTOM_CENTER);      // Set Alignment for the startButton    
         
 		BorderPane borderPane2 = new BorderPane();
         borderPane2.setTop(Inst);
@@ -119,6 +119,9 @@ public class GUI extends Application{
         levelOne.playLevelOne();
         playerRectangle = new Rectangle(40,40);
         playerRectangle.setFill(Color.GREEN);
+        
+        
+        
         
         enemyRectangle = new Rectangle(40,40);
         enemyRectangle.setFill(Color.RED);
@@ -153,13 +156,11 @@ public class GUI extends Application{
 			case "k":
 				levelOne.getPlayer().attack();
 			break;
-			//case " ": -- Maybe w, for jump?
-			//	levelOne.getPlayer().jump();
 			
 			}
 		}
     	   
-       });; // How does this not cause an error?
+       });;
        
             
         scene3.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -200,15 +201,21 @@ public class GUI extends Application{
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
             levelOne.getEnemy1().setXCoord(300);
-            enemyRectangle.setX(levelOne.getEnemy1().getXCoord());
+            if(levelOne.getListOfEnemies().size()!=0&&levelOne.getListOfEnemies().get(0)!=null) {
+            	
+            
+            enemyRectangle.setX(levelOne.getListOfEnemies().get(0).getXCoord());
             enemyRectangle.setY(levelOne.getEnemy1().getYCoord());
+            }else {
+            	enemyRectangle.setX(levelOne.getWorldMaxXCoord()+100);
+            	enemyRectangle.setY(levelOne.getWorldMaxYCoord()+100);
+            }
             if (!levelOne.getPlayer().isAlive()) {
             	System.exit(0);
             }
             
             
-            System.out.println(levelOne.getPlayer().toString()+" PLAYER");
-            System.out.println(levelOne.getEnemy1().toString()+" ENEMy");
+           
         }
     }
 	
