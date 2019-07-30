@@ -60,8 +60,9 @@ public class LevelOneGUI extends World {
 		addToListOfEnemies(enemy2);
 		addToListOfEnemies(enemy3);
 		
-		createPlatform(500, 100, 100, 10); // TODO: Get rid of magic numbers?
-
+		createPlatform(0, 0, 1000, 10); // TODO: Get rid of magic numbers?
+		createPlatform(0, 500, 1000, 10);
+		
 		player = new Player(this, 5);
 		player.setXCoord(LEVELSTARTXCOORD);
 		player.setYCoord(LEVELSTARTYCOORD);

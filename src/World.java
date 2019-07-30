@@ -39,6 +39,21 @@ public class World {
 	}
 	
 	/**
+	 * Creates platforms in the world by adding them to the array of platforms
+	 * @param xCoord - The leftmost x coordinate of the platform. 
+	 * @param yCoord - The topmost y coordinate of the platform. 
+	 * @param width - The width of the platform.
+	 * @param height - The height of the platform. 
+	 */
+	public void createPlatform(int xCoord, int yCoord, int width, int height) {
+		for (int i = xCoord; i <= (xCoord+width); i++) {
+			for (int j = yCoord; j < (yCoord+height); j++) {
+				platformCoordinates.add(i +","+ j); 
+			}
+		}
+	}
+	
+	/**
 	 * Getter for platformCoordinates (the arraylist containing all platform coordinates in the world). 
 	 * @return platformCoordinates - All the coordinates of platforms. 
 	 */
@@ -227,20 +242,7 @@ public class World {
 		}
 	}
 	
-	/**
-	 * Creates platforms in the world by adding them to the array of platforms
-	 * @param xCoord - The leftmost x coordinate of the platform. 
-	 * @param yCoord - The topmost y coordinate of the platform. 
-	 * @param width - The width of the platform.
-	 * @param height - The height of the platform. 
-	 */
-	public void createPlatform(int xCoord, int yCoord, int width, int height) {
-		for (int i = xCoord; i <= (xCoord+width); i++) {
-			for (int j = yCoord; j < (yCoord+height); j++) {
-				platformCoordinates.add(i +", "+ j); 
-			}
-		}
-	}
+
 
 	public Player getPlayer() {
 		return player;
