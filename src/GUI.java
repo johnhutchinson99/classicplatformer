@@ -118,20 +118,28 @@ public class GUI extends Application{
         levelOne.playLevelOne();
         playerRectangle = new Rectangle(10,25);
         
-        
-        layout3.getChildren().add(playerRectangle);
+        borderPane3.getChildren().add(playerRectangle);
         
        
+         	levelOne.update();        
         
         
-        
-        
-        
-        
+         	playerRectangle.setX(levelOne.getPlayer().getXCoord());
+         	playerRectangle.setY(levelOne.getPlayer().getYCoord());
+         	
 		
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
 	

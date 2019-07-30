@@ -26,6 +26,8 @@ public class LevelOneGUI extends World {
 	private boolean levelWin;
 
 	public LevelOneGUI() {
+		super(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
+				LEVELGOALXCOORD, LEVELGOALYCOORD);
 	}
 
 	public LevelOneGUI(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
@@ -61,22 +63,17 @@ public class LevelOneGUI extends World {
 		createPlatform(500, 100, 100, 10); // TODO: Get rid of magic numbers?
 
 		player = new Player(this, 5);
-		player.setXCoord(400);
+		player.setXCoord(LEVELSTARTXCOORD);
 		player.setYCoord(LEVELSTARTYCOORD);
 		
 		ArrayList<String> platforms = this.getPlatformCoordinates();
 
-		// This will update the enemy position while the game is running
-//		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
-			enemy1.move();
-			enemy2.move();
-			enemy3.move();
 			
 		//	int xCoord // = input from GUI or player move;
 		//	int yCoord // = input from GUI or player move;
 			
 
-				getPlayer().update();
+				
 			//TODO player input and movement
 //		}
 
@@ -92,5 +89,23 @@ public class LevelOneGUI extends World {
 		return levelWin;
 
 	}
+	
+	public void update() {
+
+		// This will update the enemy position while the game is running
+//		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
+			for(Enemy enemy: getListOfEnemies()) {
+				enemy.move();
+			}
+			getPlayer().update();
+			
+			
+			
+			
+			getPlayer().setXCoord(getPlayer().getXCoord());
+			
+			
+	}
+	
 
 }
