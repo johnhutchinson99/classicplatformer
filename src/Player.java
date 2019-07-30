@@ -96,7 +96,7 @@ public void moveDown(int translate) {
 public boolean isCollidingWithEnemy() {
 	if(getWorld().getWorldMaxXCoord()>100) {// Runs when the world is large
 		
-		for(int i = getXCoord()-5;i<getXCoord()+6;i++) {
+		for(int i = getXCoord()-10;i<getXCoord()+10;i++) {
 			if(whoIsThere(i,getYCoord())!=null) {
 				return true;
 			}

@@ -154,6 +154,8 @@ public class GUI extends Application{
 			case "k":
 				levelOne.getPlayer().attack();
 			break;
+			//case " ":
+			//	levelOne.getPlayer().jump();
 			
 			}
 		}

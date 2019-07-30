@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class LevelOneGUI extends World {
 
-	private static final int LEVELWORLDMAXXCOORD = 500;
-	private static final int LEVELWORLDMAXYCOORD = 250;
+	private static final int LEVELWORLDMAXXCOORD = 1000;
+	private static final int LEVELWORLDMAXYCOORD = 500;
 
 	private static final int LEVELSTARTXCOORD = 50;
 	private static final int LEVELSTARTYCOORD = 50;

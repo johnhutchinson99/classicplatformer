@@ -24,7 +24,7 @@ public Entity(World newWorld) {
 	world = newWorld;
 	
 	walkSpeed = 0.2;
-	jumpPower = 0;
+	jumpPower = 1;
 	
 	
 	applyGravity();
@@ -151,6 +151,7 @@ public void jump() {
 	
 	myPhysics.setYVelocity(-1*jumpPower);
 	applyGravity();
+	//myPhysics.setYPosition(myPhysics.getYPosition()-40);
 }
 /**
  * Make the Entity walk to the left of the screen based on walking speed
