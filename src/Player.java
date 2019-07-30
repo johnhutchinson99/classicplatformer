@@ -54,6 +54,7 @@ public Player(String newName, World newWorld,int allowedAttacks) {
 
 public void stop() {
 	getPhysics().fullStop();
+	updateGravity();
 }
 
 

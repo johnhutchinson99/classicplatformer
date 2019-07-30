@@ -20,11 +20,11 @@ private double jumpPower;
 
 public Entity(World newWorld) {
 	
-	myPhysics = new Physics(newWorld.getStartXCoord(),newWorld.getStartXCoord());
+	myPhysics = new Physics(newWorld.getStartXCoord(),newWorld.getStartXCoord(),newWorld.getWorldMaxXCoord(),newWorld.getWorldMaxYCoord());
 	world = newWorld;
 	
-	walkSpeed = 10;
-	jumpPower = 1;
+	walkSpeed = 0.4;
+	jumpPower = 0;
 	
 	
 	applyGravity();
@@ -69,35 +69,7 @@ public int getYCoord() {
  * Run inside walk and jump methods
  */
 private void applyGravity() {
-	
-	
-	
-	ArrayList<String> coordinates= world.getPlatformCoordinates();
-	
-	//I don't really understand how platforms work so I'm doing it how I think it is.
-	//Will likely be reimplemented
-	
-	int playerX = myPhysics.getXPosition();
-	int underPlayerY = myPhysics.getYPosition()+1; //Underneath player
-	
-	
-	
-	
-	for(String toParse:coordinates) {
-		int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')).trim());
-		int y = Integer.parseInt(toParse.substring(toParse.indexOf(',')+1,toParse.length()).trim());
-		
-		if(x==playerX&&y==underPlayerY) {
-			//Player is on playform
-			return;
-		}
-		
-		
-	}
-	
-	//Player is not on a platform
-	
-	myPhysics.setYAcceleration(-1*Physics.GRAVITY);
+	myPhysics.setYAcceleration(Physics.GRAVITY);
 	
 	
 	

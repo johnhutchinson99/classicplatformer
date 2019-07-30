@@ -173,10 +173,7 @@ public class GUI extends Application{
 				levelOne.getPlayer().walkLeft();
 				break;
 				
-			case "c":
-				levelOne.getPlayer().jump();
-				System.out.println(levelOne.getPlayer().getPhysics().getYVelocity());
-			}
+			
 			
 			
 		}
@@ -215,9 +212,9 @@ public class GUI extends Application{
 
         private void doHandle() {
 
-        	if (goLeft) levelOne.getPlayer().setWalkSpeed(5);
-        	if (goRight) levelOne.getPlayer().setWalkSpeed(5);
+
         	levelOne.update();
+        	levelOne.getPlayer().update();
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
             if (levelOne.getPlayer().getXCoord() == 1000) {

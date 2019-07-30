@@ -6,9 +6,11 @@
  */
 public class Physics {
 	
-public static final int GRAVITY = 5;	
+public static final double GRAVITY = 0.05;	
 	
-	
+private int maxXPosition;
+private int maxYPosition;
+
 private int xPosition; 
 private int yPosition;
 
@@ -33,8 +35,10 @@ private long lastTime;
  * Constructor for Physics Class
  * @param x Beginning X Position
  * @param y Beginning Y Position
+ * @param maximum value of X
+ * @param maximum value of Y
  */
-public Physics(int x, int y) {
+public Physics(int x, int y, int maxX, int maxY) {
 	
 	//Physics calculations are based on real time. Meaning that calculations are done based on how much actual time has passed since last calculation
 	lastTime = System.currentTimeMillis();
@@ -42,6 +46,11 @@ public Physics(int x, int y) {
 	xPosition = x;
 	if(y>=0)
 	yPosition = y;
+	
+	
+	
+	maxXPosition = maxX-50;
+	maxYPosition = maxY-50;
 }
 
 
@@ -81,9 +90,18 @@ private void update() {
 	//First, calculating final position
 	// using x(final) = x(initial) +velocity(initial)*time + (1/2)(acceleration)(time)^2
 	//Calculating X and Y separately 
-	xPosition = (int) Math.round(xPosition + (xVelocity*secondsPassed)+ ((0.5)*(xAcceleration)*secondsPassed*secondsPassed));
-	yPosition = (int) Math.round(yPosition + (yVelocity*secondsPassed)+ ((0.5)*(yAcceleration)*secondsPassed*secondsPassed));
+	int possibleX = (int) Math.round(xPosition + (xVelocity*secondsPassed)+ ((0.5)*(xAcceleration)*secondsPassed*secondsPassed));
+	if(possibleX>=0&&possibleX<=maxXPosition) {
+		xPosition = possibleX;
+		}
 	
+	
+	
+	
+	int possibleY = (int) Math.round(yPosition + (yVelocity*secondsPassed)+ ((0.5)*(yAcceleration)*secondsPassed*secondsPassed));
+	if(possibleY>=0&&possibleY<=maxYPosition) {
+		yPosition = possibleY;
+		}
 	//Calculating new velocity using V(final) = V(initial) + acceleration(time)
 	
 	
@@ -128,7 +146,9 @@ public int getYPosition() {
  * @param Desired X Position
  */
 public void setXPosition(int x) {
+	if(x>=0&&x<=maxXPosition) {
 	xPosition = x;
+	}
 	update();
 }
 
@@ -140,7 +160,9 @@ public void setXPosition(int x) {
  * @param Desired Y Position
  */
 public void setYPosition(int y) {
+	if(y>=0&&y<=maxYPosition) {
 	yPosition = y;
+	}
 	update();
 }
 

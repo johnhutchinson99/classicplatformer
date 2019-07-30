@@ -74,6 +74,7 @@ public class World {
 			int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')).trim());
 			int y = Integer.parseInt(toParse.substring(toParse.indexOf(',')+1,toParse.length()).trim());
 			
+			
 			if(x==checkX&&y==checkY) {
 				return true;
 			}
