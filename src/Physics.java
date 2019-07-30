@@ -75,7 +75,7 @@ public Physics(Physics p){
  */
 private void update() {
 	double secondsPassed = (System.currentTimeMillis() - lastTime)/1000.0;
-	System.out.println(secondsPassed);
+	// System.out.println(secondsPassed);
 	// 1000 milliseconds is one second
 	
 	//First, calculating final position

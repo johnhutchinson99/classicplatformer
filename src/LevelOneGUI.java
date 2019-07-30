@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 /**
  * Level One of the GUI version of our classic platformer game.
  * 
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 
 public class LevelOneGUI extends World {
 
-	private final int LEVELWORLDMAXXCOORD = 1000;
-	private final int LEVELWORLDMAXYCOORD = 500;
+	private static final int LEVELWORLDMAXXCOORD = 1000;
+	private static final int LEVELWORLDMAXYCOORD = 500;
 
-	private final int LEVELSTARTXCOORD = 0;
-	private final int LEVELSTARTYCOORD = 0;
+	private static final int LEVELSTARTXCOORD = 0;
+	private static final int LEVELSTARTYCOORD = 0;
 
-	private final int LEVELGOALXCOORD = 16;
-	private final int LEVELGOALYCOORD = 0;
+	private static final int LEVELGOALXCOORD = 16;
+	private static final int LEVELGOALYCOORD = 0;
 	
 
 	private boolean levelWin;
@@ -30,6 +31,12 @@ public class LevelOneGUI extends World {
 	public LevelOneGUI(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
 		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
 	}
+	
+	/*
+	 * - new enemy() without a world
+	 * - method "initialize the world" => set the world for enemies
+	 * - 
+	 */
 
 	/**
 	 * The playLevelOne method allows the main player to interact in the level one
@@ -42,12 +49,10 @@ public class LevelOneGUI extends World {
 	 */
 	public boolean playLevelOne() {
 
-		LevelOne level = new LevelOne(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
-				LEVELGOALXCOORD, LEVELGOALYCOORD);
 
-		Enemy enemy1 = new Enemy(level);
-		Enemy enemy2 = new Enemy(level);
-		Enemy enemy3 = new Enemy(level);
+		Enemy enemy1 = new Enemy(this);
+		Enemy enemy2 = new Enemy(this);
+		Enemy enemy3 = new Enemy(this);
 
 		addToListOfEnemies(enemy1);
 		addToListOfEnemies(enemy2);
@@ -59,10 +64,10 @@ public class LevelOneGUI extends World {
 		player.setXCoord(400);
 		player.setYCoord(LEVELSTARTYCOORD);
 		
-		ArrayList<String> platforms = level.getPlatformCoordinates();
+		ArrayList<String> platforms = this.getPlatformCoordinates();
 
 		// This will update the enemy position while the game is running
-		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
+//		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
 			enemy1.move();
 			enemy2.move();
 			enemy3.move();
@@ -73,7 +78,7 @@ public class LevelOneGUI extends World {
 
 				getPlayer().update();
 			//TODO player input and movement
-		}
+//		}
 
 		// After the loop for level play ends, check if player won/is still alive
 		if (getPlayer().isAlive()) {

@@ -11,19 +11,22 @@
 
 public class LevelOne extends World {
 
-	private final int LEVELWORLDMAXXCOORD = 16;
-	private final int LEVELWORLDMAXYCOORD = 1;
+//	private static final int LEVELWORLDMAXXCOORD = 0;
+	private static final int LEVELWORLDMAXXCOORD = 16;
+	private static final int LEVELWORLDMAXYCOORD = 1;
 
-	private final int LEVELSTARTXCOORD = 0;
-	private final int LEVELSTARTYCOORD = 0;
+	private static final int LEVELSTARTXCOORD = 0;
+	private static final int LEVELSTARTYCOORD = 0;
 
-	private final int LEVELGOALXCOORD = 16;
-	private final int LEVELGOALYCOORD = 0;
+	private static final int LEVELGOALXCOORD = 16;
+	private static final int LEVELGOALYCOORD = 0;
 
 	private boolean levelWin;
 	
 	
 	public LevelOne() {
+		super(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
+				LEVELGOALXCOORD, LEVELGOALYCOORD);
 	}
 
 	public LevelOne(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
@@ -40,13 +43,13 @@ public class LevelOne extends World {
 	 */
 	public boolean playLevelOne() {
 
-		LevelOne level = new LevelOne(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
-				LEVELGOALXCOORD, LEVELGOALYCOORD);
+//		LevelOne level = new LevelOne(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
+//				LEVELGOALXCOORD, LEVELGOALYCOORD);
 
 		
-		Enemy enemy1 = new Enemy(level);
-		Enemy enemy2 = new Enemy(level);
-		Enemy enemy3 = new Enemy(level);
+		Enemy enemy1 = new Enemy(this);
+		Enemy enemy2 = new Enemy(this);
+		Enemy enemy3 = new Enemy(this);
 		
 		addToListOfEnemies(enemy1);
 		addToListOfEnemies(enemy2);
@@ -56,7 +59,7 @@ public class LevelOne extends World {
 
 		// The loop which "plays" the game (i.e. draws then asks for user input)
 		// Until the player dies or has reached the goal destination
-		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer) ) {
+		while (mainPlayer.isAlive() && !this.isPlayerAtGoal(mainPlayer) ) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
 		}
