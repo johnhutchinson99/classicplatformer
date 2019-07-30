@@ -26,7 +26,7 @@ public class LevelOneGUI extends World {
 
 	private boolean levelWin;
 	
-	public Enemy getEnemy() {
+	public Enemy getEnemy1() {
 		return enemy1;
 	}
 	
@@ -101,7 +101,7 @@ public class LevelOneGUI extends World {
 		// This will update the enemy position while the game is running
 //		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
 			for(Enemy enemy: getListOfEnemies()) {
-				enemy.move();
+				enemy.move2();
 			}
 			getPlayer().update();
 			

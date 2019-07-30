@@ -81,14 +81,7 @@ public class GUI extends Application{
         
         // Scene 2
 		VBox layout2 = new VBox();
-		Text Inst = new Text("INSTRUCTIONS: \n" + "This is the text-based version of our CPSC 233 game (title TBA).\n"
-				+ "In this platformer-like game, the goal is to get your character (>) to\n"
-				+ "  reach a final destination (O) in the map, avoiding enemies. \n"
-				+ "The symbol > represents your character and it's direction.\n"
-				+ "The symbol O represents the goal destination.\n" + "The symbol E represents an enemy.\n"
-				+ "If you touch an enemy before reaching the final destination, \n" + "  then you die/lose.\n"
-				+ "At each time, you will have the options to move left/right, \n"
-				+ "  jump, or kill an enemy in a surrounding square. \n" + "Good luck.\n ");
+		Text Inst = new Text("INSTRUCTIONS: \n" + "Good luck");
 		BorderPane.setAlignment(Inst, Pos.CENTER);
 		
 		Button startGameButton = new Button("Start"); // Creat new button
@@ -136,8 +129,8 @@ public class GUI extends Application{
        
          	levelOne.update();    
          	
-            enemyRectangle.setX(0);
-            enemyRectangle.setY(0);
+            enemyRectangle.setX(100);
+            enemyRectangle.setY(100);
         
          	playerRectangle.setX(levelOne.getPlayer().getXCoord());
          	playerRectangle.setY(levelOne.getPlayer().getYCoord());
@@ -202,9 +195,11 @@ public class GUI extends Application{
         	levelOne.getPlayer().update();
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
-            enemyRectangle.setX(levelOne.getEnemy().getXCoord());
-            enemyRectangle.setY(levelOne.getEnemy().getYCoord());
-
+            enemyRectangle.setX(levelOne.getEnemy1().getXCoord());
+            enemyRectangle.setY(levelOne.getEnemy1().getYCoord());
+            if (!levelOne.getPlayer().isAlive()) {
+            	System.exit(0);
+            }
         }
     }
 	

@@ -185,6 +185,9 @@ private void updateGravity() {
 
 public void update() {
 	updateGravity();
+	if (this.isCollidingWithEnemy()) {
+		isAlive = false;
+	}
 }
 
 
