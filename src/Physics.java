@@ -9,16 +9,16 @@ public class Physics {
 public static final int GRAVITY = 5;	
 	
 	
-private int xPosition; //Units: pixels
+private int xPosition; 
 private int yPosition;
 
 
 
-private int xVelocity;//Units: pixels/second
-private int yVelocity;
+private double xVelocity;
+private double yVelocity;
 
-private int xAcceleration;//Units pixels/second/second
-private int yAcceleration;
+private double xAcceleration;
+private double yAcceleration;
 
 private long lastTime;
 
@@ -58,7 +58,7 @@ public Physics() {
  */
 public Physics(Physics p){
 	xPosition = p.getXPosition();
-	yPosition = p.getYVelocity();
+	yPosition = p.getYPosition();
 	
 	xVelocity = p.getXVelocity();
 	yVelocity = p.getYVelocity();
@@ -152,7 +152,7 @@ public void setYPosition(int y) {
  * 
  * @return Current X Velocity(speed)
  */
-public int getXVelocity() {
+public double getXVelocity() {
 	update();
 	return xVelocity;
 }
@@ -160,7 +160,7 @@ public int getXVelocity() {
  * 
  * @return Current Y Velocity(speed)
  */
-public int getYVelocity() {
+public double getYVelocity() {
 	update();
 	return yVelocity;
 }
@@ -168,7 +168,7 @@ public int getYVelocity() {
  * 
  * @param Desired X Velocity(speed)
  */
-public void setXVelocity(int x) {
+public void setXVelocity(double x) {
 	update();
 	xVelocity = x;
 	update();
@@ -177,7 +177,7 @@ public void setXVelocity(int x) {
  * 
  * @param Desired Y Velocity(speed)
  */
-public void setYVelocity(int y) {
+public void setYVelocity(double y) {
 	update();
 	yVelocity = y;
 	update();
@@ -189,7 +189,7 @@ public void setYVelocity(int y) {
  * 
  * @return Current X acceleration
  */
-public int getXAcceleration() {
+public double getXAcceleration() {
 	update();
 	return xAcceleration;
 }
@@ -197,7 +197,7 @@ public int getXAcceleration() {
  * 
  * @return Current Y acceleration
  */
-public int getYAcceleration() {
+public double getYAcceleration() {
 	update();
 	return yAcceleration;
 }
@@ -205,7 +205,7 @@ public int getYAcceleration() {
  * 
  * @param Desired X acceleration
  */
-public void setXAcceleration(int x) {
+public void setXAcceleration(double x) {
 	update();
 	xAcceleration = x;
 	update();
@@ -214,7 +214,7 @@ public void setXAcceleration(int x) {
  * 
  * @param Desired Y acceleration
  */
-public void setYAcceleration(int y) {
+public void setYAcceleration(double y) {
 	update();
 	yAcceleration = y;
 	update();

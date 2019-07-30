@@ -49,6 +49,14 @@ public Player(String newName, World newWorld,int allowedAttacks) {
 	
 }
 
+
+
+
+public void stop() {
+	getPhysics().fullStop();
+}
+
+
 /**
  * Setter for moving player right. 
  * @param translate - The amount you want to move/translate the player by. 

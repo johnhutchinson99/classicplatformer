@@ -16,8 +16,8 @@ public class LevelOneGUI extends World {
 	private static final int LEVELWORLDMAXXCOORD = 1000;
 	private static final int LEVELWORLDMAXYCOORD = 500;
 
-	private static final int LEVELSTARTXCOORD = 0;
-	private static final int LEVELSTARTYCOORD = 0;
+	private static final int LEVELSTARTXCOORD = 300;
+	private static final int LEVELSTARTYCOORD = 300;
 
 	private static final int LEVELGOALXCOORD = 16;
 	private static final int LEVELGOALYCOORD = 0;
@@ -102,7 +102,6 @@ public class LevelOneGUI extends World {
 			
 			
 			
-			getPlayer().setXCoord(getPlayer().getXCoord() + 1);
 			
 			
 	}

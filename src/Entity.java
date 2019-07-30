@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public abstract class Entity {
 private World world;
 private Physics myPhysics;
-private int walkSpeed; //Measured in pixels/second
-private int jumpPower; //Measured in pixels/second
+private double walkSpeed; 
+private double jumpPower; 
 
 
 public Entity(World newWorld) {
@@ -23,7 +23,7 @@ public Entity(World newWorld) {
 	myPhysics = new Physics(newWorld.getStartXCoord(),newWorld.getStartXCoord());
 	world = newWorld;
 	
-	walkSpeed = 1;
+	walkSpeed = 10;
 	jumpPower = 1;
 	
 	
@@ -128,7 +128,7 @@ public World getWorld() {
  * 
  * @param Sets power with with the Entity will walk
  */
-public void setWalkSpeed(int walk) {
+public void setWalkSpeed(double walk) {
 	if(walk>0) {
 		walkSpeed = walk;
 	}
@@ -139,7 +139,7 @@ public void setWalkSpeed(int walk) {
  * 
  * @return current walking speed
  */
-public int getWalkSpeed() {
+public double getWalkSpeed() {
 	return walkSpeed;	
 }
 
@@ -147,7 +147,7 @@ public int getWalkSpeed() {
  * 
  * @param Sets the jump intensity for Entity
  */
-public void setJumpPower(int jump) {
+public void setJumpPower(double jump) {
 	if(jump>0) {
 		jumpPower = jump;
 	}
@@ -156,7 +156,7 @@ public void setJumpPower(int jump) {
  * 
  * @return gets the jump intensity for Entity
  */
-public int getJumpPower() {
+public double getJumpPower() {
 	return jumpPower;	
 }
 

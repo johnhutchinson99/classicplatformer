@@ -1,6 +1,9 @@
 
+import javafx.scene.input.KeyEvent;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,7 +22,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Rectangle
+;
 /**
  * 
  * @author pawan
@@ -133,7 +137,40 @@ public class GUI extends Application{
 
             AnimationTimer timer = new MyTimer();
             timer.start();
-         	
+
+       scene3.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+		@Override
+		public void handle(KeyEvent event) {
+			
+			switch(event.getText().toLowerCase()) {
+			case "d":
+				levelOne.getPlayer().walkRight();
+				break;
+			case "a":
+				levelOne.getPlayer().walkLeft();
+				break;
+				
+			case "c":
+				levelOne.getPlayer().jump();
+				System.out.println(levelOne.getPlayer().getPhysics().getYVelocity());
+			}
+			
+			
+		}
+    	   
+       });;   
+            
+        scene3.setOnKeyReleased(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				levelOne.getPlayer().stop();
+				
+			}
+        	
+        });    
+            
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -152,7 +189,7 @@ public class GUI extends Application{
 
         	levelOne.update();   
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
-
+            playerRectangle.setY(levelOne.getPlayer().getYCoord());
             if (levelOne.getPlayer().getXCoord() == 1000) {
                 stop();
                 System.out.println("Animation stopped");
