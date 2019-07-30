@@ -1,4 +1,11 @@
 
+
+import javafx.event.EventHandler;
+import javafx.scene.*;
+import javafx.scene.image.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -36,6 +43,8 @@ import javafx.scene.shape.Rectangle;
 public class GUI extends Application{
 	
 	LevelOneGUI levelOne = new LevelOneGUI();
+	
+	boolean goLeft, goRight;
 	
 	Scene scene1, scene2, scene3;
 	Rectangle playerRectangle;
@@ -131,6 +140,27 @@ public class GUI extends Application{
          	playerRectangle.setX(0);
          	playerRectangle.setY(levelOne.getPlayer().getYCoord());
 
+            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    switch (event.getCode()) {
+                        case LEFT:  goLeft  = true; break;
+                        case RIGHT: goRight  = true; break;
+                    }
+                }
+            });
+
+            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    switch (event.getCode()) {
+                        case LEFT:  goLeft  = false; break;
+                        case RIGHT: goRight  = false; break;
+                    }
+                }
+            });
+         	
+         	
             AnimationTimer timer = new MyTimer();
             timer.start();
          	
@@ -140,6 +170,12 @@ public class GUI extends Application{
         
     }
 	
+	
+	/*
+	 * Citation:
+	 * Used the following source for reference on how to use the animation timer.
+	 * 		http://zetcode.com/gui/javafx/animation/ (Accessed 07-29-2019)
+	 */
     private class MyTimer extends AnimationTimer {
 
         @Override
@@ -150,7 +186,9 @@ public class GUI extends Application{
 
         private void doHandle() {
 
-        	levelOne.update();   
+        	if (goLeft) levelOne.getPlayer().setWalkSpeed(5);
+        	if (goRight) levelOne.getPlayer().setWalkSpeed(5);
+        	levelOne.update();
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
 
             if (levelOne.getPlayer().getXCoord() == 1000) {
