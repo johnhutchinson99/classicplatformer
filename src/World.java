@@ -236,7 +236,7 @@ public class World {
 	 * @return boolean true if player has reached the destination, false otherwise
 	 */
 	public boolean isPlayerAtGoal(Player player) {
-		if (player.getXCoord() == goalXCoord && player.getYCoord() == goalYCoord) {
+		if (player.getXCoord() >= goalXCoord-10 && player.getXCoord() <= goalXCoord+10  && player.getYCoord() == goalYCoord) {
 			return true;
 		} else {
 			return false;

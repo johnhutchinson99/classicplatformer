@@ -36,7 +36,6 @@ public class Enemy extends Entity {
 		Random r = new Random();
 		setXCoord(r.nextInt(getWorld().getWorldMaxXCoord()));
 		setYCoord(r.nextInt(getWorld().getWorldMaxYCoord()));
-
 	}
 	
 	/**

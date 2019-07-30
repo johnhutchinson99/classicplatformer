@@ -44,6 +44,7 @@ public class GUI extends Application{
 	Scene scene1, scene2, scene3;
 	Rectangle playerRectangle;
 	Rectangle enemyRectangle;
+	Rectangle goalRectangle;
 	
 	public static void main(String[] args) {
         launch(args);
@@ -120,22 +121,27 @@ public class GUI extends Application{
         playerRectangle = new Rectangle(40,40);
         playerRectangle.setFill(Color.GREEN);
         
-        
+        goalRectangle = new Rectangle(40,40);
+        goalRectangle.setFill(Color.ORANGE);
         
         
         enemyRectangle = new Rectangle(40,40);
         enemyRectangle.setFill(Color.RED);
         
         borderPane3.getChildren().add(playerRectangle);
+        borderPane3.getChildren().add(goalRectangle);
         borderPane3.getChildren().add(enemyRectangle);
        
          	levelOne.update();    
          	
             enemyRectangle.setX(500);
-            enemyRectangle.setY(500);
+            enemyRectangle.setY(450);
         
          	playerRectangle.setX(levelOne.getPlayer().getXCoord());
          	playerRectangle.setY(levelOne.getPlayer().getYCoord());
+         	
+         	goalRectangle.setX(levelOne.getGoalXCoord());
+            goalRectangle.setY(levelOne.getGoalYCoord());
          	
             AnimationTimer timer = new MyTimer();
             timer.start();
@@ -202,7 +208,7 @@ public class GUI extends Application{
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
             levelOne.getEnemy1().setXCoord(300);
             if(levelOne.getListOfEnemies().size()!=0&&levelOne.getListOfEnemies().get(0)!=null) {
-            	
+            
             
             enemyRectangle.setX(levelOne.getListOfEnemies().get(0).getXCoord());
             enemyRectangle.setY(levelOne.getEnemy1().getYCoord());
@@ -210,7 +216,7 @@ public class GUI extends Application{
             	enemyRectangle.setX(levelOne.getWorldMaxXCoord()+100);
             	enemyRectangle.setY(levelOne.getWorldMaxYCoord()+100);
             }
-            if (!levelOne.getPlayer().isAlive()) {
+            if (!levelOne.getPlayer().isAlive() || levelOne.isPlayerAtGoal(levelOne.getPlayer())) {
             	System.exit(0);
             }
             

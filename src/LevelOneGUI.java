@@ -19,8 +19,8 @@ public class LevelOneGUI extends World {
 	private static final int LEVELSTARTXCOORD = 50;
 	private static final int LEVELSTARTYCOORD = 50;
 
-	private static final int LEVELGOALXCOORD = 16;
-	private static final int LEVELGOALYCOORD = 0;
+	private static final int LEVELGOALXCOORD = 500;
+	private static final int LEVELGOALYCOORD = 450;
 	
 	private Enemy enemy1 = new Enemy(this);
 
