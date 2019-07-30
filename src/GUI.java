@@ -128,10 +128,11 @@ public class GUI extends Application{
          	playerRectangle.setY(levelOne.getPlayer().getYCoord());
          	
 		
+         	
+         	
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
         
         
         
@@ -147,6 +148,9 @@ public class GUI extends Application{
 	public void renderPlayer() {
 
 	}
+	
+	
+	
 	
 	
 	
