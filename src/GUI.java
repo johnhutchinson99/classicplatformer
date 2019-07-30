@@ -118,10 +118,10 @@ public class GUI extends Application{
         
 //        LevelOneGUI levelOne = new LevelOneGUI();
         levelOne.playLevelOne();
-        playerRectangle = new Rectangle(10,25);
+        playerRectangle = new Rectangle(40,40);
         playerRectangle.setFill(Color.GREEN);
         
-        enemyRectangle = new Rectangle(10,25);
+        enemyRectangle = new Rectangle(40,40);
         enemyRectangle.setFill(Color.RED);
         
         borderPane3.getChildren().add(playerRectangle);
@@ -129,8 +129,8 @@ public class GUI extends Application{
        
          	levelOne.update();    
          	
-            enemyRectangle.setX(100);
-            enemyRectangle.setY(100);
+            enemyRectangle.setX(500);
+            enemyRectangle.setY(500);
         
          	playerRectangle.setX(levelOne.getPlayer().getXCoord());
          	playerRectangle.setY(levelOne.getPlayer().getYCoord());
@@ -154,13 +154,14 @@ public class GUI extends Application{
 			case "k":
 				levelOne.getPlayer().attack();
 			break;
-			//case " ":
+			//case " ": -- Maybe w, for jump?
 			//	levelOne.getPlayer().jump();
 			
 			}
 		}
     	   
-       });;   
+       });; // How does this not cause an error?
+       
             
         scene3.setOnKeyReleased(new EventHandler<KeyEvent>() {
 
@@ -199,7 +200,7 @@ public class GUI extends Application{
         	levelOne.getPlayer().update();
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
-            levelOne.getEnemy1().setXCoord(100);
+            levelOne.getEnemy1().setXCoord(300);
             enemyRectangle.setX(levelOne.getEnemy1().getXCoord());
             enemyRectangle.setY(levelOne.getEnemy1().getYCoord());
             if (!levelOne.getPlayer().isAlive()) {
@@ -216,10 +217,5 @@ public class GUI extends Application{
 	public void renderPlayer() {
 
 	}
-	
-	
-	
-	
-	
 	
 }

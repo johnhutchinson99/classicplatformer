@@ -212,12 +212,12 @@ public void update() {
  */
 public void askUserInstruction() {
 
-	Scanner keyboard = new Scanner(System.in);
+	Scanner kb = new Scanner(System.in);
 
 	System.out.println(
 			"Enter L to move left. \n" + "Enter R to move right. \n" + "Enter A to attack surrounding squares. ");
 
-	String userInput = keyboard.nextLine();
+	String userInput = kb.nextLine();
 
 	switch (userInput) {
 	case "L":

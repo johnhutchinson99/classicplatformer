@@ -103,12 +103,7 @@ public class LevelOneGUI extends World {
 				enemy.move2();
 			}
 			getPlayer().update();
-			
-			
-			
-			
-			
-			
+		
 	}
 	
 
