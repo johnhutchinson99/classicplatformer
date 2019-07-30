@@ -55,7 +55,7 @@ public class GUI extends Application{
 		Insets insets = new Insets(100);
 		
         VBox root = new VBox(); // The Root contains everything and is set up vertically
-        Text Title = new Text("Title"); // Welcome screen title 
+        Text Title = new Text("Hero Game"); // Welcome screen title 
         BorderPane.setAlignment(Title, Pos.TOP_CENTER); // Set Allignment for the 'Title'
         Title.setFont(Font.font("Verdana", FontWeight.BOLD, 70));
  
@@ -116,7 +116,6 @@ public class GUI extends Application{
         scene3= new Scene(layout3,1000, 500);
         
         
-//        LevelOneGUI levelOne = new LevelOneGUI();
         levelOne.playLevelOne();
         playerRectangle = new Rectangle(40,40);
         playerRectangle.setFill(Color.GREEN);
@@ -173,7 +172,7 @@ public class GUI extends Application{
         	
         });    
             
-        primaryStage.setTitle("Game");
+        primaryStage.setTitle("Hero Game");
         primaryStage.setScene(scene);
         primaryStage.show();
         
