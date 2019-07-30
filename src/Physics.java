@@ -49,8 +49,8 @@ public Physics(int x, int y, int maxX, int maxY) {
 	
 	
 	
-	maxXPosition = maxX-50;
-	maxYPosition = maxY-50;
+	maxXPosition = maxX;
+	maxYPosition = maxY;
 }
 
 
@@ -91,7 +91,7 @@ private void update() {
 	// using x(final) = x(initial) +velocity(initial)*time + (1/2)(acceleration)(time)^2
 	//Calculating X and Y separately 
 	int possibleX = (int) Math.round(xPosition + (xVelocity*secondsPassed)+ ((0.5)*(xAcceleration)*secondsPassed*secondsPassed));
-	if(possibleX>=0&&possibleX<=maxXPosition) {
+	if(possibleX>=0&&possibleX<=maxXPosition-50) {
 		xPosition = possibleX;
 		}
 	
@@ -99,7 +99,7 @@ private void update() {
 	
 	
 	int possibleY = (int) Math.round(yPosition + (yVelocity*secondsPassed)+ ((0.5)*(yAcceleration)*secondsPassed*secondsPassed));
-	if(possibleY>=0&&possibleY<=maxYPosition) {
+	if(possibleY>=0&&possibleY<=maxYPosition-50) {
 		yPosition = possibleY;
 		}
 	//Calculating new velocity using V(final) = V(initial) + acceleration(time)
@@ -116,7 +116,49 @@ private void update() {
 
 
 
+/**
+ * 
+ * @return Max X position of the physics object
+ */
+public int getMaxXPosition() { 
+	update();
+	return maxXPosition;
+}
 
+
+/**
+ * 
+ * @return  Max Y position of physics object
+ */
+public int getMaxYPosition() { 
+	update();
+	return maxYPosition;
+}
+
+/**
+ * 
+ * @param Desired Max X Position
+ */
+public void setMaxXPosition(int x) {
+	if(x>=0) {
+	maxXPosition = x;
+	}
+	update();
+}
+
+
+
+
+/**
+ * 
+ * @param Desired Max Y Position
+ */
+public void setMaxYPosition(int y) {
+	if(y>=0) {
+	maxYPosition = y;
+	}
+	update();
+}
 
 
 
@@ -298,6 +340,8 @@ public void fullStop() {
 	xVelocity = 0;
 	yVelocity = 0;
 }
+
+
 
 
 
