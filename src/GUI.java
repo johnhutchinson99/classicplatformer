@@ -150,8 +150,8 @@ public class GUI extends Application{
 
 		@Override
 		public void handle(KeyEvent event) {
-			
-			switch(event.getText().toLowerCase()) {
+			System.out.println(event.getCode().toString());
+			switch(event.getCode().toString().toLowerCase()) {
 			case "d":
 				levelOne.getPlayer().walkRight();
 				break;
@@ -162,8 +162,13 @@ public class GUI extends Application{
 			case "k":
 				levelOne.getPlayer().attack();
 			break;
+			case "space":
+				levelOne.getPlayer().jump();
 			
 			}
+			
+			
+			levelOne.getPlayer().update();
 		}
     	   
        });;
@@ -204,6 +209,7 @@ public class GUI extends Application{
 
         	levelOne.update();
         	levelOne.getPlayer().update();
+        	System.out.println("hello");
             playerRectangle.setX(levelOne.getPlayer().getXCoord());
             playerRectangle.setY(levelOne.getPlayer().getYCoord());
             levelOne.getEnemy1().setXCoord(300);

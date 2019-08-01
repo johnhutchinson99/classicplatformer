@@ -6,7 +6,7 @@
  */
 public class Physics {
 	
-public static final double GRAVITY = 0.02;	
+public static final double GRAVITY = 10;	
 	
 private int maxXPosition;
 private int maxYPosition;
@@ -84,6 +84,10 @@ public Physics(Physics p){
  */
 private void update() {
 	double secondsPassed = (System.currentTimeMillis() - lastTime)/1000.0;
+	
+
+	
+	if(secondsPassed>0.04) {
 	// System.out.println(secondsPassed);
 	// 1000 milliseconds is one second
 	
@@ -109,7 +113,8 @@ private void update() {
 	yVelocity = (int)Math.round(yVelocity + yAcceleration*secondsPassed);
 	
 
-	
+	lastTime = System.currentTimeMillis();
+	}
 }
 
 
