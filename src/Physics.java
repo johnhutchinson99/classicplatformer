@@ -59,7 +59,8 @@ public Physics(int x, int y, int maxX, int maxY) {
  * Constructor for Physics class
  * Initial values (position,velocity,acceleration) are zero
  */
-public Physics() {
+public Physics(int maxX, int maxY) {
+	this(0,0,maxX,maxY);
 }
 /**
  * Copies a physics object

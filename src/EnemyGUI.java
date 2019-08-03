@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class EnemyGUI extends Entity{//implements Runnable {
+public abstract class EnemyGUI extends Moveable{//implements Runnable {
 	
 	private int leftMax;
 	private int rightMax;
@@ -13,8 +13,11 @@ public abstract class EnemyGUI extends Entity{//implements Runnable {
 	
 	public EnemyGUI(World newWorld,int enemyXCoord,int enemyYCoord){
 		super(newWorld);
+		setPhysics(new Physics(enemyXCoord,enemyYCoord,getWorld().getWorldMaxXCoord(),getWorld().getWorldMaxYCoord()));
 		newWorld.setStartXCoord(enemyXCoord);
 		newWorld.setStartXCoord(enemyYCoord);
+		
+		applyGravity();
 		}
 	
 	

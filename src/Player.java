@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 
 
-public class Player extends Entity {
+public class Player extends Moveable {
 private String playerName; //Optional, will be implemented later
 private int remainingAttacks; //How many more times a player is allowed to attack an enemy
 private boolean isAlive; //Whether or not there is a game over
@@ -34,12 +34,13 @@ private boolean isAlive; //Whether or not there is a game over
 public Player(World newWorld,int allowedAttacks) {
 	
 	super(newWorld);
-	
-	
+	setPhysics(new Physics(getWorld().getStartXCoord(),getWorld().getStartYCoord(),getWorld().getWorldMaxXCoord(),getWorld().getWorldMaxYCoord()));
 	if(remainingAttacks>0) 
 		remainingAttacks = allowedAttacks;
 	
 	isAlive = true;
+	
+	applyGravity();
 }
 
 public Player(String newName, World newWorld,int allowedAttacks) {
@@ -55,7 +56,7 @@ public Player(String newName, World newWorld,int allowedAttacks) {
 
 public void stop() {
 	getPhysics().fullStop();
-	updateGravity();
+	applyGravity();
 }
 
 
@@ -198,16 +199,11 @@ private Enemy whoIsThere(int checkX,int checkY) {
 
 
 
-private void updateGravity() {
-	if(getWorld().isAPlatform(getXCoord(), getYCoord())) {
-		getPhysics().fullStop();
-		getXCoord();
-	}
-}
+
 
 
 public void update() {
-	updateGravity();
+	applyGravity();
 	if (this.isCollidingWithEnemy()) {
 		isAlive = false;
 	}
