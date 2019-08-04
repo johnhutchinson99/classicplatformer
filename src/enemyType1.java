@@ -25,8 +25,8 @@ public class enemyType1 extends EnemyGUI{  //enemy type1:move around in an area,
 		}
 	}
 		
-		public enemyType1(World newWorld,int enemyXCoord,int enemyYCoord,boolean isLeft,int leftMax,int rightMax) {
-			super(newWorld,enemyXCoord,enemyYCoord);
+		public enemyType1(World newWorld,int enemyXCoord,int enemyYCoord,boolean isLeft,int leftMax,int rightMax, int width, int height) {
+			super(newWorld,enemyXCoord,enemyYCoord, width, height);
 			this.isLeft = isLeft;
 			setLeftMax(leftMax);
 			setRightMax(rightMax);
@@ -40,12 +40,12 @@ public class enemyType1 extends EnemyGUI{  //enemy type1:move around in an area,
 			*/
 		}
 		
-		public enemyType1(enemyType1 toCopy) {
-			super(toCopy.getWorld(), toCopy.getEnemyXCoord(), toCopy.getEnemyYCoord());
-			this.isLeft = toCopy.isLeft;
-			setLeftMax(toCopy.getLeftMax());
-			setRightMax(toCopy.getRightMax());
-		}
+//		public enemyType1(enemyType1 toCopy) {
+//			super(toCopy.getWorld(), toCopy.getEnemyXCoord(), toCopy.getEnemyYCoord());
+//			this.isLeft = toCopy.isLeft;
+//			setLeftMax(toCopy.getLeftMax());
+//			setRightMax(toCopy.getRightMax());
+//		}
 		
 		//while (true) {
 		//javafx shape

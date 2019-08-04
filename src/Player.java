@@ -28,12 +28,9 @@ private boolean isAlive; //Whether or not there is a game over
 
 
 
-
-
-
-public Player(World newWorld,int allowedAttacks) {
+public Player(World newWorld,int allowedAttacks, int width, int height) {
 	
-	super(newWorld);
+	super(newWorld, width, height);
 	setPhysics(new Physics(getWorld().getStartXCoord(),getWorld().getStartYCoord(),getWorld().getWorldMaxXCoord(),getWorld().getWorldMaxYCoord()));
 	if(remainingAttacks>0) 
 		remainingAttacks = allowedAttacks;
@@ -43,13 +40,13 @@ public Player(World newWorld,int allowedAttacks) {
 	applyGravity();
 }
 
-public Player(String newName, World newWorld,int allowedAttacks) {
-	
-	this(newWorld,allowedAttacks);
-	if(newName!=null)
-		playerName = newName;
-	
-}
+//public Player(String newName, World newWorld,int allowedAttacks, int height, int widt) {
+//	
+//	this(newWorld,allowedAttacks);
+//	if(newName!=null)
+//		playerName = newName;
+//	
+//}
 
 
 

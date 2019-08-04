@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import javafx.geometry.Point2D;
 
-public class Platform{
+public class Platform extends Entity{
 
 	private ArrayList<Point2D> platformCoordinates = new ArrayList<Point2D>();
 	

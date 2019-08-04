@@ -55,7 +55,7 @@ public class LevelOne extends World {
 		addToListOfEnemies(enemy2);
 		addToListOfEnemies(enemy3);
 		
-		Player mainPlayer = new Player(this, 5);
+		Player mainPlayer = new Player(this, 5, 20, 20);
 
 		// The loop which "plays" the game (i.e. draws then asks for user input)
 		// Until the player dies or has reached the goal destination
