@@ -17,8 +17,8 @@ public class Enemy extends Moveable {
 	private ArrayList<Enemy> enemyList = new ArrayList<>();
 	private boolean isAlive;
 
-	public Enemy(World newWorld) {
-		super(newWorld);
+	public Enemy(World newWorld, int width, int height) {
+		super(newWorld, width, height);
 		setPhysics(new Physics(getWorld().getWorldMaxXCoord(),getWorld().getWorldMaxYCoord()));
 		move();
 		applyGravity();

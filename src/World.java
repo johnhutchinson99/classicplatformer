@@ -1,3 +1,4 @@
+
 /**
 * The World superclass contains information about the world.
 * This class stores important data such as the maximum X and Y of a level, the starting position of a player and the location of the goal. 
@@ -9,26 +10,26 @@ import java.util.ArrayList;
 // TODO: Make sure start and goal are within world dimensions
 
 public class World {
-	
+
 	private int worldMaxXCoord;
 	private int worldMaxYCoord;
-	
+
 	private int startXCoord;
 	private int startYCoord;
-	
+
 	private int goalXCoord;
 	private int goalYCoord;
-	
-	private ArrayList<String> platformCoordinates = new ArrayList<String>();
-	
+
+	private ArrayList<Platform> platforms = new ArrayList<Platform>();
+
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
-		
+
 	public Player player;
-	
+
 	public World() {
-		
+
 	}
-	
+
 	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY) {
 		worldMaxXCoord = maxX;
 		worldMaxYCoord = maxY;
@@ -37,73 +38,98 @@ public class World {
 		goalXCoord = finalX;
 		goalYCoord = finalY;
 	}
-	
-	/**
-	 * Creates platforms in the world by adding them to the array of platforms
-	 * @param xCoord - The leftmost x coordinate of the platform. 
-	 * @param yCoord - The topmost y coordinate of the platform. 
-	 * @param width - The width of the platform.
-	 * @param height - The height of the platform. 
-	 */
-	public void createPlatform(int xCoord, int yCoord, int width, int height) {
-		for (int i = xCoord; i <= (xCoord+width); i++) {
-			for (int j = yCoord; j < (yCoord+height); j++) {
-				platformCoordinates.add(i +","+ j); 
-			}
-		}
-	}
-	
-	/**
-	 * Getter for platformCoordinates (the arraylist containing all platform coordinates in the world). 
-	 * @return platformCoordinates - All the coordinates of platforms. 
-	 */
-	public ArrayList<String> getPlatformCoordinates() {
-		ArrayList<String> returnedPlatformCoordinates = new ArrayList<String>();
-		for (String coordinates : platformCoordinates) {
-			returnedPlatformCoordinates.add(coordinates);
-		}
-		return returnedPlatformCoordinates;
-	}
-	
-	
-	
-	public boolean isAPlatform(int checkX, int checkY) {
 
-		ArrayList<String> coordinates= getPlatformCoordinates();
-		for(String toParse:coordinates) {
-			int x = Integer.parseInt(toParse.substring(0,toParse.indexOf(',')).trim());
-			int y = Integer.parseInt(toParse.substring(toParse.indexOf(',')+1,toParse.length()).trim());
-			
-			
-			if(x==checkX&&y==checkY) {
-				return true;
-			}
-			
-			
-		}
-		
-		
-		return false;
-	}	
-	
-	
-	
+	public void addPlatform(Platform p) {
+		platforms.add(p);
+	}
+
 	/**
-	 * Getter for listOfEnemies (the arraylist containing all enemies in the world). 
+	 * Getter for listOfEnemies (the arraylist containing all enemies in the world).
+	 * 
 	 * @return listOfEnemies - a list of enemies.
 	 */
 	public ArrayList<Enemy> getListOfEnemies() {
 		ArrayList<Enemy> returnedListOfEnemies = new ArrayList<Enemy>(listOfEnemies);
-		
+
 		return returnedListOfEnemies;
 	}
-	
-	
-	
+
+	public boolean collidePlatform(Entity o, int yCoord, int xCoord) {
+
+		boolean willCollide = false;
+
+		int objectHeight = o.getHeight();
+		int objectWidth = o.getWidth();
+
+		for (Platform p : platforms) {
+
+			Entity largerWidthObject;
+			Entity smallerWidthObject;
+
+			int largeLeft;
+			int largeRight;
+			int smallLeft;
+			int smallRight;
+
+			if (p.getWidth() > objectWidth) {
+				largerWidthObject = p;
+				smallerWidthObject = o;
+				largeLeft = largerWidthObject.getXCoord();
+				largeRight = largerWidthObject.getXCoord() + largerWidthObject.getWidth();
+				smallLeft = xCoord;
+				smallRight = xCoord + smallerWidthObject.getWidth();
+			} else {
+				largerWidthObject = o;
+				smallerWidthObject = p;
+				largeLeft = xCoord;
+				largeRight = xCoord + largerWidthObject.getWidth();
+				smallLeft = smallerWidthObject.getXCoord();
+				smallRight = smallerWidthObject.getXCoord() + smallerWidthObject.getWidth();
+			}
+
+			if ((largeLeft <= smallLeft && smallLeft <= largeRight)
+					|| (largeLeft <= smallRight && smallRight <= largeRight)) {
+
+				Entity largerHeightObject;
+				Entity smallerHeightObject;
+				int largeTop;
+				int largeBottom;
+				int smallTop;
+				int smallBottom;
+
+				if (p.getHeight() > objectHeight) {
+					largerHeightObject = p;
+					smallerHeightObject = o;
+					largeTop = largerHeightObject.getYCoord();
+					largeBottom = largerHeightObject.getYCoord() + largerHeightObject.getHeight();
+					smallTop = yCoord;
+					smallBottom = yCoord + smallerHeightObject.getHeight();
+				} else {
+					largerHeightObject = o;
+					smallerHeightObject = p;
+					largeTop = yCoord;
+					largeBottom = yCoord + largerHeightObject.getHeight();
+					smallTop = smallerHeightObject.getYCoord();
+					smallBottom = smallerHeightObject.getYCoord() + smallerHeightObject.getHeight();
+				}
+
+				if ((largeTop <= smallTop && smallTop <= largeBottom)
+						|| (largeTop <= smallBottom && smallBottom <= largeBottom)) {
+					willCollide = true;
+				}
+
+			}
+
+		}
+
+		return willCollide;
+	}
+
+
 	/**
 	 * Getter for the world's max X coordinate (world size).
 	 * 
-	 * @return worldMaxXCoord - the world's max X coordinate allowed. 
+	 * @return worldMaxXCoord - the world's max X coordinate allowed.
 	 */
 	public int getWorldMaxXCoord() {
 		return worldMaxXCoord;
@@ -112,7 +138,7 @@ public class World {
 	/**
 	 * Setter for the world's max X coordinate (world size).
 	 * 
-	 * @param worldMaxXCoord - The desired max X coordinate. 
+	 * @param worldMaxXCoord - The desired max X coordinate.
 	 */
 	public void setWorldMaxXCoord(int maxXCoord) {
 		worldMaxXCoord = maxXCoord;
@@ -121,7 +147,7 @@ public class World {
 	/**
 	 * Getter for the world's max Y coordinate (world size).
 	 * 
-	 * @return worldMaxXCoord - the world's max Y coordinate allowed. 
+	 * @return worldMaxXCoord - the world's max Y coordinate allowed.
 	 */
 	public int getWorldMaxYCoord() {
 		return worldMaxYCoord;
@@ -135,47 +161,47 @@ public class World {
 	public void setWorldMaxYCoord(int maxYCoord) {
 		worldMaxYCoord = maxYCoord;
 	}
-	
+
 	/**
-	 * Getter for the player's starting X coordinate. 
+	 * Getter for the player's starting X coordinate.
 	 * 
-	 * @return startXCoord - The player's starting X coordinate. 
+	 * @return startXCoord - The player's starting X coordinate.
 	 */
 	public int getStartXCoord() {
 		return startXCoord;
 	}
 
 	/**
-	 * Setter for the player's starting X coordinate. 
+	 * Setter for the player's starting X coordinate.
 	 * 
-	 * @param startXCoord - The player's desired starting X coordinate. 
+	 * @param startXCoord - The player's desired starting X coordinate.
 	 */
 	public void setStartXCoord(int XCoord) {
 		startXCoord = XCoord;
 	}
 
 	/**
-	 * Getter for the player's starting Y coordinate. 
+	 * Getter for the player's starting Y coordinate.
 	 * 
-	 * @return startXCoord - The player's starting Y coordinate. 
+	 * @return startXCoord - The player's starting Y coordinate.
 	 */
 	public int getStartYCoord() {
 		return startYCoord;
 	}
 
 	/**
-	 * Setter for the player's starting Y coordinate. 
+	 * Setter for the player's starting Y coordinate.
 	 * 
-	 * @param startXCoord - The player's desired starting Y coordinate. 
+	 * @param startXCoord - The player's desired starting Y coordinate.
 	 */
 	public void setStartYCoord(int YCoord) {
 		startYCoord = YCoord;
 	}
-	
+
 	/**
 	 * Getter for the player's goal X coordinate.
 	 * 
-	 * @return goalXCoord - The goal X coordinate for the player to reach. 
+	 * @return goalXCoord - The goal X coordinate for the player to reach.
 	 */
 	public int getGoalXCoord() {
 		return goalXCoord;
@@ -184,7 +210,7 @@ public class World {
 	/**
 	 * Setter for the player's goal X coordinate.
 	 * 
-	 * @param goalXCoord - The desired goal X coordinate for the player to reach. 
+	 * @param goalXCoord - The desired goal X coordinate for the player to reach.
 	 */
 	public void setGoalXCoord(int XCoord) {
 		goalXCoord = XCoord;
@@ -193,7 +219,7 @@ public class World {
 	/**
 	 * Getter for the player's goal Y coordinate.
 	 * 
-	 * @return goalYCoord - The goal Y coordinate for the player to reach. 
+	 * @return goalYCoord - The goal Y coordinate for the player to reach.
 	 */
 	public int getGoalYCoord() {
 		return goalYCoord;
@@ -202,119 +228,117 @@ public class World {
 	/**
 	 * Setter for the player's goal Y coordinate.
 	 * 
-	 * @param goalYCoord - The desired goal Y coordinate for the player to reach. 
+	 * @param goalYCoord - The desired goal Y coordinate for the player to reach.
 	 */
 	public void setGoalYCoord(int YCoord) {
 		goalYCoord = YCoord;
 	}
-	
+
 	/**
-	 * Adds the given enemy to the world's list of enemies. 
+	 * Adds the given enemy to the world's list of enemies.
 	 * 
 	 * @param anEnemy - The enemy to add to the world.
 	 */
 	public void addToListOfEnemies(Enemy anEnemy) {
-		// We do want this privacy leak in? Since we want the same enemy so we can remove later??
+		// We do want this privacy leak in? Since we want the same enemy so we can
+		// remove later??
 		// TODO: Need to consider this more thoroughly
 		listOfEnemies.add(anEnemy);
 	}
-	
+
 	/**
-	 * Removes the given enemy from the world's list of enemies.
-	 * Used in instances where the enemy is "killed" or gotten rid of.
+	 * Removes the given enemy from the world's list of enemies. Used in instances
+	 * where the enemy is "killed" or gotten rid of.
 	 * 
 	 * @param anEnemy - The enemy to add to the world.
 	 */
 	public void removeFromListOfEnemies(Enemy anEnemy) {
 		listOfEnemies.remove(anEnemy);
 	}
-	
+
 	/**
-	 * Checks whether the given player is at/has reached the world's specified goal X and Y coordinates.
+	 * Checks whether the given player is at/has reached the world's specified goal
+	 * X and Y coordinates.
 	 * 
-	 * @param player - The player you would like to check (whether they are at the goal desination). 
+	 * @param player - The player you would like to check (whether they are at the
+	 *               goal desination).
 	 * @return boolean true if player has reached the destination, false otherwise
 	 */
 	public boolean isPlayerAtGoal(Player player) {
-		if (player.getXCoord() >= goalXCoord-10 && player.getXCoord() <= goalXCoord+10  && player.getYCoord() == goalYCoord) {
+		if (player.getXCoord() >= goalXCoord - 10 && player.getXCoord() <= goalXCoord + 10
+				&& player.getYCoord() == goalYCoord) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-
 
 	public Player getPlayer() {
 		return player;
 	}
+
 	public void setPlayer(Player p) {
 		player = p;
 	}
-	
 
-	
-	
 	/**
-	 * Draws the world (player, enemies, final destination)
-	 * in the text-based version of our game.
-	 *  
+	 * Draws the world (player, enemies, final destination) in the text-based
+	 * version of our game.
+	 * 
 	 * @param player - The main character/player of the game (to be drawn).
 	 */
 	public void drawWorld(Player player, int worldMaxXCoord, int worldMaxYCoord, int goalXCoord, int goalYCoord) {
 		/*
-		 * Once we get everything running, I'm going to split this into 2 methods:
-		 * an updateWorldContents method and a drawWorld method.
+		 * Once we get everything running, I'm going to split this into 2 methods: an
+		 * updateWorldContents method and a drawWorld method.
 		 * 
-		 * Also, this can only take world sizes up to 9x9 since the
-		 * axis will display differently otherwise.  
+		 * Also, this can only take world sizes up to 9x9 since the axis will display
+		 * differently otherwise.
 		 */
 		int playerXCoord = player.getXCoord();
 		int playerYCoord = player.getYCoord();
-		
-	    // The character array for the world
-	    char[][] allWorldContents = new char[worldMaxYCoord+1][worldMaxXCoord+1];
-	    
-	    // Initializing the world with space char
-	    for (int i = 0; i < worldMaxYCoord; i++) {
-			for(int j = 0; j < worldMaxXCoord; j++) {
+
+		// The character array for the world
+		char[][] allWorldContents = new char[worldMaxYCoord + 1][worldMaxXCoord + 1];
+
+		// Initializing the world with space char
+		for (int i = 0; i < worldMaxYCoord; i++) {
+			for (int j = 0; j < worldMaxXCoord; j++) {
 				allWorldContents[i][j] = ' ';
 			}
 		}
-	    
-	    // Add the player to the world (if they are visible)
-	    if (0 <= playerYCoord && 0 <= playerXCoord) {
-	    	allWorldContents[playerYCoord][playerXCoord] = '>';
-	    }
-	    // Add the final destination to the world
-	    allWorldContents[goalYCoord][goalXCoord] = 'O';
-	    
-	    // Add enemies to the world
-	    for (Enemy anEnemy : listOfEnemies) {
-	    	allWorldContents[anEnemy.getYCoord()][anEnemy.getXCoord()] = 'E';
-	    }
-	    
-	    // Make the top and bottom borders. 
-	    String horizontalBorder = "#";
-	    for(int i = 0; i <= worldMaxXCoord; i++) {
-	    	horizontalBorder += "|#";
-	    }
-	    horizontalBorder += "|#";
-	    
-	    // Print the world and its borders. 
-	    System.out.println("\n");
-	    System.out.println(horizontalBorder);
-	    for(int i = (worldMaxYCoord); i >= 0; i--){
-	    	String worldContentsString = "#";
-	        for(int j = 0; j <= worldMaxXCoord; j++){
-	            worldContentsString += "|"+allWorldContents[i][j];
-	        }
-	        worldContentsString += "|#";
-	        System.out.println(worldContentsString);
-	    }
-	    System.out.println(horizontalBorder + "\n");
+
+		// Add the player to the world (if they are visible)
+		if (0 <= playerYCoord && 0 <= playerXCoord) {
+			allWorldContents[playerYCoord][playerXCoord] = '>';
+		}
+		// Add the final destination to the world
+		allWorldContents[goalYCoord][goalXCoord] = 'O';
+
+		// Add enemies to the world
+		for (Enemy anEnemy : listOfEnemies) {
+			allWorldContents[anEnemy.getYCoord()][anEnemy.getXCoord()] = 'E';
+		}
+
+		// Make the top and bottom borders.
+		String horizontalBorder = "#";
+		for (int i = 0; i <= worldMaxXCoord; i++) {
+			horizontalBorder += "|#";
+		}
+		horizontalBorder += "|#";
+
+		// Print the world and its borders.
+		System.out.println("\n");
+		System.out.println(horizontalBorder);
+		for (int i = (worldMaxYCoord); i >= 0; i--) {
+			String worldContentsString = "#";
+			for (int j = 0; j <= worldMaxXCoord; j++) {
+				worldContentsString += "|" + allWorldContents[i][j];
+			}
+			worldContentsString += "|#";
+			System.out.println(worldContentsString);
+		}
+		System.out.println(horizontalBorder + "\n");
 	}
 
-
-	
 }

@@ -14,12 +14,27 @@ import java.util.ArrayList;
 
 public abstract class Entity {
 
+	private int width;
+	private int height;
+
 	private Physics myPhysics;
 
 	public Entity() {
 
 	}
+	
+	public Entity(int width, int height){
+		
+	}
 
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
 	/**
 	 * Setter for an entities x coordinate position.
 	 * 

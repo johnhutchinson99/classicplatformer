@@ -5,8 +5,9 @@ public abstract class Moveable extends Entity{
 	private double walkSpeed; 
 	private double jumpPower; 
 	
-	public Moveable(World newWorld) {
+	public Moveable(World newWorld, int width, int height) {
 		
+		super(width, height);
 		world = newWorld;
 		
 		walkSpeed = 50;
@@ -18,6 +19,12 @@ public abstract class Moveable extends Entity{
 	
 	
 	
+	public Moveable(int width, int height) {
+		super(width, height);
+	}
+
+
+
 	/**
 	 * Updates gravity(acceleration) when called
 	 * Run inside walk and jump methods
@@ -41,6 +48,13 @@ public abstract class Moveable extends Entity{
 	 */
 	public World getWorld() {
 		return world;
+	}
+	
+	/**
+	 * Setter for the world the entity is in. 
+	 */
+	public void setWorld(World aWorld) {
+		world = aWorld;
 	}
 
 	/**
