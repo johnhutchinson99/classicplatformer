@@ -30,7 +30,37 @@ public abstract class Moveable extends Entity{
 	 * Run inside walk and jump methods
 	 */
 	public void applyGravity() {
+		
+		
+		//Checking whether or not on platform
+		boolean isOnPlatform = false;
+		
+		for(Platform p: getWorld().getPlatforms()) {
+			
+			//Testing left side
+			
+			if(p.isWithinEntity(getXCoord(), getYCoord()+getHeight()+p.getHeight())) {
+				isOnPlatform = true;
+				System.out.println("TOUCHING PLATFORM");
+			}
+			// Testing right side
+			if(p.isWithinEntity(getXCoord()+getWidth(), getYCoord()+getHeight()+p.getHeight())) {
+				isOnPlatform = true;
+				System.out.println("TOUCHING PLATFORM");
+			}
+			
+			
+		}
+		
+		
+		if(!isOnPlatform)
 		getPhysics().setYAcceleration(Physics.GRAVITY);
+		else {
+			getPhysics().setYAcceleration(0);
+			getPhysics().setYVelocity(0);
+		}
+			
+		
 		
 		
 		

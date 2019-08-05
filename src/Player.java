@@ -89,6 +89,11 @@ public void moveDown(int translate) {
 public boolean isCollidingWithEnemy() {
 	if(getWorld().getWorldMaxXCoord()>100) {// Runs when the world is large
 		
+		for(Enemy p:getWorld().getListOfEnemies()) {
+			
+			if(this.isCollidingWith(p))
+				return true;
+		}
 		
 		
 	}else {
@@ -187,14 +192,6 @@ private Enemy whoIsThere(int checkX,int checkY) {
 
 public void update() {
 	applyGravity();
-	
-	
-	
-	for(Platform p:getWorld().getPlatforms()) {
-		
-		System.out.println(this.isCollidingWith(p));
-	}
-	
 	
 	
 	if (this.isCollidingWithEnemy()) {
