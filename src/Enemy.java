@@ -19,7 +19,7 @@ public class Enemy extends Moveable {
 
 	public Enemy(World newWorld, int width, int height) {
 		super(newWorld, width, height);
-		setPhysics(new Physics(getWorld().getWorldMaxXCoord(),getWorld().getWorldMaxYCoord()));
+		setPhysics(new Physics(0,0));
 		move();
 		applyGravity();
 

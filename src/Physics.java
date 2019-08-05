@@ -57,10 +57,10 @@ public Physics(int x, int y, int maxX, int maxY) {
 
 /**
  * Constructor for Physics class
- * Initial values (position,velocity,acceleration) are zero
+ * Only maximum is the maximun int size
  */
-public Physics(int maxX, int maxY) {
-	this(0,0,maxX,maxY);
+public Physics(int x, int y) {
+	this(x,y,Integer.MAX_VALUE,Integer.MAX_VALUE);
 }
 /**
  * Copies a physics object

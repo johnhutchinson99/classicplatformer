@@ -53,6 +53,17 @@ public class World {
 
 		return returnedListOfEnemies;
 	}
+	
+	/**
+	 * Getter for platforms (the arraylist containing all platforms in the world).
+	 * 
+	 * @return platforms - a list of platforms.
+	 */
+	public ArrayList<Platform> getPlatforms() {
+		
+
+		return platforms;
+	}
 
 
 	/**

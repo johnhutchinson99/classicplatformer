@@ -40,13 +40,7 @@ public Player(World newWorld,int allowedAttacks, int width, int height) {
 	applyGravity();
 }
 
-//public Player(String newName, World newWorld,int allowedAttacks, int height, int widt) {
-//	
-//	this(newWorld,allowedAttacks);
-//	if(newName!=null)
-//		playerName = newName;
-//	
-//}
+
 
 
 
@@ -94,14 +88,6 @@ public void moveDown(int translate) {
  */
 public boolean isCollidingWithEnemy() {
 	if(getWorld().getWorldMaxXCoord()>100) {// Runs when the world is large
-		
-		for(int i = getXCoord()-20;i<getXCoord()+20;i++) {
-			if(whoIsThere(i,getYCoord())!=null) {
-				return true;
-			}
-		}
-		
-		
 		
 		
 		
@@ -201,6 +187,16 @@ private Enemy whoIsThere(int checkX,int checkY) {
 
 public void update() {
 	applyGravity();
+	
+	
+	
+	for(Platform p:getWorld().getPlatforms()) {
+		
+		System.out.println(this.isCollidingWith(p));
+	}
+	
+	
+	
 	if (this.isCollidingWithEnemy()) {
 		isAlive = false;
 	}

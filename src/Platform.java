@@ -4,7 +4,10 @@ import javafx.geometry.Point2D;
 
 public class Platform extends Entity{
 
-	private ArrayList<Point2D> platformCoordinates = new ArrayList<Point2D>();
+
+	private Point2D topLeft;
+	
+	private Point2D bottomRight;
 	
 	
 	/**
@@ -16,34 +19,14 @@ public class Platform extends Entity{
 	 */
 	public Platform(int topLeftX,int topLeftY,int width,int height) {
 		
-		
-		for(int x = topLeftX; x<=topLeftX+width;x++) { //Extends in X direction
-			for(int y = topLeftY; y<=topLeftY+height;y++) {
-				platformCoordinates.add(new Point2D(x,y));
-			}
-		}
-		
+	
+		super(width,height);
+		setPhysics(new Physics(topLeftX,topLeftY));
+		topLeft = new Point2D(topLeftX,topLeftY);
+		bottomRight = new Point2D(topLeftX+width,topLeftY+height);
 		
 		
 	}
-	
-	/**
-	 *  
-	 * @param checkX X that is to be checked by the program
-	 * @param checkY Y that is to be checked by the program
-	 * @return Whether or not the inputed coordinates are part of the platform
-	 */
-	public boolean isPartOfPlatform(int checkX,int checkY) {
-		for(Point2D point: platformCoordinates) {
-			if(checkX==point.getX()) {
-				if(checkY==point.getY()) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
 	
 	
 	

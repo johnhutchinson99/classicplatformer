@@ -22,9 +22,14 @@ public abstract class Entity {
 	public Entity() {
 
 	}
-	
-	public Entity(int width, int height){
-		
+
+	public Entity(int newWidth, int newHeight) {
+		if (newWidth > 0) {
+			width = newWidth;
+		}
+		if (newHeight > 0) {
+			height = newHeight;
+		}
 	}
 
 	public int getWidth() {
@@ -34,7 +39,7 @@ public abstract class Entity {
 	public int getHeight() {
 		return height;
 	}
-	
+
 	/**
 	 * Setter for an entities x coordinate position.
 	 * 
@@ -88,12 +93,62 @@ public abstract class Entity {
 	public Physics getPhysics() {
 		return myPhysics;
 	}
+
 	/**
 	 * 
 	 * allows for setting/initializing physics object
 	 */
 	public void setPhysics(Physics newPhysics) {
 		myPhysics = newPhysics;
+
+	}
+
+	private boolean isCornerInsideEntity(Entity otherEntity) {
+
+		// Entity must be colliding when corner of one entity is inside the other
+
+		// Checking if otherEntity has a corner inside this Entity
+
+		// Top Left corner
+		if (this.isWithinEntity(otherEntity.getXCoord(), otherEntity.getYCoord()))
+			return true;
+		// Top Right corner
+		if (this.isWithinEntity(otherEntity.getXCoord() + otherEntity.getWidth(), otherEntity.getYCoord()))
+			return true;
+		// Bottom Left corner
+		if (this.isWithinEntity(otherEntity.getXCoord(), otherEntity.getYCoord() + otherEntity.getHeight()))
+			return true;
+		if (this.isWithinEntity(otherEntity.getXCoord() + otherEntity.getWidth(),
+				otherEntity.getYCoord() + otherEntity.getHeight()))
+			return true;
+
+		return false;
+
+	}
+
+	public boolean isCollidingWith(Entity otherEntity) {
+
+		// Entity must be colliding when corner of one entity is inside the other
+		return this.isCornerInsideEntity(otherEntity) || otherEntity.isCornerInsideEntity(this);
+	}
+
+	/**
+	 * 
+	 * @param x to check
+	 * @param y to check
+	 * @return whether or not the inputed coordinates are inside the Entity
+	 */
+	public boolean isWithinEntity(int x, int y) {
+
+		// checking x
+
+		if (x >= getXCoord() && x <= getXCoord() + getWidth()) {
+			if (y >= getYCoord() && y <= getYCoord() + getWidth()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
