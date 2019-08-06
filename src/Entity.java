@@ -30,10 +30,12 @@ public abstract class Entity {
 		if (newHeight > 0) {
 			height = newHeight;
 		}
+		
+		myPhysics = new Physics(0,0);
 	}
-	
 	public Entity(int x, int y,int newWidth,int newHeight) {
 		this(newWidth,newHeight);
+		
 		myPhysics.setXPosition(x);
 		myPhysics.setYPosition(y);
 	}
