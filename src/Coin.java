@@ -2,9 +2,11 @@
 public class Coin extends Entity{
 
 	
-	public Coin(int startX,int startY) {
-		setXCoord(startX);
-		setYCoord(startY);
+	public Coin(int newWidth, int newHeight) {
+		super(newWidth,newHeight);
+	}
+	public Coin(int x,int y,int newWidth,int newHeight) {
+		super(x,y,newWidth,newHeight);
 	}
 	
 	

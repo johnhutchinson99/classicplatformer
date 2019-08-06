@@ -31,6 +31,12 @@ public abstract class Entity {
 			height = newHeight;
 		}
 	}
+	
+	public Entity(int x, int y,int newWidth,int newHeight) {
+		this(newWidth,newHeight);
+		myPhysics.setXPosition(x);
+		myPhysics.setYPosition(y);
+	}
 
 	/**
 	 * 
