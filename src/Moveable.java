@@ -10,20 +10,31 @@ public abstract class Moveable extends Entity{
 		super(width, height);
 		world = newWorld;
 		
+		//Initial values for walking and jumping speeds.
+		//Can be changed by an extending class
 		walkSpeed = 50;
-		jumpPower = 1000;
+		jumpPower = 100;
 		
 	
 		
 	}
 	
-	
-	
-	public Moveable(int width, int height) {
-		super(width, height);
+
+	/**
+	 * Ceases all motion of the Entity
+	 */
+	public void fullStop() {
+		getPhysics().fullStop();
+		applyGravity();
 	}
-
-
+	
+	/**
+	 * Ceases all motion in the X direction
+	 */
+	public void stopWalking() {
+		getPhysics().setXVelocity(0);
+		applyGravity();
+	}
 
 	/**
 	 * Updates gravity(acceleration) when called
@@ -37,18 +48,12 @@ public abstract class Moveable extends Entity{
 		
 		for(Platform p: getWorld().getPlatforms()) {
 			
-			//Testing left side
-			
-			if(p.isWithinEntity(getXCoord(), getYCoord()+getHeight()+p.getHeight())) {
+			//Checking if entity is colliding with a platform
+			if(isCollidingWith(p)) {
 				isOnPlatform = true;
-				System.out.println("TOUCHING PLATFORM");
+
 			}
-			// Testing right side
-			if(p.isWithinEntity(getXCoord()+getWidth(), getYCoord()+getHeight()+p.getHeight())) {
-				isOnPlatform = true;
-				System.out.println("TOUCHING PLATFORM");
-			}
-			
+		
 			
 		}
 		
@@ -57,7 +62,10 @@ public abstract class Moveable extends Entity{
 		getPhysics().setYAcceleration(Physics.GRAVITY);
 		else {
 			getPhysics().setYAcceleration(0);
-			getPhysics().setYVelocity(0);
+			if(getPhysics().getYVelocity()>0) {
+				getPhysics().setYVelocity(0);
+			}
+			
 		}
 			
 		

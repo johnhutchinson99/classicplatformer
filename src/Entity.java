@@ -32,10 +32,17 @@ public abstract class Entity {
 		}
 	}
 
+	/**
+	 * 
+	 * @return Width of the object (in X)
+	 */
 	public int getWidth() {
 		return width;
 	}
-
+	/**
+	 * 
+	 * @return Height of object (in Y)
+	 */
 	public int getHeight() {
 		return height;
 	}
@@ -103,6 +110,12 @@ public abstract class Entity {
 
 	}
 
+	
+	/**
+	 * 
+	 * @param Other entity to test
+	 * @return Whether or not this has one of it's corners inside the inputted Entity
+	 */
 	private boolean isCornerInsideEntity(Entity otherEntity) {
 
 		// Entity must be colliding when corner of one entity is inside the other
@@ -126,6 +139,11 @@ public abstract class Entity {
 
 	}
 
+	/**
+	 * 
+	 * @param otherEntity to test
+	 * @return Whether or not the entities are colliding at the moment
+	 */
 	public boolean isCollidingWith(Entity otherEntity) {
 
 		// Entity must be colliding when corner of one entity is inside the other
@@ -143,7 +161,7 @@ public abstract class Entity {
 		// checking x
 
 		if (x >= getXCoord() && x <= getXCoord() + getWidth()) {
-			if (y >= getYCoord() && y <= getYCoord() + getWidth()) {
+			if (y >= getYCoord() && y <= getYCoord() + getHeight()) {
 				return true;
 			}
 		}

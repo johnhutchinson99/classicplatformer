@@ -22,7 +22,7 @@ public class GameGUI extends Application {
 
 	static int currentLevel = 1;
 	static int previousLevel = 1;
-
+	
 //	private Player mainPlayer = new Player(35, 35, 35);
 
 	
@@ -96,9 +96,12 @@ public class GameGUI extends Application {
 		AnimationTimer timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
-
+				player1.applyGravity();
+			
 				if (jump) {
 					player1.jump();
+				}else {
+					player1.applyGravity();
 				}
 				
 				if (goLeft) {
@@ -106,10 +109,11 @@ public class GameGUI extends Application {
 				} else if(goRight) {
 					player1.walkRight();
 				} else {
-					player1.stop();
+					player1.stopWalking();
 				}
 				
-				player1.update();
+				
+				
 //				if (player1.getxVelocity() < 0) {
 //					playerRectangle1.setScaleX(-1);
 //				} else {

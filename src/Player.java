@@ -45,10 +45,7 @@ public Player(World newWorld,int allowedAttacks, int width, int height) {
 
 
 
-public void stop() {
-	getPhysics().fullStop();
-	applyGravity();
-}
+
 
 
 /**
@@ -188,16 +185,6 @@ private Enemy whoIsThere(int checkX,int checkY) {
 
 
 
-
-
-public void update() {
-	applyGravity();
-	
-	
-	if (this.isCollidingWithEnemy()) {
-		isAlive = false;
-	}
-}
 
 
 /**

@@ -6,7 +6,7 @@
  */
 public class Physics {
 	
-public static final double GRAVITY = 10;	
+public static final double GRAVITY = 100;	
 	
 private int maxXPosition;
 private int maxYPosition;
@@ -278,7 +278,6 @@ public double getYAcceleration() {
 public void setXAcceleration(double x) {
 	update();
 	xAcceleration = x;
-	update();
 }
 /**
  * 
@@ -287,7 +286,6 @@ public void setXAcceleration(double x) {
 public void setYAcceleration(double y) {
 	update();
 	yAcceleration = y;
-	update();
 }
 
 	
@@ -351,30 +349,7 @@ public void fullStop() {
 
 
 
-/*
-public static void main(String[] args) {
-		Physics test = new Physics(5,5);
-		test.setXAcceleration(3);
-		test.setXVelocity(2);
-		
-		
-		
 
-		
-		Scanner hi = new Scanner(System.in);
-		
-		hi.nextLine();
-		
-		
-		System.out.println(test.getXPosition());
-		
-		
-		
-		
-		
-		
-}
-*/
 
 
 	
