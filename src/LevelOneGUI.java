@@ -30,6 +30,10 @@ public class LevelOneGUI extends GameGUI {
 		
 		Pane root = new Pane();
 		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT,Color.AQUA);
+		
+        // Create Background
+        createBackground(root, "Full-Background.png", 800, 500, 0, 0);
+        createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
 
 //		Rectangle playerRectangle = new Rectangle(player.getxCoord(), player.getyCoord(), player.getWidth(),
 //				player.getHeight());
@@ -42,7 +46,10 @@ public class LevelOneGUI extends GameGUI {
 
         root.getChildren().add(iv);
 
-		
+        // Create enemy
+
+        
+        // Create Platforms
 		createPlatform( root, levelOne, 0, 450, 1000, 150);
 		createPlatform( root, levelOne, 0, 420, 100, 10);
 		createPlatform( root, levelOne, 145, 380, 100, 10);

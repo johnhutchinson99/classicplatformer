@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -31,11 +32,29 @@ public class GameGUI extends Application {
 	int rightCount = 0;
 	int jumpCount = 0;
 	
+	public void createBackground(Pane theRoot, String imgFilename, int width, int height, int xCoord, int yCoord) {
+		Image img = new Image(imgFilename, false);
+		ImageView back = new ImageView(img);
+		back.setFitWidth(width);
+		back.setFitHeight(height);
+		theRoot.getChildren().add(back);
+		back.setX(xCoord);
+		back.setY(yCoord);
+	}
+
+	
+	
 	public void createPlatform(Pane theRoot, World aWorld, int x, int y, int width, int height) {
 		Platform newPlatform = new Platform(x, y, width, height);
 		aWorld.addPlatform(newPlatform);
-		Rectangle rectanglePlatform = new Rectangle(x, y, width, height);
-		theRoot.getChildren().add(rectanglePlatform);
+
+		Image platformImage = new Image("Tile.png", false);
+		ImageView platformTile = new ImageView(platformImage);
+		platformTile.setFitWidth(width);
+		platformTile.setFitHeight(height);
+		theRoot.getChildren().add(platformTile);
+		platformTile.setX(x);
+		platformTile.setY(y);
 	}
 	
 	public void keyMethod(Stage stage, Scene scene1, Player player1, ImageView playerRectangle1) {
