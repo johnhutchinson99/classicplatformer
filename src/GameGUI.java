@@ -106,8 +106,12 @@ public class GameGUI extends Application {
 				
 				if (goLeft) {
 					player1.walkLeft();
+					playerRectangle1.setScaleX(-1);
+					
 				} else if(goRight) {
 					player1.walkRight();
+					playerRectangle1.setScaleX(1);
+					
 				} else {
 					player1.stopWalking();
 				}
