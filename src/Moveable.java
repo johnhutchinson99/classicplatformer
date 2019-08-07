@@ -44,22 +44,12 @@ public abstract class Moveable extends Entity{
 		
 		
 		//Checking whether or not on platform
-		boolean isOnPlatform = false;
 		
-		for(Platform p: getWorld().getPlatforms()) {
-			
-			//Checking if entity is colliding with a platform
-			if(isCollidingWith(p)) {
-				isOnPlatform = true;
-
-			}
 		
-			
+		
+		if(!isOnPlatform()) {
+			getPhysics().setYAcceleration(Physics.GRAVITY);
 		}
-		
-		
-		if(!isOnPlatform)
-		getPhysics().setYAcceleration(Physics.GRAVITY);
 		else {
 			getPhysics().setYAcceleration(0);
 			if(getPhysics().getYVelocity()>0) {
@@ -76,7 +66,20 @@ public abstract class Moveable extends Entity{
 		
 		
 		}
-	
+	public boolean isOnPlatform() {
+		for(Platform p: getWorld().getPlatforms()) {
+			
+			//Checking if entity is colliding with a platform
+			if(isCollidingWith(p)) {
+				return true;
+
+			}
+		
+			
+		}
+		
+		return false;
+	}
 	
 	
 	
@@ -138,6 +141,8 @@ public abstract class Moveable extends Entity{
 	 */
 	public void jump() {
 		
+		
+		if(isOnPlatform())
 		getPhysics().setYVelocity(-1*jumpPower);
 		applyGravity();
 		
