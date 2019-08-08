@@ -40,11 +40,11 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  2. Run "java GameGUI"
  
  ### Accessing Demo 3 - Compiling and Running: Using Eclipse
- 1. Follow Steps 1-4 of from "Accessing Demo 1 - Compiling and Running: Using Eclipse", except download [Version 0.0.2](https://github.com/johnhutchinson99/classicplatformer/tree/Version-002-Demo-2) in Step 1. 
+ 1. Follow Steps 1-4 of from "Accessing Demo 1 - Compiling and Running: Using Eclipse", except download [Version 0.0.3](https://github.com/johnhutchinson99/classicplatformer/tree/Version-003-Demo-3) in Step 1. 
  2. Now that the project is imported into Eclipse, run the project by right-clicking "GameGUI.java" in the Eclipse Package Explorer and choosing "Run As" >> "Java Application".
 
 ### Accessing Demo 3 - Compiling and Running: Using Command Line
- 1. Follow Steps 1-3 of from "Accessing Demo 1 - Compiling and Running: Using Command Line", except download [Version 0.0.2](https://github.com/johnhutchinson99/classicplatformer/tree/Version-002-Demo-2) in Step 1. 
+ 1. Follow Steps 1-3 of from "Accessing Demo 1 - Compiling and Running: Using Command Line", except download [Version 0.0.3](https://github.com/johnhutchinson99/classicplatformer/tree/Version-003-Demo-3) in Step 1. 
  2. Run "java GUI"
  
 ## Running Tests
