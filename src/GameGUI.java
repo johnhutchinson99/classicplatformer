@@ -164,13 +164,13 @@ public class GameGUI extends Application {
 	public void start(Stage primaryStage) {
 
 		final GameGUI r = new GameGUI();
+		StartMenu start = new StartMenu();
 		LevelOneGUI level1 = new LevelOneGUI();
 		LevelOneGUI level3 = new LevelOneGUI();
-//		GameOverGUI over = new GameOverGUI();
 
 		primaryStage.show();
 
-		level1.create(primaryStage);
+		start.create(primaryStage);
 
 		AnimationTimer refreshLevel = new AnimationTimer() {
 			@Override
@@ -186,13 +186,13 @@ public class GameGUI extends Application {
 
 			private void updateLevelGUI() {
 				if (currentLevel == 2) {
-					level3.create(primaryStage);
+					level1.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 3) {
 					level3.create(primaryStage);
 					this.start();
 				} else {
-					level3.create(primaryStage);
+					level1.create(primaryStage);
 				}
 
 			}
