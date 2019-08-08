@@ -47,19 +47,23 @@ public class LevelOne extends World {
 //				LEVELGOALXCOORD, LEVELGOALYCOORD);
 
 		
-		Enemy enemy1 = new Enemy(this);
-		Enemy enemy2 = new Enemy(this);
-		Enemy enemy3 = new Enemy(this);
-		
+		Enemy enemy1 = new Enemy(this,1,1);
+		Enemy enemy2 = new Enemy(this,1,1);
+		Enemy enemy3 = new Enemy(this,1,1);
+		enemy1.move();
+		enemy2.move();
+		enemy3.move();
 		addToListOfEnemies(enemy1);
 		addToListOfEnemies(enemy2);
 		addToListOfEnemies(enemy3);
+		
 		
 		Player mainPlayer = new Player(this, 5, 20, 20);
 
 		// The loop which "plays" the game (i.e. draws then asks for user input)
 		// Until the player dies or has reached the goal destination
 		while (mainPlayer.isAlive() && !this.isPlayerAtGoal(mainPlayer) ) {
+			System.out.println(enemy1);
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
 		}

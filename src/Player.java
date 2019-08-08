@@ -125,7 +125,6 @@ public boolean isAlive() {
 public void attack() {
 	
 if(getWorld().getWorldMaxXCoord()<100) {
-	System.out.println("This should not run");
 
 	Enemy left = whoIsThere(getXCoord()-1,getYCoord());
 	if(left!=null) {
