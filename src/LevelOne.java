@@ -26,11 +26,11 @@ public class LevelOne extends World {
 	
 	public LevelOne() {
 		super(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
-				LEVELGOALXCOORD, LEVELGOALYCOORD);
+				LEVELGOALXCOORD, LEVELGOALYCOORD,false);
 	}
 
 	public LevelOne(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
-		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
+		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY,false);
 	}
 
 	

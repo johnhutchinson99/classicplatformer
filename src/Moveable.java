@@ -48,7 +48,12 @@ public abstract class Moveable extends Entity{
 		
 		
 		if(!isOnPlatform()) {
-			getPhysics().setYAcceleration(Physics.GRAVITY);
+			if(getWorld().isUnderWater()) {
+				getPhysics().setYAcceleration(Physics.UNDERWATERGRAVITY);
+			}else {
+				getPhysics().setYAcceleration(Physics.GRAVITY);
+			}
+			
 		}
 		else {
 			getPhysics().setYAcceleration(0);
@@ -141,11 +146,15 @@ public abstract class Moveable extends Entity{
 	 */
 	public void jump() {
 		
+		if(getWorld().isUnderWater()) {
+			getPhysics().setYVelocity(-1*jumpPower*0.4);
+		}else {
+			if(isOnPlatform())
+				getPhysics().setYVelocity(-1*jumpPower);
+				
+		}
 		
-		if(isOnPlatform())
-		getPhysics().setYVelocity(-1*jumpPower);
 		applyGravity();
-		
 		//myPhysics.setYPosition(myPhysics.getYPosition()-40);
 	}
 	/**

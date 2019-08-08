@@ -19,7 +19,8 @@ public class World {
 
 	private int goalXCoord;
 	private int goalYCoord;
-
+	private  boolean  isUnderWater;
+	
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
@@ -30,13 +31,14 @@ public class World {
 
 	}
 
-	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY) {
+	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
 		worldMaxXCoord = maxX;
 		worldMaxYCoord = maxY;
 		startXCoord = startX;
 		startYCoord = startY;
 		goalXCoord = finalX;
 		goalYCoord = finalY;
+		isUnderWater = isWater;
 	}
 
 	public void addPlatform(Platform p) {
@@ -221,6 +223,16 @@ public class World {
 		player = p;
 	}
 
+	
+	
+	public boolean isUnderWater() {
+		return isUnderWater;
+	}
+	
+	
+	
+	
+	
 	/**
 	 * Draws the world (player, enemies, final destination) in the text-based
 	 * version of our game.
