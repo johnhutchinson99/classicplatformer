@@ -21,7 +21,6 @@ public class Enemy extends Moveable {
 		super(newWorld, width, height);
 		setPhysics(new Physics(0,0));
 		move();
-		applyGravity();
 
 	}
 
@@ -36,18 +35,16 @@ public class Enemy extends Moveable {
 	 */
 	public void move() {
 		Random r = new Random();
+		System.out.println(getWorld().getWorldMaxXCoord()+"HELLO");
 		setXCoord(r.nextInt(getWorld().getWorldMaxXCoord()));
-		setYCoord(r.nextInt(getWorld().getWorldMaxYCoord()));
+		
+		if(getXCoord()==getWorld().getPlayer().getXCoord()) {
+			move();
+		}
+		
 	}
 	
-	/**
-	 * Temporary move method
-	 */
-	public void move2() {
-		Random r = new Random();
-		setXCoord(100);
-		setYCoord(1);
-	}
+
 
 	/**
 	 * Check if enemies in the list of enemies are alive and removes dead enemies.

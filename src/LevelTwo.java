@@ -12,23 +12,26 @@
 
 public class LevelTwo extends World {
 
-	private final int LEVELWORLDMAXXCOORD = 10;
-	private final int LEVELWORLDMAXYCOORD = 1;
+	private static final int LEVELWORLDMAXXCOORD = 10;
+	private static final int LEVELWORLDMAXYCOORD = 1;
 
-	private final int LEVELSTARTXCOORD = 2;
-	private final int LEVELSTARTYCOORD = 0;
+	private static final int LEVELSTARTXCOORD = 2;
+	private static final int LEVELSTARTYCOORD = 0;
 
-	private final int LEVELGOALXCOORD = 8;
-	private final int LEVELGOALYCOORD = 0;
+	private static final int LEVELGOALXCOORD = 10;
+	private static final int LEVELGOALYCOORD = 0;
 
 	private boolean levelWin;
 	
 	
 	public LevelTwo() {
+		super(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD, LEVELGOALXCOORD,
+				LEVELGOALYCOORD, false);
+		
 	}
 
 	public LevelTwo(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX, int playerFinalY) {
-		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY);
+		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY,false);
 	}
 
 	
@@ -41,23 +44,21 @@ public class LevelTwo extends World {
 	 */
 	public boolean playLevelTwo() {
 
-		LevelTwo level = new LevelTwo(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
-				LEVELGOALXCOORD, LEVELGOALYCOORD);
+
+		Player mainPlayer = new Player(this, 5, 20, 20);
+		setPlayer(mainPlayer);
+		
+		Enemy enemy1 = new Enemy(this,1,1);
 
 		
-		Enemy enemy1 = new Enemy(level);
-		Enemy enemy2 = new Enemy(level);
-		Enemy enemy3 = new Enemy(level);
-		
 		addToListOfEnemies(enemy1);
-		addToListOfEnemies(enemy2);
-		addToListOfEnemies(enemy3);
 		
-		Player mainPlayer = new Player(this, 5, 20, 20);
+		
 
 		// The loop which "plays" the game (i.e. draws then asks for user input)
 		// Until the player dies or has reached the goal destination
-		while (mainPlayer.isAlive() && !level.isPlayerAtGoal(mainPlayer) ) {
+		System.out.println(isPlayerAtGoal(mainPlayer));
+		while (mainPlayer.isAlive() && !isPlayerAtGoal(mainPlayer) ) {
 			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 			mainPlayer.askUserInstruction();
 		}

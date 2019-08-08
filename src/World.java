@@ -214,12 +214,19 @@ public class World {
 	 * @return boolean true if player has reached the destination, false otherwise
 	 */
 	public boolean isPlayerAtGoal(Player player) {
+		if(getWorldMaxXCoord()>100) {// Runs on GUI version
 		if (player.getXCoord() >= goalXCoord - 10 && player.getXCoord() <= goalXCoord + 10
 				&& player.getYCoord() == goalYCoord) {
 			return true;
-		} else {
-			return false;
 		}
+		}else {// Runs only on text version
+			if(player.getXCoord()==goalXCoord) {
+				if(player.getYCoord()==goalYCoord) {
+					return true;
+				}
+			}
+		}
+	return false;
 	}
 
 	public Player getPlayer() {
