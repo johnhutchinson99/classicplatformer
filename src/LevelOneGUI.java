@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
@@ -20,6 +23,8 @@ public class LevelOneGUI extends GameGUI {
 	
 	private static final int WORLDWIDTH = 800;
 	private static final int WORLDHEIGHT = 500;
+	
+	Map<EnemyGUI, Rectangle> enemyGUIMap = new HashMap<EnemyGUI, Rectangle>();
 	
 
 	public void create(Stage stage) {
@@ -48,6 +53,14 @@ public class LevelOneGUI extends GameGUI {
 
         // Create enemy
 
+        TrapType1 trap1 = new TrapType1(levelOne,310, 350 , 20, 20, true, 325, 345);
+		Rectangle trap1Rectangle = new Rectangle(trap1.getXCoord(), trap1.getYCoord(), trap1.getWidth(),
+				trap1.getHeight());
+		trap1Rectangle.setFill(Color.CORAL);
+		root.getChildren().add(trap1Rectangle);
+		levelOne.addEnemy(trap1);
+		enemyGUIMap.put(trap1, trap1Rectangle);
+
         
         // Create Platforms
 		createPlatform( root, levelOne, 0, 450, 1000, 150);
@@ -58,7 +71,7 @@ public class LevelOneGUI extends GameGUI {
 		createPlatform( root, levelOne, 460, 260, 100, 10);
 		createPlatform( root, levelOne, 560, 400, 100, 10);
 
-		keyMethod(stage, scene, player, iv);
+		keyMethod(stage, scene, player, iv, enemyGUIMap);
 
 		stage.setScene(scene);
 		

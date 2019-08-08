@@ -20,6 +20,16 @@ public abstract class Moveable extends Entity{
 	}
 	
 
+	public Moveable(int xCoord, int yCoord, int width, int height, World world2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Moveable(int xCoord, int yCoord, int width, int height) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	/**
 	 * Ceases all motion of the Entity
 	 */

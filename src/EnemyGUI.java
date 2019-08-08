@@ -11,6 +11,8 @@ public abstract class EnemyGUI extends Moveable{//implements Runnable {
 	private boolean isAlive; 
 		
 	
+	
+	
 	public EnemyGUI(World newWorld,int enemyXCoord,int enemyYCoord, int width, int height){
 		super(newWorld, width, height);
 		setPhysics(new Physics(enemyXCoord,enemyYCoord,getWorld().getWorldMaxXCoord(),getWorld().getWorldMaxYCoord()));
@@ -25,6 +27,12 @@ public abstract class EnemyGUI extends Moveable{//implements Runnable {
 	//public EnemyGUI(EnemyGUI toCopy) {}
 	
 	
+	public EnemyGUI(int width, int height, World newWorld) {
+		super(newWorld, width, height);
+		
+	}
+
+
 	public void move() {}
 	
 	
@@ -58,4 +66,7 @@ public abstract class EnemyGUI extends Moveable{//implements Runnable {
 	public void setRightMax(int rightMax) {
 		this.leftMax = rightMax;
 	}
+
+
+	protected abstract void update();
 }

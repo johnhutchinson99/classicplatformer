@@ -21,6 +21,8 @@ public class World {
 	private int goalYCoord;
 
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
+	
+	private ArrayList<EnemyGUI> enemyList = new ArrayList<EnemyGUI>();
 
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
 
@@ -37,6 +39,11 @@ public class World {
 		startYCoord = startY;
 		goalXCoord = finalX;
 		goalYCoord = finalY;
+	}
+	
+
+	public void addEnemy(EnemyGUI e) {
+		enemyList.add(e);
 	}
 
 	public void addPlatform(Platform p) {

@@ -1,5 +1,6 @@
 import java.security.KeyRep;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -57,7 +58,8 @@ public class GameGUI extends Application {
 		platformTile.setY(y);
 	}
 	
-	public void keyMethod(Stage stage, Scene scene1, Player player1, ImageView playerRectangle1) {
+	public void keyMethod(Stage stage, Scene scene1, Player player1, ImageView playerRectangle1,
+			Map<EnemyGUI, Rectangle> enemyMap)  {
 		scene1.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -142,6 +144,15 @@ public class GameGUI extends Application {
 //				} else {
 //					playerRectangle1.setScaleX(1);
 //				}
+				
+
+				for (Map.Entry<EnemyGUI, Rectangle> entry : enemyMap.entrySet()) {
+					EnemyGUI enemy = entry.getKey();
+					Rectangle enemyRectangle = entry.getValue();
+					enemy.update();
+					enemyRectangle.setX(enemy.getXCoord());
+					enemyRectangle.setY(enemy.getYCoord());
+				}				
 				playerRectangle1.setX(player1.getXCoord());
 				playerRectangle1.setY(player1.getYCoord());
 			}
