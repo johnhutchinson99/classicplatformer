@@ -1,4 +1,4 @@
-# README: Classic Platformer - Version 0.0.2
+# README: Classic Platformer - Version 0.0.3
 
 GITHUB LINK: https://github.com/johnhutchinson99/classicplatformer
 
@@ -6,11 +6,11 @@ This is a classic platformer game that is being created for a computer science c
 
 In this game, your character is placed in a world map and must avoid enemies/obstacles in order to reach a final destination.
 
-In the current iteration of this project, the game is in its first GUI demo stage. 
+In the current iteration of this project, the game is in its second GUI demo stage. 
 
 
 ## Getting Started: Accessing the Demos
-These are the instructions for accessing Demos 1 and 2 of our project, the text-based and GUI-based version of our game respectively. 
+These are the instructions for accessing Demos 1, 2, 3 of our project, the text-based and GUI-based version of our game respectively. 
 
 ### Pre-requisites
 
@@ -36,6 +36,14 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  2. Now that the project is imported into Eclipse, run the project by right-clicking "GUI.java" in the Eclipse Package Explorer and choosing "Run As" >> "Java Application".
 
 ### Accessing Demo 2 - Compiling and Running: Using Command Line
+ 1. Follow Steps 1-3 of from "Accessing Demo 1 - Compiling and Running: Using Command Line", except download [Version 0.0.2](https://github.com/johnhutchinson99/classicplatformer/tree/Version-002-Demo-2) in Step 1. 
+ 2. Run "java GameGUI"
+ 
+ ### Accessing Demo 3 - Compiling and Running: Using Eclipse
+ 1. Follow Steps 1-4 of from "Accessing Demo 1 - Compiling and Running: Using Eclipse", except download [Version 0.0.2](https://github.com/johnhutchinson99/classicplatformer/tree/Version-002-Demo-2) in Step 1. 
+ 2. Now that the project is imported into Eclipse, run the project by right-clicking "GameGUI.java" in the Eclipse Package Explorer and choosing "Run As" >> "Java Application".
+
+### Accessing Demo 3 - Compiling and Running: Using Command Line
  1. Follow Steps 1-3 of from "Accessing Demo 1 - Compiling and Running: Using Command Line", except download [Version 0.0.2](https://github.com/johnhutchinson99/classicplatformer/tree/Version-002-Demo-2) in Step 1. 
  2. Run "java GUI"
  
