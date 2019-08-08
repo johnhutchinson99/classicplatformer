@@ -7,7 +7,8 @@
 public class Physics {
 	
 public static final double GRAVITY = 100;	
-	
+public static final double UNDERWATERGRAVITY = 20;	
+
 private int maxXPosition;
 private int maxYPosition;
 

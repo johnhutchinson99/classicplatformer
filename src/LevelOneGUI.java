@@ -29,7 +29,7 @@ public class LevelOneGUI extends GameGUI {
 
 	public void create(Stage stage) {
 		
-		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, 10, 10, 800, 20);
+		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, 10, 10, 800, 20,true);
 
 		Player player = new Player(levelOne, 5, 20, 20);
 		
