@@ -59,3 +59,19 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  3. In the command line, change the working directory to the src folder and compile using "javac -cp .:junit-4.12.jar:hamcrest-core-1.3.jar *.java"
  4. Run "java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore PhysicsTest"
  
+ ## References
+ The following sources were used for graphics.
+ 
+Background and platforms: 
+
+https://opengameart.org/content/bevouliin-free-mountain-game-background-for-game-developers (Accessed Aug 06/2019)
+
+https://opengameart.org/content/bevouliin-free-nature-game-background-for-gamedevs (Accessed Aug 06/2019)
+ 
+Enemies:
+
+http://www.aigei.com/s?q=%E5%86%92%E9%99%A9%E5%B2%9B&type=game&term=gif (Accessed Aug 06/2019)
+
+Player:
+
+https://giphy.com/stickers/creepy-walking-s6hx6Pcg8o8j6 (Accessed Aug 06/2019)
