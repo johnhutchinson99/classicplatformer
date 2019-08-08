@@ -75,3 +75,7 @@ http://www.aigei.com/s?q=%E5%86%92%E9%99%A9%E5%B2%9B&type=game&term=gif (Accesse
 Player:
 
 https://giphy.com/stickers/creepy-walking-s6hx6Pcg8o8j6 (Accessed Aug 06/2019)
+
+
+Physics equations were taken from
+Anna Harlick's Physics 233 Winter Course
