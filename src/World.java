@@ -6,66 +6,43 @@
 */
 
 import java.util.ArrayList;
+
+// TODO: Make sure start and goal are within world dimensions
+
 public class World {
 
+	private int worldMaxXCoord;
+	private int worldMaxYCoord;
+
+	private int startXCoord;
+	private int startYCoord;
+
+	private int goalXCoord;
+	private int goalYCoord;
+	private  boolean  isUnderWater;
+	
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
+	
 	private ArrayList<EnemyGUI> enemyList = new ArrayList<EnemyGUI>();
+
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
 
-//	public Player player;
-	private Player thePlayer; 
-	
-	private int worldWidth;
-	private int worldHeight;
-	private EndPoint endPoint = new EndPoint(0,0,0,0);
-	
+	public Player player;
+
 	public World() {
 
 	}
-	
-	public World(int w, int h) {
-		worldWidth = w;
-		worldHeight = h;
-	}
 
-//	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
-//		worldMaxXCoord = maxX;
-//		worldMaxYCoord = maxY;
-//		startXCoord = startX;
-//		startYCoord = startY;
-//		goalXCoord = finalX;
-//		goalYCoord = finalY;
-//	}
-	
-	
-	public int getWorldWidth() {
-		return worldWidth;
-	}
-
-	public int getWorldHeight() {
-		return worldHeight;
+	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
+		worldMaxXCoord = maxX;
+		worldMaxYCoord = maxY;
+		startXCoord = startX;
+		startYCoord = startY;
+		goalXCoord = finalX;
+		goalYCoord = finalY;
+		isUnderWater = isWater;
 	}
 	
-
-	public ArrayList<EnemyGUI> getEnemyList() {
-		return enemyList;
-	}
-	
-	public void setEndPoint(EndPoint e) {
-		endPoint = e;
-	}
-	
-	public EndPoint getEndPoint() {
-		return endPoint;
-	}
-	
-	public void addPlayer(Player p) {
-		thePlayer = p;
-	}
-	
-	public Player getPlayer() {
-		return thePlayer;
-	}
 
 	public void addEnemy(EnemyGUI e) {
 		enemyList.add(e);
@@ -86,23 +63,135 @@ public class World {
 		return returnedListOfEnemies;
 	}
 	
-//	/**
-//	 * Getter for platforms (the arraylist containing all platforms in the world).
-//	 * 
-//	 * @return platforms - a list of platforms.
-//	 */
-//	public ArrayList<Platform> getPlatforms() {
-//		
-//
-//		return platforms;
-//	}
-//
+	/**
+	 * Getter for platforms (the arraylist containing all platforms in the world).
+	 * 
+	 * @return platforms - a list of platforms.
+	 */
+	public ArrayList<Platform> getPlatforms() {
+		
+
+		return platforms;
+	}
+
+
+	/**
+	 * Getter for the world's max X coordinate (world size).
+	 * 
+	 * @return worldMaxXCoord - the world's max X coordinate allowed.
+	 */
+	public int getWorldMaxXCoord() {
+		return worldMaxXCoord;
+	}
+
+	/**
+	 * Setter for the world's max X coordinate (world size).
+	 * 
+	 * @param worldMaxXCoord - The desired max X coordinate.
+	 */
+	public void setWorldMaxXCoord(int maxXCoord) {
+		worldMaxXCoord = maxXCoord;
+	}
+
+	/**
+	 * Getter for the world's max Y coordinate (world size).
+	 * 
+	 * @return worldMaxXCoord - the world's max Y coordinate allowed.
+	 */
+	public int getWorldMaxYCoord() {
+		return worldMaxYCoord;
+	}
+
+	/**
+	 * Setter for the world's max Y coordinate (world size).
+	 * 
+	 * @param worldMaxXYoord - The desired max Y coordinate.
+	 */
+	public void setWorldMaxYCoord(int maxYCoord) {
+		worldMaxYCoord = maxYCoord;
+	}
+
+	/**
+	 * Getter for the player's starting X coordinate.
+	 * 
+	 * @return startXCoord - The player's starting X coordinate.
+	 */
+	public int getStartXCoord() {
+		return startXCoord;
+	}
+
+	/**
+	 * Setter for the player's starting X coordinate.
+	 * 
+	 * @param startXCoord - The player's desired starting X coordinate.
+	 */
+	public void setStartXCoord(int XCoord) {
+		startXCoord = XCoord;
+	}
+
+	/**
+	 * Getter for the player's starting Y coordinate.
+	 * 
+	 * @return startXCoord - The player's starting Y coordinate.
+	 */
+	public int getStartYCoord() {
+		return startYCoord;
+	}
+
+	/**
+	 * Setter for the player's starting Y coordinate.
+	 * 
+	 * @param startXCoord - The player's desired starting Y coordinate.
+	 */
+	public void setStartYCoord(int YCoord) {
+		startYCoord = YCoord;
+	}
+
+	/**
+	 * Getter for the player's goal X coordinate.
+	 * 
+	 * @return goalXCoord - The goal X coordinate for the player to reach.
+	 */
+	public int getGoalXCoord() {
+		return goalXCoord;
+	}
+
+	/**
+	 * Setter for the player's goal X coordinate.
+	 * 
+	 * @param goalXCoord - The desired goal X coordinate for the player to reach.
+	 */
+	public void setGoalXCoord(int XCoord) {
+		goalXCoord = XCoord;
+	}
+
+	/**
+	 * Getter for the player's goal Y coordinate.
+	 * 
+	 * @return goalYCoord - The goal Y coordinate for the player to reach.
+	 */
+	public int getGoalYCoord() {
+		return goalYCoord;
+	}
+
+	/**
+	 * Setter for the player's goal Y coordinate.
+	 * 
+	 * @param goalYCoord - The desired goal Y coordinate for the player to reach.
+	 */
+	public void setGoalYCoord(int YCoord) {
+		goalYCoord = YCoord;
+	}
+
 	/**
 	 * Adds the given enemy to the world's list of enemies.
 	 * 
 	 * @param anEnemy - The enemy to add to the world.
 	 */
 	public void addToListOfEnemies(Enemy anEnemy) {
+		// We do want this privacy leak in? Since we want the same enemy so we can
+		// remove later??
+		// TODO: Need to consider this more thoroughly
 		listOfEnemies.add(anEnemy);
 	}
 
@@ -116,89 +205,106 @@ public class World {
 		listOfEnemies.remove(anEnemy);
 	}
 
-	
-
-	public boolean isCollide(Player p, WorldObject o) {
-		boolean inRXArea = (p.getxCoord()+p.getWidth() >= o.getxCoord() && p.getxCoord()+p.getWidth() <= o.getxCoord()+o.getWidth());
-		boolean inLXArea = (p.getxCoord() >= o.getxCoord() && p.getxCoord() <= o.getxCoord()+o.getWidth());
-		boolean inLYArea = (p.getyCoord()+p.getHeight() >= o.getyCoord() && p.getyCoord()+p.getHeight() <= o.getyCoord()+o.getHeight());
-		boolean inUYArea = (p.getyCoord() >= o.getyCoord() && p.getyCoord() <= o.getyCoord()+o.getHeight());
-		if ((inRXArea || inLXArea) && (inLYArea || inUYArea)) {
-			return o.doCollision(p);
-		} else {
-			return false;
+	/**
+	 * Checks whether the given player is at/has reached the world's specified goal
+	 * X and Y coordinates.
+	 * 
+	 * @param player - The player you would like to check (whether they are at the
+	 *               goal desination).
+	 * @return boolean true if player has reached the destination, false otherwise
+	 */
+	public boolean isPlayerAtGoal(Player player) {
+		if(getWorldMaxXCoord()>100) {// Runs on GUI version
+		if (player.getXCoord() >= goalXCoord - 10 && player.getXCoord() <= goalXCoord + 10
+				&& player.getYCoord() == goalYCoord) {
+			return true;
 		}
+		}else {// Runs only on text version
+			if(player.getXCoord()==goalXCoord) {
+				if(player.getYCoord()==goalYCoord) {
+					return true;
+				}
+			}
+		}
+	return false;
 	}
 
-	public boolean collidePlatform(WorldObject o, int yCoord, int xCoord) {
+	public Player getPlayer() {
+		return player;
+	}
 
-		boolean willCollide = false;
+	public void setPlayer(Player p) {
+		player = p;
+	}
 
-		int objectHeight = o.getHeight();
-		int objectWidth = o.getWidth();
+	
+	
+	public boolean isUnderWater() {
+		return isUnderWater;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * Draws the world (player, enemies, final destination) in the text-based
+	 * version of our game.
+	 * 
+	 * @param player - The main character/player of the game (to be drawn).
+	 */
+	public void drawWorld(Player player, int worldMaxXCoord, int worldMaxYCoord, int goalXCoord, int goalYCoord) {
+		/*
+		 * Once we get everything running, I'm going to split this into 2 methods: an
+		 * updateWorldContents method and a drawWorld method.
+		 * 
+		 * Also, this can only take world sizes up to 9x9 since the axis will display
+		 * differently otherwise.
+		 */
+		int playerXCoord = player.getXCoord();
+		int playerYCoord = player.getYCoord();
 
-		for (Platform p : platforms) {
+		// The character array for the world
+		char[][] allWorldContents = new char[worldMaxYCoord + 1][worldMaxXCoord + 1];
 
-			WorldObject largerWidthObject;
-			WorldObject smallerWidthObject;
-
-			int largeLeft;
-			int largeRight;
-			int smallLeft;
-			int smallRight;
-
-			if (p.getWidth() > objectWidth) {
-				largerWidthObject = p;
-				smallerWidthObject = o;
-				largeLeft = largerWidthObject.getxCoord();
-				largeRight = largerWidthObject.getxCoord() + largerWidthObject.getWidth();
-				smallLeft = xCoord;
-				smallRight = xCoord + smallerWidthObject.getWidth();
-			} else {
-				largerWidthObject = o;
-				smallerWidthObject = p;
-				largeLeft = xCoord;
-				largeRight = xCoord + largerWidthObject.getWidth();
-				smallLeft = smallerWidthObject.getxCoord();
-				smallRight = smallerWidthObject.getxCoord() + smallerWidthObject.getWidth();
+		// Initializing the world with space char
+		for (int i = 0; i < worldMaxYCoord; i++) {
+			for (int j = 0; j < worldMaxXCoord; j++) {
+				allWorldContents[i][j] = ' ';
 			}
-
-			if ((largeLeft <= smallLeft && smallLeft <= largeRight)
-					|| (largeLeft <= smallRight && smallRight <= largeRight)) {
-
-				WorldObject largerHeightObject;
-				WorldObject smallerHeightObject;
-				int largeTop;
-				int largeBottom;
-				int smallTop;
-				int smallBottom;
-
-				if (p.getHeight() > objectHeight) {
-					largerHeightObject = p;
-					smallerHeightObject = o;
-					largeTop = largerHeightObject.getyCoord();
-					largeBottom = largerHeightObject.getyCoord() + largerHeightObject.getHeight();
-					smallTop = yCoord;
-					smallBottom = yCoord + smallerHeightObject.getHeight();
-				} else {
-					largerHeightObject = o;
-					smallerHeightObject = p;
-					largeTop = yCoord;
-					largeBottom = yCoord + largerHeightObject.getHeight();
-					smallTop = smallerHeightObject.getyCoord();
-					smallBottom = smallerHeightObject.getyCoord() + smallerHeightObject.getHeight();
-				}
-
-				if ((largeTop <= smallTop && smallTop <= largeBottom)
-						|| (largeTop <= smallBottom && smallBottom <= largeBottom)) {
-					willCollide = true;
-				}
-
-			}
-
 		}
 
-		return willCollide;
+		// Add the player to the world (if they are visible)
+		if (0 <= playerYCoord && 0 <= playerXCoord) {
+			allWorldContents[playerYCoord][playerXCoord] = '>';
+		}
+		// Add the final destination to the world
+		allWorldContents[goalYCoord][goalXCoord] = 'O';
+
+		// Add enemies to the world
+		for (Enemy anEnemy : listOfEnemies) {
+			allWorldContents[anEnemy.getYCoord()][anEnemy.getXCoord()] = 'E';
+		}
+
+		// Make the top and bottom borders.
+		String horizontalBorder = "#";
+		for (int i = 0; i <= worldMaxXCoord; i++) {
+			horizontalBorder += "|#";
+		}
+		horizontalBorder += "|#";
+
+		// Print the world and its borders.
+		System.out.println("\n");
+		System.out.println(horizontalBorder);
+		for (int i = (worldMaxYCoord); i >= 0; i--) {
+			String worldContentsString = "#";
+			for (int j = 0; j <= worldMaxXCoord; j++) {
+				worldContentsString += "|" + allWorldContents[i][j];
+			}
+			worldContentsString += "|#";
+			System.out.println(worldContentsString);
+		}
+		System.out.println(horizontalBorder + "\n");
 	}
 
 }

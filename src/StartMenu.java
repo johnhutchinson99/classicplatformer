@@ -15,15 +15,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class StartMenu extends GameplayGUI {
+public class StartMenu extends GameGUI {
 	private static final int WORLDWIDTH = 800;
 	private static final int WORLDHEIGHT = 500;
 
 	public void create(Stage stage) {
 
-		GameplayGUI.currentLevel = 1;
-		GameplayGUI.previousLevel = 1;
-		
 		Font jellyCraziesFont = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 50);
 
 		Pane root = new Pane();
@@ -44,7 +41,7 @@ public class StartMenu extends GameplayGUI {
 
 		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				GameplayGUI.currentLevel += 1;
+				GameGUI.currentLevel += 1;
 			}
 		};
 

@@ -21,7 +21,7 @@ public class TrapType1 extends EnemyGUI {  //This trap is move up and move down(
 		
 		
 		
-		if (this.getyCoord() == this.upMax) {
+		if (this.getYCoord() == this.upMax) {
 			isUp = false;
 			isStop = true;
 			count1++;
@@ -29,10 +29,10 @@ public class TrapType1 extends EnemyGUI {  //This trap is move up and move down(
 				isStop = false;
 				this.count1 = 0;
 			}else {
-				supersetyCoord(getyCoord()-0);
+				setYCoord(getYCoord()-0);
 			}
 		}
-		if (this.getyCoord() == this.downMax) {
+		if (this.getYCoord() == this.downMax) {
 			isUp = true;
 			isStop = true;
 			count2 ++;
@@ -40,23 +40,24 @@ public class TrapType1 extends EnemyGUI {  //This trap is move up and move down(
 				isStop = false;
 				this.count2 = 0;
 			}else {
-				supersetyCoord(getyCoord()-0);
+				setYCoord(getYCoord()-0);
 			}
 		}
 		
 		if (isUp == true && isStop == false) {
-			supersetyCoord(getyCoord()-5);
+			setYCoord(getYCoord()-5);
 		}
 		if (isUp == false && isStop == false) {
-			supersetyCoord(getyCoord()+5);
+			setYCoord(getYCoord()+5);
 		}
 		
 	}
 		
 		public TrapType1(World newWorld,int enemyXCoord,int enemyYCoord, int width, int height, boolean isUp,int upMax, int downMax) {
 			
-			super(enemyXCoord,enemyYCoord, width, height, newWorld, enemyXCoord, enemyXCoord);
-//			super(newWorld, enemyXCoord,enemyYCoord);
+			super(width, height, newWorld);
+			setXCoord(enemyXCoord);
+			setYCoord(enemyYCoord);
 			this.isUp = isUp;
 			this.upMax = upMax;
 			this.downMax = downMax;

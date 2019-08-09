@@ -9,15 +9,28 @@
 
 // TODO make instances private?
 
-public class LevelOne extends Gameplay {
+public class LevelOne extends World {
+
+//	private static final int LEVELWORLDMAXXCOORD = 0;
+	private static final int LEVELWORLDMAXXCOORD = 16;
+	private static final int LEVELWORLDMAXYCOORD = 1;
+
+	private static final int LEVELSTARTXCOORD = 0;
+	private static final int LEVELSTARTYCOORD = 0;
+
+	private static final int LEVELGOALXCOORD = 16;
+	private static final int LEVELGOALYCOORD = 0;
 
 	private boolean levelWin;
 
 	public LevelOne() {
+		super(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD, LEVELGOALXCOORD,
+				LEVELGOALYCOORD, false);
 	}
 
 	public LevelOne(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX,
 			int playerFinalY) {
+		super(worldMaxX, worldMaxY, playerStartX, playerStartY, playerFinalX, playerFinalY, false);
 	}
 
 	/**
@@ -31,43 +44,40 @@ public class LevelOne extends Gameplay {
 	 */
 	public boolean playLevelOne() {
 
-		World levelOne = new World(20, 3);
+//		LevelOne level = new LevelOne(LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELSTARTXCOORD, LEVELSTARTYCOORD,
+//				LEVELGOALXCOORD, LEVELGOALYCOORD);
 
-		EndPoint endPoint = new EndPoint(18,0,0,0);
-		levelOne.setEndPoint(endPoint);
-		
-		Player player = new Player(0,0,0,0,levelOne);
-		levelOne.addPlayer(player);
+		Player mainPlayer = new Player(this, 5, 20, 20);
 
-		Enemy enemy1 = new Enemy(levelOne, 0, 0);
-		Enemy enemy2 = new Enemy(levelOne, 0, 0);
-		Enemy enemy3 = new Enemy(levelOne, 0, 0);
+		setPlayer(mainPlayer);
+
+		Enemy enemy1 = new Enemy(this, 1, 1);
+		Enemy enemy2 = new Enemy(this, 1, 1);
+		Enemy enemy3 = new Enemy(this, 1, 1);
 		enemy1.move();
 		enemy2.move();
 		enemy3.move();
-		levelOne.addToListOfEnemies(enemy1);
-		levelOne.addToListOfEnemies(enemy2);
-		levelOne.addToListOfEnemies(enemy3);
+		addToListOfEnemies(enemy1);
+		addToListOfEnemies(enemy2);
+		addToListOfEnemies(enemy3);
 
 		// The loop which "plays" the game (i.e. draws then asks for user input)
 		// Until the player dies or has reached the goal destination
-		while (player.isAlive() && !levelOne.isCollide(player, endPoint)) {
-			for(Enemy aEnemy: levelOne.getListOfEnemies()) {
-				levelOne.isCollide(player, aEnemy);
-			}
-			super.drawWorld(player, levelOne);
-			player.askUserInstruction();
+		while (mainPlayer.isAlive() && !this.isPlayerAtGoal(mainPlayer)) {
+			System.out.println(enemy1);
+			super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
+			mainPlayer.askUserInstruction();
 		}
 
 		// After the loop for level play ends, check if player won/is still alive
-		if (player.isAlive()) {
+		if (mainPlayer.isAlive()) {
 			levelWin = true;
 		} else {
 			levelWin = false;
 		}
 
 		// Draw the world a final time before ending the level
-		super.drawWorld(player, levelOne);
+		super.drawWorld(mainPlayer, LEVELWORLDMAXXCOORD, LEVELWORLDMAXYCOORD, LEVELGOALXCOORD, LEVELGOALYCOORD);
 
 		return levelWin;
 

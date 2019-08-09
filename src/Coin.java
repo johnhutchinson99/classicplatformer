@@ -1,5 +1,5 @@
 
-public class Coin extends WorldObject{
+public class Coin extends Entity{
 
 	
 	public Coin(int newWidth, int newHeight) {

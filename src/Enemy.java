@@ -1,47 +1,50 @@
+
 /**
- * This class creates enemies for the text-based version of the game.
+ * 
+ * 
+ * 
+ * @author Gao XingYu(Ryan)
+ * 
+ * This class creates enemies 
  *
  */
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Enemy extends PhysicsEntity {
+public class Enemy extends Moveable {
 
-	// TODO why is their another enemyList here?? Shouldn't it use the one in world??
-	
 	private ArrayList<Enemy> enemyList = new ArrayList<>();
 	private boolean isAlive;
 
 	public Enemy(World newWorld, int width, int height) {
-		super(4, 0, width, height, newWorld);
+		super(newWorld, width, height);
+		setPhysics(new Physics(0,0));
+		move();
+
 	}
+
+	// public void addEnemy(Enemy enemy) {
+	// if (isAlive == true) {
+	// enemyList.add(new Enemy(enemy));
+	// }
+	// }
 
 	/**
 	 * Moves the enemy
 	 */
 	public void move() {
 		Random r = new Random();
-		setxCoord(r.nextInt(getWorld().getWorldWidth()));
-
-		if (getxCoord() == getWorld().getPlayer().getxCoord()) {
+		System.out.println(getWorld().getWorldMaxXCoord()+"HELLO");
+		setXCoord(r.nextInt(getWorld().getWorldMaxXCoord()));
+		
+		if(getXCoord()==getWorld().getPlayer().getXCoord()) {
 			move();
 		}
-
+		
 	}
+	
 
-	/**
-	 * The doCollision method is what the enemy does (to the player) when it
-	 * collides with the player.
-	 * 
-	 * @param Player player - the player the enemy will act on
-	 * @return boolean true - returns true in order to signify the method has
-	 *         finished running
-	 */
-	public boolean doCollision(Player p) {
-		p.kill();
-		return true;
-	}
 
 	/**
 	 * Check if enemies in the list of enemies are alive and removes dead enemies.

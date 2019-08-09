@@ -19,59 +19,75 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class LevelOneGUI extends GameplayGUI {
+public class LevelOneGUI extends GameGUI {
 	
 	private static final int WORLDWIDTH = 800;
 	private static final int WORLDHEIGHT = 500;
 	
-	Map<EnemyGUI, ImageView> enemyGUIMap = new HashMap<EnemyGUI, ImageView>();
+	Map<EnemyGUI, Rectangle> enemyGUIMap = new HashMap<EnemyGUI, Rectangle>();
+	
 
-	public void create(Stage stage, Player aPlayer) {
+	public void create(Stage stage) {
 		
-		// Set scene
-		Pane root = new Pane();		
-		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT);
+		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, 10, 10, 800, 20,false);
 
-		// Set world
-		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT);
-
-		// Add player
-		Player player = new Player(aPlayer);
-		player.setXYCoord(20, 300);
-		player.setWorld(levelOne);
+		Player player = new Player(levelOne, 5, 20, 20);
 		
-		// Create background
+		Pane root = new Pane();
+		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT,Color.AQUA);
+		
+        // Create Background
         createBackground(root, "Full-Background.png", 800, 500, 0, 0);
-        createBackground(root, "layer-4.png", 800, 500, 0, 0);
         createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
 
-        // Add the enemies
-        createEnemyType1(root, levelOne, enemyGUIMap, 580, 230, 560, 670, 20, 20);
-        createTrapType1(root, levelOne, enemyGUIMap, 310, 350, 325, 345, 20, 20);
-        createFlyingEnemy(root, levelOne, enemyGUIMap, 180, 300, 260, 345, 30, 35);
-        
-        Image im = new Image("giphy.gif",false);
+//		Rectangle playerRectangle = new Rectangle(player.getxCoord(), player.getyCoord(), player.getWidth(),
+//				player.getHeight());
+//		playerRectangle.setFill(new ImagePattern(iv.getImage()));
+
+		Image im = new Image("giphy.gif",false);
 		ImageView iv = new ImageView(im);
-		iv.setFitHeight(player.getHeight());
-		iv.setFitWidth(player.getWidth());
+		iv.setFitHeight(30);
+		iv.setFitWidth(30);
+
         root.getChildren().add(iv);
-		
-		createEndPoint(root, levelOne, 770, 175, 50, 50);
-		
-		createPlatform( root, levelOne, 0, 450, 1000, 50);
-		createPlatform( root, levelOne, 0, 420, 100, 20);
-		createPlatform( root, levelOne, 140, 380, 100, 20);
-		createPlatform( root, levelOne, 280, 345, 100, 20);
-		createPlatform( root, levelOne, 420, 305, 100, 20);
-		createPlatform( root, levelOne, 560, 265, 150, 20);
-		createPlatform( root, levelOne, 750, 225, 50, 20);
+
+        // Create enemy
+
+        TrapType1 trap1 = new TrapType1(levelOne,310, 350 , 20, 20, true, 325, 345);
+		Rectangle trap1Rectangle = new Rectangle(trap1.getXCoord(), trap1.getYCoord(), trap1.getWidth(),
+				trap1.getHeight());
+		trap1Rectangle.setFill(Color.CORAL);
+		root.getChildren().add(trap1Rectangle);
+		levelOne.addEnemy(trap1);
+		enemyGUIMap.put(trap1, trap1Rectangle);
+
+        
+        // Create Platforms
+		createPlatform( root, levelOne, 0, 450, 1000, 150);
+		createPlatform( root, levelOne, 0, 420, 100, 10);
+		createPlatform( root, levelOne, 145, 380, 100, 10);
+		createPlatform( root, levelOne, 250, 340, 100, 10);
+		createPlatform( root, levelOne, 360, 300, 100, 10);
+		createPlatform( root, levelOne, 460, 260, 100, 10);
+		createPlatform( root, levelOne, 560, 400, 100, 10);
 
 		keyMethod(stage, scene, player, iv, enemyGUIMap);
+
 		stage.setScene(scene);
 		
 		stage.show();
-
 		
 	}
+	
+//	public void update() {
+//
+//		// This will update the enemy position while the game is running
+////		while (getPlayer().isAlive() && !level.isPlayerAtGoal(getPlayer())) {
+//			for(Enemy enemy: getListOfEnemies()) {
+//				enemy.move2();
+//			}
+//			getPlayer().update();
+//		
+//	}
 	
 }
