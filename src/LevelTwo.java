@@ -32,14 +32,18 @@ public class LevelTwo extends Gameplay {
 	 */
 	public boolean playLevelTwo() {
 
+		// Create the world level
 		World levelTwo = new World(14, 3);
 
+		// Add the end point for the level
 		EndPoint endPoint = new EndPoint(12,0,0,0);
 		levelTwo.setEndPoint(endPoint);
 		
+		// Create the player and add them to the level world
 		Player player = new Player(0,0,0,0,levelTwo);
 		levelTwo.addPlayer(player);
 
+		// Add enemies
 		Enemy enemy1 = new Enemy(levelTwo, 0, 0);
 		Enemy enemy2 = new Enemy(levelTwo, 0, 0);
 		Enemy enemy3 = new Enemy(levelTwo, 0, 0);

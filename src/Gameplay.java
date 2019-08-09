@@ -1,24 +1,18 @@
 /**
- 	Gameplay contains the main method which runs the game.
- 		Gameplay controls the timing of the introduction to the game
- 		and runs each level of the game. 
- 		The current version of the game is the text-based console version.
+ * Gameplay contains the main method which runs the game; in other words, this
+ * class controls the introduction to the game and runs each level of the game.
  */
-
-import java.util.Scanner;
 
 public class Gameplay {
 
-	/**
-	 * Draw the textbased game
-	 */
 	/**
 	 * Draws the world (player, enemies, final destination) in the text-based
 	 * version of our game.
 	 * 
 	 * @param player - The main character/player of the game (to be drawn).
 	 */
-	public void drawWorld(Player player, World aWorld) { // int worldMaxXCoord, int worldMaxYCoord, int goalXCoord, int goalYCoord) {
+	public void drawWorld(Player player, World aWorld) { // int worldMaxXCoord, int worldMaxYCoord, int goalXCoord, int
+															// goalYCoord) {
 		/*
 		 * Once we get everything running, I'm going to split this into 2 methods: an
 		 * updateWorldContents method and a drawWorld method.
@@ -71,8 +65,7 @@ public class Gameplay {
 		}
 		System.out.println(horizontalBorder + "\n");
 	}
-	
-	
+
 	/**
 	 * Delays the next step of the game by the given time in miliseconds.
 	 * 
@@ -103,10 +96,10 @@ public class Gameplay {
 	}
 
 	/**
-	 * The main program which runs the game by calling and playing each level.
-	 * After the levels are finished playing, announce whether the game has been won/lost.
+	 * The main program which runs the game by calling and playing each level. After
+	 * the levels are finished playing, announce whether the game has been won/lost.
 	 * 
-	 * @param args - The standard parameter for a main method. 
+	 * @param args - The standard parameter for a main method.
 	 */
 	public static void main(String[] args) {
 
@@ -114,7 +107,7 @@ public class Gameplay {
 
 		LevelOne levelOne = new LevelOne();
 		LevelTwo levelTwo = new LevelTwo();
-		
+
 		// Game Intro / Instructions
 		System.out.println("Welcome to The-Game-That-Does-Not-Have-a-Name-Yet! \n");
 		game.delayGame(1000);
@@ -122,16 +115,16 @@ public class Gameplay {
 		game.delayGame(1000);
 
 		// Ask for player name (to be utilized for later story-mode)
-			// System.out.print("To begin, please enter your name: ");
-			// Scanner keyboardInput = new Scanner(System.in);
-			// String name = keyboardInput.next();
+		// System.out.print("To begin, please enter your name: ");
+		// Scanner keyboardInput = new Scanner(System.in);
+		// String name = keyboardInput.next();
 
 		// Print or announce gameplay begins
 		System.out.print("Let the game begin!\n");
 
 		// Start playing level one (we only have 1 level in this demo)
 		// After playing the level, announce whether the player has won or lost.
-		if ( levelOne.playLevelOne() && levelTwo.playLevelTwo()) {
+		if (levelOne.playLevelOne() && levelTwo.playLevelTwo()) {
 			System.out.print("CONGRATULATIONS! YOU HAVE WON!");
 		} else {
 			System.out.print("YOU HAVE DIED. GAME OVER");

@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 
 public class GameplayGUI extends Application {
 
-	static int currentLevel = 1;
-	static int previousLevel = 1;
+	static int currentLevel = 0;
+	static int previousLevel = 0;
 
 	private Player mainPlayer = new Player(35, 35, 35, 35);
 
@@ -28,6 +28,19 @@ public class GameplayGUI extends Application {
 	int rightCount = 0;
 	int jumpCount = 0;
 
+	/**
+	 * createBackground creates the background of the GUI scene. Specifically, an
+	 * image is given to the method which is then placed in the scene/root at the
+	 * specified x and y coordinates. The image is stretched to the given width and
+	 * height.
+	 * 
+	 * @param theRoot     - the root of the javaFX scene
+	 * @param imgFilename - the filename of the image to be used as the background
+	 * @param width       - the width to stretch the image to
+	 * @param height      - the height to stretch the image to
+	 * @param xCoord      - the top left x coordinate of where to place the image
+	 * @param yCoord      - the top left y coordinate of where to place the image
+	 */
 	public void createBackground(Pane theRoot, String imgFilename, int width, int height, int xCoord, int yCoord) {
 		Image img = new Image(imgFilename, false);
 		ImageView back = new ImageView(img);
@@ -38,6 +51,26 @@ public class GameplayGUI extends Application {
 		back.setY(yCoord);
 	}
 
+	/**
+	 * Creates an EnemyType1 (an enemy which moves back and forth in the x
+	 * direction, within a specified min and max coordinate) instance and makes the
+	 * respective GUI/ImageView representation.
+	 * 
+	 * @param theRoot      - the root of the javaFX scene
+	 * @param aWorld       - the level the enemy will belong to
+	 * @param enemyGUIMap  - the map the enemy should be added to, specifically, the
+	 *                     map of enemies to their respective GUI/ImageView
+	 *                     representations
+	 * @param xCoord       - the starting x coordinate of the enemy
+	 * @param yCoord       - the starting y coordinate of the enemy
+	 * @param minXPosition - the min x coordinate the enemy will travel back and
+	 *                     forth from
+	 * @param maxXPosition - the max x coordinate the enemy will travel back and
+	 *                     forth from
+	 * @param width        - the width of the enemy
+	 * @param height       - the height of the enemy
+	 * 
+	 */
 	public void createEnemyType1(Pane theRoot, World aWorld, Map<EnemyGUI, ImageView> enemyGUIMap, int xCoord,
 			int yCoord, int minXPosition, int maxXPosition, int width, int height) {
 		EnemyType1 enemy1 = new EnemyType1(aWorld, xCoord, yCoord, true, minXPosition, maxXPosition, width, height);
@@ -53,6 +86,26 @@ public class GameplayGUI extends Application {
 		enemyGUIMap.put(enemy1, enemyImageView);
 	}
 
+	/**
+	 * Creates an FlyingEnemy (an enemy which moves up and down in the y direction,
+	 * within a specified min and max coordinate) instance and makes the respective
+	 * GUI/ImageView representation.
+	 * 
+	 * @param theRoot      - the root of the javaFX scene
+	 * @param aWorld       - the level the enemy will belong to
+	 * @param enemyGUIMap  - the map the enemy should be added to, specifically, the
+	 *                     map of enemies to their respective GUI/ImageView
+	 *                     representations
+	 * @param xCoord       - the starting x coordinate of the enemy
+	 * @param yCoord       - the starting y coordinate of the enemy
+	 * @param minYPosition - the min y coordinate the enemy will travel back and
+	 *                     forth from
+	 * @param maxYPosition - the max y coordinate the enemy will travel back and
+	 *                     forth from
+	 * @param width        - the width of the enemy
+	 * @param height       - the height of the enemy
+	 * 
+	 */
 	public void createFlyingEnemy(Pane theRoot, World aWorld, Map<EnemyGUI, ImageView> enemyGUIMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
 		FlyingEnemy trap1 = new FlyingEnemy(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
@@ -68,6 +121,26 @@ public class GameplayGUI extends Application {
 		enemyGUIMap.put(trap1, enemyImageView);
 	}
 
+	/**
+	 * Creates an TrapType1 (an enemy which moves up and down in intervals,
+	 * generally is hiding within a platform) instance and makes the respective
+	 * GUI/ImageView representation.
+	 * 
+	 * @param theRoot      - the root of the javaFX scene
+	 * @param aWorld       - the level the enemy will belong to
+	 * @param enemyGUIMap  - the map the enemy should be added to, specifically, the
+	 *                     map of enemies to their respective GUI/ImageView
+	 *                     representations
+	 * @param xCoord       - the starting x coordinate of the enemy
+	 * @param yCoord       - the starting y coordinate of the enemy
+	 * @param minYPosition - the min y coordinate the enemy will travel back and
+	 *                     forth from
+	 * @param maxYPosition - the max y coordinate the enemy will travel back and
+	 *                     forth from
+	 * @param width        - the width of the enemy
+	 * @param height       - the height of the enemy
+	 * 
+	 */
 	public void createTrapType1(Pane theRoot, World aWorld, Map<EnemyGUI, ImageView> enemyGUIMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
 		TrapType1 trap1 = new TrapType1(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
@@ -84,20 +157,42 @@ public class GameplayGUI extends Application {
 
 	}
 
-	public void createEndPoint(Pane theRoot, World aWorld, int x, int y, int width, int height) {
-		EndPoint endpoint = new EndPoint(x, y, width, height);
+	/**
+	 * Creates an EndPoint (where the player must go to in order to advance
+	 * levels/win the game) and it's GUI/ImageView representation.
+	 * 
+	 * @param theRoot - the root of the javaFX scene
+	 * @param aWorld  - the level the EndPoint will belong to/be in
+	 * @param xCoord  - the starting x coordinate of the EndPoint
+	 * @param yCoord  - the starting y coordinate of the EndPoint
+	 * @param width   - the width of the EndPoint
+	 * @param height  - the height of the EndPoint
+	 */
+	public void createEndPoint(Pane theRoot, World aWorld, int xCoord, int yCoord, int width, int height) {
+		EndPoint endpoint = new EndPoint(xCoord, yCoord, width, height);
 		aWorld.setEndPoint(endpoint);
 		Image endPointImage = new Image("Portal.editor.pv.png", false);
 		ImageView endPointTile = new ImageView(endPointImage);
 		endPointTile.setFitWidth(width);
 		endPointTile.setFitHeight(height);
 		theRoot.getChildren().add(endPointTile);
-		endPointTile.setX(x);
-		endPointTile.setY(y);
+		endPointTile.setX(xCoord);
+		endPointTile.setY(yCoord);
 	}
 
-	public void createPlatform(Pane theRoot, World aWorld, int x, int y, int width, int height) {
-		Platform newPlatform = new Platform(x, y, width, height);
+	/**
+	 * Creates a platform for the level and it's respective GUI/ImageView
+	 * representation.
+	 * 
+	 * @param theRoot - the root of the javaFX scene
+	 * @param aWorld  - the level the platform will belong to/be in
+	 * @param xCoord  - the starting x coordinate of the platform
+	 * @param yCoord  - the starting y coordinate of the platform
+	 * @param width   - the width of the platform
+	 * @param height  - the height of the platform
+	 */
+	public void createPlatform(Pane theRoot, World aWorld, int xCoord, int yCoord, int width, int height) {
+		Platform newPlatform = new Platform(xCoord, yCoord, width, height);
 		aWorld.addPlatform(newPlatform);
 
 		Image platformImage = new Image("Tile.png", false);
@@ -105,13 +200,26 @@ public class GameplayGUI extends Application {
 		platformTile.setFitWidth(width);
 		platformTile.setFitHeight(height);
 		theRoot.getChildren().add(platformTile);
-		platformTile.setX(x);
-		platformTile.setY(y);
+		platformTile.setX(xCoord);
+		platformTile.setY(yCoord);
 	}
 
-	public void keyMethod(Stage stage, Scene scene1, Player player1, ImageView playerRectangle1,
+	/**
+	 * The keyboard listener that is used for each of the levels. In other words,
+	 * the method which sets what keyboard presses do and appropriately enacts them
+	 * and updates the GUI to show the changes in the game AnimationTimer.
+	 * 
+	 * @param stage           - the stage of the javaFX application
+	 * @param aScene          - the scene of the javaFX application
+	 * @param aPlayer         - the player in the game
+	 * @param playerImageView - the ImageView/GUI representation of the player
+	 * @param enemyGUIMap     - the map the enemy should be added to, specifically,
+	 *                        the map of enemies to their respective GUI/ImageView
+	 *                        representations
+	 */
+	public void keyBoardMethod(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
 			Map<EnemyGUI, ImageView> enemyMap) {
-		scene1.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		aScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				switch (event.getCode()) {
@@ -131,7 +239,7 @@ public class GameplayGUI extends Application {
 					System.out.println("KeyPress: Shift");
 					break;
 				case DOWN:
-					if (player1.getWorld().isCollide(player1, player1.getWorld().getEndPoint())) {
+					if (aPlayer.getWorld().isCollide(aPlayer, aPlayer.getWorld().getEndPoint())) {
 						goLeft = false;
 						goRight = false;
 						jump = false;
@@ -146,7 +254,7 @@ public class GameplayGUI extends Application {
 			}
 		});
 
-		scene1.setOnKeyReleased(new EventHandler<KeyEvent>() {
+		aScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				switch (event.getCode()) {
@@ -178,33 +286,33 @@ public class GameplayGUI extends Application {
 			public void handle(long now) {
 
 				if (jump) {
-					player1.setyVelocity(-25, jumpCount);
+					aPlayer.setyVelocity(-25, jumpCount);
 //					player1.jump(jumpCount);
 				}
 
 				if (goLeft) {
-					player1.setxVelocity(-5, leftCount);
+					aPlayer.setxVelocity(-5, leftCount);
 				} else if (goRight) {
-					player1.setxVelocity(5, rightCount);
+					aPlayer.setxVelocity(5, rightCount);
 				} else {
-					player1.setxVelocity(0, 1);
+					aPlayer.setxVelocity(0, 1);
 				}
 
-				player1.update();
-				if (player1.getxVelocity() < 0) {
-					playerRectangle1.setScaleX(-1);
-				} else if (player1.getxVelocity() > 0) {
-					playerRectangle1.setScaleX(1);
+				aPlayer.update();
+				if (aPlayer.getxVelocity() < 0) {
+					playerImageView.setScaleX(-1);
+				} else if (aPlayer.getxVelocity() > 0) {
+					playerImageView.setScaleX(1);
 				}
-				playerRectangle1.setX(player1.getxCoord());
-				playerRectangle1.setY(player1.getyCoord());
+				playerImageView.setX(aPlayer.getxCoord());
+				playerImageView.setY(aPlayer.getyCoord());
 
-				if (!player1.isAlive()) {
-					player1.setxCoord(0);
-					player1.setyCoord(0);
-					playerRectangle1.setX(0);
-					playerRectangle1.setY(0);
-					player1.revive();
+				if (!aPlayer.isAlive()) {
+					aPlayer.setxCoord(0);
+					aPlayer.setyCoord(0);
+					playerImageView.setX(0);
+					playerImageView.setY(0);
+					aPlayer.revive();
 					goLeft = false;
 					goRight = false;
 					jump = false;
@@ -217,7 +325,7 @@ public class GameplayGUI extends Application {
 					enemy.update();
 					enemyRectangle.setX(enemy.getxCoord());
 					enemyRectangle.setY(enemy.getyCoord());
-					player1.getWorld().isCollide(player1, enemy);
+					aPlayer.getWorld().isCollide(aPlayer, enemy);
 
 //					if(!player1.getWorld().getEnemyList().contains(enemy)) {
 //						
@@ -228,6 +336,12 @@ public class GameplayGUI extends Application {
 		timer.start();
 	}
 
+	/**
+	 * The start method of the javaFX application which opens the javaFX application
+	 * and controls which scene is displayed on the stage.
+	 * 
+	 * @param primaryStage - the stage to open in the javaFX application
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -252,10 +366,10 @@ public class GameplayGUI extends Application {
 			}
 
 			private void updateLevelGUI() {
-				if (currentLevel == 2) {
+				if (currentLevel == 1) {
 					level1.create(primaryStage, mainPlayer);
 					this.start();
-				} else if (currentLevel == 3) {
+				} else if (currentLevel == 2) {
 					level2.create(primaryStage, mainPlayer);
 					this.start();
 				} else {

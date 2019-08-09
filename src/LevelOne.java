@@ -31,14 +31,18 @@ public class LevelOne extends Gameplay {
 	 */
 	public boolean playLevelOne() {
 
+		// Create the world level
 		World levelOne = new World(20, 3);
 
+		// Add the end point for the level
 		EndPoint endPoint = new EndPoint(18,0,0,0);
 		levelOne.setEndPoint(endPoint);
 		
+		// Create the player and add them to the level world
 		Player player = new Player(0,0,0,0,levelOne);
 		levelOne.addPlayer(player);
 
+		// Add enemies
 		Enemy enemy1 = new Enemy(levelOne, 0, 0);
 		Enemy enemy2 = new Enemy(levelOne, 0, 0);
 		Enemy enemy3 = new Enemy(levelOne, 0, 0);

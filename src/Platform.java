@@ -1,3 +1,6 @@
+/**
+ * The class for creating platform objects. 
+ */
 
 public class Platform extends WorldObject {
 

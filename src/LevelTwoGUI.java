@@ -1,30 +1,21 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
+
+/**
+ * LevelTwoGUI creates the scene (and shows it) for level one of the GUI based
+ * game. Here, the world is instantiated with it's dimensions. The player is
+ * set, the enemies of the level are set, the platforms are set. In other words,
+ * all the world objects of the level are created here. As well, the keyboard
+ * listener for the level/scene is called for here.
+ *
+ */
 public class LevelTwoGUI extends GameplayGUI {
 	
 	private static final int WORLDWIDTH = 800;
@@ -32,6 +23,14 @@ public class LevelTwoGUI extends GameplayGUI {
 	
 	Map<EnemyGUI, ImageView> enemyGUIMap = new HashMap<EnemyGUI, ImageView>();
 
+	/**
+	 * The method which creates the level including its world, player, enemies,
+	 * platforms, other world objects and calls the keyboard listener. The method
+	 * also then shows the scene on the stage given.
+	 * 
+	 * @param stage   - the stage of the javaFX application
+	 * @param aPlayer - the player to copy into this level
+	 */
 	public void create(Stage stage, Player aPlayer) {
 		
 		// Set scene
@@ -40,15 +39,29 @@ public class LevelTwoGUI extends GameplayGUI {
 
 		// Set world
 		World levelTwo = new World(WORLDWIDTH, WORLDHEIGHT);
-
-		// Add player
-		Player player = new Player(aPlayer);
-		player.setXYCoord(20, 300);
-		player.setWorld(levelTwo);
 		
+		// Create the EndPoint for the world
+		createEndPoint(root, levelTwo, 150, 0, 50, 50);
+
 		// Create background
         createBackground(root, "Full-Background.png", 800, 500, 0, 0);
         createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
+        
+		// Add player
+		// Note: Don't turn into method as need to be updated on keyboard
+		// press/separately from other world objects
+		Player player = new Player(aPlayer);
+		player.setXYCoord(20, 300);
+		player.setWorld(levelTwo);
+
+		// Create an ImageView representation of the player
+		// Note: Don't turn into method as need to be updated on keyboard
+		// press/separately from other world objects
+        Image im = new Image("giphy.gif",false);
+		ImageView iv = new ImageView(im);
+		iv.setFitHeight(player.getHeight());
+		iv.setFitWidth(player.getWidth());
+        root.getChildren().add(iv);
         
 		// Add the enemies
         createEnemyType1(root, levelTwo, enemyGUIMap, 580, 230, 560, 670, 20, 20);
@@ -59,14 +72,7 @@ public class LevelTwoGUI extends GameplayGUI {
         createFlyingEnemy(root, levelTwo, enemyGUIMap, 760, 200, 100, 190, 30, 35);
         createFlyingEnemy(root, levelTwo, enemyGUIMap, 300, 65, 0, 55, 30, 35);
         
-        Image im = new Image("giphy.gif",false);
-		ImageView iv = new ImageView(im);
-		iv.setFitHeight(player.getHeight());
-		iv.setFitWidth(player.getWidth());
-        root.getChildren().add(iv);
-		
-		createEndPoint(root, levelTwo, 150, 0, 50, 50);
-		
+		// Create the platforms in the level
 		createPlatform( root, levelTwo, 0, 450, 1000, 50);
 		createPlatform( root, levelTwo, 0, 420, 100, 20);
 		createPlatform( root, levelTwo, 140, 380, 100, 20);
@@ -79,9 +85,11 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, 420, 130, 100, 20);
 		createPlatform( root, levelTwo, 580, 170, 100, 20);
 
-		keyMethod(stage, scene, player, iv, enemyGUIMap);
-		stage.setScene(scene);
+		// Call the keyboard listener for the level
+		keyBoardMethod(stage, scene, player, iv, enemyGUIMap);
 		
+		// Set the scene and show it
+		stage.setScene(scene);
 		stage.show();
 
 		
