@@ -1,5 +1,5 @@
 
-public class TrapType1 extends EnemyGUI {  //This trap is move up and move down(underground)
+public class FlyingEnemy extends EnemyGUI {  //This trap is move up and move down(underground)
 	
 	private boolean isUp;
 	private int upMax;
@@ -8,52 +8,26 @@ public class TrapType1 extends EnemyGUI {  //This trap is move up and move down(
 	private int count1 = 0;
 	private int count2 = 0;
 	//Thread t = new Thread();
+	private boolean isLeft = true;
 
 	@Override
 	public void update() {
-		/*
-		if (count1 == 80) {
-			isStop = false;
-		}else {
-			count1 ++;
-		}
-		*/
-		
-		
-		
 		if (this.getyCoord() == this.upMax) {
 			isUp = false;
-			isStop = true;
-			count1++;
-			if (count1 == 200) {
-				isStop = false;
-				this.count1 = 0;
-			}else {
-				supersetyCoord(getyCoord()-0);
-			}
 		}
 		if (this.getyCoord() == this.downMax) {
 			isUp = true;
-			isStop = true;
-			count2 ++;
-			if (count2 == 200) {
-				isStop = false;
-				this.count2 = 0;
-			}else {
-				supersetyCoord(getyCoord()-0);
-			}
 		}
 		
-		if (isUp == true && isStop == false) {
-			supersetyCoord(getyCoord()-5);
+		if (isUp == true) {
+			supersetyCoord(getyCoord()-1);
 		}
-		if (isUp == false && isStop == false) {
-			supersetyCoord(getyCoord()+5);
+		if (isUp == false) {
+			supersetyCoord(getyCoord()+1);
 		}
-		
 	}
 		
-		public TrapType1(World newWorld,int enemyXCoord,int enemyYCoord, int width, int height, boolean isUp,int upMax, int downMax) {
+		public FlyingEnemy(World newWorld,int enemyXCoord,int enemyYCoord, int width, int height, boolean isUp,int upMax, int downMax) {
 			
 			super(enemyXCoord,enemyYCoord, width, height, newWorld, enemyXCoord, enemyXCoord);
 //			super(newWorld, enemyXCoord,enemyYCoord);
