@@ -1,5 +1,5 @@
 
-public class enemyType1 extends EnemyGUI{  //enemy type1:move around in an area, go back when touch Obstructs
+public class EnemyType1 extends EnemyGUI{  //enemy type1:move around in an area, go back when touch Obstructs
 
 	private boolean canLeft = true;		
 	private boolean canRight = true;
@@ -9,27 +9,26 @@ public class enemyType1 extends EnemyGUI{  //enemy type1:move around in an area,
 	//Thread t = new Thread();
 	
 	@Override
-	public void move() {
-		if (this.getEnemyXCoord() >= getRightMax()) {
+	public void update() {
+		if (this.getxCoord() >= getRightMax()) {
 			isLeft = true;
 		}
-		if (this.getEnemyXCoord() <= getLeftMax()) {
+		if (this.getxCoord() <= getLeftMax()) {
 			isLeft = false;
 		}
 		
 		if (isLeft == true) {
-			setXCoord(getEnemyXCoord()-1);
+			supersetxCoord(getxCoord()-1);
 		}
 		if (isLeft == false) {
-			setXCoord(getEnemyXCoord()+1);
+			supersetxCoord(getxCoord()+1);
 		}
+		super.update();
 	}
 		
-		public enemyType1(World newWorld,int enemyXCoord,int enemyYCoord,boolean isLeft,int leftMax,int rightMax, int width, int height) {
-			super(newWorld,enemyXCoord,enemyYCoord, width, height);
+		public EnemyType1(World newWorld,int enemyXCoord,int enemyYCoord,boolean isLeft,int leftMax,int rightMax, int width, int height) {
+			super(enemyXCoord,enemyYCoord, width, height, newWorld, leftMax, rightMax);
 			this.isLeft = isLeft;
-			setLeftMax(leftMax);
-			setRightMax(rightMax);
 			isALive = true;
 			
 			//size

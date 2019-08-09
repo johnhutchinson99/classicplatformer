@@ -17,7 +17,7 @@ public class PhysicsTest {
 	@Test
 	public void constructorTest()
 	{
-		Physics tester = new Physics(4,5,7,8);
+		PhysicsEntity tester = new PhysicsEntity(4,5,7,8);
 		
 		assertEquals("X Coordinate in constructor",4,tester.getXPosition());
 		assertEquals("Y Coordinate in constructor",5,tester.getYPosition());
@@ -32,7 +32,7 @@ public class PhysicsTest {
 	 */
 	@Test
 	public void goingLeftTest() {
-		Physics tester = new Physics(1,3,4,5);
+		PhysicsEntity tester = new PhysicsEntity(1,3,4,5);
 		
 		tester.setXVelocity(-3);
 		
@@ -44,7 +44,7 @@ public class PhysicsTest {
 	 */
 	@Test
 	public void goingRightTest() {
-		Physics tester = new Physics(1,3,4,5);
+		PhysicsEntity tester = new PhysicsEntity(1,3,4,5);
 		
 		tester.setXVelocity(3);
 		
@@ -56,7 +56,7 @@ public class PhysicsTest {
 	 */
 	@Test
 	public void goingUpTest() {
-		Physics tester = new Physics(1,3,4,5);
+		PhysicsEntity tester = new PhysicsEntity(1,3,4,5);
 		
 		tester.setYVelocity(-3);
 		
@@ -68,7 +68,7 @@ public class PhysicsTest {
 	 */
 	@Test
 	public void goingDownTest() {
-		Physics tester = new Physics(1,3,4,5);
+		PhysicsEntity tester = new PhysicsEntity(1,3,4,5);
 		
 		tester.setYVelocity(3);
 		
@@ -80,7 +80,7 @@ public class PhysicsTest {
 	 */
 	@Test 
 	public void fullStopTest() {
-		Physics tester = new Physics(1,4,6,8);
+		PhysicsEntity tester = new PhysicsEntity(1,4,6,8);
 		
 		tester.setXVelocity(100);
 		tester.setYVelocity(100);
@@ -103,7 +103,7 @@ public class PhysicsTest {
 	 */
 	@Test
 	public void calculateNewXPosition() {
-		Physics tester = new Physics(2,4,1000,1000);
+		PhysicsEntity tester = new PhysicsEntity(2,4,1000,1000);
 		
 		tester.setXAcceleration(3);
 		tester.setXVelocity(2);
@@ -130,7 +130,7 @@ public class PhysicsTest {
 	 */
 	@Test
 	public void calculateNewYPosition() {
-		Physics tester = new Physics(5,3,1000,1000);
+		PhysicsEntity tester = new PhysicsEntity(5,3,1000,1000);
 		
 		tester.setYAcceleration(1);
 		tester.setYVelocity(5);
