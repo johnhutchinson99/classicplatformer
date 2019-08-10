@@ -117,17 +117,72 @@ public class PhysicsEntityTest {
 	
 	
 	@Test
-	public void jumpTest() {
+	public void setYVelocityTest() {
 		PhysicsEntity test = new PhysicsEntityChild(3,1,4,6,new World());
 		
 		
-		test.jump();
+		test.setyVelocity(-25);
 		
 		assertEquals("Y Velocity",test.getyVelocity(),-25);
 	}
 	
+	@Test
+	public void setXVelocityTest() {
+		PhysicsEntity test = new PhysicsEntityChild(0,0,0,0,new World());
+		
+		
+		test.setxVelocity(-25);
+		
+		assertEquals("X Velocity",test.getxVelocity(),-25);
+	}
 	
 	
+	@Test
+	public void setYAccelerationTest() {
+		PhysicsEntity test = new PhysicsEntityChild(1,1,1,1,new World());
+		
+		
+		test.setYAcceleration(4);
+		
+		assertEquals("Y Acceleration",test.getYAcceleration(),4);
+	}
+	
+	@Test
+	public void setXAccelerationTest() {
+		PhysicsEntity test = new PhysicsEntityChild(0,0,0,0,new World());
+		
+		
+		test.setXAcceleration(-25);
+		
+		assertEquals("X Acceleration",test.getXAcceleration(),-25);
+	}
+	
+	/**
+	 * Values after 1 second of acceleration in X and Y
+	 */
+	@Test
+	public void oneSecondAcceleration() {
+		PhysicsEntity test = new PhysicsEntityChild(7,17,0,0,new World());
+		test.setxVelocity(11);
+		test.setyVelocity(-4);
+		test.setXAcceleration(15);
+		test.setYAcceleration(9);
+		
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		test.update();
+		assertEquals("X Position",test.getxCoord(),26); //Calculated manually
+		assertEquals("X Velocity",test.getxVelocity(),26);
+		
+		
+		
+		
+	}
 	
 	
 	

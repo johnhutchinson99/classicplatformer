@@ -95,7 +95,7 @@ public abstract class PhysicsEntity extends WorldObject {
 		int possibleX;
 		if (xVelocity > 0) {
 			xterminal = 3;
-			possibleX = (int) Math.round((getxCoord() + (int) (Math.min((xVelocity * 0.5), xterminal))));
+			possibleX = (int) Math.round(getxCoord() + (xVelocity*secondsPassedX)+ ((0.5)*(xAcceleration)*secondsPassedX*secondsPassedX));
 		} else if (xVelocity < 0) {
 			xterminal = -3;
 			possibleX = (int) Math.round((getxCoord() + (int) (Math.max((xVelocity * 0.5), xterminal))));

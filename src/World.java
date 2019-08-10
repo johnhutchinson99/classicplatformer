@@ -20,7 +20,8 @@ public class World {
 	private EndPoint endPoint = new EndPoint(0,0,0,0);
 	
 	public World() {
-
+		worldWidth = Integer.MAX_VALUE;
+		worldHeight = Integer.MAX_VALUE;
 	}
 	
 	public World(int w, int h) {
