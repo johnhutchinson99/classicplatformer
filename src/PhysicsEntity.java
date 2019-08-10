@@ -93,7 +93,7 @@ public abstract class PhysicsEntity extends WorldObject {
 		// using x(final) = x(initial) +velocity(initial)*time +
 		// (1/2)(acceleration)(time)^2
 		// Calculating X and Y separately
-		if (secondsPassed > 0.01) {
+
 
 			System.out.println(xVelocity);
 
@@ -109,7 +109,7 @@ public abstract class PhysicsEntity extends WorldObject {
 			if(!getWorld().collidePlatform(this,getxCoord(),possibleY))
 					setyCoord(possibleY);
 
-			}
+			
 		
 		
 		
