@@ -16,9 +16,6 @@ public class Player extends PhysicsEntity {
 	private int remainingAttacks; // How many more times a player is allowed to attack an enemy
 	private boolean aliveness = true; // Whether or not there is a game over
 
-	
-	public Player() {
-	}
 
 	public Player(Player p) {
 		super(p);

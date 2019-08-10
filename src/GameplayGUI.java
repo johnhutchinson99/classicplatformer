@@ -286,16 +286,16 @@ public class GameplayGUI extends Application {
 			public void handle(long now) {
 
 				if (jump) {
-					aPlayer.setyVelocity(-25, jumpCount);
+					aPlayer.setyVelocity(-25);
 //					player1.jump(jumpCount);
 				}
 
 				if (goLeft) {
-					aPlayer.setxVelocity(-5, leftCount);
+					aPlayer.setxVelocity(-5);
 				} else if (goRight) {
-					aPlayer.setxVelocity(5, rightCount);
+					aPlayer.setxVelocity(5);
 				} else {
-					aPlayer.setxVelocity(0, 1);
+					aPlayer.setxVelocity(0);
 				}
 
 				aPlayer.update();

@@ -19,8 +19,6 @@ public abstract class PhysicsEntity extends WorldObject {
 	private long lastTimeX = System.currentTimeMillis();
 	private long lastTimeY = System.currentTimeMillis();
 
-	public PhysicsEntity() {
-	}
 
 	public PhysicsEntity(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
@@ -167,8 +165,8 @@ public abstract class PhysicsEntity extends WorldObject {
 
 	}
 
-	public void jump(int jumpCount) {
-		setyVelocity(-25, jumpCount);
+	public void jump() {
+		setyVelocity(-25);
 	}
 
 	/**
@@ -191,32 +189,25 @@ public abstract class PhysicsEntity extends WorldObject {
 	 * 
 	 * @param Desired X Velocity(speed)
 	 */
-	public void setxVelocity(double speed, int count) {
+	public void setxVelocity(double speed) {
 		if (Math.abs(xVelocity) <= 5) { // Where 5 is the walkspeed => TODO: get rid of magic numbers
 			xVelocity = speed;
-			if (count == 1) { // count is the number of times keypress has been held down for, only update
-								// last time if it's been recently pressed newly
+			
 				lastTimeX = System.currentTimeMillis();
-			}
-		} else {
-			// pass
-		}
+		} 
 	}
 
 	/**
 	 * 
 	 * @param Desired Y Velocity(speed)
 	 */
-	public void setyVelocity(double speed, int count) {
+	public void setyVelocity(double speed) {
 		if (getWorld().collidePlatform(this, getyCoord() + 1, getxCoord())) {
 			yVelocity = speed;
 			setyCoord(getyCoord() - 3);
-			if (count == 1) {
+			
 				lastTimeY = System.currentTimeMillis();
-			}
-		} else {
-			// pass
-		}
+		} 
 	}
 
 	/**
