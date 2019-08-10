@@ -130,6 +130,10 @@ public abstract class WorldObject {
 	public boolean doCollision(Player p) {
 		return true;
 	}
+	
+	public void update() {
+		
+	}
 //
 //	/**
 //	 * 

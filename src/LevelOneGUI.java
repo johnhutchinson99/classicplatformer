@@ -3,6 +3,7 @@ import java.util.Map;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -17,10 +18,11 @@ import javafx.stage.Stage;
 
 public class LevelOneGUI extends GameplayGUI {
 
-	private static final int WORLDWIDTH = 800;
+	private static final int WORLDWIDTH = 1600;
 	private static final int WORLDHEIGHT = 500;
 
-	Map<EnemyGUI, ImageView> enemyGUIMap = new HashMap<EnemyGUI, ImageView>();
+	private Map<EnemyGUI, ImageView> enemyGUIMap = new HashMap<EnemyGUI, ImageView>();
+	Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
 
 	/**
 	 * The method which creates the level including its world, player, enemies,
@@ -34,7 +36,7 @@ public class LevelOneGUI extends GameplayGUI {
 
 		// Set scene
 		Pane root = new Pane();
-		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT);
+		Scene scene = new Scene(root, 800, WORLDHEIGHT);
 
 		// Set world
 		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT);
@@ -69,16 +71,16 @@ public class LevelOneGUI extends GameplayGUI {
 		createFlyingEnemy(root, levelOne, enemyGUIMap, 180, 300, 260, 345, 30, 35);
 
 		// Create the platforms in the level
-		createPlatform(root, levelOne, 0, 450, 1000, 50);
-		createPlatform(root, levelOne, 0, 420, 100, 20);
-		createPlatform(root, levelOne, 140, 380, 100, 20);
-		createPlatform(root, levelOne, 280, 345, 100, 20);
-		createPlatform(root, levelOne, 420, 305, 100, 20);
-		createPlatform(root, levelOne, 560, 265, 150, 20);
-		createPlatform(root, levelOne, 750, 225, 50, 20);
+		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
+		createPlatform(root, levelOne, platformGUIMap, 0, 420, 100, 20);
+		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 20);
+		createPlatform(root, levelOne, platformGUIMap, 280, 345, 100, 20);
+		createPlatform(root, levelOne, platformGUIMap, 420, 305, 100, 20);
+		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 20);
+		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 20);
 		
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, enemyGUIMap);
+		gameAnimation(stage, scene, player, iv, enemyGUIMap, platformGUIMap);
 
 		// Set the scene and show it
 		stage.setScene(scene);

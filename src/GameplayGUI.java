@@ -192,7 +192,7 @@ public class GameplayGUI extends Application {
 	 * @param width   - the width of the platform
 	 * @param height  - the height of the platform
 	 */
-	public void createPlatform(Pane theRoot, World aWorld, int xCoord, int yCoord, int width, int height) {
+	public void createPlatform(Pane theRoot, World aWorld, Map<Platform, HBox> aPlatformGUIMap, int xCoord, int yCoord, int width, int height) {
 
 		// Make the platform and add it to the world
 		Platform newPlatform = new Platform(xCoord, yCoord, width, height);
@@ -224,6 +224,9 @@ public class GameplayGUI extends Application {
 		platformHBox.setTranslateX(xCoord);
 		platformHBox.setTranslateY(yCoord);
 		theRoot.getChildren().add(platformHBox);
+		
+		// Add the platform to a map of its logic to its GUI representation
+		aPlatformGUIMap.put(newPlatform, platformHBox);
 	}
 
 	/**
@@ -321,17 +324,23 @@ public class GameplayGUI extends Application {
 	 *                        representations
 	 */
 	public void gameAnimation(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
-			Map<EnemyGUI, ImageView> enemyMap) {
+			Map<EnemyGUI, ImageView> enemyMap, Map<Platform, HBox> aPlatformGUIMap) {
 
+		// Create the game camera and animation timer
+		Camera gameCamera = new Camera(aScene, aPlayer);
 		AnimationTimer timer = new AnimationTimer() {
+			
+			// Make the timer loop
 			@Override
 			public void handle(long now) {
-
+				
+				// Update the camera and keyboard listener method
+				gameCamera.updateCamera(aPlayer);
 				keyBoardMethod(stage, aScene, aPlayer, playerImageView, enemyMap);
 
+				// Respond to keyboard input if applicable
 				if (jump) {
 					aPlayer.setyVelocity(-25);
-//					player1.jump(jumpCount);
 				}
 
 				if (goLeft) {
@@ -348,33 +357,33 @@ public class GameplayGUI extends Application {
 				} else if (aPlayer.getxVelocity() > 0) {
 					playerImageView.setScaleX(1);
 				}
-				playerImageView.setX(aPlayer.getxCoord());
-				playerImageView.setY(aPlayer.getyCoord());
+				playerImageView.setX(aPlayer.getxCoord()+gameCamera.getOffsetX());
+				playerImageView.setY(aPlayer.getyCoord()+gameCamera.getOffsetY());
 
 				if (!aPlayer.isAlive()) {
-					aPlayer.setxCoord(0);
-					aPlayer.setyCoord(0);
-					playerImageView.setX(0);
-					playerImageView.setY(0);
-					aPlayer.revive();
 					goLeft = false;
 					goRight = false;
 					jump = false;
-					currentLevel = 4;
+					currentLevel = 100;
 				}
 
 				for (Map.Entry<EnemyGUI, ImageView> entry : enemyMap.entrySet()) {
 					EnemyGUI enemy = entry.getKey();
 					ImageView enemyRectangle = entry.getValue();
 					enemy.update();
-					enemyRectangle.setX(enemy.getxCoord());
-					enemyRectangle.setY(enemy.getyCoord());
+					enemyRectangle.setX(enemy.getxCoord()+gameCamera.getOffsetX());
+					enemyRectangle.setY(enemy.getyCoord()+gameCamera.getOffsetY());
 					aPlayer.getWorld().isCollide(aPlayer, enemy);
-
-//					if(!player1.getWorld().getEnemyList().contains(enemy)) {
-//						
-//					}
 				}
+				
+				for (Map.Entry<Platform, HBox> entry : aPlatformGUIMap.entrySet()) {
+					Platform platform = entry.getKey();
+					HBox platformHBox = entry.getValue();
+					platformHBox.setTranslateX(platform.getxCoord()+gameCamera.getOffsetX());
+					platformHBox.setTranslateY(platform.getyCoord()+gameCamera.getOffsetY());
+				}
+				
+				
 			}
 		};
 		timer.start();
