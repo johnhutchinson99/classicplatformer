@@ -293,7 +293,7 @@ public class GameplayGUI extends Application {
 				if (goLeft) {
 					aPlayer.setxVelocity(-5);
 				} else if (goRight) {
-					aPlayer.setxVelocity(100);
+					aPlayer.setxVelocity(6);
 				} else {
 					aPlayer.setxVelocity(0);
 				}
