@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -192,16 +193,37 @@ public class GameplayGUI extends Application {
 	 * @param height  - the height of the platform
 	 */
 	public void createPlatform(Pane theRoot, World aWorld, int xCoord, int yCoord, int width, int height) {
+
+		// Make the platform and add it to the world
 		Platform newPlatform = new Platform(xCoord, yCoord, width, height);
 		aWorld.addPlatform(newPlatform);
 
+		// Create the image, stretch to fit the height, calculate number of tiles to
+		// display minus one, and the width of the last stretched tile
 		Image platformImage = new Image("Tile.png", false);
-		ImageView platformTile = new ImageView(platformImage);
-		platformTile.setFitWidth(width);
-		platformTile.setFitHeight(height);
-		theRoot.getChildren().add(platformTile);
-		platformTile.setX(xCoord);
-		platformTile.setY(yCoord);
+		double resizedTileWidth = (height / platformImage.getHeight()) * platformImage.getWidth();
+		int numberTilesMinusOne = (int) Math.round(width / resizedTileWidth) - 1;
+		double remainingTileWidth = width - (numberTilesMinusOne * resizedTileWidth);
+
+		// Repeat the image tiles in an HBox
+		HBox platformHBox = new HBox(0);
+		for (int i = 0; i < numberTilesMinusOne; i++) {
+			ImageView aPlatformTile = new ImageView(platformImage);
+			aPlatformTile.setFitWidth(resizedTileWidth);
+			aPlatformTile.setFitHeight(height);
+			platformHBox.getChildren().add(aPlatformTile);
+		}
+
+		// Create a last tile that is stretched to fit the platform as needed
+		ImageView lastPlatformTile = new ImageView(platformImage);
+		lastPlatformTile.setFitWidth(remainingTileWidth);
+		lastPlatformTile.setFitHeight(height);
+		platformHBox.getChildren().add(lastPlatformTile);
+
+		// Set the platform coordinates and add it to the root/scene
+		platformHBox.setTranslateX(xCoord);
+		platformHBox.setTranslateY(yCoord);
+		theRoot.getChildren().add(platformHBox);
 	}
 
 	/**
