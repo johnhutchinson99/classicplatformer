@@ -234,5 +234,22 @@ public abstract class PhysicsEntity extends WorldObject {
 	public void setYAcceleration(double y) {
 		yAcceleration = y;
 	}
+	
+	/**
+	 * 
+	 * @return Current X Acceleration
+	 */
+	public double getXAcceleration() {
+		return xAcceleration;
+	}
+	/**
+	 * 
+	 * @return Current Y Acceleration
+	 */
+	public double getYAcceleration() {
+		return yAcceleration;
+	}
+	
+	
 
 }
