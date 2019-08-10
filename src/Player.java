@@ -15,14 +15,16 @@ public class Player extends PhysicsEntity {
 	private String playerName; // Optional, will be implemented later
 	private int remainingAttacks; // How many more times a player is allowed to attack an enemy
 	private boolean aliveness = true; // Whether or not there is a game over
-
-
+	public static final int WALKSPEED = 200;
+	public static final int JUMPPOWER =200;
 	public Player(Player p) {
 		super(p);
+		setYAcceleration(Player.GRAVITY);
 	}
 	
 	public Player(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
+		setYAcceleration(Player.GRAVITY);
 	}
 
 	public Player(int xCoord, int yCoord, int width, int height, World world) {

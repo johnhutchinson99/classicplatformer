@@ -131,7 +131,7 @@ public class World {
 		}
 	}
 
-	public boolean collidePlatform(WorldObject o, int yCoord, int xCoord) {
+	public boolean collidePlatform(WorldObject o, int xCoord, int yCoord) {
 
 		boolean willCollide = false;
 

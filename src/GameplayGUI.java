@@ -340,16 +340,17 @@ public class GameplayGUI extends Application {
 
 				// Respond to keyboard input if applicable
 				if (jump) {
-					aPlayer.setyVelocity(-25);
+					aPlayer.jump(Player.JUMPPOWER);
 				}
 
 				if (goLeft) {
-					aPlayer.setxVelocity(-5);
+					aPlayer.setxVelocity(Player.WALKSPEED*-1);
 				} else if (goRight) {
-					aPlayer.setxVelocity(6);
+					aPlayer.setxVelocity(Player.WALKSPEED);
 				} else {
 					aPlayer.setxVelocity(0);
 				}
+				
 
 				aPlayer.update();
 				if (aPlayer.getxVelocity() < 0) {
