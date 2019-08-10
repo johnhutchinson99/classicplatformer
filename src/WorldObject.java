@@ -79,7 +79,7 @@ public abstract class WorldObject {
 	 */
 	public void setxCoord(int xCoord) {
 		if (xCoord < (getWorld().getWorldWidth() - width) && xCoord >= 0 &&
-				!getWorld().collidePlatform(this, getyCoord(), xCoord)) {
+				!getWorld().collidePlatform(this, xCoord, getyCoord())) {
 			this.xCoord = xCoord;
 		}
 	}
@@ -91,7 +91,7 @@ public abstract class WorldObject {
 	 */
 	public void setyCoord(int yCoord) {
 		if (yCoord <= (getWorld().getWorldHeight() - height) && yCoord > 0 &&
-				!getWorld().collidePlatform(this, yCoord, getxCoord())) {
+				!getWorld().collidePlatform(this, getxCoord(), yCoord)) {
 			this.yCoord = yCoord;
 		}
 	}

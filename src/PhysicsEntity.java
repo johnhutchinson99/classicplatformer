@@ -7,18 +7,16 @@
  */
 public abstract class PhysicsEntity extends WorldObject {
 
-	public static final double GRAVITY = 100;
+	public static final double GRAVITY = 300;
 	public static final double UNDERWATERGRAVITY = 20;
 
 	private double xVelocity = 0;
 	private double yVelocity = 0;
 
 	private double xAcceleration = 0;
-	private double yAcceleration = 5;
+	private double yAcceleration = 0;
 
-	private long lastTimeX = System.currentTimeMillis();
-	private long lastTimeY = System.currentTimeMillis();
-
+	private long lastTime = System.currentTimeMillis();
 
 	public PhysicsEntity(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
@@ -89,84 +87,47 @@ public abstract class PhysicsEntity extends WorldObject {
 	 * Called whenever the instance variables are changing
 	 */
 	public void update() {
-		double secondsPassedX = (System.currentTimeMillis() - lastTimeX) / 1000.0;
+		double secondsPassed = (System.currentTimeMillis() - lastTime) / 1000.0;
 
-		int xterminal;
-		int possibleX;
-		if (xVelocity > 0) {
-			xterminal = 3;
-			possibleX = (int) Math.round((getxCoord() + (int) (Math.max((xVelocity * 0.5), xterminal))));
-		} else if (xVelocity < 0) {
-			xterminal = -3;
-			possibleX = (int) Math.round((getxCoord() + (int) (Math.max((xVelocity * 0.5), xterminal))));
-		} else {
-			xterminal = 0;
-			possibleX = (int) (getxCoord() + 0);
-		}
+		// First, calculating final position
+		// using x(final) = x(initial) +velocity(initial)*time +
+		// (1/2)(acceleration)(time)^2
+		// Calculating X and Y separately
+		if (secondsPassed > 0.01) {
 
-		setxCoord(possibleX);
-////
-//		int possibleY = (int) Math.round(
-//				yPosition + (yVelocity * secondsPassed) + ((0.5) * (yAcceleration) * secondsPassed * secondsPassed));
-//		if (possibleY >= 0 && possibleY <= maxYPosition - 50) {
-//			yPosition = possibleY;
-//		}
-//////		
-		// Calculating new velocity using V(final) = V(initial) + acceleration(time)
+			System.out.println(xVelocity);
 
-		if (xVelocity > 0) {
-			xVelocity = xVelocity - xAcceleration * secondsPassedX;
-		} else if (xVelocity < 0) {
-			xVelocity = xVelocity + xAcceleration * secondsPassedX;
-		}
-		if (Math.abs(xVelocity) < 0.9) {
-			xVelocity = 0;
-		}
+			int possibleX = (int) Math.round(getxCoord() + (xVelocity * secondsPassed)
+					+ ((0.5) * (xAcceleration) * secondsPassed * secondsPassed));
+					setxCoord(possibleX);
 
-		if (xVelocity > 5) {
-			xVelocity = 5;
-		} else if (xVelocity < -5) {
-			xVelocity = -5;
-		}
+			int possibleY = (int) Math.round(getyCoord() + (yVelocity * secondsPassed)
+					+ ((0.5) * (yAcceleration) * secondsPassed * secondsPassed));
+			
+			
+			
+			if(!getWorld().collidePlatform(this,getxCoord(),possibleY))
+					setyCoord(possibleY);
 
-		double secondsPassedY = (System.currentTimeMillis() - lastTimeY) / 1000.0;
-
-		if (getWorld().collidePlatform(this, getyCoord() + 1, getxCoord())) {
-			yVelocity = 0;
-			secondsPassedY = 0;
-		}
-		
-		int possibleY;
-
-		if (!getWorld().collidePlatform(this, getyCoord(), getxCoord())) {
-
-			possibleY = (int) (getyCoord() + (yVelocity * secondsPassedY)
-					+ yAcceleration * secondsPassedY * secondsPassedY);
-
-			if (getWorld().collidePlatform(this, possibleY, getxCoord()) || possibleY >= getWorld().getWorldHeight()) {
-				possibleY = getyCoord() + 1;
 			}
-		} else {
-			possibleY = getyCoord() + 1;
-		}
-
-		for (int i = getyCoord(); i <= possibleY; i++) {
-			if (getWorld().collidePlatform(this, i, getxCoord())) {
-				possibleY = getyCoord() + 1;
-			}
-		}
 		
-		setyCoord(possibleY);
+		
+		
+			// Calculating new velocity using V(final) = V(initial) + acceleration(time)
 
-		if (Math.abs(yVelocity) > 0) {
-			yVelocity = yVelocity + yAcceleration * secondsPassedY;
-		}
+			xVelocity = (int) Math.round(xVelocity + xAcceleration * secondsPassed);
+			yVelocity = (int) Math.round(yVelocity + yAcceleration * secondsPassed);
+
+			lastTime = System.currentTimeMillis();
 		
 
 	}
 
-	public void jump() {
-		setyVelocity(-25);
+	public void jump(int jumpPower) {
+		if (getWorld().collidePlatform(this, getxCoord(), getyCoord() + 3)) {
+			setyVelocity(-jumpPower);
+		}
+
 	}
 
 	/**
@@ -190,11 +151,9 @@ public abstract class PhysicsEntity extends WorldObject {
 	 * @param Desired X Velocity(speed)
 	 */
 	public void setxVelocity(double speed) {
-		if (Math.abs(xVelocity) <= 5) { // Where 5 is the walkspeed => TODO: get rid of magic numbers
-			xVelocity = speed;
-			
-				lastTimeX = System.currentTimeMillis();
-		} 
+
+		xVelocity = speed;
+
 	}
 
 	/**
@@ -202,12 +161,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	 * @param Desired Y Velocity(speed)
 	 */
 	public void setyVelocity(double speed) {
-		if (getWorld().collidePlatform(this, getyCoord() + 1, getxCoord())) {
-			yVelocity = speed;
-			setyCoord(getyCoord() - 3);
-			
-				lastTimeY = System.currentTimeMillis();
-		} 
+		yVelocity = speed;
 	}
 
 	/**
@@ -225,7 +179,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	public void setYAcceleration(double y) {
 		yAcceleration = y;
 	}
-	
+
 	/**
 	 * 
 	 * @return Current X Acceleration
@@ -233,6 +187,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	public double getXAcceleration() {
 		return xAcceleration;
 	}
+
 	/**
 	 * 
 	 * @return Current Y Acceleration
@@ -240,7 +195,5 @@ public abstract class PhysicsEntity extends WorldObject {
 	public double getYAcceleration() {
 		return yAcceleration;
 	}
-	
-	
 
 }

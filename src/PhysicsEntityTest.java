@@ -72,7 +72,7 @@ public class PhysicsEntityTest {
 		assertEquals("Width",test.getWidth(),width);
 		
 		assertEquals("X Acceleration",test.getXAcceleration(),0);
-		assertEquals("Y Acceleration",test.getYAcceleration(),5);
+		assertEquals("Y Acceleration",test.getYAcceleration(),0);
 		
 		assertTrue("World is null",test.getWorld()!=null);
 		
@@ -108,7 +108,7 @@ public class PhysicsEntityTest {
 		assertEquals("Width",test.getWidth(),width);
 		
 		assertEquals("X Acceleration",test.getXAcceleration(),0);
-		assertEquals("Y Acceleration",test.getYAcceleration(),5);
+		assertEquals("Y Acceleration",test.getYAcceleration(),0);
 		
 		assertTrue("World is null",test.getWorld()!=null);
 		
@@ -178,6 +178,9 @@ public class PhysicsEntityTest {
 		test.update();
 		assertEquals("X Position",test.getxCoord(),26); //Calculated manually
 		assertEquals("X Velocity",test.getxVelocity(),26);
+		
+		assertEquals("Y Position",test.getyCoord(),18);
+		assertEquals("Y Velocity",test.getyVelocity(),5);
 		
 		
 		
