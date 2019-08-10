@@ -86,7 +86,7 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, 580, 170, 100, 20);
 
 		// Call the keyboard listener for the level
-		keyBoardMethod(stage, scene, player, iv, enemyGUIMap);
+		gameAnimation(stage, scene, player, iv, enemyGUIMap);
 		
 		// Set the scene and show it
 		stage.setScene(scene);

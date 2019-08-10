@@ -61,7 +61,7 @@ public class LevelTwo extends Gameplay {
 				levelTwo.isCollide(player, aEnemy);
 			}
 			super.drawWorld(player, levelTwo);
-			player.askUserInstruction();
+			askUserInstruction(player);
 		}
 
 		// After the loop for level play ends, check if player won/is still alive

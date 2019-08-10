@@ -176,35 +176,4 @@ public class Player extends PhysicsEntity {
 
 	}
 
-	/**
-	 * Asks user/player for instructions on what to do with character. Opens an
-	 * input space that allows the user to instruct the program to move the player
-	 * left/right or attack.
-	 */
-	public void askUserInstruction() {
-
-		Scanner kb = new Scanner(System.in);
-
-		System.out.println(
-				"Enter L to move left. \n" + "Enter R to move right. \n" + "Enter A to attack surrounding squares. ");
-
-		String userInput = kb.nextLine();
-
-		switch (userInput) {
-		case "L":
-			setxCoord(getxCoord()-1);
-			break;
-		case "R":
-			setxCoord(getxCoord()+1);
-			break;
-		case "A":
-			this.attack();
-			break;
-		default:
-			System.out.print("Input not valid. Please try again.");
-			break;
-		}
-
-	}
-
 }

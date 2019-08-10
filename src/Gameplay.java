@@ -1,9 +1,13 @@
+import java.util.Scanner;
+
 /**
  * Gameplay contains the main method which runs the game; in other words, this
  * class controls the introduction to the game and runs each level of the game.
  */
 
 public class Gameplay {
+	
+	private Scanner kb = new Scanner(System.in);
 
 	/**
 	 * Draws the world (player, enemies, final destination) in the text-based
@@ -64,6 +68,36 @@ public class Gameplay {
 			System.out.println(worldContentsString);
 		}
 		System.out.println(horizontalBorder + "\n");
+	}
+
+	/**
+	 * Asks user/player for instructions on what to do with character. Opens an
+	 * input space that allows the user to instruct the program to move the player
+	 * left/right or attack.
+	 * 
+	 * @param player - the player that the input will act on
+	 */
+	public void askUserInstruction(Player player) {
+
+		System.out.println(
+				"Enter L to move left. \n" + "Enter R to move right. \n" + "Enter A to attack surrounding squares. ");
+
+		String userInput = kb.nextLine();
+
+		switch (userInput) {
+		case "L":
+			player.setxCoord(player.getxCoord()-1);
+			break;
+		case "R":
+			player.setxCoord(player.getxCoord()+1);
+			break;
+		case "A":
+			player.attack();
+			break;
+		default:
+			System.out.print("Input not valid. Please try again.");
+			break;
+		}
 	}
 
 	/**
@@ -129,7 +163,7 @@ public class Gameplay {
 		} else {
 			System.out.print("YOU HAVE DIED. GAME OVER");
 		}
-
+		
 	}
 
 }

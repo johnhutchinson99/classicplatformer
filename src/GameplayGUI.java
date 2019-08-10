@@ -206,8 +206,7 @@ public class GameplayGUI extends Application {
 
 	/**
 	 * The keyboard listener that is used for each of the levels. In other words,
-	 * the method which sets what keyboard presses do and appropriately enacts them
-	 * and updates the GUI to show the changes in the game AnimationTimer.
+	 * the method which sets what keyboard presses do and appropriately enacts them.
 	 * 
 	 * @param stage           - the stage of the javaFX application
 	 * @param aScene          - the scene of the javaFX application
@@ -250,6 +249,8 @@ public class GameplayGUI extends Application {
 //					player1.attack();
 					System.out.println("Z");
 					break;
+				default:
+					break;
 				}
 			}
 		});
@@ -277,13 +278,34 @@ public class GameplayGUI extends Application {
 					break;
 				case Z:
 					break;
+				default:
+					break;
 				}
 			}
 		});
+	}
+
+	/**
+	 * The main game animation / animation timer that constantly refreshes and
+	 * updates the game (e.g. for user input or for computer automated events) and
+	 * the GUI.
+	 * 
+	 * @param stage           - the stage of the javaFX application
+	 * @param aScene          - the scene of the javaFX application
+	 * @param aPlayer         - the player in the game
+	 * @param playerImageView - the ImageView/GUI representation of the player
+	 * @param enemyGUIMap     - the map the enemy should be added to, specifically,
+	 *                        the map of enemies to their respective GUI/ImageView
+	 *                        representations
+	 */
+	public void gameAnimation(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
+			Map<EnemyGUI, ImageView> enemyMap) {
 
 		AnimationTimer timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
+
+				keyBoardMethod(stage, aScene, aPlayer, playerImageView, enemyMap);
 
 				if (jump) {
 					aPlayer.setyVelocity(-25);
