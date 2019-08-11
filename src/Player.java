@@ -16,7 +16,7 @@ public class Player extends PhysicsEntity {
 	private int remainingAttacks; // How many more times a player is allowed to attack an enemy
 	private boolean aliveness = true; // Whether or not there is a game over
 	public static final int WALKSPEED = 200;
-	public static final int JUMPPOWER =200;
+	public static final int JUMPPOWER =400;
 	private boolean isFacingRight = true;
 	public Player(Player p) {
 		super(p);

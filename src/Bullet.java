@@ -23,7 +23,7 @@ public class Bullet extends PhysicsEntity{
 			if(getWorld().getPlayer().isFacingRight()) {
 				setxVelocity(bulletSpeed);
 			}else {
-				setxVelocity(bulletSpeed);
+				setxVelocity(-1*bulletSpeed);
 			}
 		
 		

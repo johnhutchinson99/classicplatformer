@@ -7,7 +7,7 @@
  */
 public abstract class PhysicsEntity extends WorldObject {
 
-	public static final double GRAVITY = 300;
+	public static final double GRAVITY = 900;
 	public static final double UNDERWATERGRAVITY = 20;
 
 	private double xVelocity = 0;
@@ -107,10 +107,11 @@ public abstract class PhysicsEntity extends WorldObject {
 			
 			if(!getWorld().collidePlatform(this,getxCoord(),possibleY))
 					setyCoord(possibleY);
+			else {secondsPassed = 0; yVelocity = 0;}
 
 			
 		
-		
+
 		
 			// Calculating new velocity using V(final) = V(initial) + acceleration(time)
 
@@ -123,8 +124,9 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	public void jump(int jumpPower) {
-		if (getWorld().collidePlatform(this, getxCoord(), getyCoord() + 3)) {
+		if (getWorld().collidePlatform(this, getxCoord(), getyCoord() + 1)) {
 			setyVelocity(-jumpPower);
+			setyCoord(getyCoord()+1);
 		}
 
 	}
