@@ -3,6 +3,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -16,6 +17,9 @@ import javafx.stage.Stage;
 public class StartMenu extends GameplayGUI {
 	private static final int WORLDWIDTH = 800;
 	private static final int WORLDHEIGHT = 500;
+	
+	// Font needs to be reloaded since font size is final
+	private Font jellyCraziesFontSize50 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 50);
 
 	/**
 	 * The method which creates the start menu for the game.
@@ -27,11 +31,7 @@ public class StartMenu extends GameplayGUI {
 		// Reset which level the game is currently in. The start menu is considered
 		// to be "level 0". The previous level is also reset so that the game can be
 		// "reset" or played again from reset.
-		GameplayGUI.currentLevel = 0;
-		GameplayGUI.previousLevel = 0;
-
-		// Load the font for the title text
-		Font jellyCraziesFont = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 50);
+		levelReset();
 
 		// Create the root and set the scene
 		Pane root = new Pane();
@@ -43,28 +43,52 @@ public class StartMenu extends GameplayGUI {
 		createBackground(root, "layer-3-ground.png", 800, 500, 0, 0);
 		
 		// Make the game title
-		Text gameTitle = new Text(90, 180, "JUMPY MAN");
-		gameTitle.setFont(jellyCraziesFont);
-		gameTitle.setFill(Color.BLACK);
+		Text gameTitle = new Text(90, 120, "JUMPY MAN");
+		gameTitle.setFont(jellyCraziesFontSize50);
+		gameTitle.setFill(Color.GHOSTWHITE);
+		gameTitle.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
 		root.getChildren().add(gameTitle);
 
-		// Create the start button
-		Button startButton = new Button();
-		startButton.setStyle("-fx-background-image: url('redStartButtom.png')");
-		startButton.setMinSize(250, 75);
-
-		// Create the event for the button click
-		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+		// Create the buttons
+		Button startButton = createMenuButton(scene, "START");
+		Button creditsButton = createMenuButton(scene, "CREDITS");
+		Button exitButton = createMenuButton(scene, "EXIT");
+		
+		// Create the event for the start button click
+		EventHandler<ActionEvent> startButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				GameplayGUI.currentLevel += 1;
+				nextLevel();
 			}
 		};
-
+		
+		// Create the event for the button click
+		EventHandler<ActionEvent> creditsButtonEvent = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				setLevel(99);
+			}
+		};
+		
+		// Create the event for the button click
+		EventHandler<ActionEvent> exitButtonEvent = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				System.exit(0);
+			}
+		};
+		
+		
 		// Set the button click event and then set the button onto the scene
-		startButton.setOnAction(event);
-		startButton.setLayoutX(275);
-		startButton.setLayoutY(275);
-		root.getChildren().add(startButton);
+		startButton.setOnAction(startButtonEvent);
+		creditsButton.setOnAction(creditsButtonEvent);
+		exitButton.setOnAction(exitButtonEvent);
+		
+		// Add the buttons to a VBox, and then add the VBox to the scene
+		VBox buttonsVBox = new VBox(10);
+		buttonsVBox.getChildren().add(startButton);
+		buttonsVBox.getChildren().add(creditsButton);
+		buttonsVBox.getChildren().add(exitButton);
+		buttonsVBox.setLayoutX(275);
+		buttonsVBox.setLayoutY(200);
+		root.getChildren().add(buttonsVBox);
 
 		// Set the scene
 		stage.setScene(scene);

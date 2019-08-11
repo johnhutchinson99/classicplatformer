@@ -1,8 +1,11 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,13 +17,13 @@ import javafx.stage.Stage;
  * The class which creates the Game Over menu for the game.
  *
  */
-public class GameOverGUI extends GameplayGUI{
+public class Credits extends GameplayGUI{
 	
 	private static final int WORLDWIDTH = 800; 
 	private static final int WORLDHEIGHT = 500;
 	
 	private Font jellyCraziesFontSize30 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 30);
-	private Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);	
+	private Font jellyCraziesFontSize15 = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 40);	
 	/**
 	 * The method which creates the game over menu for the game.
 	 * 
@@ -38,7 +41,7 @@ public class GameOverGUI extends GameplayGUI{
 		createBackground(root, "layer-3-ground.png", 800, 500, 0, 0);
 		
 		// Make the game title
-		Text gameOverText = new Text(80, 100,"YOU DIED\nGAME OVER");
+		Text gameOverText = new Text(80, 150,"CREDITS");
 		gameOverText.setFont(jellyCraziesFontSize30);
 		gameOverText.setFill(Color.GHOSTWHITE);
 		gameOverText.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
@@ -46,29 +49,20 @@ public class GameOverGUI extends GameplayGUI{
 
 		
 		// Print out the score the player got
-		Text scoreText = new Text(430, 235,"YOUR SCORE\n00100\n\nHIGH SCORE\n00100");
-		scoreText.setTextAlignment(TextAlignment.CENTER);
-		scoreText.setFont(jellyCraziesFontSize20);
+		Text scoreText = new Text(110, 230,"GAO XINGYU\nJOHN HUTCHINSON\nMICHELLE NGUYEN");
+		scoreText.setFont(jellyCraziesFontSize15);
 		scoreText.setFill(Color.GHOSTWHITE);
-		scoreText.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
+		scoreText.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
 		root.getChildren().add(scoreText);
 		
 		// Create the buttons
 		Button startButton = createMenuButton(scene, "START MENU");
-		Button creditsButton = createMenuButton(scene, "CREDITS");
 		Button exitButton = createMenuButton(scene, "EXIT");
 		
 		// Create the event for the start button click
 		EventHandler<ActionEvent> startButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				setLevel(0);
-			}
-		};
-		
-		// Create the event for the button click
-		EventHandler<ActionEvent> creditsButtonEvent = new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				setLevel(99);
 			}
 		};
 		
@@ -82,16 +76,14 @@ public class GameOverGUI extends GameplayGUI{
 		
 		// Set the button click event and then set the button onto the scene
 		startButton.setOnAction(startButtonEvent);
-		creditsButton.setOnAction(creditsButtonEvent);
 		exitButton.setOnAction(exitButtonEvent);
 		
 		// Add the buttons to a VBox, and then add the VBox to the scene
 		VBox buttonsVBox = new VBox(10);
 		buttonsVBox.getChildren().add(startButton);
-		buttonsVBox.getChildren().add(creditsButton);
 		buttonsVBox.getChildren().add(exitButton);
-		buttonsVBox.setLayoutX(90);
-		buttonsVBox.setLayoutY(210);
+		buttonsVBox.setLayoutX(500);
+		buttonsVBox.setLayoutY(280);
 		root.getChildren().add(buttonsVBox);
 
 		// Set the scene

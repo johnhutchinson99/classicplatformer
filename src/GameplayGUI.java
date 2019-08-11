@@ -2,16 +2,22 @@ import java.util.Map;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Gameplay GUI is the (super)class which controls the current scene/level of
@@ -22,11 +28,10 @@ import javafx.stage.Stage;
 
 public class GameplayGUI extends Application {
 
-	private Font unicornPopFont = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 35);
+	private Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);
+	private Font cartwheelFontSize35 = Font.loadFont(getClass().getResourceAsStream("Cartwheel.otf"), 35);
 
 	private static final int SECONDSINAMILLISECOND = 1000;
-	private static final int SECONDSINAMINUTE = 60;
-	private static final int MINUTESINAHOUR = 60;
 
 	static int currentLevel = 0;
 	static int previousLevel = 0;
@@ -40,9 +45,6 @@ public class GameplayGUI extends Application {
 	private boolean goLeft = false;
 	private boolean goRight = false;
 	private boolean jump = false;
-	private int leftCount = 0;
-	private int rightCount = 0;
-	private int jumpCount = 0;
 
 	/**
 	 * Reset the game level to 0, i.e. the start menu.
@@ -58,22 +60,71 @@ public class GameplayGUI extends Application {
 	public void nextLevel() {
 		currentLevel++;
 	}
+
+	/**
+	 * Move on to the desired level. 
+	 */
+	public void setLevel(int level) {
+		currentLevel = level;
+	}
 	
 	/**
-	 * Move on to the next level / increase the current level by one.
+	 * Creates rectangular menu buttons such as for start, credits, or exit buttons. 
+	 * @param buttonText - the string of text the button will contain
 	 */
-	public void endLevel() {
-		currentLevel=4;
+	public Button createMenuButton(Scene aScene, String buttonText) {
+		Button button = new Button();
+		Label label = new Label(buttonText);
+		label.setFont(cartwheelFontSize35);
+		label.setTextFill(Color.GOLD);
+		label.setStyle("-fx-effect: dropshadow( one-pass-box , black , 10 , 0.1 , 2 , 0 );");
+		button.setGraphic(label);
+		button.setStyle("-fx-background-image: url('redStartButtom.png');");
+		button.setMinSize(250, 60);
+        button.setOnMouseEntered(e -> {
+    		label.setTextFill(Color.FLORALWHITE);
+    		aScene.setCursor(Cursor.HAND);
+        });
+        button.setOnMouseExited(e -> {
+        	label.setTextFill(Color.GOLD);
+        	aScene.setCursor(Cursor.DEFAULT);
+        });
+        
+        return button;
 	}
 	
 	/**
 	 * Update the text of the level display
 	 */
 	public void updateLevelDisplay() {
-		levelDisplay.setText("Level "+ currentLevel);
-		levelDisplay.setFont(unicornPopFont);
-		levelDisplay.setFill(Color.WHITE);
-		levelDisplay.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
+		levelDisplay.setText(currentLevel+"");
+		levelDisplay.setFont(jellyCraziesFontSize20);
+		levelDisplay.setFill(Color.GHOSTWHITE);
+		levelDisplay.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ; ");
+	}
+	
+	/**
+	 * Create the level display and return it. 
+	 * 
+	 * @return gameTimer - VBox which contains the level display
+	 */
+	public VBox createLabelDisplay() {
+		
+		VBox gameLevel = new VBox();
+		gameLevel.setAlignment(Pos.CENTER);
+		gameLevel.setMinWidth(150);
+		
+		// Make the label "Level"
+		Text levelLabel = new Text("LEVEL");
+		levelLabel.setFont(jellyCraziesFontSize20);
+		levelLabel.setFill(Color.GHOSTWHITE);
+		levelLabel.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
+		
+		// Add the label and the level to the VBox
+		gameLevel.getChildren().add(levelLabel);
+		gameLevel.getChildren().add(levelDisplay);
+		
+		return gameLevel;
 	}
 
 	/**
@@ -84,83 +135,70 @@ public class GameplayGUI extends Application {
 
 		currentTime = System.currentTimeMillis();
 
-		// To get minutes, get the difference of current time and start time in seconds
-		// (by dividing by the number of milliseconds in second) then divide by
-		// seconds in a minute and seconds in an hour.
-		long hours = (currentTime - timerStart) / (SECONDSINAMILLISECOND * SECONDSINAMINUTE * MINUTESINAHOUR);
+		long seconds = ((currentTime - timerStart) / SECONDSINAMILLISECOND);
 
-		// To get minutes, get the difference of current time and start time in seconds
-		// (by dividing by the number of milliseconds in second) then divide by
-		// seconds in a minute. If minutes is over 60, subtract the amount of hours (in
-		// minutes) that have passed.
-		long minutes = (currentTime - timerStart) / (SECONDSINAMILLISECOND * SECONDSINAMINUTE);
-		if (minutes >= 60)
-			minutes = minutes - (hours * MINUTESINAHOUR);
+		String timeString = "";
 
-		// To get seconds, get the difference of current time and start time in seconds
-		// (by dividing by the number of milliseconds in second) then mod by
-		// seconds in a minute to attain the remainder.
-		long seconds = ((currentTime - timerStart) / SECONDSINAMILLISECOND) % SECONDSINAMINUTE;
+		if (seconds <= 9) timeString += "0000"+seconds;
+		else if (seconds <= 99) timeString += "000"+seconds;
+		else if (seconds <= 999) timeString += "00"+seconds;
+		else if (seconds <= 9999) timeString += "0"+seconds;
+		else if (seconds <= 99999) timeString += seconds;
+		else timeString += "99999";
 
-		// Formatting of the text to be Time : 00 hrs 00 min 00 sec
-		String timeString = "Time : ";
-		if (hours <= 9)
-			timeString += "0" + hours + " hrs ";
-		else
-			timeString += hours + " hrs ";
-
-		if (minutes <= 9)
-			timeString += "0" + minutes + " min ";
-		else
-			timeString += minutes + " min ";
-
-		if (seconds <= 9)
-			timeString += "0" + seconds + " sec";
-		else
-			timeString += seconds + " sec";
-		
-		// If it's greater then 99 hrs then just set everything to 99
-		if (hours > 99) timeString = "Time : 99 hrs 99 min 99 sec";
-
-		// Set the timer to be the timerString and set the formatting / font / colour of
-		// the timer
+		// Set the timer to be the timerString and set the formatting / font / colour
 		timerDisplay.setText(timeString);
-		timerDisplay.setFont(unicornPopFont);
-		timerDisplay.setFill(Color.WHITE);
+		timerDisplay.setFont(jellyCraziesFontSize20);
+		timerDisplay.setFill(Color.GHOSTWHITE);
 		timerDisplay.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
 
 		return timerDisplay;
 	}
 
-//	/**
-//	 * Create the game timer on the screen and put it in the top left corner. 
-//	 * 
-//	 * @param theRoot - the root of the scene to add the timer to
-//	 */
-//	public void createTimer(HBox display) {
-//		updateTimer();
-//		timerDisplay.setX(10);
-//		timerDisplay.setY(unicornPopFont.getSize());
-//		display.getChildren().add(timerDisplay);
-//	}
-	
 	/**
-	 * Creates the game display containing the level and the time
-	 * @param theRoot
+	 * Create the game timer and return it.  
+	 * 
+	 * @return gameTimer - VBox which contains the timer
 	 */
-	public void createGameDisplay(Pane theRoot) {
-		HBox display = new HBox(320);
+	public VBox createTimer() {
 		
-		updateLevelDisplay();
-		updateTimer();
-		display.getChildren().add(levelDisplay);
-		display.getChildren().add(timerDisplay);
+		VBox gameTimer = new VBox();
+		gameTimer.setAlignment(Pos.CENTER);
+		gameTimer.setMinWidth(150);
 		
-		display.setTranslateX(10);
-		display.setTranslateY(0);
-		theRoot.getChildren().add(display);
+		// Make the label "Time"
+		Text timeLabel = new Text("TIME");
+		timeLabel.setFont(jellyCraziesFontSize20);
+		timeLabel.setFill(Color.GHOSTWHITE);
+		timeLabel.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
+		
+		// Add the label and the time to the VBox
+		gameTimer.getChildren().add(timeLabel);
+		gameTimer.getChildren().add(timerDisplay);
+		
+		return gameTimer;
 	}
 
+	/**
+	 * Creates the game display containing the level and the time
+	 * 
+	 * @param theRoot - the root/scene to add the display to
+	 */
+	public void createGameDisplay(Pane theRoot) {
+		
+		// Fiddle around with the HBox spacing until it looks nice
+		HBox display = new HBox(480);
+
+		updateLevelDisplay();
+		updateTimer();
+		
+		display.getChildren().add(createLabelDisplay());
+		display.getChildren().add(createTimer());
+		
+		display.setTranslateX(10);
+		display.setTranslateY(5);
+		theRoot.getChildren().add(display);
+	}
 
 	/**
 	 * createBackground creates the background of the GUI scene. Specifically, an
@@ -376,23 +414,22 @@ public class GameplayGUI extends Application {
 	 */
 	public void keyBoardMethod(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
 			Map<EnemyGUI, ImageView> enemyMap) {
+		
+		// Set what the keys do on key press
 		aScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				switch (event.getCode()) {
 				case LEFT:
 					goLeft = true;
-					leftCount += 1;
 					System.out.println("KeyPress: L");
 					break;
 				case RIGHT:
 					goRight = true;
-					rightCount += 1;
 					System.out.println("KeyPress: R");
 					break;
 				case SHIFT:
 					jump = true;
-					jumpCount += 1;
 					System.out.println("KeyPress: Shift");
 					break;
 				case DOWN:
@@ -413,23 +450,21 @@ public class GameplayGUI extends Application {
 			}
 		});
 
+		// Set what the keys do on key release
 		aScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				switch (event.getCode()) {
 				case LEFT:
 					goLeft = false;
-					leftCount = 0;
 					System.out.println("KeyRelease: L");
 					break;
 				case RIGHT:
 					goRight = false;
-					rightCount = 0;
 					System.out.println("KeyRelease: R");
 					break;
 				case SHIFT:
 					jump = false;
-					jumpCount = 0;
 					System.out.println("KeyRelease: Shift");
 					break;
 				case DOWN:
@@ -503,7 +538,9 @@ public class GameplayGUI extends Application {
 					goLeft = false;
 					goRight = false;
 					jump = false;
-					endLevel();
+					aPlayer.setXYCoord(-10, -10);
+					aPlayer.revive();
+					setLevel(1000);
 				}
 
 				for (Map.Entry<EnemyGUI, ImageView> entry : enemyMap.entrySet()) {
@@ -529,6 +566,64 @@ public class GameplayGUI extends Application {
 	}
 
 	/**
+	 * Create the level selector for the game which selects the level or scene
+	 * (e.g. start menu, levels, game over, etc) to display. 
+	 */
+	public void levelSelector(Stage primaryStage) {
+
+		// Create instances of each of the level
+		StartMenu start = new StartMenu();
+		GameOverGUI over = new GameOverGUI();
+		Credits credits = new Credits();
+
+		// Start off by showing the start menu and making the stage non-resizeable
+		start.create(primaryStage);
+		primaryStage.setResizable(false);
+		primaryStage.sizeToScene();
+		primaryStage.show();
+
+		// Use an animation timer to constantly check/refresh what level the game should
+		// be displaying or be in
+		AnimationTimer refreshLevel = new AnimationTimer() {
+			@Override
+			public void handle(long now) {
+				// change to the next level and update what the previous level is
+				if (currentLevel != previousLevel) {
+					previousLevel = currentLevel;
+					this.stop();
+					updateLevelGUI();
+				}
+
+			}
+
+			// update the GUI based on the what the current level should be
+			private void updateLevelGUI() {
+				if (currentLevel == 0) {
+					start.create(primaryStage);
+					this.start();
+				} else if (currentLevel == 1) {
+					timerStart = System.currentTimeMillis();
+					LevelOneGUI level1 = new LevelOneGUI();
+					level1.create(primaryStage, mainPlayer);
+					this.start();
+				} else if (currentLevel == 2) {
+					LevelTwoGUI level2 = new LevelTwoGUI();
+					level2.create(primaryStage, mainPlayer);
+					this.start();
+				} else if (currentLevel == 99) {
+					credits.create(primaryStage);
+					this.start();
+				} else {
+					over.create(primaryStage);
+					this.start();
+				}
+
+			}
+		};
+		refreshLevel.start();
+	}
+
+	/**
 	 * The start method of the javaFX application which opens the javaFX application
 	 * and controls which scene is displayed on the stage.
 	 * 
@@ -536,49 +631,16 @@ public class GameplayGUI extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) {
-
-		StartMenu start = new StartMenu();
-		LevelOneGUI level1 = new LevelOneGUI();
-		LevelTwoGUI level2 = new LevelTwoGUI();
-		GameOverGUI over = new GameOverGUI();
-
-		start.create(primaryStage);
-		primaryStage.show();
-
-		AnimationTimer refreshLevel = new AnimationTimer() {
-			@Override
-			public void handle(long now) {
-
-				if (currentLevel > previousLevel) {
-					previousLevel += 1;
-					this.stop();
-					updateLevelGUI();
-				}
-
-			}
-
-			private void updateLevelGUI() {
-				if (currentLevel == 0) {
-					start.create(primaryStage);
-					this.start();
-				} else
-					if (currentLevel == 1) {
-					timerStart = System.currentTimeMillis();
-					level1.create(primaryStage, mainPlayer);
-					this.start();
-				} else if (currentLevel == 2) {
-					level2.create(primaryStage, mainPlayer);
-					this.start();
-				} else {
-					over.create(primaryStage, mainPlayer);
-				}
-
-			}
-		};
-		refreshLevel.start();
-
+		primaryStage.setTitle("Jumpy Man");
+		primaryStage.getIcons().add(new Image("giphy.gif"));
+		levelSelector(primaryStage);
 	}
 
+	/**
+	 * The main method of the application.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Application.launch(GameplayGUI.class, args);
 	}
