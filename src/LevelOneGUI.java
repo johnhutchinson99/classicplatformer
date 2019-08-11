@@ -43,9 +43,6 @@ public class LevelOneGUI extends GameplayGUI {
 		// Set world
 		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT);
 
-		// Create the EndPoint for the world
-		createEndPoint(root, levelOne, 770, 175, 50, 50);
-
 		// Create background
 		createBackground(root, "Full-Background.png", 800, 500, 0, 0);
 		createBackground(root, "layer-4.png", 800, 500, 0, 0);
@@ -88,16 +85,20 @@ public class LevelOneGUI extends GameplayGUI {
 		createFlyingEnemy(root, levelOne, worldObjectMap, 180, 300, 260, 345, 30, 35);
 
 		// Create the platforms in the level
-		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
+		createPlatform(root, levelOne, platformGUIMap, 800, 300, 100, 200);
 		createPlatform(root, levelOne, platformGUIMap, 0, 420, 100, 20);
 		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 20);
 		createPlatform(root, levelOne, platformGUIMap, 280, 345, 100, 20);
 		createPlatform(root, levelOne, platformGUIMap, 420, 305, 100, 20);
 		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 20);
 		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 20);
+		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
 		
 		// Create coins
 		createCoin(root, levelOne, worldObjectMap, 150, 420, 25, 25);
+		
+		// Create the EndPoint for the world
+		createEndPoint(root, levelOne, worldObjectMap, 770, 175, 50, 50);
 		
 		// Call the keyboard listener for the level
 		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);

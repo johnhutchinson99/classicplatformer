@@ -43,9 +43,6 @@ public class LevelTwoGUI extends GameplayGUI {
 		// Set world
 		World levelTwo = new World(WORLDWIDTH, WORLDHEIGHT);
 		
-		// Create the EndPoint for the world
-		createEndPoint(root, levelTwo, 150, 0, 50, 50);
-
 		// Create background
         createBackground(root, "Full-Background.png", 800, 500, 0, 0);
         createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
@@ -96,6 +93,9 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, platformGUIMap, 420, 130, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 580, 170, 100, 20);
 
+		// Create the EndPoint for the world
+		createEndPoint(root, levelTwo, worldObjectMap, 150, 0, 50, 50);
+		
 		// Call the keyboard listener for the level
 		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
 		

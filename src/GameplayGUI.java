@@ -398,7 +398,7 @@ public class GameplayGUI extends Application {
 	public void createTrapType1(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
 		TrapType1 trap1 = new TrapType1(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
-		Image img = new Image("WalkingEnemy.gif", false);
+		Image img = new Image("undergroundmonster.gif", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);
 		enemyImageView.setFitHeight(height);
@@ -449,16 +449,17 @@ public class GameplayGUI extends Application {
 	 * @param width   - the width of the EndPoint
 	 * @param height  - the height of the EndPoint
 	 */
-	public void createEndPoint(Pane theRoot, World aWorld, int xCoord, int yCoord, int width, int height) {
+	public void createEndPoint(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord, int yCoord, int width, int height) {
 		EndPoint endpoint = new EndPoint(xCoord, yCoord, width, height);
 		aWorld.setEndPoint(endpoint);
-		Image endPointImage = new Image("Portal.editor.pv.png", false);
+		Image endPointImage = new Image("door.png", false);
 		ImageView endPointTile = new ImageView(endPointImage);
 		endPointTile.setFitWidth(width);
 		endPointTile.setFitHeight(height);
 		theRoot.getChildren().add(endPointTile);
 		endPointTile.setX(xCoord);
 		endPointTile.setY(yCoord);
+		worldObjectMap.put(endpoint, endPointTile);
 	}
 
 	/**
@@ -546,6 +547,7 @@ public class GameplayGUI extends Application {
 						goRight = false;
 						jump = false;
 						currentLevel += 1;
+						System.out.println(currentLevel);
 					}
 					break;
 				case Z:
@@ -666,16 +668,17 @@ public class GameplayGUI extends Application {
 				}
 
 				for (Map.Entry<WorldObject, ImageView> entry : worldObjectMap.entrySet()) {
-					WorldObject enemy = entry.getKey();
-					ImageView enemyRectangle = entry.getValue();
-					enemy.update();
-					enemyRectangle.setX(enemy.getxCoord() + gameCamera.getOffsetX());
-					enemyRectangle.setY(enemy.getyCoord() + gameCamera.getOffsetY());
-					aPlayer.getWorld().isCollide(aPlayer, enemy);
-					enemy.getWorld().isCollide(bullet, enemy);
-
-					if (!enemy.isAlive()) {
-						enemy.moveOffScreen();
+					WorldObject worldObject = entry.getKey();
+					ImageView worldObjectImage = entry.getValue();
+					worldObject.update();
+					worldObjectImage.setX(worldObject.getxCoord() + gameCamera.getOffsetX());
+					worldObjectImage.setY(worldObject.getyCoord() + gameCamera.getOffsetY());
+					aPlayer.getWorld().isCollide(aPlayer, worldObject);
+					if (worldObject instanceof EnemyGUI) {
+						worldObject.getWorld().isCollide(bullet, worldObject);
+					}
+					if (!worldObject.isAlive()) {
+						worldObject.moveOffScreen();
 					}
 
 				}
