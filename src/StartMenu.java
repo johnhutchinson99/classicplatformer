@@ -1,12 +1,16 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -18,9 +22,6 @@ public class StartMenu extends GameplayGUI {
 	private static final int WORLDWIDTH = 800;
 	private static final int WORLDHEIGHT = 500;
 	
-	// Font needs to be reloaded since font size is final
-	private Font jellyCraziesFontSize50 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 50);
-
 	/**
 	 * The method which creates the start menu for the game.
 	 * 
@@ -48,6 +49,17 @@ public class StartMenu extends GameplayGUI {
 		gameTitle.setFill(Color.GHOSTWHITE);
 		gameTitle.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
 		root.getChildren().add(gameTitle);
+		
+		// Add high score text
+		Label highScoreText = new Label("HIGH SCORE: "+highScore);
+		highScoreText.setFont(cartwheelFontSize35);
+		highScoreText.setTextFill(Color.LIGHTGOLDENRODYELLOW);
+		highScoreText.setStyle("-fx-effect: dropshadow( one-pass-box , black , 12 , 0.2 , 2 , 0 );");
+		highScoreText.setAlignment(Pos.CENTER);
+		highScoreText.setMinWidth(300);
+		highScoreText.setTranslateX(250);
+		highScoreText.setLayoutY(185);
+		root.getChildren().add(highScoreText);
 
 		// Create the buttons
 		Button startButton = createMenuButton(scene, "START");
@@ -87,7 +99,7 @@ public class StartMenu extends GameplayGUI {
 		buttonsVBox.getChildren().add(creditsButton);
 		buttonsVBox.getChildren().add(exitButton);
 		buttonsVBox.setLayoutX(275);
-		buttonsVBox.setLayoutY(200);
+		buttonsVBox.setLayoutY(245);
 		root.getChildren().add(buttonsVBox);
 
 		// Set the scene

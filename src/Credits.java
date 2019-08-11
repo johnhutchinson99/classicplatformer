@@ -22,8 +22,6 @@ public class Credits extends GameplayGUI{
 	private static final int WORLDWIDTH = 800; 
 	private static final int WORLDHEIGHT = 500;
 	
-	private Font jellyCraziesFontSize30 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 30);
-	private Font jellyCraziesFontSize15 = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 40);	
 	/**
 	 * The method which creates the game over menu for the game.
 	 * 
@@ -50,7 +48,7 @@ public class Credits extends GameplayGUI{
 		
 		// Print out the score the player got
 		Text scoreText = new Text(110, 230,"GAO XINGYU\nJOHN HUTCHINSON\nMICHELLE NGUYEN");
-		scoreText.setFont(jellyCraziesFontSize15);
+		scoreText.setFont(unicornPopFontSize40);
 		scoreText.setFill(Color.GHOSTWHITE);
 		scoreText.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
 		root.getChildren().add(scoreText);

@@ -29,8 +29,13 @@ import javafx.stage.StageStyle;
 
 public class GameplayGUI extends Application {
 
-	private Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);
-	private Font cartwheelFontSize35 = Font.loadFont(getClass().getResourceAsStream("Cartwheel.otf"), 35);
+	// Font needs to be reloaded since font size is final
+	// Make protected so children start/exit/etc menus can use the fonts
+	protected Font jellyCraziesFontSize50 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 50);
+	protected Font jellyCraziesFontSize30 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 30);
+	protected Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);
+	protected Font unicornPopFontSize40 = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 40);	
+	protected Font cartwheelFontSize35 = Font.loadFont(getClass().getResourceAsStream("Cartwheel.otf"), 35);
 
 	private static final int SECONDSINAMILLISECOND = 1000;
 
@@ -98,7 +103,7 @@ public class GameplayGUI extends Application {
 		button.setStyle("-fx-background-image: url('redStartButtom.png');");
 		button.setMinSize(250, 60);
 		button.setOnMouseEntered(e -> {
-			label.setTextFill(Color.FLORALWHITE);
+			label.setTextFill(Color.LIGHTGOLDENRODYELLOW);
 			aScene.setCursor(Cursor.HAND);
 		});
 		button.setOnMouseExited(e -> {

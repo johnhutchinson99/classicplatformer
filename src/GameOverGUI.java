@@ -19,8 +19,6 @@ public class GameOverGUI extends GameplayGUI{
 	private static final int WORLDWIDTH = 800; 
 	private static final int WORLDHEIGHT = 500;
 	
-	private Font jellyCraziesFontSize30 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 30);
-	private Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);	
 	/**
 	 * The method which creates the game over menu for the game.
 	 * 
@@ -46,7 +44,7 @@ public class GameOverGUI extends GameplayGUI{
 
 		
 		// Print out the score the player got
-		Text scoreText = new Text(430, 235,"YOUR SCORE\n"+currentScore+"\nHIGH SCORE\n"+highScore);
+		Text scoreText = new Text(430, 235,"YOUR SCORE\n"+currentScore+"\n\nHIGH SCORE\n"+highScore);
 		scoreText.setTextAlignment(TextAlignment.CENTER);
 		scoreText.setFont(jellyCraziesFontSize20);
 		scoreText.setFill(Color.GHOSTWHITE);

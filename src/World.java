@@ -6,30 +6,31 @@
 */
 
 import java.util.ArrayList;
+
 public class World {
 
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private ArrayList<EnemyGUI> enemyList = new ArrayList<EnemyGUI>();
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
 
-	private int coinsCount; 
-	
-	private Player thePlayer; 
-	
+	private int coinsCount;
+
+	private Player thePlayer;
+
 	private int worldWidth;
 	private int worldHeight;
-	private EndPoint endPoint = new EndPoint(0,0,0,0);
-	
+	private EndPoint endPoint = new EndPoint(0, 0, 0, 0);
+
 	public World() {
 		worldWidth = Integer.MAX_VALUE;
 		worldHeight = Integer.MAX_VALUE;
 	}
-	
+
 	public World(int w, int h) {
 		worldWidth = w;
 		worldHeight = h;
 	}
-	
+
 //	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
 //		worldMaxXCoord = maxX;
 //		worldMaxYCoord = maxY;
@@ -38,19 +39,19 @@ public class World {
 //		goalXCoord = finalX;
 //		goalYCoord = finalY;
 //	}
-	
+
 	public void addToCoinCount(int points) {
 		coinsCount += points;
 	}
-	
+
 	public void resetCoinsCount() {
 		coinsCount = 0;
 	}
-	
+
 	public int getCoinsCount() {
 		return coinsCount;
 	}
-	
+
 	public int getWorldWidth() {
 		return worldWidth;
 	}
@@ -58,30 +59,29 @@ public class World {
 	public int getWorldHeight() {
 		return worldHeight;
 	}
-	
 
 	public ArrayList<Enemy> getEnemyList() {
 		return listOfEnemies;
 	}
-	
+
 	public void setEndPoint(EndPoint e) {
 		endPoint = e;
 	}
-	
+
 	public EndPoint getEndPoint() {
 		return endPoint;
 	}
-	
+
 	public void addPlayer(Player p) {
 		thePlayer = p;
 	}
-	
+
 	public Player getPlayer() {
 		return thePlayer;
 	}
 
 	public void addEnemy(EnemyGUI e) {
-	listOfEnemies.add(e);
+		listOfEnemies.add(e);
 	}
 
 	public void addPlatform(Platform p) {
@@ -98,7 +98,7 @@ public class World {
 
 		return returnedListOfEnemies;
 	}
-	
+
 //	/**
 //	 * Getter for platforms (the arraylist containing all platforms in the world).
 //	 * 
@@ -130,14 +130,49 @@ public class World {
 		listOfEnemies.remove(anEnemy);
 	}
 
-	
-
 	public boolean isCollide(WorldObject object1, WorldObject object2) {
-		boolean inRXArea = (object1.getxCoord()+object1.getWidth() >= object2.getxCoord() && object1.getxCoord()+object1.getWidth() <= object2.getxCoord()+object2.getWidth());
-		boolean inLXArea = (object1.getxCoord() >= object2.getxCoord() && object1.getxCoord() <= object2.getxCoord()+object2.getWidth());
-		boolean inLYArea = (object1.getyCoord()+object1.getHeight() >= object2.getyCoord() && object1.getyCoord()+object1.getHeight() <= object2.getyCoord()+object2.getHeight());
-		boolean inUYArea = (object1.getyCoord() >= object2.getyCoord() && object1.getyCoord() <= object2.getyCoord()+object2.getHeight());
+
+		WorldObject smallerWidthObject, largerWidthObject, smallerHeightObject, largerHeightObject;
+
+		// First determine which object has the smaller width and which has the smaller
+		// height
+		if (object1.getWidth() < object2.getWidth()) {
+			smallerWidthObject = object1;
+			largerWidthObject = object2;
+		} else {
+			smallerWidthObject = object2;
+			largerWidthObject = object1;
+		}
+
+		if (object1.getHeight() < object2.getHeight()) {
+			smallerHeightObject = object1;
+			largerHeightObject = object2;
+		} else {
+			smallerHeightObject = object2;
+			largerHeightObject = object1;
+		}
+
+		// Check if the smaller width object has a corner within the other object
+		boolean inRXArea = (smallerWidthObject.getxCoord() + smallerWidthObject.getWidth() >= largerWidthObject
+				.getxCoord()
+				&& smallerWidthObject.getxCoord() + smallerWidthObject.getWidth() <= largerWidthObject.getxCoord()
+						+ largerWidthObject.getWidth());
+		boolean inLXArea = (smallerWidthObject.getxCoord() >= largerWidthObject.getxCoord()
+				&& smallerWidthObject.getxCoord() <= largerWidthObject.getxCoord() + largerWidthObject.getWidth());
+
+		// Likewise, check if the smaller height object has a corner within the other
+		// object
+		boolean inLYArea = (smallerHeightObject.getyCoord() + smallerHeightObject.getHeight() >= largerHeightObject
+				.getyCoord()
+				&& smallerHeightObject.getyCoord() + smallerHeightObject.getHeight() <= largerHeightObject.getyCoord()
+						+ largerHeightObject.getHeight());
+		boolean inUYArea = (smallerHeightObject.getyCoord() >= largerHeightObject.getyCoord()
+				&& smallerHeightObject.getyCoord() <= largerHeightObject.getyCoord() + largerHeightObject.getHeight());
+
+		// If there are corners that overlap in both the horizontal and vertical
+		// directions, then do the collision method
 		if ((inRXArea || inLXArea) && (inLYArea || inUYArea)) {
+			System.out.println("Collding");
 			return object2.doCollision(object1);
 		} else {
 			return false;
