@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -287,6 +288,7 @@ public class GameplayGUI extends Application {
 		enemyImageView.setY(yCoord);
 
 		aWorld.addEnemy(trap1);
+		System.out.println(aWorld.getListOfEnemies().size());
 		enemyGUIMap.put(trap1, enemyImageView);
 
 	}
@@ -375,7 +377,7 @@ public class GameplayGUI extends Application {
 	 *                        representations
 	 */
 	public void keyBoardMethod(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
-			Map<EnemyGUI, ImageView> enemyMap) {
+			Map<EnemyGUI, ImageView> enemyMap,Bullet bullet) {
 		aScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -407,6 +409,10 @@ public class GameplayGUI extends Application {
 //					player1.attack();
 					System.out.println("Z");
 					break;
+					
+					
+				case F:
+					bullet.fire();
 				default:
 					break;
 				}
@@ -457,7 +463,7 @@ public class GameplayGUI extends Application {
 	 *                        representations
 	 */
 	public void gameAnimation(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
-			Map<EnemyGUI, ImageView> enemyMap, Map<Platform, HBox> aPlatformGUIMap) {
+			Map<EnemyGUI, ImageView> enemyMap, Map<Platform, HBox> aPlatformGUIMap,Bullet bullet, Rectangle bulletRect) {
 
 		// Create the game camera and animation timer
 		Camera gameCamera = new Camera(aScene, aPlayer);
@@ -474,7 +480,7 @@ public class GameplayGUI extends Application {
 
 				// Update the camera, timer/points/game display, and keyboard listener method
 				gameCamera.updateCamera(aPlayer);
-				keyBoardMethod(stage, aScene, aPlayer, playerImageView, enemyMap);
+				keyBoardMethod(stage, aScene, aPlayer, playerImageView, enemyMap,bullet);
 
 				// Respond to keyboard input if applicable
 				if (jump) {
@@ -483,8 +489,10 @@ public class GameplayGUI extends Application {
 
 				if (goLeft) {
 					aPlayer.setxVelocity(Player.WALKSPEED*-1);
+					aPlayer.facingRight(false);
 				} else if (goRight) {
 					aPlayer.setxVelocity(Player.WALKSPEED);
+					aPlayer.facingRight(true);
 				} else {
 					aPlayer.setxVelocity(0);
 				}
@@ -513,6 +521,12 @@ public class GameplayGUI extends Application {
 					enemyRectangle.setX(enemy.getxCoord()+gameCamera.getOffsetX());
 					enemyRectangle.setY(enemy.getyCoord()+gameCamera.getOffsetY());
 					aPlayer.getWorld().isCollide(aPlayer, enemy);
+					enemy.getWorld().isCollide(bullet,enemy);
+					
+					if(!enemy.getWorld().getListOfEnemies().contains(enemy)) {
+						enemy.moveOffScreen();
+					}
+					
 				}
 				
 				for (Map.Entry<Platform, HBox> entry : aPlatformGUIMap.entrySet()) {
@@ -521,6 +535,9 @@ public class GameplayGUI extends Application {
 					platformHBox.setTranslateX(platform.getxCoord()+gameCamera.getOffsetX());
 					platformHBox.setTranslateY(platform.getyCoord()+gameCamera.getOffsetY());
 				}
+				bullet.update();
+				bulletRect.setX(bullet.getxCoord());
+				bulletRect.setY(bullet.getyCoord());
 				
 				
 			}

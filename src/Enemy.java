@@ -16,7 +16,11 @@ public class Enemy extends PhysicsEntity {
 	public Enemy(World newWorld, int width, int height) {
 		super(4, 0, width, height, newWorld);
 	}
+		
 
+	public Enemy(World newWorld,int x, int y,int width, int height) {
+		super(x, y, width, height,newWorld);
+	}
 	/**
 	 * Moves the enemy
 	 */
@@ -32,21 +36,34 @@ public class Enemy extends PhysicsEntity {
 
 	/**
 	 * The doCollision method is what the enemy does (to the player) when it
-	 * collides with the player.
+	 * collides with an object.
 	 * 
-	 * @param Player player - the player the enemy will act on
+	 * @param WorldObject o- the object the enemy will act on
 	 * @return boolean true - returns true in order to signify the method has
 	 *         finished running
 	 */
-	public boolean doCollision(Player p) {
-		p.kill();
+	public boolean doCollision(WorldObject o) {
+		if( o instanceof Player) {
+			Player p = (Player)o;
+			p.kill();
+		}
+		
+
 		return true;
 	}
+	
+	
+
 
 	/**
 	 * Check if enemies in the list of enemies are alive and removes dead enemies.
 	 */
 	public void checkEnemy() {
+		
+		
+		
+		
+		
 		for (int i = 0; i < enemyList.size(); i++) {
 			if (enemyList.get(i).isAlive = false) {
 				enemyList.remove(i);

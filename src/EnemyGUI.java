@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class EnemyGUI extends PhysicsEntity{
+public abstract class EnemyGUI extends Enemy{
 	
 	private int leftMax;
 	private int rightMax;
@@ -9,14 +9,9 @@ public abstract class EnemyGUI extends PhysicsEntity{
 	private boolean isAlive; 
 		
 	
-	public EnemyGUI(int xCoord, int yCoord, int width, int height, int lMax, int rMax) {
-		super(xCoord,yCoord,width,height);
-		leftMax = lMax;
-		rightMax = rMax;
-	}
 	
 	public EnemyGUI(int xCoord, int yCoord, int width, int height, World world, int lMax, int rMax) {
-		super(xCoord,yCoord,width,height,world);
+		super(world,xCoord,yCoord,width,height);
 		leftMax = lMax;
 		rightMax = rMax;
 	}
@@ -28,22 +23,23 @@ public abstract class EnemyGUI extends PhysicsEntity{
 	
 	
 	public EnemyGUI(int xCoord, int yCoord, int width, int height, World world) {
-		super(xCoord,yCoord,width,height,world);
+		super(world,xCoord,yCoord,width,height);
 	}
 
 	public void move() {}
 	
-	
-	public boolean doCollision(Player p) {
-		p.kill();
+	public boolean doCollision(WorldObject o) {
+		super.doCollision(o);
+		
+		if(o instanceof Bullet) {
+			enemyDead();
+		}
+		
 		return true;
 	}
 	
 	public void enemyDead() {
-		for (int i = 0;i < enemyList.size();i++) {
-			removedEnemyList.add(enemyList.remove(i));
-			
-		}
+		getWorld().getListOfEnemies().remove(this);
 	}
 	
 	public int getLeftMax() {

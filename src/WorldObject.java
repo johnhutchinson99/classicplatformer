@@ -127,13 +127,17 @@ public abstract class WorldObject {
 		return world;
 	}
 	
-	public boolean doCollision(Player p) {
+	public boolean doCollision(WorldObject p) {
 		return true;
 	}
 	
 	public void update() {
 		
 	}
+	
+	
+	
+	
 //
 //	/**
 //	 * 

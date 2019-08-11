@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
@@ -55,6 +56,7 @@ public class LevelOneGUI extends GameplayGUI {
 		Player player = new Player(aPlayer);
 		player.setXYCoord(20, 300);
 		player.setWorld(levelOne);
+		levelOne.addPlayer(player);
 
 		// Create an ImageView representation of the player
 		// Note: Don't turn into method as need to be updated on keyboard
@@ -64,7 +66,13 @@ public class LevelOneGUI extends GameplayGUI {
 		iv.setFitHeight(player.getHeight());
 		iv.setFitWidth(player.getWidth());
 		root.getChildren().add(iv);
-
+		
+		
+		//Add bullet
+		Bullet bullet = new Bullet(WORLDHEIGHT+100,WORLDWIDTH+100,10,10,levelOne);
+		Rectangle bulletRect = new Rectangle(bullet.getxCoord(),bullet.getyCoord(),bullet.getWidth(),bullet.getHeight());
+		root.getChildren().add(bulletRect);
+		
 		// Add the enemies
 		createEnemyType1(root, levelOne, enemyGUIMap, 580, 230, 560, 670, 20, 20);
 		createTrapType1(root, levelOne, enemyGUIMap, 310, 350, 325, 345, 20, 20);
@@ -80,7 +88,7 @@ public class LevelOneGUI extends GameplayGUI {
 		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 20);
 		
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, enemyGUIMap, platformGUIMap);
+		gameAnimation(stage, scene, player, iv, enemyGUIMap, platformGUIMap,bullet,bulletRect);
 
 		// Set the scene and show it
 		stage.setScene(scene);

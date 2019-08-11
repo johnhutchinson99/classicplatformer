@@ -48,8 +48,8 @@ public class World {
 	}
 	
 
-	public ArrayList<EnemyGUI> getEnemyList() {
-		return enemyList;
+	public ArrayList<Enemy> getEnemyList() {
+		return listOfEnemies;
 	}
 	
 	public void setEndPoint(EndPoint e) {
@@ -69,7 +69,7 @@ public class World {
 	}
 
 	public void addEnemy(EnemyGUI e) {
-		enemyList.add(e);
+	listOfEnemies.add(e);
 	}
 
 	public void addPlatform(Platform p) {
@@ -104,6 +104,7 @@ public class World {
 	 * @param anEnemy - The enemy to add to the world.
 	 */
 	public void addToListOfEnemies(Enemy anEnemy) {
+		System.out.println("ADDED");
 		listOfEnemies.add(anEnemy);
 	}
 
@@ -119,7 +120,7 @@ public class World {
 
 	
 
-	public boolean isCollide(Player p, WorldObject o) {
+	public boolean isCollide(WorldObject p, WorldObject o) {
 		boolean inRXArea = (p.getxCoord()+p.getWidth() >= o.getxCoord() && p.getxCoord()+p.getWidth() <= o.getxCoord()+o.getWidth());
 		boolean inLXArea = (p.getxCoord() >= o.getxCoord() && p.getxCoord() <= o.getxCoord()+o.getWidth());
 		boolean inLYArea = (p.getyCoord()+p.getHeight() >= o.getyCoord() && p.getyCoord()+p.getHeight() <= o.getyCoord()+o.getHeight());
