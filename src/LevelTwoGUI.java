@@ -23,7 +23,7 @@ public class LevelTwoGUI extends GameplayGUI {
 	private static final int WORLDWIDTH = 800;
 	private static final int WORLDHEIGHT = 500;
 	
-	Map<EnemyGUI, ImageView> enemyGUIMap = new HashMap<EnemyGUI, ImageView>();
+	Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
 	Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
 
 	/**
@@ -75,13 +75,13 @@ public class LevelTwoGUI extends GameplayGUI {
         
         
 		// Add the enemies
-        createEnemyType1(root, levelTwo, enemyGUIMap, 580, 230, 560, 670, 20, 20);
-        createEnemyType1(root, levelTwo, enemyGUIMap, 600, 135, 590, 650, 20, 20);
-        createEnemyType1(root, levelTwo, enemyGUIMap, 440, 95, 430, 480, 20, 20);
-        createTrapType1(root, levelTwo, enemyGUIMap, 310, 350, 325, 345, 20, 20);
-        createFlyingEnemy(root, levelTwo, enemyGUIMap, 180, 300, 260, 345, 30, 35);
-        createFlyingEnemy(root, levelTwo, enemyGUIMap, 760, 200, 100, 190, 30, 35);
-        createFlyingEnemy(root, levelTwo, enemyGUIMap, 300, 65, 0, 55, 30, 35);
+        createEnemyType1(root, levelTwo, worldObjectMap, 580, 230, 560, 670, 20, 20);
+        createEnemyType1(root, levelTwo, worldObjectMap, 600, 135, 590, 650, 20, 20);
+        createEnemyType1(root, levelTwo, worldObjectMap, 440, 95, 430, 480, 20, 20);
+        createTrapType1(root, levelTwo, worldObjectMap, 310, 350, 325, 345, 20, 20);
+        createFlyingEnemy(root, levelTwo, worldObjectMap, 180, 300, 260, 345, 30, 35);
+        createFlyingEnemy(root, levelTwo, worldObjectMap, 760, 200, 100, 190, 30, 35);
+        createFlyingEnemy(root, levelTwo, worldObjectMap, 300, 65, 0, 55, 30, 35);
         
 		// Create the platforms in the level
 		createPlatform( root, levelTwo, platformGUIMap, 0, 450, 1000, 50);
@@ -97,7 +97,7 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, platformGUIMap, 580, 170, 100, 20);
 
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, enemyGUIMap, platformGUIMap,bullet,bulletRect);
+		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
 		
 		// Set the scene and show it
 		stage.setScene(scene);

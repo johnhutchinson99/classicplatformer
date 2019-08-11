@@ -11,16 +11,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="GUI.MyTimer" project="classicplatformer" file="/classicplatformer/src/GUI.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="74" y="636"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="EnemyGUI" project="classicplatformer" file="/classicplatformer/src/EnemyGUI.java" 
+  <class id="2" language="java" name="EnemyGUI" project="classicplatformer" file="/classicplatformer/src/EnemyGUI.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="686" y="1125"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -29,16 +20,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="PhysicsTest" project="classicplatformer" 
-    file="/classicplatformer/src/PhysicsTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="150" y="171"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="Enemy" project="classicplatformer" file="/classicplatformer/src/Enemy.java" 
+  <class id="3" language="java" name="Enemy" project="classicplatformer" file="/classicplatformer/src/Enemy.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="387" y="1092"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -47,7 +29,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="WorldObject" project="classicplatformer" 
+  <class id="4" language="java" name="WorldObject" project="classicplatformer" 
     file="/classicplatformer/src/WorldObject.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="589" y="109"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -56,7 +38,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Player" project="classicplatformer" file="/classicplatformer/src/Player.java" 
+  <class id="5" language="java" name="Player" project="classicplatformer" file="/classicplatformer/src/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="945" y="101"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -65,7 +47,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="LevelTwo" project="classicplatformer" file="/classicplatformer/src/LevelTwo.java" 
+  <class id="6" language="java" name="LevelTwo" project="classicplatformer" file="/classicplatformer/src/LevelTwo.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1139" y="559"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -74,7 +56,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="TrapType1" project="classicplatformer" 
+  <class id="7" language="java" name="TrapType1" project="classicplatformer" 
     file="/classicplatformer/src/TrapType1.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="454" y="1303"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -83,7 +65,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="EnemyType1" project="classicplatformer" 
+  <class id="8" language="java" name="EnemyType1" project="classicplatformer" 
     file="/classicplatformer/src/EnemyType1.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="929" y="1090"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -92,7 +74,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="PhysicsEntity" project="classicplatformer" 
+  <class id="9" language="java" name="PhysicsEntity" project="classicplatformer" 
     file="/classicplatformer/src/PhysicsEntity.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="386" y="616"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -101,16 +83,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="GUI" project="classicplatformer" file="/classicplatformer/src/GUI.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="144" y="437"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="LevelOne" project="classicplatformer" file="/classicplatformer/src/LevelOne.java" 
+  <class id="10" language="java" name="LevelOne" project="classicplatformer" file="/classicplatformer/src/LevelOne.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1140" y="819"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -119,7 +92,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="World" project="classicplatformer" file="/classicplatformer/src/World.java" 
+  <class id="11" language="java" name="World" project="classicplatformer" file="/classicplatformer/src/World.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="826" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -128,7 +101,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="Gameplay" project="classicplatformer" file="/classicplatformer/src/Gameplay.java" 
+  <class id="12" language="java" name="Gameplay" project="classicplatformer" file="/classicplatformer/src/Gameplay.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="343" y="127"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -137,74 +110,26 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+  <association id="13">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="14" name="enemyList">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <generalization id="16">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <nesting id="17">    
-    <end type="SOURCE" refId="12"/>    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="2"/>  
-  </nesting>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="19">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="20" name="removedEnemyList">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="21" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="23" name="levelOne">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="25">    
+  <generalization id="17">    
     <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="14"/>  
+    <end type="TARGET" refId="2"/>  
   </generalization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="27">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="28" name="enemyList">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="29" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="31" name="enemyList">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="32" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

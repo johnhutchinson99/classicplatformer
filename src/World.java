@@ -12,7 +12,8 @@ public class World {
 	private ArrayList<EnemyGUI> enemyList = new ArrayList<EnemyGUI>();
 	private ArrayList<Enemy> listOfEnemies = new ArrayList<Enemy>();
 
-//	public Player player;
+	private int coinsCount; 
+	
 	private Player thePlayer; 
 	
 	private int worldWidth;
@@ -28,7 +29,7 @@ public class World {
 		worldWidth = w;
 		worldHeight = h;
 	}
-
+	
 //	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
 //		worldMaxXCoord = maxX;
 //		worldMaxYCoord = maxY;
@@ -38,6 +39,17 @@ public class World {
 //		goalYCoord = finalY;
 //	}
 	
+	public void addToCoinCount(int points) {
+		coinsCount += points;
+	}
+	
+	public void resetCoinsCount() {
+		coinsCount = 0;
+	}
+	
+	public int getCoinsCount() {
+		return coinsCount;
+	}
 	
 	public int getWorldWidth() {
 		return worldWidth;
@@ -120,13 +132,13 @@ public class World {
 
 	
 
-	public boolean isCollide(WorldObject p, WorldObject o) {
-		boolean inRXArea = (p.getxCoord()+p.getWidth() >= o.getxCoord() && p.getxCoord()+p.getWidth() <= o.getxCoord()+o.getWidth());
-		boolean inLXArea = (p.getxCoord() >= o.getxCoord() && p.getxCoord() <= o.getxCoord()+o.getWidth());
-		boolean inLYArea = (p.getyCoord()+p.getHeight() >= o.getyCoord() && p.getyCoord()+p.getHeight() <= o.getyCoord()+o.getHeight());
-		boolean inUYArea = (p.getyCoord() >= o.getyCoord() && p.getyCoord() <= o.getyCoord()+o.getHeight());
+	public boolean isCollide(WorldObject object1, WorldObject object2) {
+		boolean inRXArea = (object1.getxCoord()+object1.getWidth() >= object2.getxCoord() && object1.getxCoord()+object1.getWidth() <= object2.getxCoord()+object2.getWidth());
+		boolean inLXArea = (object1.getxCoord() >= object2.getxCoord() && object1.getxCoord() <= object2.getxCoord()+object2.getWidth());
+		boolean inLYArea = (object1.getyCoord()+object1.getHeight() >= object2.getyCoord() && object1.getyCoord()+object1.getHeight() <= object2.getyCoord()+object2.getHeight());
+		boolean inUYArea = (object1.getyCoord() >= object2.getyCoord() && object1.getyCoord() <= object2.getyCoord()+object2.getHeight());
 		if ((inRXArea || inLXArea) && (inLYArea || inUYArea)) {
-			return o.doCollision(p);
+			return object2.doCollision(object1);
 		} else {
 			return false;
 		}

@@ -114,6 +114,14 @@ public abstract class WorldObject {
 	}
 
 	/**
+	 * Move the object off screen by setting their coordinates much beyond the bounds of the world. 
+	 */
+	public void moveOffScreen() {
+		supersetxCoord(getWorld().getWorldWidth()+1000);
+		supersetyCoord(getWorld().getWorldHeight()+1000);
+	}
+	
+	/**
 	 * Getter for an entities y coordinate.
 	 * 
 	 * @return The y coordinate of the entity.
@@ -133,6 +141,10 @@ public abstract class WorldObject {
 	
 	public void update() {
 		
+	}
+
+	public boolean isAlive() {
+		return true;
 	}
 	
 	

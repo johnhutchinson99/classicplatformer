@@ -22,7 +22,7 @@ public class LevelOneGUI extends GameplayGUI {
 	private static final int WORLDWIDTH = 1600;
 	private static final int WORLDHEIGHT = 500;
 
-	private Map<EnemyGUI, ImageView> enemyGUIMap = new HashMap<EnemyGUI, ImageView>();
+	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
 	Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
 
 	/**
@@ -74,9 +74,9 @@ public class LevelOneGUI extends GameplayGUI {
 		root.getChildren().add(bulletRect);
 		
 		// Add the enemies
-		createEnemyType1(root, levelOne, enemyGUIMap, 580, 230, 560, 670, 20, 20);
-		createTrapType1(root, levelOne, enemyGUIMap, 310, 350, 325, 345, 20, 20);
-		createFlyingEnemy(root, levelOne, enemyGUIMap, 180, 300, 260, 345, 30, 35);
+		createEnemyType1(root, levelOne, worldObjectMap, 580, 230, 560, 670, 20, 20);
+		createTrapType1(root, levelOne, worldObjectMap, 310, 350, 325, 345, 20, 20);
+		createFlyingEnemy(root, levelOne, worldObjectMap, 180, 300, 260, 345, 30, 35);
 
 		// Create the platforms in the level
 		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
@@ -87,8 +87,11 @@ public class LevelOneGUI extends GameplayGUI {
 		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 20);
 		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 20);
 		
+		// Create coins
+		createCoin(root, levelOne, worldObjectMap, 150, 420, 25, 25);
+		
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, enemyGUIMap, platformGUIMap,bullet,bulletRect);
+		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
 
 		// Set the scene and show it
 		stage.setScene(scene);

@@ -46,7 +46,7 @@ public class GameOverGUI extends GameplayGUI{
 
 		
 		// Print out the score the player got
-		Text scoreText = new Text(430, 235,"YOUR SCORE\n00100\n\nHIGH SCORE\n00100");
+		Text scoreText = new Text(430, 235,"YOUR SCORE\n"+currentScore+"\nHIGH SCORE\n"+highScore);
 		scoreText.setTextAlignment(TextAlignment.CENTER);
 		scoreText.setFont(jellyCraziesFontSize20);
 		scoreText.setFill(Color.GHOSTWHITE);
@@ -94,6 +94,9 @@ public class GameOverGUI extends GameplayGUI{
 		buttonsVBox.setLayoutY(210);
 		root.getChildren().add(buttonsVBox);
 
+		// Reset the current score of the game
+		resetScore();
+		
 		// Set the scene
 		stage.setScene(scene);
 		stage.show();

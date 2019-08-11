@@ -195,13 +195,5 @@ public abstract class PhysicsEntity extends WorldObject {
 		return yAcceleration;
 	}
 	
-	
-	public void moveOffScreen() {
-		supersetxCoord(getWorld().getWorldWidth()+1000);
-		supersetyCoord(getWorld().getWorldHeight()+1000);
-	}
-	
-	
-	
 
 }
