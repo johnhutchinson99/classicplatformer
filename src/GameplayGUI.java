@@ -50,6 +50,8 @@ public class GameplayGUI extends Application {
 	private boolean goLeft = false;
 	private boolean goRight = false;
 	private boolean jump = false;
+	
+	private boolean isSoundOn = false;
 
 	/**
 	 * Reset the game level to 0, i.e. the start menu.
