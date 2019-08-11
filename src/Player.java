@@ -20,12 +20,10 @@ public class Player extends PhysicsEntity {
 	private boolean isFacingRight = true;
 	public Player(Player p) {
 		super(p);
-		setYAcceleration(Player.GRAVITY);
 	}
 	
 	public Player(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
-		setYAcceleration(Player.GRAVITY);
 	}
 
 	public Player(int xCoord, int yCoord, int width, int height, World world) {

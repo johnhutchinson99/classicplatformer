@@ -8,6 +8,7 @@ public class Bullet extends PhysicsEntity{
 	
 	public Bullet(int startX, int startY, int width,int height, World world) {
 		super(startX,startY,width,height,world);
+		setYAcceleration(0);
 	}
 	
 	public void fire() {

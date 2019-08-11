@@ -14,7 +14,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	private double yVelocity = 0;
 
 	private double xAcceleration = 0;
-	private double yAcceleration = 0;
+	private double yAcceleration = GRAVITY;
 
 	private long lastTime = System.currentTimeMillis();
 

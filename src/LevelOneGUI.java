@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -72,6 +73,14 @@ public class LevelOneGUI extends GameplayGUI {
 		Bullet bullet = new Bullet(WORLDHEIGHT+100,WORLDWIDTH+100,10,10,levelOne);
 		Rectangle bulletRect = new Rectangle(bullet.getxCoord(),bullet.getyCoord(),bullet.getWidth(),bullet.getHeight());
 		root.getChildren().add(bulletRect);
+		
+		
+		
+		
+		//Add Mute button
+		
+		//Button muteButton = createMuteButton();
+		//root.getChildren().add(muteButton);		
 		
 		// Add the enemies
 		createEnemyType1(root, levelOne, worldObjectMap, 580, 230, 560, 670, 20, 20);
