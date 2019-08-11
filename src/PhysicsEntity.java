@@ -95,7 +95,6 @@ public abstract class PhysicsEntity extends WorldObject {
 		// Calculating X and Y separately
 
 
-			System.out.println(xVelocity);
 
 			int possibleX = (int) Math.round(getxCoord() + (xVelocity * secondsPassed)
 					+ ((0.5) * (xAcceleration) * secondsPassed * secondsPassed));
@@ -195,5 +194,14 @@ public abstract class PhysicsEntity extends WorldObject {
 	public double getYAcceleration() {
 		return yAcceleration;
 	}
+	
+	
+	public void moveOffScreen() {
+		setxCoord(getWorld().getWorldWidth()+1000);
+		setyCoord(getWorld().getWorldHeight()+1000);
+	}
+	
+	
+	
 
 }

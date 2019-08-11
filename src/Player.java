@@ -17,6 +17,7 @@ public class Player extends PhysicsEntity {
 	private boolean aliveness = true; // Whether or not there is a game over
 	public static final int WALKSPEED = 200;
 	public static final int JUMPPOWER =200;
+	private boolean isFacingRight = true;
 	public Player(Player p) {
 		super(p);
 		setYAcceleration(Player.GRAVITY);
@@ -158,6 +159,18 @@ public class Player extends PhysicsEntity {
 
 	}
 
+	
+	
+
+	public void facingRight(boolean b) {
+		isFacingRight = b;
+	}
+	
+	public boolean isFacingRight() {
+		return isFacingRight;
+	}
+	
+	
 	/**
 	 * Checks if enemy is at the given X and Y coordinates.
 	 * 

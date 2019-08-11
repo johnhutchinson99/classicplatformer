@@ -6,6 +6,12 @@ public class Coin extends WorldObject{
 		super(x,y,newWidth,newHeight);
 	}
 
+	@Override
+	public boolean doCollision(WorldObject p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	
 	

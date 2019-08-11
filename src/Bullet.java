@@ -1,29 +1,36 @@
 
 public class Bullet extends PhysicsEntity{
 	
-	private int range = 100;
-	private Enemy target;
+	private int range = 200;
+	private int bulletSpeed = 100;
+	private int initialX;
+	private int initialY;
 	
-	public Bullet(int plaverX, int playerY, int width,int height, World world) {
-		super(plaverX,playerY,width,height,world);
+	public Bullet(int startX, int startY, int width,int height, World world) {
+		super(startX,startY,width,height,world);
 	}
 	
 	public void fire() {
 		setxCoord(getWorld().getPlayer().getxCoord());
 		setyCoord(getWorld().getPlayer().getyCoord());
+		initialX = getWorld().getPlayer().getxCoord();
+		initialY = getWorld().getPlayer().getyCoord();
 		
 		
 		//Find enemy to target
 		
-		
-		
-		
-		for(Enemy e: getWorld().getListOfEnemies()) {
-			if(getDistanceAway(getxCoord(),getyCoord(),e.getxCoord(),e.getyCoord())<=range) {
-				target = e;
-				return;
+					
+			if(getWorld().getPlayer().isFacingRight()) {
+				setxVelocity(bulletSpeed);
+			}else {
+				setxVelocity(bulletSpeed);
 			}
-		}
+		
+		
+		super.update();
+		
+		
+
 		
 		
 		
@@ -31,27 +38,17 @@ public class Bullet extends PhysicsEntity{
 	}
 	
 	public void update() {
-		//Target is left
-		if(getxCoord()-target.getxCoord()>0) {
-			setxVelocity(-10.0);
-		}else {
-			setxVelocity(10.0);
-		}
-		
-		if(getyCoord()-target.getyCoord()>0) {
-			setyVelocity(-10.0);
-		}else {
-			setyVelocity(10.0);
-		}
-		
 		super.update();
 		
-		
+		if(getDistanceAway(initialX,initialY,getxCoord(),getyCoord())>range) {
+			setxVelocity(0);
+			supersetxCoord(getWorld().getWorldWidth()+200);//Off screen
+			supersetyCoord(getWorld().getWorldHeight()+200);
+			
+		}
 		
 		
 	}
-	
-	
 	
 	
 	private int getDistanceAway(int startX, int startY, int endX, int endY) {
@@ -74,6 +71,9 @@ public class Bullet extends PhysicsEntity{
 		return (int)Math.round(Math.sqrt(x*x+y*y));
 	}
 	
+	
+	
+
 	
 	
 	
