@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -19,15 +22,145 @@ import javafx.stage.Stage;
 
 public class GameplayGUI extends Application {
 
+	private Font unicornPopFont = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 35);
+
+	private static final int SECONDSINAMILLISECOND = 1000;
+	private static final int SECONDSINAMINUTE = 60;
+	private static final int MINUTESINAHOUR = 60;
+
 	static int currentLevel = 0;
 	static int previousLevel = 0;
+	private static long timerStart; // time in milliseconds
+	private static long currentTime; // time in milliseconds
+	private Text timerDisplay = new Text();
+	private Text levelDisplay = new Text();
 
 	private Player mainPlayer = new Player(35, 35, 35, 35);
 
-	boolean goLeft = false, goRight = false, jump = false;
-	int leftCount = 0;
-	int rightCount = 0;
-	int jumpCount = 0;
+	private boolean goLeft = false;
+	private boolean goRight = false;
+	private boolean jump = false;
+	private int leftCount = 0;
+	private int rightCount = 0;
+	private int jumpCount = 0;
+
+	/**
+	 * Reset the game level to 0, i.e. the start menu.
+	 */
+	public void levelReset() {
+		currentLevel = 0;
+		previousLevel = 0;
+	}
+
+	/**
+	 * Move on to the next level / increase the current level by one.
+	 */
+	public void nextLevel() {
+		currentLevel++;
+	}
+	
+	/**
+	 * Move on to the next level / increase the current level by one.
+	 */
+	public void endLevel() {
+		currentLevel=4;
+	}
+	
+	/**
+	 * Update the text of the level display
+	 */
+	public void updateLevelDisplay() {
+		levelDisplay.setText("Level "+ currentLevel);
+		levelDisplay.setFont(unicornPopFont);
+		levelDisplay.setFill(Color.WHITE);
+		levelDisplay.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
+	}
+
+	/**
+	 * Update the game timer text in the format of 00min:00sec. If they play for
+	 * over over 1 hour then stop the timer and tell them to take a break.
+	 */
+	public Text updateTimer() {
+
+		currentTime = System.currentTimeMillis();
+
+		// To get minutes, get the difference of current time and start time in seconds
+		// (by dividing by the number of milliseconds in second) then divide by
+		// seconds in a minute and seconds in an hour.
+		long hours = (currentTime - timerStart) / (SECONDSINAMILLISECOND * SECONDSINAMINUTE * MINUTESINAHOUR);
+
+		// To get minutes, get the difference of current time and start time in seconds
+		// (by dividing by the number of milliseconds in second) then divide by
+		// seconds in a minute. If minutes is over 60, subtract the amount of hours (in
+		// minutes) that have passed.
+		long minutes = (currentTime - timerStart) / (SECONDSINAMILLISECOND * SECONDSINAMINUTE);
+		if (minutes >= 60)
+			minutes = minutes - (hours * MINUTESINAHOUR);
+
+		// To get seconds, get the difference of current time and start time in seconds
+		// (by dividing by the number of milliseconds in second) then mod by
+		// seconds in a minute to attain the remainder.
+		long seconds = ((currentTime - timerStart) / SECONDSINAMILLISECOND) % SECONDSINAMINUTE;
+
+		// Formatting of the text to be Time : 00 hrs 00 min 00 sec
+		String timeString = "Time : ";
+		if (hours <= 9)
+			timeString += "0" + hours + " hrs ";
+		else
+			timeString += hours + " hrs ";
+
+		if (minutes <= 9)
+			timeString += "0" + minutes + " min ";
+		else
+			timeString += minutes + " min ";
+
+		if (seconds <= 9)
+			timeString += "0" + seconds + " sec";
+		else
+			timeString += seconds + " sec";
+		
+		// If it's greater then 99 hrs then just set everything to 99
+		if (hours > 99) timeString = "Time : 99 hrs 99 min 99 sec";
+
+		// Set the timer to be the timerString and set the formatting / font / colour of
+		// the timer
+		timerDisplay.setText(timeString);
+		timerDisplay.setFont(unicornPopFont);
+		timerDisplay.setFill(Color.WHITE);
+		timerDisplay.setStyle("-fx-stroke: black ;-fx-stroke-width: 1px ;");
+
+		return timerDisplay;
+	}
+
+//	/**
+//	 * Create the game timer on the screen and put it in the top left corner. 
+//	 * 
+//	 * @param theRoot - the root of the scene to add the timer to
+//	 */
+//	public void createTimer(HBox display) {
+//		updateTimer();
+//		timerDisplay.setX(10);
+//		timerDisplay.setY(unicornPopFont.getSize());
+//		display.getChildren().add(timerDisplay);
+//	}
+	
+	/**
+	 * Creates the game display containing the level and the time
+	 * @param theRoot
+	 */
+	public void createGameDisplay(Pane theRoot) {
+		HBox display = new HBox(320);
+		
+		updateLevelDisplay();
+		updateTimer();
+		display.getChildren().add(levelDisplay);
+		display.getChildren().add(timerDisplay);
+		
+		display.setTranslateX(10);
+		display.setTranslateY(0);
+		theRoot.getChildren().add(display);
+	}
+
 
 	/**
 	 * createBackground creates the background of the GUI scene. Specifically, an
@@ -328,13 +461,18 @@ public class GameplayGUI extends Application {
 
 		// Create the game camera and animation timer
 		Camera gameCamera = new Camera(aScene, aPlayer);
+//		createTimer((Pane) aScene.getRoot());
+		createGameDisplay((Pane) aScene.getRoot());
 		AnimationTimer timer = new AnimationTimer() {
-			
+
 			// Make the timer loop
 			@Override
 			public void handle(long now) {
 				
-				// Update the camera and keyboard listener method
+				updateLevelDisplay();
+				updateTimer();
+
+				// Update the camera, timer/points/game display, and keyboard listener method
 				gameCamera.updateCamera(aPlayer);
 				keyBoardMethod(stage, aScene, aPlayer, playerImageView, enemyMap);
 
@@ -365,7 +503,7 @@ public class GameplayGUI extends Application {
 					goLeft = false;
 					goRight = false;
 					jump = false;
-					currentLevel = 100;
+					endLevel();
 				}
 
 				for (Map.Entry<EnemyGUI, ImageView> entry : enemyMap.entrySet()) {
@@ -420,7 +558,12 @@ public class GameplayGUI extends Application {
 			}
 
 			private void updateLevelGUI() {
-				if (currentLevel == 1) {
+				if (currentLevel == 0) {
+					start.create(primaryStage);
+					this.start();
+				} else
+					if (currentLevel == 1) {
+					timerStart = System.currentTimeMillis();
 					level1.create(primaryStage, mainPlayer);
 					this.start();
 				} else if (currentLevel == 2) {
