@@ -59,11 +59,7 @@ public class Enemy extends PhysicsEntity {
 	 * Check if enemies in the list of enemies are alive and removes dead enemies.
 	 */
 	public void checkEnemy() {
-		
-		
-		
-		
-		
+	
 		for (int i = 0; i < enemyList.size(); i++) {
 			if (enemyList.get(i).isAlive = false) {
 				enemyList.remove(i);

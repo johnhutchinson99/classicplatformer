@@ -6,7 +6,7 @@ public abstract class EnemyGUI extends Enemy{
 	private int rightMax;
 	private ArrayList<EnemyGUI> enemyList = new ArrayList<>();
 	private ArrayList<EnemyGUI> removedEnemyList = new ArrayList<>();
-	private boolean isAlive; 
+	private boolean isAlive = true; 
 		
 	
 	
@@ -39,7 +39,11 @@ public abstract class EnemyGUI extends Enemy{
 	}
 	
 	public void enemyDead() {
-		getWorld().getListOfEnemies().remove(this);
+		System.out.println("KILLING");
+		isAlive = false;
+	}
+	public boolean isAlive() {
+		return isAlive;
 	}
 	
 	public int getLeftMax() {

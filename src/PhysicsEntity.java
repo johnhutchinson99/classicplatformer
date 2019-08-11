@@ -197,8 +197,8 @@ public abstract class PhysicsEntity extends WorldObject {
 	
 	
 	public void moveOffScreen() {
-		setxCoord(getWorld().getWorldWidth()+1000);
-		setyCoord(getWorld().getWorldHeight()+1000);
+		supersetxCoord(getWorld().getWorldWidth()+1000);
+		supersetyCoord(getWorld().getWorldHeight()+1000);
 	}
 	
 	

@@ -558,7 +558,7 @@ public class GameplayGUI extends Application {
 					aPlayer.getWorld().isCollide(aPlayer, enemy);
 					enemy.getWorld().isCollide(bullet,enemy);
 					
-					if(!enemy.getWorld().getListOfEnemies().contains(enemy)) {
+					if(!enemy.isAlive()) {
 						enemy.moveOffScreen();
 					}
 					
