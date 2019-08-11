@@ -83,6 +83,23 @@ public class GameplayGUI extends Application {
 		currentScore = 0;
 	}
 
+	
+	
+	
+	public Button createMuteButton() {
+		Button muteButton = new Button();
+		Label buttonLabel = new Label();
+		muteButton.setStyle("-fx-background-image: url('MuteSoundButton.png');");
+		
+		
+		return muteButton;
+	}
+
+
+	
+	
+	
+	
 	/**
 	 * Creates rectangular menu buttons such as for start, credits, or exit buttons.
 	 * 
@@ -588,6 +605,14 @@ public class GameplayGUI extends Application {
 		Camera gameCamera = new Camera(aScene, aPlayer);
 //		createTimer((Pane) aScene.getRoot());
 		createGameDisplay((Pane) aScene.getRoot());
+		
+		
+		
+
+		
+		
+		
+		
 		AnimationTimer timer = new AnimationTimer() {
 
 			// Make the timer loop
