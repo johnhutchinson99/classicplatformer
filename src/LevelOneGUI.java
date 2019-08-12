@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -43,13 +46,17 @@ public class LevelOneGUI extends GameplayGUI {
 		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 
 		// Set world
-		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, STARTX, STARTY );
+		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, STARTX, STARTY);
 
 		// Create background
 		createBackground(root, "Full-Background.png", 800, 500, 0, 0);
 		createBackground(root, "layer-4.png", 800, 500, 0, 0);
 		createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
+
 		
+
+		
+
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard
 		// press/separately from other world objects
@@ -66,21 +73,15 @@ public class LevelOneGUI extends GameplayGUI {
 		iv.setFitHeight(player.getHeight());
 		iv.setFitWidth(player.getWidth());
 		root.getChildren().add(iv);
+
+		// Add bullet
+		Bullet bullet = new Bullet(WORLDHEIGHT + 100, WORLDWIDTH + 100, 10, 5, levelOne);
+		Rectangle bulletRect = new Rectangle(bullet.getxCoord(), bullet.getyCoord(), bullet.getWidth(),
+				bullet.getHeight());
 		
-		
-		//Add bullet
-		Bullet bullet = new Bullet(WORLDHEIGHT+100,WORLDWIDTH+100,10,10,levelOne);
-		Rectangle bulletRect = new Rectangle(bullet.getxCoord(),bullet.getyCoord(),bullet.getWidth(),bullet.getHeight());
+		bulletRect.setFill(Color.DARKGREY);
 		root.getChildren().add(bulletRect);
-		
-		
-		
-		
-		//Add Mute button
-		
-		//Button muteButton = createMuteButton();
-		//root.getChildren().add(muteButton);		
-		
+
 		// Add the enemies
 		createEnemyType1(root, levelOne, worldObjectMap, 580, 220, 560, 660, 40, 40);
 		createTrapType1(root, levelOne, worldObjectMap, 310, 340, 315, 345, 35, 30);
@@ -88,7 +89,7 @@ public class LevelOneGUI extends GameplayGUI {
 
 		// Create the platforms in the level
 		createTallPlatform(root, levelOne, platformGUIMap, 800, 300, 100, 200);
-		
+
 		createPlatform(root, levelOne, platformGUIMap, 0, 420, 100, 30);
 		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 30);
 		createPlatform(root, levelOne, platformGUIMap, 280, 345, 100, 30);
@@ -96,16 +97,25 @@ public class LevelOneGUI extends GameplayGUI {
 		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 30);
 		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
-		
+
 		// Create coins
 		createCoin(root, levelOne, worldObjectMap, 150, 420, 25, 25);
-		
+
 		// Create the EndPoint for the world
 		createEndPoint(root, levelOne, worldObjectMap, 770, 175, 50, 50);
-		
-		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
 
+		// Call the keyboard listener for the level
+		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap, bullet, bulletRect);
+
+		// Add Mute button
+
+		Button muteButton = createMuteButton(scene);
+		root.getChildren().add(muteButton);
+
+		//Add Help Button
+		Button helpButton = createHelpButton(scene);
+		root.getChildren().add(helpButton);
+		
 		// Set the scene and show it
 		stage.setScene(scene);
 		stage.show();

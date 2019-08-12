@@ -119,6 +119,7 @@ public abstract class WorldObject {
 	public void moveOffScreen() {
 		supersetxCoord(getWorld().getWorldWidth()+1000);
 		supersetyCoord(getWorld().getWorldHeight()+1000);
+
 	}
 	
 	/**

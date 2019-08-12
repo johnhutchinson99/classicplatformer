@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -100,6 +101,18 @@ public class LevelTwoGUI extends GameplayGUI {
 		
 		// Call the keyboard listener for the level
 		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
+		
+
+		// Add Mute button
+
+		Button muteButton = createMuteButton(scene);
+		root.getChildren().add(muteButton);
+
+		//Add Help Button
+		Button helpButton = createHelpButton(scene);
+		root.getChildren().add(helpButton);
+		
+		
 		
 		// Set the scene and show it
 		stage.setScene(scene);
