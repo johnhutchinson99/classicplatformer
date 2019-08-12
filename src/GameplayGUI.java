@@ -63,13 +63,14 @@ public class GameplayGUI extends Application {
 
 
 
+
 	private Player mainPlayer = new Player(35, 35, 35, 35);
 
 	private boolean goLeft = false;
 	private boolean goRight = false;
 	private boolean jump = false;
 	
-	private boolean soundOn = false;
+	private boolean soundOn = true;
 
 	/**
 	 * Reset the game level to 0, i.e. the start menu.
@@ -713,7 +714,13 @@ public class GameplayGUI extends Application {
 					break;
 
 				case F:
-					bullet.fire();
+					
+					if(bullet.fire()&&soundOn) {
+						MediaPlayer gunshot = new MediaPlayer(new Media("file://"+System.getProperty("user.dir")+"/src/gunshot.mp3"));
+						gunshot.play();
+					}
+					
+					
 					break;
 				default:
 					break;
@@ -780,7 +787,6 @@ public class GameplayGUI extends Application {
 		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
 			System.out.println("NO MUSIC FOUND");
 		}
-		
 		
 		
 		

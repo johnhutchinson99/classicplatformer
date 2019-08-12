@@ -11,7 +11,13 @@ public class Bullet extends PhysicsEntity{
 		setYAcceleration(0);
 	}
 	
-	public void fire() {
+	
+	
+	/**
+	 * Fires the player weapon
+	 * @return whether or not the gun fired successfully
+	 */
+	public boolean fire() {
 		if(getxVelocity() == 0) {
 			setxCoord(getWorld().getPlayer().getxCoord()+getWorld().getPlayer().getWidth()/2);
 			setyCoord(getWorld().getPlayer().getyCoord()+getWorld().getPlayer().getHeight()/2);
@@ -30,7 +36,9 @@ public class Bullet extends PhysicsEntity{
 			
 			
 			super.update();
+			return true;
 		}
+		return false;
 		
 		
 		
@@ -47,7 +55,7 @@ public class Bullet extends PhysicsEntity{
 
 		super.update();
 		
-		if(getDistanceAway(initialX,initialY,getxCoord(),getyCoord())>range||getWorld().collidePlatform(this, getxCoord()+10, getyCoord())||getWorld().collidePlatform(this, getxCoord()-10, getyCoord())) {
+		if(getDistanceAway(initialX,initialY,getxCoord(),getyCoord())>range/* Is within range*/||getWorld().collidePlatform(this, getxCoord()+10, getyCoord())||getWorld().collidePlatform(this, getxCoord()-10, getyCoord())/* Isn't stuck in platform*/||getxCoord()<20||getxCoord()>getWorld().getWorldWidth()-20) {
 			setxVelocity(0);
 			moveOffScreen();
 			
