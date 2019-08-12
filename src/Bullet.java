@@ -2,7 +2,7 @@
 public class Bullet extends PhysicsEntity{
 	
 	private int range = 200;
-	private int bulletSpeed = 100;
+	private int bulletSpeed = 300;
 	private int initialX;
 	private int initialY;
 	
@@ -12,23 +12,26 @@ public class Bullet extends PhysicsEntity{
 	}
 	
 	public void fire() {
-		setxCoord(getWorld().getPlayer().getxCoord());
-		setyCoord(getWorld().getPlayer().getyCoord());
-		initialX = getWorld().getPlayer().getxCoord();
-		initialY = getWorld().getPlayer().getyCoord();
+		if(getxVelocity() == 0) {
+			setxCoord(getWorld().getPlayer().getxCoord()+getWorld().getPlayer().getWidth()/2);
+			setyCoord(getWorld().getPlayer().getyCoord()+getWorld().getPlayer().getHeight()/2);
+			initialX = getWorld().getPlayer().getxCoord();
+			initialY = getWorld().getPlayer().getyCoord();
+			
+			
+			//Find enemy to target
+			
+						
+				if(getWorld().getPlayer().isFacingRight()) {
+					setxVelocity(bulletSpeed);
+				}else {
+					setxVelocity(-1*bulletSpeed);
+				}
+			
+			
+			super.update();
+		}
 		
-		
-		//Find enemy to target
-		
-					
-			if(getWorld().getPlayer().isFacingRight()) {
-				setxVelocity(bulletSpeed);
-			}else {
-				setxVelocity(-1*bulletSpeed);
-			}
-		
-		
-		super.update();
 		
 		
 
@@ -39,12 +42,14 @@ public class Bullet extends PhysicsEntity{
 	}
 	
 	public void update() {
+		
+		
+
 		super.update();
 		
-		if(getDistanceAway(initialX,initialY,getxCoord(),getyCoord())>range) {
+		if(getDistanceAway(initialX,initialY,getxCoord(),getyCoord())>range||getWorld().collidePlatform(this, getxCoord()+10, getyCoord())||getWorld().collidePlatform(this, getxCoord()-10, getyCoord())) {
 			setxVelocity(0);
-			supersetxCoord(getWorld().getWorldWidth()+200);//Off screen
-			supersetyCoord(getWorld().getWorldHeight()+200);
+			moveOffScreen();
 			
 		}
 		

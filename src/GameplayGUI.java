@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.sun.media.jfxmedia.MediaException;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -17,6 +19,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -54,6 +58,10 @@ public class GameplayGUI extends Application {
 	private Text timerDisplay = new Text();
 	private Text levelDisplay = new Text(currentLevel + "");
 	private Text scoreDisplay = new Text(currentScore + "");
+	
+	private MediaPlayer music;
+
+
 
 	private Player mainPlayer = new Player(35, 35, 35, 35);
 
@@ -61,7 +69,7 @@ public class GameplayGUI extends Application {
 	private boolean goRight = false;
 	private boolean jump = false;
 	
-	private boolean isSoundOn = false;
+	private boolean soundOn = false;
 
 	/**
 	 * Reset the game level to 0, i.e. the start menu.
@@ -96,13 +104,65 @@ public class GameplayGUI extends Application {
 	
 	
 	
-	public Button createMuteButton() {
+	public Button createMuteButton(Scene aScene ) {
 		Button muteButton = new Button();
-		Label buttonLabel = new Label();
-		muteButton.setStyle("-fx-background-image: url('MuteSoundButton.png');");
+		muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('MuteSoundButton.png') ");
+		muteButton.setMinSize(50, 50);
+		
+		muteButton.setLayoutX(750);// TODO remove magic numbers
+		muteButton.setLayoutY(450);
+		
+		muteButton.setOnMouseEntered(e -> {
+			aScene.setCursor(Cursor.HAND);
+		});
+		muteButton.setOnMouseExited(e -> {
+			aScene.setCursor(Cursor.DEFAULT);
+		});
+		
+		muteButton.setOnMousePressed(e -> {
+			if(soundOn) {
+				muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('EnableSoundButton.png') ");
+				if(music!=null)
+				music.setMute(true);
+				soundOn = false;
+			}else {
+				muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('MuteSoundButton.png') ");
+				soundOn = true;
+				if(music!=null)
+				music.setMute(false);
+			}
+			
+		});
 		
 		
 		return muteButton;
+	}
+	
+	
+	public Button createHelpButton(Scene aScene) {
+		Button helpButton = new Button();
+		helpButton.setMinSize(50, 50);
+		helpButton.setLayoutX(0);
+		helpButton.setLayoutY(450);
+		helpButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('HelpButton.png') ");
+		
+		helpButton.setOnMouseEntered(e ->{
+			helpButton.setMinSize(264, 178);
+			helpButton.setStyle("-fx-background-image: url('HELP.png') ");
+			helpButton.setLayoutX(0);
+			helpButton.setLayoutY(322);
+		});
+		helpButton.setOnMouseExited(e ->{
+			helpButton.setMinSize(50, 50);
+			helpButton.setLayoutX(0);
+			helpButton.setLayoutY(450);
+			helpButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('HelpButton.png') ");
+			
+			
+		});
+		
+		
+		return helpButton;
 	}
 
 
@@ -514,7 +574,7 @@ public class GameplayGUI extends Application {
 		// Create the image, stretch it to fit 50px for the top layer, calculate number of tiles to
 		// display minus one, and the width of the last stretched tile
 		Image platformImage = new Image("TallPlatformTile.png", false);
-		Image undergroundImage = new Image("UndergroundTile.png", false);
+		Image undergroundImage = new Image("undergroundTile.png", false);
 		int topLayerTileHeight = 50;
 		double resizedTileWidth = Math.round((topLayerTileHeight / platformImage.getHeight()) * platformImage.getWidth());
 		int numberTilesMinusOne = (int) Math.round(width / resizedTileWidth) - 1;
@@ -648,11 +708,8 @@ public class GameplayGUI extends Application {
 						jump = false;
 						aPlayer.setXYCoord(-10, -10);
 						currentLevel += 1;
+						music.stop();
 					}
-					break;
-				case Z:
-//					player1.attack();
-					System.out.println("Z");
 					break;
 
 				case F:
@@ -715,8 +772,15 @@ public class GameplayGUI extends Application {
 		createGameDisplay((Pane) aScene.getRoot());
 		
 		
+		try {
+			music = new MediaPlayer(new Media("file://"+System.getProperty("user.dir")+"/src/music.mp3"));
+			
+			music.play();
+			music.setVolume(0.4);
+		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
+			System.out.println("NO MUSIC FOUND");
+		}
 		
-
 		
 		
 		
@@ -766,6 +830,8 @@ public class GameplayGUI extends Application {
 					aPlayer.setXYCoord(-10, -10);
 					aPlayer.revive();
 					setLevel(1000);
+					music.stop();
+					
 				}
 				
 
@@ -794,8 +860,9 @@ public class GameplayGUI extends Application {
 				
 				
 				bullet.update();
-				bulletRect.setX(bullet.getxCoord());
-				bulletRect.setY(bullet.getyCoord());
+				bulletRect.setX(bullet.getxCoord()+gameCamera.getOffsetX());
+				bulletRect.setY(bullet.getyCoord()+gameCamera.getOffsetY());
+
 				
 				// Update the background elements
 				for(Map.Entry<Point2D, ImageView> entry : movingBackground.entrySet()) {
