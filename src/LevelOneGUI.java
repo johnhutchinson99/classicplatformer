@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -26,7 +29,9 @@ public class LevelOneGUI extends GameplayGUI {
 	private static final int STARTY = 300;
 
 	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
-	Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
+	private Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
+	private Map<Point2D, ImageView> movingBackground = new HashMap<Point2D, ImageView>();
+	
 
 	/**
 	 * The method which creates the level including its world, player, enemies,
@@ -49,6 +54,9 @@ public class LevelOneGUI extends GameplayGUI {
 		createBackground(root, "Full-Background.png", 800, 500, 0, 0);
 		createBackground(root, "layer-4.png", 800, 500, 0, 0);
 		createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
+		
+		// Create moving background elements (flowers, signs, trees)
+		createBackground(root, "wood1.png", 70, 100, 20, 350, movingBackground);
 		
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard
@@ -104,7 +112,7 @@ public class LevelOneGUI extends GameplayGUI {
 		createEndPoint(root, levelOne, worldObjectMap, 770, 175, 50, 50);
 		
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
+		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect, movingBackground);
 
 		// Set the scene and show it
 		stage.setScene(scene);

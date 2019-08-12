@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,8 +26,9 @@ public class LevelTwoGUI extends GameplayGUI {
 	private static final int STARTX = 20;
 	private static final int STARTY = 300;
 	
-	Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
-	Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
+	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
+	private Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
+	private Map<Point2D, ImageView> movingBackground = new HashMap<Point2D, ImageView>();
 
 	/**
 	 * The method which creates the level including its world, player, enemies,
@@ -99,7 +101,7 @@ public class LevelTwoGUI extends GameplayGUI {
 		createEndPoint(root, levelTwo, worldObjectMap, 150, 0, 50, 50);
 		
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect);
+		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect, movingBackground);
 		
 		// Set the scene and show it
 		stage.setScene(scene);

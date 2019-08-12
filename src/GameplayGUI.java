@@ -1,7 +1,11 @@
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
@@ -298,12 +302,38 @@ public class GameplayGUI extends Application {
 	 */
 	public void createBackground(Pane theRoot, String imgFilename, int width, int height, int xCoord, int yCoord) {
 		Image img = new Image(imgFilename, false);
-		ImageView back = new ImageView(img);
-		back.setFitWidth(width);
-		back.setFitHeight(height);
-		theRoot.getChildren().add(back);
-		back.setX(xCoord);
-		back.setY(yCoord);
+		ImageView background = new ImageView(img);
+		background.setFitWidth(width);
+		background.setFitHeight(height);
+		theRoot.getChildren().add(background);
+		background.setX(xCoord);
+		background.setY(yCoord);
+	}
+	
+	/**
+	 * createBackground creates the moving background of the GUI scene. Specifically, an
+	 * image is given to the method which is then placed in the scene/root at the
+	 * specified x and y coordinates. The image is stretched to the given width and
+	 * height.
+	 * 
+	 * @param theRoot     - the root of the javaFX scene
+	 * @param imgFilename - the filename of the image to be used as the background
+	 * @param width       - the width to stretch the image to
+	 * @param height      - the height to stretch the image to
+	 * @param xCoord      - the top left x coordinate of where to place the image
+	 * @param yCoord      - the top left y coordinate of where to place the image
+	 */
+	public void createBackground(Pane theRoot, String imgFilename, int width, int height, int xCoord, int yCoord, Map<Point2D, ImageView> backgroundList) {
+		Point2D backgroundElementPoint = new Point2D(xCoord, yCoord);
+		Image img = new Image(imgFilename, false);
+		ImageView movingBackground = new ImageView(img);
+		movingBackground.setFitWidth(width);
+		movingBackground.setFitHeight(height);
+		theRoot.getChildren().add(movingBackground);
+		movingBackground.setX(xCoord);
+		movingBackground.setY(yCoord);
+		backgroundList.put(backgroundElementPoint, movingBackground);
+		
 	}
 
 	/**
@@ -677,7 +707,7 @@ public class GameplayGUI extends Application {
 	 */
 	public void gameAnimation(Stage stage, Scene aScene, Player aPlayer, ImageView playerImageView,
 			Map<WorldObject, ImageView> worldObjectMap, Map<Platform, HBox> aPlatformGUIMap, Bullet bullet,
-			Rectangle bulletRect) {
+			Rectangle bulletRect, Map<Point2D, ImageView> movingBackground) {
 
 		// Create the game camera and animation timer
 		Camera gameCamera = new Camera(aScene, aPlayer);
@@ -737,6 +767,7 @@ public class GameplayGUI extends Application {
 					aPlayer.revive();
 					setLevel(1000);
 				}
+				
 
 				for (Map.Entry<WorldObject, ImageView> entry : worldObjectMap.entrySet()) {
 					WorldObject worldObject = entry.getKey();
@@ -760,9 +791,19 @@ public class GameplayGUI extends Application {
 					platformHBox.setTranslateX(platform.getxCoord() + gameCamera.getOffsetX());
 					platformHBox.setTranslateY(platform.getyCoord() + gameCamera.getOffsetY());
 				}
+				
+				
 				bullet.update();
 				bulletRect.setX(bullet.getxCoord());
 				bulletRect.setY(bullet.getyCoord());
+				
+				// Update the background elements
+				for(Map.Entry<Point2D, ImageView> entry : movingBackground.entrySet()) {
+					Point2D coordinates = entry.getKey();
+					ImageView backgroundImage = entry.getValue();
+					backgroundImage.setX(coordinates.getX() + gameCamera.getOffsetX());
+					backgroundImage.setY(coordinates.getY() + gameCamera.getOffsetY());
+				}
 
 			}
 		};
