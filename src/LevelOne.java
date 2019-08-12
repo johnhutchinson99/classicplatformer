@@ -32,7 +32,7 @@ public class LevelOne extends Gameplay {
 	public boolean playLevelOne() {
 
 		// Create the world level
-		World levelOne = new World(20, 3);
+		World levelOne = new World(20, 3, 0, 0);
 
 		// Add the end point for the level
 		EndPoint endPoint = new EndPoint(18,0,0,0);

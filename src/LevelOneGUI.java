@@ -22,6 +22,8 @@ public class LevelOneGUI extends GameplayGUI {
 
 	private static final int WORLDWIDTH = 1600;
 	private static final int WORLDHEIGHT = 500;
+	private static final int STARTX = 20;
+	private static final int STARTY = 300;
 
 	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
 	Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
@@ -38,10 +40,10 @@ public class LevelOneGUI extends GameplayGUI {
 
 		// Set scene
 		Pane root = new Pane();
-		Scene scene = new Scene(root, 800, WORLDHEIGHT);
+		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 
 		// Set world
-		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT);
+		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, STARTX, STARTY );
 
 		// Create background
 		createBackground(root, "Full-Background.png", 800, 500, 0, 0);
@@ -52,7 +54,7 @@ public class LevelOneGUI extends GameplayGUI {
 		// Note: Don't turn into method as need to be updated on keyboard
 		// press/separately from other world objects
 		Player player = new Player(aPlayer);
-		player.setXYCoord(20, 300);
+		player.setXYCoord(STARTX, STARTY);
 		player.setWorld(levelOne);
 		levelOne.addPlayer(player);
 
@@ -80,18 +82,19 @@ public class LevelOneGUI extends GameplayGUI {
 		//root.getChildren().add(muteButton);		
 		
 		// Add the enemies
-		createEnemyType1(root, levelOne, worldObjectMap, 580, 230, 560, 670, 20, 20);
-		createTrapType1(root, levelOne, worldObjectMap, 310, 350, 325, 345, 20, 20);
-		createFlyingEnemy(root, levelOne, worldObjectMap, 180, 300, 260, 345, 30, 35);
+		createEnemyType1(root, levelOne, worldObjectMap, 580, 220, 560, 660, 40, 40);
+		createTrapType1(root, levelOne, worldObjectMap, 310, 340, 315, 345, 35, 30);
+		createFlyingEnemy(root, levelOne, worldObjectMap, 180, 300, 260, 345, 40, 40);
 
 		// Create the platforms in the level
-		createPlatform(root, levelOne, platformGUIMap, 800, 300, 100, 200);
-		createPlatform(root, levelOne, platformGUIMap, 0, 420, 100, 20);
-		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 20);
-		createPlatform(root, levelOne, platformGUIMap, 280, 345, 100, 20);
-		createPlatform(root, levelOne, platformGUIMap, 420, 305, 100, 20);
-		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 20);
-		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 20);
+		createTallPlatform(root, levelOne, platformGUIMap, 800, 300, 100, 200);
+		
+		createPlatform(root, levelOne, platformGUIMap, 0, 420, 100, 30);
+		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 30);
+		createPlatform(root, levelOne, platformGUIMap, 280, 345, 100, 30);
+		createPlatform(root, levelOne, platformGUIMap, 420, 305, 100, 30);
+		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 30);
+		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
 		
 		// Create coins

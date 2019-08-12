@@ -28,6 +28,9 @@ import javafx.stage.StageStyle;
  */
 
 public class GameplayGUI extends Application {
+	
+	protected static final int APPLICATIONWIDTH = 800;
+	protected static final int APPLICATIONHEIGHT = 500;
 
 	// Font needs to be reloaded since font size is final
 	// Make protected so children start/exit/etc menus can use the fonts
@@ -36,8 +39,6 @@ public class GameplayGUI extends Application {
 	protected Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);
 	protected Font unicornPopFontSize40 = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 40);	
 	protected Font cartwheelFontSize35 = Font.loadFont(getClass().getResourceAsStream("Cartwheel.otf"), 35);
-
-	private static final int SECONDSINAMILLISECOND = 1000;
 
 	static int currentLevel = 0;
 	static int previousLevel = 0;
@@ -209,8 +210,8 @@ public class GameplayGUI extends Application {
 	public Text updateTimer() {
 
 		currentTime = System.currentTimeMillis();
-
-		long seconds = ((currentTime - timerStart) / SECONDSINAMILLISECOND);
+		// Convert time in milliseconds to seconds by diving by 1000
+		long seconds = ((currentTime - timerStart) / 1000);
 
 		String timeString = "";
 
@@ -473,6 +474,75 @@ public class GameplayGUI extends Application {
 	 * @param width   - the width of the platform
 	 * @param height  - the height of the platform
 	 */
+	public void createTallPlatform(Pane theRoot, World aWorld, Map<Platform, HBox> aPlatformGUIMap, int xCoord, int yCoord,
+			int width, int height) {
+
+		// Make the platform and add it to the world
+		Platform newPlatform = new Platform(xCoord, yCoord, width, height);
+		aWorld.addPlatform(newPlatform);
+
+		// Create the image, stretch it to fit 50px for the top layer, calculate number of tiles to
+		// display minus one, and the width of the last stretched tile
+		Image platformImage = new Image("TallPlatformTile.png", false);
+		Image undergroundImage = new Image("UndergroundTile.png", false);
+		int topLayerTileHeight = 50;
+		double resizedTileWidth = Math.round((topLayerTileHeight / platformImage.getHeight()) * platformImage.getWidth());
+		int numberTilesMinusOne = (int) Math.round(width / resizedTileWidth) - 1;
+		double remainingTileWidth = width - (numberTilesMinusOne * resizedTileWidth);
+
+		// Repeat the image tiles in an HBox
+		HBox platformHBox = new HBox(0);
+		for (int i = 0; i < numberTilesMinusOne; i++) {
+			VBox aTallPlatformTile = new VBox();
+			
+			ImageView aPlatformTile = new ImageView(platformImage);
+			aPlatformTile.setFitWidth(resizedTileWidth);
+			aPlatformTile.setFitHeight(topLayerTileHeight);
+			aTallPlatformTile.getChildren().add(aPlatformTile);
+			
+			ImageView anUndergroundTile = new ImageView(undergroundImage);
+			anUndergroundTile.setFitWidth(resizedTileWidth);
+			anUndergroundTile.setFitHeight(height-topLayerTileHeight);
+			aTallPlatformTile.getChildren().add(anUndergroundTile);
+			
+			platformHBox.getChildren().add(aTallPlatformTile);
+		}
+
+		// Create a last tile that is stretched to fit the platform as needed
+		VBox aTallPlatformTile = new VBox();
+		ImageView lastPlatformTile = new ImageView(platformImage);
+		lastPlatformTile.setFitWidth(remainingTileWidth);
+		lastPlatformTile.setFitHeight(topLayerTileHeight);
+		aTallPlatformTile.getChildren().add(lastPlatformTile);
+		
+		ImageView anUndergroundTile = new ImageView(undergroundImage);
+		anUndergroundTile.setFitWidth(remainingTileWidth);
+		anUndergroundTile.setFitHeight(height-topLayerTileHeight);
+		aTallPlatformTile.getChildren().add(anUndergroundTile);
+		
+		platformHBox.getChildren().add(aTallPlatformTile);
+
+		// Set the platform coordinates and add it to the root/scene
+		platformHBox.setTranslateX(xCoord);
+		platformHBox.setTranslateY(yCoord);
+		theRoot.getChildren().add(platformHBox);
+
+		// Add the platform to a map of its logic to its GUI representation
+		aPlatformGUIMap.put(newPlatform, platformHBox);
+	}
+
+	
+	/**
+	 * Creates a platform for the level and it's respective GUI/ImageView
+	 * representation.
+	 * 
+	 * @param theRoot - the root of the javaFX scene
+	 * @param aWorld  - the level the platform will belong to/be in
+	 * @param xCoord  - the starting x coordinate of the platform
+	 * @param yCoord  - the starting y coordinate of the platform
+	 * @param width   - the width of the platform
+	 * @param height  - the height of the platform
+	 */
 	public void createPlatform(Pane theRoot, World aWorld, Map<Platform, HBox> aPlatformGUIMap, int xCoord, int yCoord,
 			int width, int height) {
 
@@ -483,7 +553,7 @@ public class GameplayGUI extends Application {
 		// Create the image, stretch to fit the height, calculate number of tiles to
 		// display minus one, and the width of the last stretched tile
 		Image platformImage = new Image("Tile.png", false);
-		double resizedTileWidth = (height / platformImage.getHeight()) * platformImage.getWidth();
+		double resizedTileWidth = Math.round((height / platformImage.getHeight()) * platformImage.getWidth());
 		int numberTilesMinusOne = (int) Math.round(width / resizedTileWidth) - 1;
 		double remainingTileWidth = width - (numberTilesMinusOne * resizedTileWidth);
 
@@ -546,8 +616,8 @@ public class GameplayGUI extends Application {
 						goLeft = false;
 						goRight = false;
 						jump = false;
+						aPlayer.setXYCoord(-10, -10);
 						currentLevel += 1;
-						System.out.println(currentLevel);
 					}
 					break;
 				case Z:
@@ -557,6 +627,7 @@ public class GameplayGUI extends Application {
 
 				case F:
 					bullet.fire();
+					break;
 				default:
 					break;
 				}

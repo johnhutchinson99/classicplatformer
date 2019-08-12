@@ -19,6 +19,8 @@ public class World {
 
 	private int worldWidth;
 	private int worldHeight;
+	private int worldStartX;
+	private int worldStartY;
 	private EndPoint endPoint = new EndPoint(0, 0, 0, 0);
 
 	public World() {
@@ -26,9 +28,11 @@ public class World {
 		worldHeight = Integer.MAX_VALUE;
 	}
 
-	public World(int w, int h) {
-		worldWidth = w;
-		worldHeight = h;
+	public World(int width, int height, int startX, int startY) {
+		worldWidth = width;
+		worldHeight = height;
+		worldStartX = startX;
+		worldStartY = startY;
 	}
 
 //	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
