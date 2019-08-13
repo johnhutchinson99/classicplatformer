@@ -478,7 +478,7 @@ public class GameplayGUI extends Application {
 		enemyImageView.setY(yCoord);
 
 		aWorld.addEnemy(trap1);
-		System.out.println(aWorld.getListOfEnemies().size());
+//		System.out.println(aWorld.getListOfEnemies().size());
 		worldObjectMap.put(trap1, enemyImageView);
 
 	}
@@ -671,15 +671,15 @@ public class GameplayGUI extends Application {
 				switch (event.getCode()) {
 				case LEFT:
 					goLeft = true;
-					System.out.println("KeyPress: L");
+//					System.out.println("KeyPress: L");
 					break;
 				case RIGHT:
 					goRight = true;
-					System.out.println("KeyPress: R");
+//					System.out.println("KeyPress: R");
 					break;
 				case SHIFT:
 					jump = true;
-					System.out.println("KeyPress: Shift");
+//					System.out.println("KeyPress: Shift");
 					break;
 				case DOWN:
 					if (aPlayer.getWorld().isCollide(aPlayer, aPlayer.getWorld().getEndPoint())) {
@@ -715,15 +715,15 @@ public class GameplayGUI extends Application {
 				switch (event.getCode()) {
 				case LEFT:
 					goLeft = false;
-					System.out.println("KeyRelease: L");
+//					System.out.println("KeyRelease: L");
 					break;
 				case RIGHT:
 					goRight = false;
-					System.out.println("KeyRelease: R");
+//					System.out.println("KeyRelease: R");
 					break;
 				case SHIFT:
 					jump = false;
-					System.out.println("KeyRelease: Shift");
+//					System.out.println("KeyRelease: Shift");
 					break;
 				case DOWN:
 					break;
@@ -761,13 +761,13 @@ public class GameplayGUI extends Application {
 		
 		try {
 			File musicFile = new File("src/assets/sound/music.mp3");
-			System.out.println(musicFile.getAbsolutePath());
+//			System.out.println(musicFile.getAbsolutePath());
 			
 			music = new MediaPlayer(new Media(musicFile.toURI().toString()));
 			music.play();
 			music.setVolume(0.4);
 		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
-			System.out.println("NO MUSIC FOUND");
+//			System.out.println("NO MUSIC FOUND");
 			throw e;
 		}
 		
@@ -880,7 +880,6 @@ public class GameplayGUI extends Application {
 
 		// Start off by showing the start menu and making the stage non-resizeable
 		start.create(primaryStage);
-		
 		primaryStage.setResizable(false);
 		primaryStage.sizeToScene();
 		primaryStage.show();
@@ -910,6 +909,7 @@ public class GameplayGUI extends Application {
 					level1.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 2) {
+					currentScore += 300;
 					LevelTwoGUI level2 = new LevelTwoGUI();
 					level2.create(primaryStage);
 					this.start();

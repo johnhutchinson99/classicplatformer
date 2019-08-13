@@ -3,7 +3,6 @@ package gui;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import backend.World;
 import backend.WorldObject;
 import entity.fixed.Platform;
@@ -35,9 +34,10 @@ public class LevelOneGUI extends GameplayGUI {
 
 	private static final int WORLDWIDTH = 2000;
 	private static final int WORLDHEIGHT = 500;
-	private static final int STARTX = 10;
+	private static final int STARTX = 20;
 	private static final int STARTY = 300;
 
+	
 	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
 	private Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
 	private Map<Point2D, ImageView> movingBackground = new HashMap<Point2D, ImageView>();
@@ -70,6 +70,8 @@ public class LevelOneGUI extends GameplayGUI {
 		
 		// Create moving background elements (flowers, signs, trees)
 		createBackground(root, "/assets/image/wood1.png", 70, 100, 20, 350, movingBackground);
+		createBackground(root, "/assets/image/HELP.png", 264, 178, 20, 120, movingBackground);
+		
 		
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard
@@ -101,6 +103,12 @@ public class LevelOneGUI extends GameplayGUI {
 		createMace(root, levelOne, worldObjectMap, 180, 300, 260, 345, 40, 40);
 		createMace(root, levelOne, worldObjectMap, 600, 230, 200, 280, 40, 40);
 		createMace(root, levelOne, worldObjectMap, 660, 280, 180, 280, 40, 40);
+		createPoundCake(root, levelOne, worldObjectMap, 1300, 300, 1100, 1800, 40, 40);
+		createDirtCube(root, levelOne, worldObjectMap, 1510, 230, 200, 230, 35, 30);
+		createMace(root, levelOne, worldObjectMap, 1280, 140, 100, 200, 40, 40);
+		createMace(root, levelOne, worldObjectMap, 1720, 140, 100, 200, 40, 40);
+		createPoundCake(root, levelOne, worldObjectMap, 1500, 300, 1100, 1800, 40, 40);
+		createPoundCake(root, levelOne, worldObjectMap, 1700, 300, 1100, 1800, 40, 40);
 
 		// Create the platforms in the level
 		createTallPlatform(root, levelOne, platformGUIMap, 800, 300, 100, 200);
@@ -109,7 +117,7 @@ public class LevelOneGUI extends GameplayGUI {
 		createPlatform(root, levelOne, platformGUIMap, 1050, 280, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 1200, 230, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 1350, 180, 50, 30);
-		createPlatform(root, levelOne, platformGUIMap, 1500, 230, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 1485, 230, 80, 30);
 		createPlatform(root, levelOne, platformGUIMap, 1650, 180, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 1800, 230, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 30);

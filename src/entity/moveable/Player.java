@@ -153,11 +153,11 @@ public class Player extends PhysicsEntity {
 			}
 		} else {
 			ArrayList<Enemy> enemyList = getWorld().getListOfEnemies();
-			System.out.println(getWorld().getListOfEnemies().size());
+//			System.out.println(getWorld().getListOfEnemies().size());
 			for (Enemy e : enemyList) {
 				getWorld().removeFromListOfEnemies(e);
 			}
-			System.out.println(getWorld().getListOfEnemies().size());
+//			System.out.println(getWorld().getListOfEnemies().size());
 		}
 
 	}

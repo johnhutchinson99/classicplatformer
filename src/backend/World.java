@@ -127,7 +127,7 @@ public class World {
 	 * @param anEnemy - The enemy to add to the world.
 	 */
 	public void addToListOfEnemies(Enemy anEnemy) {
-		System.out.println("ADDED");
+//		System.out.println("ADDED");
 		listOfEnemies.add(anEnemy);
 	}
 
@@ -183,7 +183,7 @@ public class World {
 		// If there are corners that overlap in both the horizontal and vertical
 		// directions, then do the collision method
 		if ((inRXArea || inLXArea) && (inLYArea || inUYArea)) {
-			System.out.println("Collding");
+//			System.out.println("Collding");
 			return object2.doCollision(object1);
 		} else {
 			return false;
