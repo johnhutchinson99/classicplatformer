@@ -97,6 +97,11 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, platformGUIMap, 280, 90, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 420, 130, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 580, 170, 100, 20);
+		
+		
+		
+		
+		
 
 		// Create the EndPoint for the world
 		createEndPoint(root, levelTwo, worldObjectMap, 150, 0, 50, 50);

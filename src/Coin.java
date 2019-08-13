@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * Creates a coin object
+ * Coins can be collected to increase the player score
+ */
 public class Coin extends WorldObject{
 	
 	private int coinValue = 5;
@@ -13,6 +17,9 @@ public class Coin extends WorldObject{
 		coinValue = value;
 	}
 	
+	/**
+	 * Allows the player to pick up the coin. Returns true for successful collision
+	 */
 	public boolean doCollision(WorldObject object) {
 		if (object instanceof Player) {
 			object.getWorld().addToCoinCount(coinValue);
@@ -21,8 +28,12 @@ public class Coin extends WorldObject{
 		return true;
 	}
 	
+	/**
+	 * Returns whether or not the coin is still in the world
+	 */
 	public boolean isAlive() {
 		return !pickedUp;
 	}
 	
 }
+

@@ -10,7 +10,7 @@ public class Enemy extends PhysicsEntity {
 
 	// TODO why is their another enemyList here?? Shouldn't it use the one in world??
 	
-	private ArrayList<Enemy> enemyList = new ArrayList<>();
+
 	private boolean isAlive;
 
 	public Enemy(World newWorld, int width, int height) {
@@ -55,19 +55,6 @@ public class Enemy extends PhysicsEntity {
 	
 
 
-	/**
-	 * Check if enemies in the list of enemies are alive and removes dead enemies.
-	 */
-	public void checkEnemy() {
 	
-		for (int i = 0; i < enemyList.size(); i++) {
-			if (enemyList.get(i).isAlive = false) {
-				enemyList.remove(i);
-			}
-		}
-	}
-	/*
-	 * public void reset() { this.x = super.x; this.y = super.y; }
-	 */
 
 }

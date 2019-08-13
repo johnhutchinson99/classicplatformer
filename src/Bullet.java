@@ -1,4 +1,9 @@
-
+/**
+ * 
+ * Creates a Bullet object
+ * This bullet can be fired by an enemy and will collide with objects
+ *
+ */
 public class Bullet extends PhysicsEntity{
 	
 	private int range = 200;
@@ -8,7 +13,7 @@ public class Bullet extends PhysicsEntity{
 	
 	public Bullet(int startX, int startY, int width,int height, World world) {
 		super(startX,startY,width,height,world);
-		setYAcceleration(0);
+		setYAcceleration(0);//Cancels gravity
 	}
 	
 	
@@ -18,17 +23,15 @@ public class Bullet extends PhysicsEntity{
 	 * @return whether or not the gun fired successfully
 	 */
 	public boolean fire() {
-		if(getxVelocity() == 0) {
+		
+		if(getxVelocity() == 0) {//Bullet can only fire if it is not currently moving
 			setxCoord(getWorld().getPlayer().getxCoord()+getWorld().getPlayer().getWidth()/2);
 			setyCoord(getWorld().getPlayer().getyCoord()+getWorld().getPlayer().getHeight()/2);
 			initialX = getWorld().getPlayer().getxCoord();
 			initialY = getWorld().getPlayer().getyCoord();
-			
-			
-			//Find enemy to target
-			
+
 						
-				if(getWorld().getPlayer().isFacingRight()) {
+				if(getWorld().getPlayer().isFacingRight()) {//Changes bullet direction based on what direction the player is facing
 					setxVelocity(bulletSpeed);
 				}else {
 					setxVelocity(-1*bulletSpeed);
@@ -48,14 +51,20 @@ public class Bullet extends PhysicsEntity{
 		
 		
 	}
-	
+	/**
+	 * Overrides update
+	 * Checks if bullet should be reset(removed from screen)
+	 * Bullet will be reset if 
+	 */
+	@Override
 	public void update() {
 		
 		
 
 		super.update();
+		int distance = Math.abs(getxCoord()-initialX);
 		
-		if(getDistanceAway(initialX,initialY,getxCoord(),getyCoord())>range/* Is within range*/||getWorld().collidePlatform(this, getxCoord()+10, getyCoord())||getWorld().collidePlatform(this, getxCoord()-10, getyCoord())/* Isn't stuck in platform*/||getxCoord()<20||getxCoord()>getWorld().getWorldWidth()-20) {
+		if(distance>range/* Is within range*/||getWorld().collidePlatform(this, getxCoord()+10, getyCoord())||getWorld().collidePlatform(this, getxCoord()-10, getyCoord())/* Isn't stuck in platform*/||getxCoord()<20||getxCoord()>getWorld().getWorldWidth()-20) {
 			setxVelocity(0);
 			moveOffScreen();
 			
@@ -65,25 +74,7 @@ public class Bullet extends PhysicsEntity{
 	}
 	
 	
-	private int getDistanceAway(int startX, int startY, int endX, int endY) {
-		//Using pythagoreans theorem
-		
-		int x = startX - endX;
-		
-		if(x<0) {
-			x*=-1;
-		}
-		int y = startY - endY;
-		
-		if(y<0) {
-			y*=-1;
-		}
-		
-		
-		
-		
-		return (int)Math.round(Math.sqrt(x*x+y*y));
-	}
+
 	
 	
 	
