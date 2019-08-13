@@ -6,7 +6,7 @@ import org.junit.Test;
 public class PhysicsEntityTest {
 
 	//Physics Entity is abstract, so a child needs to be made to test functionality
-	public class PhysicsEntityChild extends PhysicsEntity {
+	private class PhysicsEntityChild extends PhysicsEntity {
 		//Initial test values
 		public PhysicsEntityChild(int xCoord, int yCoord, int width, int height, World world) {
 			super(xCoord, yCoord, width, height, world);
@@ -23,7 +23,7 @@ public class PhysicsEntityTest {
 	
 	//Custom  assert method to allow for better error messages
 	//Factors in tiny difference in doubles
-	public static void assertEquals(String name,double actual, double expected) {
+	private static void assertEquals(String name,double actual, double expected) {
 		
 		double shouldBeZero = (expected-actual);
 		
@@ -37,6 +37,7 @@ public class PhysicsEntityTest {
 	}
 	
 
+	
 
 	
 	
@@ -72,7 +73,7 @@ public class PhysicsEntityTest {
 		assertEquals("Width",test.getWidth(),width);
 		
 		assertEquals("X Acceleration",test.getXAcceleration(),0);
-		assertEquals("Y Acceleration",test.getYAcceleration(),0);
+		assertEquals("Y Acceleration",test.getYAcceleration(),PhysicsEntity.GRAVITY);
 		
 		assertTrue("World is null",test.getWorld()!=null);
 		
@@ -84,7 +85,9 @@ public class PhysicsEntityTest {
 		
 	}
 	
-	
+	/**
+	 * Testing the copier constructor
+	 */
 	@Test
 	public void copyConstructor() {
 		
@@ -108,14 +111,16 @@ public class PhysicsEntityTest {
 		assertEquals("Width",test.getWidth(),width);
 		
 		assertEquals("X Acceleration",test.getXAcceleration(),0);
-		assertEquals("Y Acceleration",test.getYAcceleration(),0);
+		assertEquals("Y Acceleration",test.getYAcceleration(),PhysicsEntity.GRAVITY);
 		
 		assertTrue("World is null",test.getWorld()!=null);
 		
 		
 	}
 	
-	
+	/**
+	 * Testing the set Y Velocity method
+	 */
 	@Test
 	public void setYVelocityTest() {
 		PhysicsEntity test = new PhysicsEntityChild(3,1,4,6,new World());
@@ -125,7 +130,9 @@ public class PhysicsEntityTest {
 		
 		assertEquals("Y Velocity",test.getyVelocity(),-25);
 	}
-	
+	/**
+	 * Testing the set X Velocity method
+	 */
 	@Test
 	public void setXVelocityTest() {
 		PhysicsEntity test = new PhysicsEntityChild(0,0,0,0,new World());
@@ -136,7 +143,9 @@ public class PhysicsEntityTest {
 		assertEquals("X Velocity",test.getxVelocity(),-25);
 	}
 	
-	
+	/**
+	 * Testing the set Y Acceleration method
+	 */
 	@Test
 	public void setYAccelerationTest() {
 		PhysicsEntity test = new PhysicsEntityChild(1,1,1,1,new World());
@@ -147,6 +156,10 @@ public class PhysicsEntityTest {
 		assertEquals("Y Acceleration",test.getYAcceleration(),4);
 	}
 	
+	
+	/**
+	 * Testing the set X Acceleration method
+	 */
 	@Test
 	public void setXAccelerationTest() {
 		PhysicsEntity test = new PhysicsEntityChild(0,0,0,0,new World());
@@ -186,6 +199,39 @@ public class PhysicsEntityTest {
 		
 		
 	}
+	
+	/**
+	 * Values after 1 second of acceleration in X and Y
+	 */
+	@Test
+	public void HalfSecondAcceleration() {
+		PhysicsEntity test = new PhysicsEntityChild(1,2,5,78,new World());
+		test.setxVelocity(10);
+		test.setyVelocity(7);
+		test.setXAcceleration(-4);
+		test.setYAcceleration(10);
+		
+		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		test.update();
+		assertEquals("X Position",test.getxCoord(),6); //Calculated manually
+		assertEquals("X Velocity",test.getxVelocity(),8);
+		
+		assertEquals("Y Position",test.getyCoord(),7);
+		assertEquals("Y Velocity",test.getyVelocity(),12);
+		
+		
+		
+		
+	}
+
+	
+	
 	
 	
 	
