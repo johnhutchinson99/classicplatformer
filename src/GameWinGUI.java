@@ -16,9 +16,6 @@ import javafx.stage.Stage;
  */
 public class GameWinGUI extends GameplayGUI{
 	
-	private static final int WORLDWIDTH = 800; 
-	private static final int WORLDHEIGHT = 500;
-	
 	/**
 	 * The method which creates the game over menu for the game.
 	 * 
@@ -28,7 +25,7 @@ public class GameWinGUI extends GameplayGUI{
 
 		// Create the root and set the scene
 		Pane root = new Pane();
-		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT);
+		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 		
 		// Create the background
 		createBackground(root, "layer-1-sky.png", 800, 500, 0, 0);
@@ -59,14 +56,14 @@ public class GameWinGUI extends GameplayGUI{
 		// Create the event for the start button click
 		EventHandler<ActionEvent> startButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				setLevel(0);
+				currentLevel = 0;
 			}
 		};
 		
 		// Create the event for the button click
 		EventHandler<ActionEvent> creditsButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				setLevel(99);
+				currentLevel = 99;
 			}
 		};
 		
@@ -93,7 +90,8 @@ public class GameWinGUI extends GameplayGUI{
 		root.getChildren().add(buttonsVBox);
 
 		// Reset the current score of the game
-		resetScore();
+		if (currentScore > highScore) highScore = currentScore;
+		currentScore = 0;
 		
 		// Set the scene
 		stage.setScene(scene);

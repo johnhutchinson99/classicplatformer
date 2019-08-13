@@ -19,8 +19,6 @@ import javafx.stage.Stage;
  */
 
 public class StartMenu extends GameplayGUI {
-	private static final int WORLDWIDTH = 800;
-	private static final int WORLDHEIGHT = 500;
 	
 	/**
 	 * The method which creates the start menu for the game.
@@ -32,11 +30,12 @@ public class StartMenu extends GameplayGUI {
 		// Reset which level the game is currently in. The start menu is considered
 		// to be "level 0". The previous level is also reset so that the game can be
 		// "reset" or played again from reset.
-		levelReset();
+		currentLevel = 0;
+		previousLevel = 0;
 
 		// Create the root and set the scene
 		Pane root = new Pane();
-		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT);
+		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 		
 		// Create the background
 		createBackground(root, "layer-1-sky.png", 800, 500, 0, 0);
@@ -69,14 +68,14 @@ public class StartMenu extends GameplayGUI {
 		// Create the event for the start button click
 		EventHandler<ActionEvent> startButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				nextLevel();
+				currentLevel++;
 			}
 		};
 		
 		// Create the event for the button click
 		EventHandler<ActionEvent> creditsButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				setLevel(99);
+				currentLevel = 99;
 			}
 		};
 		

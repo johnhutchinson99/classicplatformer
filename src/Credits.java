@@ -19,9 +19,6 @@ import javafx.stage.Stage;
  */
 public class Credits extends GameplayGUI{
 	
-	private static final int WORLDWIDTH = 800; 
-	private static final int WORLDHEIGHT = 500;
-	
 	/**
 	 * The method which creates the game over menu for the game.
 	 * 
@@ -31,7 +28,7 @@ public class Credits extends GameplayGUI{
 
 		// Create the root and set the scene
 		Pane root = new Pane();
-		Scene scene = new Scene(root, WORLDWIDTH, WORLDHEIGHT);
+		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 		
 		// Create the background
 		createBackground(root, "layer-1-sky.png", 800, 500, 0, 0);
@@ -60,7 +57,7 @@ public class Credits extends GameplayGUI{
 		// Create the event for the start button click
 		EventHandler<ActionEvent> startButtonEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				setLevel(0);
+				currentLevel = 0;
 			}
 		};
 		

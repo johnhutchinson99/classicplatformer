@@ -44,7 +44,7 @@ public class LevelOneGUI extends GameplayGUI {
 	 * @param stage   - the stage of the javaFX application
 	 * @param aPlayer - the player to copy into this level
 	 */
-	public void create(Stage stage, Player aPlayer) {
+	public void create(Stage stage) {
 
 		// Set scene
 		Pane root = new Pane();
@@ -67,7 +67,7 @@ public class LevelOneGUI extends GameplayGUI {
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard
 		// press/separately from other world objects
-		Player player = new Player(aPlayer);
+		Player player = new Player(35, 35, 35, 35);
 		player.setXYCoord(STARTX, STARTY);
 		player.setWorld(levelOne);
 		levelOne.addPlayer(player);

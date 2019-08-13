@@ -61,51 +61,17 @@ public class GameplayGUI extends Application {
 	private Text scoreDisplay = new Text(currentScore + "");
 	
 	private MediaPlayer music;
-
-
-
-
-	private Player mainPlayer = new Player(35, 35, 35, 35);
+	private boolean soundOn = true;
 
 	private boolean goLeft = false;
 	private boolean goRight = false;
 	private boolean jump = false;
 	
-	private boolean soundOn = true;
-
 	/**
-	 * Reset the game level to 0, i.e. the start menu.
+	 * Creates the mute button. 
+	 * @param aScene - the scene the mute button will be added to
+	 * @return muteButton - the mute button
 	 */
-	public void levelReset() {
-		currentLevel = 0;
-		previousLevel = 0;
-	}
-
-	/**
-	 * Move on to the next level / increase the current level by one.
-	 */
-	public void nextLevel() {
-		currentLevel++;
-	}
-
-	/**
-	 * Move on to the desired level.
-	 */
-	public void setLevel(int level) {
-		currentLevel = level;
-	}
-
-	/**
-	 * Reset the current score of the game, if it's larger than the highest score, then set the highest score before resetting it. 
-	 */
-	public void resetScore() {
-		if (currentScore > highScore) highScore = currentScore;
-		currentScore = 0;
-	}
-
-	
-	
-	
 	public Button createMuteButton(Scene aScene ) {
 		Button muteButton = new Button();
 		muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('MuteSoundButton.png') ");
@@ -140,7 +106,11 @@ public class GameplayGUI extends Application {
 		return muteButton;
 	}
 	
-	
+	/**
+	 * Creates the help button. 
+	 * @param aScene - the JavaFX scene that the help button will belong to
+	 * @return helpButton - the help button
+	 */
 	public Button createHelpButton(Scene aScene) {
 		Button helpButton = new Button();
 		helpButton.setMinSize(50, 50);
@@ -166,11 +136,6 @@ public class GameplayGUI extends Application {
 		
 		return helpButton;
 	}
-
-
-	
-	
-	
 	
 	/**
 	 * Creates rectangular menu buttons such as for start, credits, or exit buttons.
@@ -837,7 +802,7 @@ public class GameplayGUI extends Application {
 					jump = false;
 					aPlayer.setXYCoord(-10, -10);
 					aPlayer.revive();
-					setLevel(1000);
+					currentLevel = 1000;
 					music.stop();
 					
 				}
@@ -924,11 +889,11 @@ public class GameplayGUI extends Application {
 				} else if (currentLevel == 1) {
 					timerStart = System.currentTimeMillis();
 					LevelOneGUI level1 = new LevelOneGUI();
-					level1.create(primaryStage, mainPlayer);
+					level1.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 2) {
 					LevelTwoGUI level2 = new LevelTwoGUI();
-					level2.create(primaryStage, mainPlayer);
+					level2.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 99) {
 					credits.create(primaryStage);
