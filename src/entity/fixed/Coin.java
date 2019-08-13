@@ -1,3 +1,8 @@
+package entity.fixed;
+import backend.World;
+import backend.WorldObject;
+import entity.moveable.Player;
+
 /**
  * 
  * Creates a coin object

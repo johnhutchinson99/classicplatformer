@@ -1,3 +1,5 @@
+package entity.moveable;
+import backend.World;
 
 public class EnemyType1 extends EnemyGUI{  //enemy type1:move around in an area, go back when touch Obstructs
 

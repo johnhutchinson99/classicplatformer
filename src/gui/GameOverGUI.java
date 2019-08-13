@@ -1,3 +1,4 @@
+package gui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
  * The class which creates the Game Over menu for the game.
  *
  */
-public class GameWinGUI extends GameplayGUI{
+public class GameOverGUI extends GameplayGUI{
 	
 	/**
 	 * The method which creates the game over menu for the game.
@@ -29,12 +30,12 @@ public class GameWinGUI extends GameplayGUI{
 		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 		
 		// Create the background
-		createBackground(root, "assets/image/layer-1-sky.png", 800, 500, 0, 0);
-		createBackground(root, "assets/image/layer-2-mountain.png", 800, 500, 0, 0);
-		createBackground(root, "assets/image/layer-3-ground.png", 800, 500, 0, 0);
+		createBackground(root, "/assets/image/layer-1-sky.png", 800, 500, 0, 0);
+		createBackground(root, "/assets/image/layer-2-mountain.png", 800, 500, 0, 0);
+		createBackground(root, "/assets/image/layer-3-ground.png", 800, 500, 0, 0);
 		
 		// Make the game title
-		Text gameOverText = new Text(80, 100,"CONGRATULATIONS! YOU WON!");
+		Text gameOverText = new Text(80, 100,"YOU DIED\nGAME OVER");
 		gameOverText.setFont(jellyCraziesFontSize30);
 		gameOverText.setFill(Color.GHOSTWHITE);
 		gameOverText.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");

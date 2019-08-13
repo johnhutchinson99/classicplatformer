@@ -1,5 +1,10 @@
+package entity.moveable;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import backend.PhysicsEntity;
+import backend.World;
+
 import java.util.Iterator;
 
 /**

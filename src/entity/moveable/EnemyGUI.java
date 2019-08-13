@@ -1,4 +1,8 @@
+package entity.moveable;
 import java.util.ArrayList;
+
+import backend.World;
+import backend.WorldObject;
 
 public abstract class EnemyGUI extends Enemy{
 	

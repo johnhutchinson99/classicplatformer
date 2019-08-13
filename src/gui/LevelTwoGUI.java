@@ -1,6 +1,12 @@
+package gui;
 import java.util.HashMap;
 import java.util.Map;
 
+import backend.World;
+import backend.WorldObject;
+import entity.fixed.Platform;
+import entity.moveable.Bullet;
+import entity.moveable.Player;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -49,8 +55,8 @@ public class LevelTwoGUI extends GameplayGUI {
 		World levelTwo = new World(WORLDWIDTH, WORLDHEIGHT, STARTX, STARTY);
 		
 		// Create background
-        createBackground(root, "Full-Background.png", 800, 500, 0, 0);
-        createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
+        createBackground(root, "/assets/image/Full-Background.png", 800, 500, 0, 0);
+        createBackground(root, "/assets/image/layer-2-mountain.png", 800, 500, 0, 0);
         
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard

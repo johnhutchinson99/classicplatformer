@@ -1,3 +1,6 @@
+package entity.fixed;
+import backend.WorldObject;
+
 /**
  * The class for creating platform objects. 
  */

@@ -1,3 +1,5 @@
+package entity.moveable;
+import backend.World;
 
 public class TrapType1 extends EnemyGUI {  //This trap is move up and move down(underground)
 	

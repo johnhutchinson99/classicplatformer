@@ -1,3 +1,4 @@
+package backend;
 
 /**
 * The World superclass contains information about the world.
@@ -6,6 +7,12 @@
 */
 
 import java.util.ArrayList;
+
+import entity.fixed.EndPoint;
+import entity.fixed.Platform;
+import entity.moveable.Enemy;
+import entity.moveable.EnemyGUI;
+import entity.moveable.Player;
 
 public class World {
 

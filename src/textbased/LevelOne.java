@@ -1,3 +1,9 @@
+package textbased;
+import backend.World;
+import entity.fixed.EndPoint;
+import entity.moveable.Enemy;
+import entity.moveable.Player;
+
 /**
  * Level One of our classic platformer game.
  * 

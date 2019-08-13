@@ -1,9 +1,14 @@
+package gui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
+import backend.World;
+import backend.WorldObject;
+import entity.fixed.Platform;
+import entity.moveable.Bullet;
+import entity.moveable.Player;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -56,15 +61,15 @@ public class LevelOneGUI extends GameplayGUI {
 		World levelOne = new World(WORLDWIDTH, WORLDHEIGHT, STARTX, STARTY);
 
 		// Create background
-		createBackground(root, "assets/image/Full-Background.png", 800, 500, 0, 0);
-		createBackground(root, "assets/image/layer-4.png", 800, 500, 0, 0);
-		createBackground(root, "assets/image/layer-2-mountain.png", 800, 500, 0, 0);
+		createBackground(root, "/assets/image/Full-Background.png", 800, 500, 0, 0);
+		createBackground(root, "/assets/image/layer-4.png", 800, 500, 0, 0);
+		createBackground(root, "/assets/image/layer-2-mountain.png", 800, 500, 0, 0);
 
 		
 
 		
 		// Create moving background elements (flowers, signs, trees)
-		createBackground(root, "assets/image/wood1.png", 70, 100, 20, 350, movingBackground);
+		createBackground(root, "/assets/image/wood1.png", 70, 100, 20, 350, movingBackground);
 		
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard
@@ -77,7 +82,7 @@ public class LevelOneGUI extends GameplayGUI {
 		// Create an ImageView representation of the player
 		// Note: Don't turn into method as need to be updated on keyboard
 		// press/separately from other world objects
-		Image im = new Image("assets/image/giphy.gif", false);
+		Image im = new Image("/assets/image/giphy.gif", false);
 		ImageView iv = new ImageView(im);
 		iv.setFitHeight(player.getHeight());
 		iv.setFitWidth(player.getWidth());

@@ -1,4 +1,9 @@
+package textbased;
 import java.util.Scanner;
+
+import backend.World;
+import entity.moveable.Enemy;
+import entity.moveable.Player;
 
 /**
  * Gameplay contains the main method which runs the game; in other words, this

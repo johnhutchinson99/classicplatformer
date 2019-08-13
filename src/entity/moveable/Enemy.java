@@ -1,3 +1,4 @@
+package entity.moveable;
 /**
  * This class creates enemies for the text-based version of the game.
  *
@@ -5,6 +6,10 @@
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import backend.PhysicsEntity;
+import backend.World;
+import backend.WorldObject;
 
 public class Enemy extends PhysicsEntity {
 

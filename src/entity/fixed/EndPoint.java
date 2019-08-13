@@ -1,3 +1,7 @@
+package entity.fixed;
+import backend.WorldObject;
+import entity.moveable.Player;
+
 /**
  * Class for the EndPoint.
  * Colliding with an EndPoint object allows the user to advance to the next level/win the game. 

@@ -1,3 +1,5 @@
+package gui;
+import entity.moveable.Player;
 import javafx.scene.Scene;
 
 /**

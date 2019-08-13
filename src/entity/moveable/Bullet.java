@@ -1,3 +1,7 @@
+package entity.moveable;
+import backend.PhysicsEntity;
+import backend.World;
+
 /**
  * 
  * Creates a Bullet object

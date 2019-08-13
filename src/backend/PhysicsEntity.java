@@ -1,3 +1,4 @@
+package backend;
 //import java.util.Scanner;
 /**
  * This class stores and calculates the position,velocity and acceleration of an

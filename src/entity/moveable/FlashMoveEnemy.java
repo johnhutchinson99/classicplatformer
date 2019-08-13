@@ -1,3 +1,5 @@
+package entity.moveable;
+import backend.World;
 
 public class FlashMoveEnemy extends EnemyGUI{
 
