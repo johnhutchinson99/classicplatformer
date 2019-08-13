@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -716,7 +717,8 @@ public class GameplayGUI extends Application {
 				case F:
 					
 					if(bullet.fire()&&soundOn) {
-						MediaPlayer gunshot = new MediaPlayer(new Media("file://"+System.getProperty("user.dir")+"/src/gunshot.mp3"));
+						File gunShotFile = new File("src/gunshot.mp3");
+						MediaPlayer gunshot = new MediaPlayer(new Media(gunShotFile.toURI().toString()));
 						gunshot.play();
 					}
 					
@@ -780,8 +782,8 @@ public class GameplayGUI extends Application {
 		
 		
 		try {
-			music = new MediaPlayer(new Media("file://"+System.getProperty("user.dir")+"/src/music.mp3"));
-			
+			File musicFile = new File("src/music.mp3");
+			music = new MediaPlayer(new Media(musicFile.toURI().toString()));
 			music.play();
 			music.setVolume(0.4);
 		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
