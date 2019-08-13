@@ -1,4 +1,4 @@
-# README: Classic Platformer - Version 0.0.3
+# README: Jumpy Man - Final
 
 GITHUB LINK: https://github.com/johnhutchinson99/classicplatformer
 
@@ -75,6 +75,13 @@ http://www.aigei.com/s?q=%E5%86%92%E9%99%A9%E5%B2%9B&type=game&term=gif (Accesse
 Player:
 
 https://giphy.com/stickers/creepy-walking-s6hx6Pcg8o8j6 (Accessed Aug 06/2019)
+
+
+Sounds:
+Gun sound: https://www.zapsplat.com/music/science-fiction-weapon-gun-blaster-gunshot-2/
+
+Background music: Boss Fight:  https://patrickdearteaga.com/chiptune-8-bit-retro/
+
 
 
 Physics equations were taken from
