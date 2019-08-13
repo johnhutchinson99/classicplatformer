@@ -83,13 +83,13 @@ public class LevelTwoGUI extends GameplayGUI {
         
         
 		// Add the enemies
-        createEnemyType1(root, levelTwo, worldObjectMap, 580, 230, 560, 670, 20, 20);
-        createEnemyType1(root, levelTwo, worldObjectMap, 600, 135, 590, 650, 20, 20);
-        createEnemyType1(root, levelTwo, worldObjectMap, 440, 95, 430, 480, 20, 20);
-        createTrapType1(root, levelTwo, worldObjectMap, 310, 350, 325, 345, 20, 20);
-        createFlyingEnemy(root, levelTwo, worldObjectMap, 180, 300, 260, 345, 30, 35);
-        createFlyingEnemy(root, levelTwo, worldObjectMap, 760, 200, 100, 190, 30, 35);
-        createFlyingEnemy(root, levelTwo, worldObjectMap, 300, 65, 0, 55, 30, 35);
+        createPoundCake(root, levelTwo, worldObjectMap, 580, 230, 560, 670, 20, 20);
+        createPoundCake(root, levelTwo, worldObjectMap, 600, 135, 590, 650, 20, 20);
+        createPoundCake(root, levelTwo, worldObjectMap, 440, 95, 430, 480, 20, 20);
+        createDirtCube(root, levelTwo, worldObjectMap, 310, 350, 325, 345, 20, 20);
+        createMace(root, levelTwo, worldObjectMap, 180, 300, 260, 345, 30, 35);
+        createMace(root, levelTwo, worldObjectMap, 760, 200, 100, 190, 30, 35);
+        createMace(root, levelTwo, worldObjectMap, 300, 65, 0, 55, 30, 35);
         
 		// Create the platforms in the level
 		createPlatform( root, levelTwo, platformGUIMap, 0, 450, 1000, 50);

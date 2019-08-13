@@ -14,10 +14,10 @@ import entity.fixed.EndPoint;
 import entity.fixed.Platform;
 import entity.moveable.Bullet;
 import entity.moveable.EnemyGUI;
-import entity.moveable.EnemyType1;
-import entity.moveable.FlyingEnemy;
+import entity.moveable.PoundCake;
+import entity.moveable.Mace;
 import entity.moveable.Player;
-import entity.moveable.TrapType1;
+import entity.moveable.DirtCube;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -377,7 +377,7 @@ public class GameplayGUI extends Application {
 	}
 
 	/**
-	 * Creates an EnemyType1 (an enemy which moves back and forth in the x
+	 * Creates an PoundCake (an enemy which moves back and forth in the x
 	 * direction, within a specified min and max coordinate) instance and makes the
 	 * respective GUI/ImageView representation.
 	 * 
@@ -396,9 +396,9 @@ public class GameplayGUI extends Application {
 	 * @param height         - the height of the enemy
 	 * 
 	 */
-	public void createEnemyType1(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
+	public void createPoundCake(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minXPosition, int maxXPosition, int width, int height) {
-		EnemyType1 enemy1 = new EnemyType1(aWorld, xCoord, yCoord, true, minXPosition, maxXPosition, width, height);
+		PoundCake enemy1 = new PoundCake(aWorld, xCoord, yCoord, true, minXPosition, maxXPosition, width, height);
 		Image img = new Image("/assets/image/WalkingEnemy.gif", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);
@@ -412,7 +412,7 @@ public class GameplayGUI extends Application {
 	}
 
 	/**
-	 * Creates an FlyingEnemy (an enemy which moves up and down in the y direction,
+	 * Creates an Mace (an enemy which moves up and down in the y direction,
 	 * within a specified min and max coordinate) instance and makes the respective
 	 * GUI/ImageView representation.
 	 * 
@@ -431,9 +431,9 @@ public class GameplayGUI extends Application {
 	 * @param height         - the height of the enemy
 	 * 
 	 */
-	public void createFlyingEnemy(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
+	public void createMace(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
-		FlyingEnemy trap1 = new FlyingEnemy(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
+		Mace trap1 = new Mace(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
 		Image img = new Image("/assets/image/Mace.png", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);
@@ -447,7 +447,7 @@ public class GameplayGUI extends Application {
 	}
 
 	/**
-	 * Creates an TrapType1 (an enemy which moves up and down in intervals,
+	 * Creates an DirtCube (an enemy which moves up and down in intervals,
 	 * generally is hiding within a platform) instance and makes the respective
 	 * GUI/ImageView representation.
 	 * 
@@ -466,9 +466,9 @@ public class GameplayGUI extends Application {
 	 * @param height         - the height of the enemy
 	 * 
 	 */
-	public void createTrapType1(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
+	public void createDirtCube(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
-		TrapType1 trap1 = new TrapType1(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
+		DirtCube trap1 = new DirtCube(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
 		Image img = new Image("/assets/image/undergroundmonster.gif", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);

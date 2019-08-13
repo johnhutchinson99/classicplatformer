@@ -1,7 +1,7 @@
 package entity.moveable;
 import backend.World;
 
-public class FlyingEnemy extends EnemyGUI {  //This trap is move up and move down(underground)
+public class Mace extends EnemyGUI {  //This trap is move up and move down(underground)
 	
 	private boolean isUp;
 	private int upMax;
@@ -29,7 +29,7 @@ public class FlyingEnemy extends EnemyGUI {  //This trap is move up and move dow
 		}
 	}
 		
-		public FlyingEnemy(World newWorld,int enemyXCoord,int enemyYCoord, int width, int height, boolean isUp,int upMax, int downMax) {
+		public Mace(World newWorld,int enemyXCoord,int enemyYCoord, int width, int height, boolean isUp,int upMax, int downMax) {
 			
 			super(enemyXCoord,enemyYCoord, width, height, newWorld, enemyXCoord, enemyXCoord);
 //			super(newWorld, enemyXCoord,enemyYCoord);
