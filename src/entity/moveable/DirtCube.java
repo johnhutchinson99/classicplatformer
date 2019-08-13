@@ -1,8 +1,13 @@
 package entity.moveable;
+import java.util.Random;
+
 import backend.World;
 
 public class DirtCube extends EnemyGUI {  //This trap is move up and move down(underground)
 	
+	private Random rand = new Random();
+	private int timeAbovePlatform = rand.nextInt(100) + 50;
+	private int timeBelowPlatform = rand.nextInt(100) + 50;
 	private boolean isUp;
 	private int upMax;
 	private int downMax;
@@ -27,22 +32,24 @@ public class DirtCube extends EnemyGUI {  //This trap is move up and move down(u
 			isUp = false;
 			isStop = true;
 			count1++;
-			if (count1 == 200) {
+			if (count1 == timeAbovePlatform) {
+				timeAbovePlatform = rand.nextInt(100) + 50;
 				isStop = false;
 				this.count1 = 0;
 			}else {
-				supersetyCoord(getyCoord()-0);
+				supersetyCoord(getyCoord());
 			}
 		}
 		if (this.getyCoord() == this.downMax) {
 			isUp = true;
 			isStop = true;
 			count2 ++;
-			if (count2 == 200) {
+			if (count2 == timeBelowPlatform) {
+				timeBelowPlatform = rand.nextInt(100) + 50;
 				isStop = false;
 				this.count2 = 0;
 			}else {
-				supersetyCoord(getyCoord()-0);
+				supersetyCoord(getyCoord());
 			}
 		}
 		

@@ -99,6 +99,7 @@ public class LevelOneGUI extends GameplayGUI {
 		// Add the enemies
 		createPoundCake(root, levelOne, worldObjectMap, 580, 220, 560, 660, 40, 40);
 		createDirtCube(root, levelOne, worldObjectMap, 310, 340, 315, 345, 35, 30);
+		createDirtCube(root, levelOne, worldObjectMap, 360, 340, 315, 345, 35, 30);
 		createMace(root, levelOne, worldObjectMap, 180, 300, 260, 345, 40, 40);
 
 		// Create the platforms in the level
