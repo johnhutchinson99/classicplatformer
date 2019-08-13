@@ -875,10 +875,12 @@ public class GameplayGUI extends Application {
 		// Create instances of each of the level
 		StartMenu start = new StartMenu();
 		GameOverGUI over = new GameOverGUI();
+		GameWinGUI win = new GameWinGUI();
 		Credits credits = new Credits();
 
 		// Start off by showing the start menu and making the stage non-resizeable
 		start.create(primaryStage);
+		
 		primaryStage.setResizable(false);
 		primaryStage.sizeToScene();
 		primaryStage.show();
@@ -910,6 +912,9 @@ public class GameplayGUI extends Application {
 				} else if (currentLevel == 2) {
 					LevelTwoGUI level2 = new LevelTwoGUI();
 					level2.create(primaryStage);
+					this.start();
+				} else if (currentLevel == 3) {
+					win.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 99) {
 					credits.create(primaryStage);

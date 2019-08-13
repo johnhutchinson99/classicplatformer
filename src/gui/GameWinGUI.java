@@ -35,11 +35,12 @@ public class GameWinGUI extends GameplayGUI{
 		createBackground(root, "/assets/image/layer-3-ground.png", 800, 500, 0, 0);
 		
 		// Make the game title
-		Text gameOverText = new Text(80, 100,"CONGRATULATIONS! YOU WON!");
-		gameOverText.setFont(jellyCraziesFontSize30);
-		gameOverText.setFill(Color.GHOSTWHITE);
-		gameOverText.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
-		root.getChildren().add(gameOverText);
+		Text gameWinText = new Text(80, 100,"CONGRATULATIONS\nYOU WON");
+		gameWinText.setTextAlignment(TextAlignment.CENTER);
+		gameWinText.setFont(jellyCraziesFontSize30);
+		gameWinText.setFill(Color.GHOSTWHITE);
+		gameWinText.setStyle("-fx-stroke: black ;-fx-stroke-width: 2px ;");
+		root.getChildren().add(gameWinText);
 
 		
 		// Print out the score the player got

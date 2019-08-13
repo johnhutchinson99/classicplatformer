@@ -33,9 +33,9 @@ import javafx.stage.Stage;
 
 public class LevelOneGUI extends GameplayGUI {
 
-	private static final int WORLDWIDTH = 1600;
+	private static final int WORLDWIDTH = 2000;
 	private static final int WORLDHEIGHT = 500;
-	private static final int STARTX = 20;
+	private static final int STARTX = 10;
 	private static final int STARTY = 300;
 
 	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
@@ -92,32 +92,60 @@ public class LevelOneGUI extends GameplayGUI {
 		Bullet bullet = new Bullet(WORLDHEIGHT + 100, WORLDWIDTH + 100, 10, 5, levelOne);
 		Rectangle bulletRect = new Rectangle(bullet.getxCoord(), bullet.getyCoord(), bullet.getWidth(),
 				bullet.getHeight());
-		
 		bulletRect.setFill(Color.DARKGREY);
 		root.getChildren().add(bulletRect);
 
 		// Add the enemies
-		createPoundCake(root, levelOne, worldObjectMap, 580, 220, 560, 660, 40, 40);
+		createPoundCake(root, levelOne, worldObjectMap, 600, 400, 250, 690, 40, 40);
 		createDirtCube(root, levelOne, worldObjectMap, 310, 340, 315, 345, 35, 30);
-		createDirtCube(root, levelOne, worldObjectMap, 360, 340, 315, 345, 35, 30);
 		createMace(root, levelOne, worldObjectMap, 180, 300, 260, 345, 40, 40);
+		createMace(root, levelOne, worldObjectMap, 600, 230, 200, 280, 40, 40);
+		createMace(root, levelOne, worldObjectMap, 660, 280, 180, 280, 40, 40);
 
 		// Create the platforms in the level
 		createTallPlatform(root, levelOne, platformGUIMap, 800, 300, 100, 200);
-
-		createPlatform(root, levelOne, platformGUIMap, 0, 420, 100, 30);
+		createTallPlatform(root, levelOne, platformGUIMap, 1900, 200, 100, 300);
+		createTallPlatform(root, levelOne, platformGUIMap, 900, 375, 50, 300);
+		createPlatform(root, levelOne, platformGUIMap, 1050, 280, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 1200, 230, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 1350, 180, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 1500, 230, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 1650, 180, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 1800, 230, 50, 30);
 		createPlatform(root, levelOne, platformGUIMap, 140, 380, 100, 30);
 		createPlatform(root, levelOne, platformGUIMap, 280, 345, 100, 30);
 		createPlatform(root, levelOne, platformGUIMap, 420, 305, 100, 30);
-		createPlatform(root, levelOne, platformGUIMap, 560, 265, 150, 30);
-		createPlatform(root, levelOne, platformGUIMap, 750, 225, 50, 30);
+		createPlatform(root, levelOne, platformGUIMap, 580, 330, 150, 30);
 		createPlatform(root, levelOne, platformGUIMap, 0, 450, WORLDWIDTH, 50);
 
 		// Create coins
-		createCoin(root, levelOne, worldObjectMap, 150, 420, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 70, 420, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 250, 250, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 450, 180, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 640, 230, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 640, 200, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 750, 200, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 750, 170, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 910, 150, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 950, 150, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 990, 150, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1030, 150, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1070, 150, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1210, 70, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1210, 100, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1360, 70, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1360, 100, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1510, 70, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1510, 100, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1510, 130, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1660, 40, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1660, 70, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1660, 100, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1840, 60, 25, 25);
+		createCoin(root, levelOne, worldObjectMap, 1840, 90, 25, 25);
 
 		// Create the EndPoint for the world
-		createEndPoint(root, levelOne, worldObjectMap, 770, 175, 50, 50);
+		createEndPoint(root, levelOne, worldObjectMap, 1920, 150, 50, 50);
 
 		// Call the keyboard listener for the level
 		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect, movingBackground);
