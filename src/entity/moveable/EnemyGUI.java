@@ -8,8 +8,6 @@ public abstract class EnemyGUI extends Enemy{
 	
 	private int leftMax;
 	private int rightMax;
-	private ArrayList<EnemyGUI> enemyList = new ArrayList<>();
-	private ArrayList<EnemyGUI> removedEnemyList = new ArrayList<>();
 	private boolean isAlive = true; 
 		
 	
