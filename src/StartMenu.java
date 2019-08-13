@@ -38,9 +38,9 @@ public class StartMenu extends GameplayGUI {
 		Scene scene = new Scene(root, APPLICATIONWIDTH, APPLICATIONHEIGHT);
 		
 		// Create the background
-		createBackground(root, "layer-1-sky.png", 800, 500, 0, 0);
-		createBackground(root, "layer-2-mountain.png", 800, 500, 0, 0);
-		createBackground(root, "layer-3-ground.png", 800, 500, 0, 0);
+		createBackground(root, "assets/image/layer-1-sky.png", 800, 500, 0, 0);
+		createBackground(root, "assets/image/layer-2-mountain.png", 800, 500, 0, 0);
+		createBackground(root, "assets/image/layer-3-ground.png", 800, 500, 0, 0);
 		
 		// Make the game title
 		Text gameTitle = new Text(90, 120, "JUMPY MAN");

@@ -1,9 +1,11 @@
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import com.sun.media.jfxmedia.MediaException;
+
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -43,11 +45,11 @@ public class GameplayGUI extends Application {
 
 	// Font needs to be reloaded since font size is final
 	// Make protected so children start/exit/etc menus can use the fonts
-	protected Font jellyCraziesFontSize50 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 50);
-	protected Font jellyCraziesFontSize30 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 30);
-	protected Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("Jelly Crazies.ttf"), 20);
-	protected Font unicornPopFontSize40 = Font.loadFont(getClass().getResourceAsStream("Unicorn Pop.ttf"), 40);	
-	protected Font cartwheelFontSize35 = Font.loadFont(getClass().getResourceAsStream("Cartwheel.otf"), 35);
+	protected Font jellyCraziesFontSize50 = Font.loadFont(getClass().getResourceAsStream("assets/font/Jelly Crazies.ttf"), 50);
+	protected Font jellyCraziesFontSize30 = Font.loadFont(getClass().getResourceAsStream("assets/font/Jelly Crazies.ttf"), 30);
+	protected Font jellyCraziesFontSize20 = Font.loadFont(getClass().getResourceAsStream("assets/font/Jelly Crazies.ttf"), 20);
+	protected Font unicornPopFontSize40 = Font.loadFont(getClass().getResourceAsStream("assets/font/Unicorn Pop.ttf"), 40);	
+	protected Font cartwheelFontSize35 = Font.loadFont(getClass().getResourceAsStream("assets/font/Cartwheel.otf"), 35);
 
 	static int currentLevel = 0;
 	static int previousLevel = 0;
@@ -74,7 +76,7 @@ public class GameplayGUI extends Application {
 	 */
 	public Button createMuteButton(Scene aScene ) {
 		Button muteButton = new Button();
-		muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('MuteSoundButton.png') ");
+		muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('assets/image/MuteSoundButton.png') ");
 		muteButton.setMinSize(50, 50);
 		
 		muteButton.setLayoutX(750);// TODO remove magic numbers
@@ -89,12 +91,12 @@ public class GameplayGUI extends Application {
 		
 		muteButton.setOnMousePressed(e -> {
 			if(soundOn) {
-				muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('EnableSoundButton.png') ");
+				muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('assets/image/EnableSoundButton.png') ");
 				if(music!=null)
 				music.setMute(true);
 				soundOn = false;
 			}else {
-				muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('MuteSoundButton.png') ");
+				muteButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('assets/image/MuteSoundButton.png') ");
 				soundOn = true;
 				if(music!=null)
 				music.setMute(false);
@@ -116,11 +118,11 @@ public class GameplayGUI extends Application {
 		helpButton.setMinSize(50, 50);
 		helpButton.setLayoutX(0);
 		helpButton.setLayoutY(450);
-		helpButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('HelpButton.png') ");
+		helpButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('assets/image/HelpButton.png') ");
 		
 		helpButton.setOnMouseEntered(e ->{
 			helpButton.setMinSize(264, 178);
-			helpButton.setStyle("-fx-background-image: url('HELP.png') ");
+			helpButton.setStyle("-fx-background-image: url('assets/image/HELP.png') ");
 			helpButton.setLayoutX(0);
 			helpButton.setLayoutY(322);
 		});
@@ -128,7 +130,7 @@ public class GameplayGUI extends Application {
 			helpButton.setMinSize(50, 50);
 			helpButton.setLayoutX(0);
 			helpButton.setLayoutY(450);
-			helpButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('HelpButton.png') ");
+			helpButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('assets/image/HelpButton.png') ");
 			
 			
 		});
@@ -149,7 +151,7 @@ public class GameplayGUI extends Application {
 		label.setTextFill(Color.GOLD);
 		label.setStyle("-fx-effect: dropshadow( one-pass-box , black , 10 , 0.1 , 2 , 0 );");
 		button.setGraphic(label);
-		button.setStyle("-fx-background-image: url('redStartButtom.png');");
+		button.setStyle("-fx-background-image: url('assets/image/redStartButtom.png');");
 		button.setMinSize(250, 60);
 		button.setOnMouseEntered(e -> {
 			label.setTextFill(Color.LIGHTGOLDENRODYELLOW);
@@ -386,7 +388,7 @@ public class GameplayGUI extends Application {
 	public void createEnemyType1(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minXPosition, int maxXPosition, int width, int height) {
 		EnemyType1 enemy1 = new EnemyType1(aWorld, xCoord, yCoord, true, minXPosition, maxXPosition, width, height);
-		Image img = new Image("WalkingEnemy.gif", false);
+		Image img = new Image("assets/image/WalkingEnemy.gif", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);
 		enemyImageView.setFitHeight(height);
@@ -421,7 +423,7 @@ public class GameplayGUI extends Application {
 	public void createFlyingEnemy(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
 		FlyingEnemy trap1 = new FlyingEnemy(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
-		Image img = new Image("Mace.png", false);
+		Image img = new Image("assets/image/Mace.png", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);
 		enemyImageView.setFitHeight(height);
@@ -456,7 +458,7 @@ public class GameplayGUI extends Application {
 	public void createTrapType1(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int minYPosition, int maxYPosition, int width, int height) {
 		TrapType1 trap1 = new TrapType1(aWorld, xCoord, yCoord, width, height, true, minYPosition, maxYPosition);
-		Image img = new Image("undergroundmonster.gif", false);
+		Image img = new Image("assets/image/undergroundmonster.gif", false);
 		ImageView enemyImageView = new ImageView(img);
 		enemyImageView.setFitWidth(width);
 		enemyImageView.setFitHeight(height);
@@ -484,7 +486,7 @@ public class GameplayGUI extends Application {
 	public void createCoin(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord,
 			int yCoord, int width, int height) {
 		Coin coin = new Coin(xCoord, yCoord, width, height, aWorld);
-		Image coinImage = new Image("smallerCoin.gif", false);
+		Image coinImage = new Image("assets/image/smallerCoin.gif", false);
 		ImageView coinTile = new ImageView(coinImage);
 		coinTile.setFitWidth(width);
 		coinTile.setFitHeight(height);
@@ -510,7 +512,7 @@ public class GameplayGUI extends Application {
 	public void createEndPoint(Pane theRoot, World aWorld, Map<WorldObject, ImageView> worldObjectMap, int xCoord, int yCoord, int width, int height) {
 		EndPoint endpoint = new EndPoint(xCoord, yCoord, width, height);
 		aWorld.setEndPoint(endpoint);
-		Image endPointImage = new Image("door.png", false);
+		Image endPointImage = new Image("assets/image/door.png", false);
 		ImageView endPointTile = new ImageView(endPointImage);
 		endPointTile.setFitWidth(width);
 		endPointTile.setFitHeight(height);
@@ -540,8 +542,8 @@ public class GameplayGUI extends Application {
 
 		// Create the image, stretch it to fit 50px for the top layer, calculate number of tiles to
 		// display minus one, and the width of the last stretched tile
-		Image platformImage = new Image("TallPlatformTile.png", false);
-		Image undergroundImage = new Image("undergroundTile.png", false);
+		Image platformImage = new Image("assets/image/TallPlatformTile.png", false);
+		Image undergroundImage = new Image("assets/image/undergroundTile.png", false);
 		int topLayerTileHeight = 50;
 		double resizedTileWidth = Math.round((topLayerTileHeight / platformImage.getHeight()) * platformImage.getWidth());
 		int numberTilesMinusOne = (int) Math.round(width / resizedTileWidth) - 1;
@@ -609,7 +611,7 @@ public class GameplayGUI extends Application {
 
 		// Create the image, stretch to fit the height, calculate number of tiles to
 		// display minus one, and the width of the last stretched tile
-		Image platformImage = new Image("Tile.png", false);
+		Image platformImage = new Image("assets/image/Tile.png", false);
 		double resizedTileWidth = Math.round((height / platformImage.getHeight()) * platformImage.getWidth());
 		int numberTilesMinusOne = (int) Math.round(width / resizedTileWidth) - 1;
 		double remainingTileWidth = width - (numberTilesMinusOne * resizedTileWidth);
@@ -682,7 +684,7 @@ public class GameplayGUI extends Application {
 				case F:
 					
 					if(bullet.fire()&&soundOn) {
-						File gunShotFile = new File("src/gunshot.mp3");
+						File gunShotFile = new File("src/assets/sound/gunshot.mp3");
 						MediaPlayer gunshot = new MediaPlayer(new Media(gunShotFile.toURI().toString()));
 						gunshot.play();
 					}
@@ -747,12 +749,15 @@ public class GameplayGUI extends Application {
 		
 		
 		try {
-			File musicFile = new File("src/music.mp3");
+			File musicFile = new File("src/assets/sound/music.mp3");
+			System.out.println(musicFile.getAbsolutePath());
+			
 			music = new MediaPlayer(new Media(musicFile.toURI().toString()));
 			music.play();
 			music.setVolume(0.4);
 		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
 			System.out.println("NO MUSIC FOUND");
+			throw e;
 		}
 		
 		
@@ -917,7 +922,7 @@ public class GameplayGUI extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("Jumpy Man");
-		primaryStage.getIcons().add(new Image("giphy.gif"));
+		primaryStage.getIcons().add(new Image("assets/image/giphy.gif"));
 		levelSelector(primaryStage);
 	}
 
