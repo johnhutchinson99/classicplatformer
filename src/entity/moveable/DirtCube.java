@@ -22,6 +22,18 @@ public class DirtCube extends EnemyGUI {
 	private int count1 = 0;
 	private int count2 = 0;
 	
+	
+/**
+ * 
+ * @param newWorld World that DirtCube is to be placed in
+ * @param enemyXCoord Initial x coordinate
+ * @param enemyYCoord Initial y coordinate
+ * @param width Width of body
+ * @param height Height of body
+ * @param isUp Whether or not the dirtcube is above the surface to start
+ * @param upMax Furthest upward the dirtcube can move
+ * @param downMax Furthest downward the dirtcube can move
+ */
 	public DirtCube(World newWorld, int enemyXCoord, int enemyYCoord, int width, int height, boolean isUp, int upMax,
 			int downMax) {
 

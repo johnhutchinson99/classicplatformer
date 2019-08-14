@@ -12,12 +12,18 @@ public class Mace extends EnemyGUI {
 	private boolean isUp;
 	private int upMax;
 	private int downMax;
-	private boolean isStop = false;
-	private int count1 = 0;
-	private int count2 = 0;
-	// Thread t = new Thread();
-	private boolean isLeft = true;
 
+	/**
+	 * 
+	 * @param newWorld World to be placed in
+	 * @param enemyXCoord Initial X position
+	 * @param enemyYCoord Initial Y position
+	 * @param width Width of object
+	 * @param height Height of object
+	 * @param isUp Is at highest possible position
+	 * @param upMax Highest position
+	 * @param downMax Lowest position
+	 */
 	public Mace(World newWorld, int enemyXCoord, int enemyYCoord, int width, int height, boolean isUp, int upMax,
 			int downMax) {
 

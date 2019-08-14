@@ -16,6 +16,18 @@ public abstract class EnemyGUI extends Enemy {
 	private int rightMax;
 	private boolean isAlive = true;
 
+	
+	
+	/**
+	 * 
+	 * @param xCoord initial x coordinate
+	 * @param yCoord initial y coordinate
+	 * @param width Enemy width
+	 * @param height Enemy height
+	 * @param world World to be placed in
+	 * @param lMax furthest left enemy can go
+	 * @param rMax furthest right enemy can go
+	 */
 	public EnemyGUI(int xCoord, int yCoord, int width, int height, World world, int lMax, int rMax) {
 		super(world, xCoord, yCoord, width, height);
 		leftMax = lMax;

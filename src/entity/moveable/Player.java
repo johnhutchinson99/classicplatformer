@@ -23,14 +23,34 @@ public class Player extends PhysicsEntity {
 	public static final int JUMPPOWER = 400;
 	private boolean isFacingRight = true;
 
+	
+	
+	/**
+	 * Copy constructor
+	 * @param p player to copy
+	 */
 	public Player(Player p) {
 		super(p);
 	}
 
+	/**
+	 * Makes a player
+	 * @param xCoord Initial X position
+	 * @param yCoord Initial y position
+	 * @param width width of player
+	 * @param height height of player
+	 */
 	public Player(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
 	}
-
+	/**
+	 * Makes a player
+	 * @param xCoord Initial X position
+	 * @param yCoord Initial y position
+	 * @param width width of player
+	 * @param height height of player
+	 * @param world World that player is inserted into
+	 */
 	public Player(int xCoord, int yCoord, int width, int height, World world) {
 		super(xCoord, yCoord, width, height, world);
 	}
