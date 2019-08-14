@@ -78,7 +78,7 @@ public class LevelTwoGUI extends GameplayGUI {
         
         
         //Add bullet
-    	Bullet bullet = new Bullet(WORLDHEIGHT+100,WORLDWIDTH+100,10,10,levelTwo);
+    	Bullet bullet = new Bullet(WORLDHEIGHT+100,WORLDWIDTH+100,10,5,levelTwo);
 		Rectangle bulletRect = new Rectangle(bullet.getxCoord(),bullet.getyCoord(),bullet.getWidth(),bullet.getHeight());
 		root.getChildren().add(bulletRect);
 		bulletRect.setFill(Color.DARKGREY);
