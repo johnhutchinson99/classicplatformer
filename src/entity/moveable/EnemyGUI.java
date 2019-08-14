@@ -41,7 +41,6 @@ public abstract class EnemyGUI extends Enemy{
 	}
 	
 	public void enemyDead() {
-		System.out.println("KILLING");
 		isAlive = false;
 	}
 	public boolean isAlive() {

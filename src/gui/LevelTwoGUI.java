@@ -82,7 +82,6 @@ public class LevelTwoGUI extends GameplayGUI {
 		Rectangle bulletRect = new Rectangle(bullet.getxCoord(),bullet.getyCoord(),bullet.getWidth(),bullet.getHeight());
 		root.getChildren().add(bulletRect);
 		bulletRect.setFill(Color.DARKGREY);
-		root.getChildren().add(bulletRect);
         
         
 		// Add the enemies

@@ -107,7 +107,5 @@ public class StartMenu extends GameplayGUI {
 		stage.show();
 	}
 
-	public void handle(ActionEvent event) {
-		System.out.println("clicked");
-	}
+
 }

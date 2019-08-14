@@ -41,7 +41,6 @@ public class Camera {
 		
 		if (player.getyCoord() <= worldHeight-halfSceneHeight) { //&& player.getyCoord() <= (worldHeight-halfSceneHeight)) {
 			offsetY = halfSceneHeight - player.getyCoord();
-			System.out.println(offsetY);
 		}
 		
 	}
