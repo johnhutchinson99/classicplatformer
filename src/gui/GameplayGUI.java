@@ -759,10 +759,6 @@ public class GameplayGUI extends Application {
 			music.play();
 			music.setVolume(0.4);
 		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
-			throw e;
-		}
-		
-		
 		
 		
 		AnimationTimer timer = new AnimationTimer() {
@@ -871,7 +867,6 @@ public class GameplayGUI extends Application {
 
 		// Start off by showing the start menu and making the stage non-resizeable
 		start.create(primaryStage);
-		
 		primaryStage.setResizable(false);
 		primaryStage.sizeToScene();
 		primaryStage.show();
@@ -901,6 +896,7 @@ public class GameplayGUI extends Application {
 					level1.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 2) {
+					currentScore += 300;
 					LevelTwoGUI level2 = new LevelTwoGUI();
 					level2.create(primaryStage);
 					this.start();

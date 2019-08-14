@@ -85,13 +85,13 @@ public class LevelTwoGUI extends GameplayGUI {
         
         
 		// Add the enemies
-        createPoundCake(root, levelTwo, worldObjectMap, 580, 230+450, 560, 670, 20, 20);
-        createPoundCake(root, levelTwo, worldObjectMap, 600, 135+450, 590, 650, 20, 20);
-        createPoundCake(root, levelTwo, worldObjectMap, 440, 95+450, 430, 480, 20, 20);
-        createDirtCube(root, levelTwo, worldObjectMap, 310, 350+450, 325+450, 345+450, 20, 20);
-        createMace(root, levelTwo, worldObjectMap, 180, 300+450, 260+450, 345+450, 30, 35);
-        createMace(root, levelTwo, worldObjectMap, 760, 200+450, 100+450, 190+450, 30, 35);
-        createMace(root, levelTwo, worldObjectMap, 300, 65+450, 0+450, 55+450, 30, 35);
+        createPoundCake(root, levelTwo, worldObjectMap, 580, 210+450, 560, 650, 40, 40);
+        createPoundCake(root, levelTwo, worldObjectMap, 600, 115+450, 580, 640, 40, 40);
+        createPoundCake(root, levelTwo, worldObjectMap, 440, 75+450, 430, 480, 40, 40);
+        createDirtCube(root, levelTwo, worldObjectMap, 310, 340+450, 315+450, 345+450, 30, 30);
+        createMace(root, levelTwo, worldObjectMap, 180, 300+450, 260+450, 340+450, 40, 40);
+        createMace(root, levelTwo, worldObjectMap, 760, 200+450, 100+450, 185+450, 40, 40);
+        createMace(root, levelTwo, worldObjectMap, 300, 65+450, 0+450, 50+450, 40, 40);
         
 		// Create the platforms in the level
 		createPlatform( root, levelTwo, platformGUIMap, 0, WORLDHEIGHT-50, 1000, 50);
@@ -108,7 +108,7 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, platformGUIMap, 140, 50, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 0, 440+450, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 140, 380+450, 100, 20);
-		createPlatform( root, levelTwo, platformGUIMap, 280, 345+450, 100, 20);
+		createPlatform( root, levelTwo, platformGUIMap, 280, 345+450, 100, 30);
 		createPlatform( root, levelTwo, platformGUIMap, 420, 305+450, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 560, 265+450, 150, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 750, 225+450, 50, 20);
@@ -118,6 +118,14 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, platformGUIMap, 580, 170+450, 100, 20);
 		
 		
+		// Create coins
+		createCoin(root, levelTwo, worldObjectMap, 20, 380, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 20, 350, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 20, 320, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 100, 780, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 240, 750, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 770, 630, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 399, 510, 25, 25);
 		
 		
 

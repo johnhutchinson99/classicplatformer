@@ -107,5 +107,4 @@ public class StartMenu extends GameplayGUI {
 		stage.show();
 	}
 
-
 }
