@@ -1,11 +1,10 @@
 package entity.moveable;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import backend.PhysicsEntity;
 import backend.World;
 
-import java.util.Iterator;
 
 /**
  * This class creates a Player This class extends PhysicsEntity. This class
@@ -21,12 +20,13 @@ public class Player extends PhysicsEntity {
 	private int remainingAttacks; // How many more times a player is allowed to attack an enemy
 	private boolean aliveness = true; // Whether or not there is a game over
 	public static final int WALKSPEED = 200;
-	public static final int JUMPPOWER =400;
+	public static final int JUMPPOWER = 400;
 	private boolean isFacingRight = true;
+
 	public Player(Player p) {
 		super(p);
 	}
-	
+
 	public Player(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
 	}
@@ -35,93 +35,28 @@ public class Player extends PhysicsEntity {
 		super(xCoord, yCoord, width, height, world);
 	}
 
+	/**
+	 * Check if player is alive.
+	 * 
+	 * @return aliveness (true if alive, false if not alive)
+	 */
 	public boolean isAlive() {
 		return aliveness;
 	}
 
+	/**
+	 * Revives the player by changing their aliveness state to true.
+	 */
 	public void revive() {
 		aliveness = true;
 	}
 
-	
+	/**
+	 * Kills the player by changing their aliveness state to false.
+	 */
 	public void kill() {
 		aliveness = false;
 	}
-	
-	////////////////////////////////////
-//	/**
-//	 * Setter for moving player right.
-//	 * 
-//	 * @param translate - The amount you want to move/translate the player by.
-//	 */
-//	public void moveRight(int translate) {
-//		setXCoord(getXCoord() + translate);
-//	}
-//
-//	/**
-//	 * Setter for moving player left.
-//	 * 
-//	 * @param translate - The amount you want to move/translate the player by.
-//	 */
-//	public void moveLeft(int translate) {
-//		setXCoord(getXCoord() - translate);
-//
-//	}
-//
-//	/**
-//	 * Setter for moving player up.
-//	 * 
-//	 * @param translate - The amount you want to move/translate the player by.
-//	 */
-//	public void moveUp(int translate) {
-//		setYCoord(getYCoord() - translate);
-//
-//	}
-//
-//	/**
-//	 * Setter for moving player down.
-//	 * 
-//	 * @param translate - The amount you want to move/translate the player by.
-//	 */
-//	public void moveDown(int translate) {
-//		setYCoord(getYCoord() + translate);
-//
-//	}
-
-//	/**
-//	 * Checks if player is colliding with other objects (e.g. enemies).
-//	 * 
-//	 * @return boolean true if colliding, false otherwise.
-//	 */
-//	public boolean isCollidingWithEnemy() {
-//		if (getWorld().getWorldMaxXCoord() > 100) {// Runs when the world is large
-//
-//			for (Enemy p : getWorld().getListOfEnemies()) {
-//
-//				if (this.isCollidingWith(p))
-//					return true;
-//			}
-//
-//		} else {
-//
-//			if (whoIsThere(getXCoord(), getYCoord()) != null) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-
-//	/**
-//	 * Checks if player is alive.
-//	 * 
-//	 * @return boolean true if alive, false otherwise.
-//	 */
-//	public boolean isAlive() {
-//		if (aliveness && !isCollidingWithEnemy()) {
-//			return true;
-//		}
-//		return false;
-//	}
 
 	/**
 	 * Attacks the enemies in coordinates/"squares" surrounding the player.
@@ -160,18 +95,24 @@ public class Player extends PhysicsEntity {
 
 	}
 
-	
-	
-
+	/**
+	 * Setter for whether the player should be facing right.
+	 * 
+	 * @param boolean, true if they should be facing right, false if not
+	 */
 	public void facingRight(boolean b) {
 		isFacingRight = b;
 	}
-	
+
+	/**
+	 * Getter for whether the player should be facing right.
+	 * 
+	 * @return isFacingRight, true if they should be facing right, false if not
+	 */
 	public boolean isFacingRight() {
 		return isFacingRight;
 	}
-	
-	
+
 	/**
 	 * Checks if enemy is at the given X and Y coordinates.
 	 * 

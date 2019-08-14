@@ -1,12 +1,7 @@
 package gui;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.Map.Entry;
-
-import com.sun.media.jfxmedia.MediaException;
-
 import backend.World;
 import backend.WorldObject;
 import entity.fixed.Coin;
@@ -40,7 +35,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * Gameplay GUI is the (super)class which controls the current scene/level of
@@ -748,7 +742,6 @@ public class GameplayGUI extends Application {
 
 		// Create the game camera and animation timer
 		Camera gameCamera = new Camera(aScene, aPlayer);
-//		createTimer((Pane) aScene.getRoot());
 		createGameDisplay((Pane) aScene.getRoot());
 		
 		

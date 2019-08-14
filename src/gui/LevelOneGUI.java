@@ -1,6 +1,5 @@
 package gui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import backend.World;
@@ -15,8 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -37,11 +34,9 @@ public class LevelOneGUI extends GameplayGUI {
 	private static final int STARTX = 20;
 	private static final int STARTY = 300;
 
-	
 	private Map<WorldObject, ImageView> worldObjectMap = new HashMap<WorldObject, ImageView>();
 	private Map<Platform, HBox> platformGUIMap = new HashMap<Platform, HBox>();
 	private Map<Point2D, ImageView> movingBackground = new HashMap<Point2D, ImageView>();
-	
 
 	/**
 	 * The method which creates the level including its world, player, enemies,
@@ -65,14 +60,10 @@ public class LevelOneGUI extends GameplayGUI {
 		createBackground(root, "/assets/image/layer-4.png", 800, 500, 0, 0);
 		createBackground(root, "/assets/image/layer-2-mountain.png", 800, 500, 0, 0);
 
-		
-
-		
 		// Create moving background elements (flowers, signs, trees)
 		createBackground(root, "/assets/image/wood1.png", 70, 100, 20, 350, movingBackground);
 		createBackground(root, "/assets/image/HELP.png", 264, 178, 20, 120, movingBackground);
-		
-		
+
 		// Add player
 		// Note: Don't turn into method as need to be updated on keyboard
 		// press/separately from other world objects
@@ -156,17 +147,17 @@ public class LevelOneGUI extends GameplayGUI {
 		createEndPoint(root, levelOne, worldObjectMap, 1920, 150, 50, 50);
 
 		// Call the keyboard listener for the level
-		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect, movingBackground);
+		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap, bullet, bulletRect, movingBackground);
 
 		// Add Mute button
 
 		Button muteButton = createMuteButton(scene);
 		root.getChildren().add(muteButton);
 
-		//Add Help Button
+		// Add Help Button
 		Button helpButton = createHelpButton(scene);
 		root.getChildren().add(helpButton);
-		
+
 		// Set the scene and show it
 		stage.setScene(scene);
 		stage.show();

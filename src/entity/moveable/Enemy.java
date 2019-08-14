@@ -1,10 +1,9 @@
 package entity.moveable;
 /**
- * This class creates enemies for the text-based version of the game.
+ * This class creates enemies for the for the game.
  *
  */
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import backend.PhysicsEntity;
@@ -23,6 +22,7 @@ public class Enemy extends PhysicsEntity {
 	public Enemy(World newWorld,int x, int y,int width, int height) {
 		super(x, y, width, height,newWorld);
 	}
+	
 	/**
 	 * Moves the enemy
 	 */

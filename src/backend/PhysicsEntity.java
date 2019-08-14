@@ -1,4 +1,5 @@
 package backend;
+
 //import java.util.Scanner;
 /**
  * This class stores and calculates the position,velocity and acceleration of an
@@ -30,62 +31,11 @@ public abstract class PhysicsEntity extends WorldObject {
 	public PhysicsEntity(PhysicsEntity p) {
 		super(p);
 	}
-//
-//	/**
-//	 * 
-//	 * @param x Beginning X Position
-//	 * @param y Beginning Y Position
-//	 */
-//
-////Physics equations were derived from Physics 223 with Anna Harlick
-//	/**
-//	 * Constructor for Physics Class
-//	 * 
-//	 * @param x       Beginning X Position
-//	 * @param y       Beginning Y Position
-//	 * @param maximum value of X
-//	 * @param maximum value of Y
-//	 */
-//	public PhysicsEntity(int x, int y, int maxX, int maxY) {
-//
-//		// Physics calculations are based on real time. Meaning that calculations are
-//		// done based on how much actual time has passed since last calculation
-//		lastTime = System.currentTimeMillis();
-//		if (x >= 0)
-//			xPosition = x;
-//		if (y >= 0)
-//			yPosition = y;
-//
-//		maxXPosition = maxX;
-//		maxYPosition = maxY;
-//	}
-//
-//	/**
-//	 * Constructor for Physics class Only maximum is the maximun int size
-//	 */
-//	public PhysicsEntity(int x, int y) {
-//		this(x, y, Integer.MAX_VALUE, Integer.MAX_VALUE);
-//	}
-//
-//	/**
-//	 * Copies a physics object
-//	 * 
-//	 * @param Input Physics object
-//	 */
-//	public PhysicsEntity(PhysicsEntity p) {
-//		xPosition = p.getXPosition();
-//		yPosition = p.getYPosition();
-//
-//		xVelocity = p.getXVelocity();
-//		yVelocity = p.getYVelocity();
-//
-//		xAcceleration = p.getXAcceleration();
-//		yAcceleration = p.getYAcceleration();
-//	}
 
 	/**
-	 * Recalculates instance variables. Intended to be called only within the Class
-	 * Called whenever the instance variables are changing
+	 * The update method recalculates the values of a physic entities' position (x
+	 * and y) and velocity (x and y) based on the player's acceleration and physics
+	 * formulas. (Reference: Anna Harlick's Physics 233 Winter Course)
 	 */
 	public void update() {
 		double secondsPassed = (System.currentTimeMillis() - lastTime) / 1000.0;
@@ -94,46 +44,45 @@ public abstract class PhysicsEntity extends WorldObject {
 		// using x(final) = x(initial) +velocity(initial)*time +
 		// (1/2)(acceleration)(time)^2
 		// Calculating X and Y separately
+		int possibleX = (int) Math.round(
+				getxCoord() + (xVelocity * secondsPassed) + ((0.5) * (xAcceleration) * secondsPassed * secondsPassed));
+		setxCoord(possibleX);
 
+		int possibleY = (int) Math.round(
+				getyCoord() + (yVelocity * secondsPassed) + ((0.5) * (yAcceleration) * secondsPassed * secondsPassed));
 
+		if (!getWorld().collidePlatform(this, getxCoord(), possibleY))
+			setyCoord(possibleY);
+		else {
+			secondsPassed = 0;
+			yVelocity = 0;
+		}
 
-			int possibleX = (int) Math.round(getxCoord() + (xVelocity * secondsPassed)
-					+ ((0.5) * (xAcceleration) * secondsPassed * secondsPassed));
-					setxCoord(possibleX);
+		// Calculating new velocity using V(final) = V(initial) + acceleration(time)
+		xVelocity = (int) Math.round(xVelocity + xAcceleration * secondsPassed);
+		yVelocity = (int) Math.round(yVelocity + yAcceleration * secondsPassed);
 
-			int possibleY = (int) Math.round(getyCoord() + (yVelocity * secondsPassed)
-					+ ((0.5) * (yAcceleration) * secondsPassed * secondsPassed));
-			
-			
-			
-			if(!getWorld().collidePlatform(this,getxCoord(),possibleY))
-					setyCoord(possibleY);
-			else {secondsPassed = 0; yVelocity = 0;}
-
-			
-		
-
-		
-			// Calculating new velocity using V(final) = V(initial) + acceleration(time)
-
-			xVelocity = (int) Math.round(xVelocity + xAcceleration * secondsPassed);
-			yVelocity = (int) Math.round(yVelocity + yAcceleration * secondsPassed);
-
-			lastTime = System.currentTimeMillis();
-		
+		lastTime = System.currentTimeMillis();
 
 	}
 
+	/**
+	 * A jump method that when called on a physics entity, makes the player jump
+	 * with a given "jump power" (the "upward" velocity that the entity will jump
+	 * to).
+	 * 
+	 * @param jumpPower - the "upward" velocity that the entity will jump to
+	 */
 	public void jump(int jumpPower) {
 		if (getWorld().collidePlatform(this, getxCoord(), getyCoord() + 1)) {
 			setyVelocity(-jumpPower);
-			setyCoord(getyCoord()+1);
+			setyCoord(getyCoord() + 1);
 		}
 
 	}
 
 	/**
-	 * 
+	 * Getter for x velocity. 
 	 * @return Current X Velocity(speed)
 	 */
 	public double getxVelocity() {
@@ -141,7 +90,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Getter for y velocity. 
 	 * @return Current Y Velocity(speed)
 	 */
 	public double getyVelocity() {
@@ -149,7 +98,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Setter for x velocity. 
 	 * @param Desired X Velocity(speed)
 	 */
 	public void setxVelocity(double speed) {
@@ -159,7 +108,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Setter for y velocity. 
 	 * @param Desired Y Velocity(speed)
 	 */
 	public void setyVelocity(double speed) {
@@ -167,7 +116,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Setter for x acceleration. 
 	 * @param Desired X acceleration
 	 */
 	public void setXAcceleration(double x) {
@@ -175,7 +124,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Setter for y acceleration. 
 	 * @param Desired Y acceleration
 	 */
 	public void setYAcceleration(double y) {
@@ -183,7 +132,7 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Getter for x acceleration. 
 	 * @return Current X Acceleration
 	 */
 	public double getXAcceleration() {
@@ -191,14 +140,11 @@ public abstract class PhysicsEntity extends WorldObject {
 	}
 
 	/**
-	 * 
+	 * Getter for y acceleration. 
 	 * @return Current Y Acceleration
 	 */
 	public double getYAcceleration() {
 		return yAcceleration;
 	}
-	
-
-	
 
 }
