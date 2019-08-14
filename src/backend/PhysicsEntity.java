@@ -20,16 +20,38 @@ public abstract class PhysicsEntity extends WorldObject {
 
 	private long lastTime = System.currentTimeMillis();
 
+	/**
+	 * Constructor for physics entity. 
+	 * 
+	 * @param xCoord - x coordinate to set entity to. 
+	 * @param yCoord - y coordinate to set entity to. 
+	 * @param width - width to set entity to. 
+	 * @param height - height to set entity to. 
+	 */
 	public PhysicsEntity(int xCoord, int yCoord, int width, int height) {
 		super(xCoord, yCoord, width, height);
 	}
 
+	/**
+	 * Constructor for physics entity. 
+	 * 
+	 * @param xCoord - x coordinate to set entity to. 
+	 * @param yCoord - y coordinate to set entity to. 
+	 * @param width - width to set entity to. 
+	 * @param height - height to set entity to. 
+	 * @param world - the world to set the entity to. 
+	 */
 	public PhysicsEntity(int xCoord, int yCoord, int width, int height, World world) {
 		super(xCoord, yCoord, width, height, world);
 	}
 
-	public PhysicsEntity(PhysicsEntity p) {
-		super(p);
+	/**
+	 * Copy constructor for physics entity. 
+	 * 
+	 * @param toCopy - the physics entity to copy from
+	 */
+	public PhysicsEntity(PhysicsEntity toCopy) {
+		super(toCopy);
 	}
 
 	/**

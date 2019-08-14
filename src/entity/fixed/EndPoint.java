@@ -9,6 +9,13 @@ import entity.moveable.Player;
  */
 public class EndPoint extends WorldObject{
 
+	/**
+	 * Constructor for the EndPoint / level finish location
+	 * @param x - the x coordinate to set the end point to
+	 * @param y - the y coordinate to set the end point to
+	 * @param newWidth - the width to set the end point to
+	 * @param newHeight - the height to set the end point to
+	 */
 	public EndPoint(int x, int y, int newWidth, int newHeight) {
 		super(x,y,newWidth,newHeight);
 	}

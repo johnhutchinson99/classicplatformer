@@ -27,6 +27,11 @@ public class Camera {
 	private int worldWidth;
 	private int worldHeight;
 
+	/**
+	 * Constructor for camera
+	 * @param scene - the JavaFX scene the camera belongs to/acts in
+	 * @param player - the player the camera should follow
+	 */
 	public Camera(Scene scene, Player player) {
 		halfSceneWidth = (int) (scene.getWidth() / 2);
 		worldWidth = player.getWorld().getWorldWidth();
