@@ -58,14 +58,14 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  
 ## Running Tests
 ### Running JUnit Test in Eclipse
- 1. Follow Step 1 of "Accessing Demo 2 - Compiling and Running: Using Eclipse"
+ 1. Follow Step 1 of "Accessing Final Game - Compiling and Running: Using Eclipse"
  2. Ensure that the JUnit 4 library is included in the Java Build Path of the project. 
- 3. In the Eclipse Package Explorer, right-click "PhysicsTest.java", hover over "Run As", then select "JUnit Test".
+ 3. In the Eclipse Package Explorer, go to the "backend" package and then right-click "PhysicsTest.java". Hoover over "Run As", then select "JUnit Test".
  
 ### Running JUnit Test in Command Line
- 1. Follow Step 1 of "Accessing Demo 2 - Compiling and Running: Using Eclipse"
+ 1. Follow Step 1 of "Accessing Final Game - Compiling and Running: Using Command Line"
  2. Download [junit-4.12.jar](https://mvnrepository.com/artifact/junit/junit/4.12) and [hamcrest-core-1.3.jar](http://www.java2s.com/Code/Jar/h/Downloadhamcrestcore13jar.htm) and place them in the src folder. 
- 3. In the command line, change the working directory to the src folder and compile using "javac -cp .:junit-4.12.jar:hamcrest-core-1.3.jar *.java"
+ 3. In the command line, change the working directory to the src folder, and then the "backend" folder, and then compile using "javac -cp .:junit-4.12.jar:hamcrest-core-1.3.jar *.java"
  4. Run "java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore PhysicsTest"
  
  ## References
@@ -107,19 +107,19 @@ Physics equations were taken from
 Anna Harlick's Physics 233 Winter Course
 
 ## Screenshots
-![startmenuREADME](https://user-images.githubusercontent.com/27635433/62993552-f759ed80-be14-11e9-8421-f1561fe5da86.png)
+![Figure: A screen shot of the start menu of our game.](https://user-images.githubusercontent.com/27635433/62993552-f759ed80-be14-11e9-8421-f1561fe5da86.png)
 
 Figure: A screen shot of the start menu of our game.
 
-![gameLevelREADME](https://user-images.githubusercontent.com/27635433/62993551-f759ed80-be14-11e9-867a-71482ff2a965.png)
+![Figure: A screen shot of a portion of the first level of our game. ](https://user-images.githubusercontent.com/27635433/62993551-f759ed80-be14-11e9-867a-71482ff2a965.png)
 
 Figure: A screen shot of a portion of the first level of our game. 
 
 
-![gameLevel2README](https://user-images.githubusercontent.com/27635433/62993553-f7f28400-be14-11e9-8076-f78b8cfb66d2.png)
+![Figure: Another screen shot of our gameplay.](https://user-images.githubusercontent.com/27635433/62993553-f7f28400-be14-11e9-8076-f78b8cfb66d2.png)
 
 Figure: Another screen shot of our gameplay.
 
-![gameOverREADME](https://user-images.githubusercontent.com/27635433/62993554-f7f28400-be14-11e9-81a7-59352409abb0.png)
+![Figure:A screen shot of the game over menu of our game (i.e. the screen if you die instead of win the game).](https://user-images.githubusercontent.com/27635433/62993554-f7f28400-be14-11e9-81a7-59352409abb0.png)
 
 Figure:A screen shot of the game over menu of our game (i.e. the screen if you die instead of win the game). 
