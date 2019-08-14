@@ -16,6 +16,14 @@ public class Bullet extends PhysicsEntity {
 	private int initialX;
 	private int initialY;
 
+	/**
+	 * Constructs a Bullet
+	 * @param startX Initial X coordinate of Bullet
+	 * @param startY Initial Y coordinate of Bullet
+	 * @param width Width of bullet
+	 * @param height Height of bullet
+	 * @param world World that Bullet is to be placed in
+	 */
 	public Bullet(int startX, int startY, int width, int height, World world) {
 		super(startX, startY, width, height, world);
 		setYAcceleration(0);// Cancels gravity

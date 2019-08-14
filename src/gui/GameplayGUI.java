@@ -745,15 +745,12 @@ public class GameplayGUI extends Application {
 		createGameDisplay((Pane) aScene.getRoot());
 		
 		
-		try {
 			File musicFile = new File("src/assets/sound/music.mp3");
 			
 			music = new MediaPlayer(new Media(musicFile.toURI().toString()));
 			music.play();
 			music.setVolume(0.4);
-		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
-			throw e;
-		}
+
 		
 		
 		AnimationTimer timer = new AnimationTimer() {
