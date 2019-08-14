@@ -1,5 +1,4 @@
 package backend;
-import java.util.ArrayList;
 
 /**
  * 
@@ -20,7 +19,7 @@ public abstract class WorldObject {
 	private int width;
 	private int height;
 	private World world;
-	
+
 	public WorldObject() {
 
 	}
@@ -35,9 +34,9 @@ public abstract class WorldObject {
 			height = newHeight;
 		}
 	}
-	
-	public WorldObject(int x, int y,int newWidth,int newHeight, World aWorld) {
-		this(x,y,newWidth,newHeight);
+
+	public WorldObject(int x, int y, int newWidth, int newHeight, World aWorld) {
+		this(x, y, newWidth, newHeight);
 		world = aWorld;
 	}
 
@@ -48,11 +47,16 @@ public abstract class WorldObject {
 		height = toCopy.height;
 		world = toCopy.world;
 	}
-	
+
+	/**
+	 * Setter for the world object's world it is in
+	 * 
+	 * @param wo - the world the object is in
+	 */
 	public void setWorld(World wo) {
 		world = wo;
 	}
-	
+
 	/**
 	 * 
 	 * @return Width of the object (in X)
@@ -60,6 +64,7 @@ public abstract class WorldObject {
 	public int getWidth() {
 		return width;
 	}
+
 	/**
 	 * 
 	 * @return Height of object (in Y)
@@ -68,19 +73,25 @@ public abstract class WorldObject {
 		return height;
 	}
 
+	/**
+	 * Set the x and y coordinate of the object at once
+	 * 
+	 * @param x - the x coordinate to set the object to
+	 * @param y - the y coordinate to set the object to
+	 */
 	public void setXYCoord(int x, int y) {
 		xCoord = x;
 		yCoord = y;
 	}
-	
+
 	/**
 	 * Setter for an entities x coordinate position.
 	 * 
 	 * @param newX - The x coordinate position to put the entity in.
 	 */
 	public void setxCoord(int xCoord) {
-		if (xCoord < (getWorld().getWorldWidth() - width) && xCoord >= 0 &&
-				!getWorld().collidePlatform(this, xCoord, getyCoord())) {
+		if (xCoord < (getWorld().getWorldWidth() - width) && xCoord >= 0
+				&& !getWorld().collidePlatform(this, xCoord, getyCoord())) {
 			this.xCoord = xCoord;
 		}
 	}
@@ -91,20 +102,30 @@ public abstract class WorldObject {
 	 * @param newY - The y coordinate position to put the entity in.
 	 */
 	public void setyCoord(int yCoord) {
-		if (yCoord <= (getWorld().getWorldHeight() - height) && yCoord > 0 &&
-				!getWorld().collidePlatform(this, getxCoord(), yCoord)) {
+		if (yCoord <= (getWorld().getWorldHeight() - height) && yCoord > 0
+				&& !getWorld().collidePlatform(this, getxCoord(), yCoord)) {
 			this.yCoord = yCoord;
 		}
 	}
-	
+
+	/**
+	 * Ignore obstacles/platforms and set the object to the given x coordinate.
+	 * 
+	 * @param xCoord - the x coordinate to set the object to
+	 */
 	public void supersetxCoord(int xCoord) {
 		this.xCoord = xCoord;
 	}
 
+	/**
+	 * Ignore obstacles/platforms and set the object to the given y coordinate.
+	 * 
+	 * @param yCoord - the y coordinate to set the object to
+	 */
 	public void supersetyCoord(int yCoord) {
 		this.yCoord = yCoord;
 	}
-	
+
 	/**
 	 * Getter for an entities x coordinate.
 	 * 
@@ -115,14 +136,15 @@ public abstract class WorldObject {
 	}
 
 	/**
-	 * Move the object off screen by setting their coordinates much beyond the bounds of the world. 
+	 * Move the object off screen by setting their coordinates much beyond the
+	 * bounds of the world.
 	 */
 	public void moveOffScreen() {
-		supersetxCoord(getWorld().getWorldWidth()+1000);
-		supersetyCoord(getWorld().getWorldHeight()+1000);
+		supersetxCoord(getWorld().getWorldWidth() + 1000);
+		supersetyCoord(getWorld().getWorldHeight() + 1000);
 
 	}
-	
+
 	/**
 	 * Getter for an entities y coordinate.
 	 * 
@@ -131,84 +153,43 @@ public abstract class WorldObject {
 	public int getyCoord() {
 		return yCoord;
 	}
-	
 
+	/**
+	 * Getter for the world object's world
+	 * 
+	 * @return world - the world that the world object belongs to
+	 */
 	public World getWorld() {
 		return world;
 	}
-	
-	public boolean doCollision(WorldObject p) {
+
+	/**
+	 * The do collision method for a world object (usually called when isColliding
+	 * is true, and thus a world object will perform some specific task according to
+	 * doCollision or just return true to confirm there was collision with the
+	 * specific object)
+	 * 
+	 * @param actOnObject - the world object the doCollision will act on
+	 * @return
+	 */
+	public boolean doCollision(WorldObject actOnObject) {
 		return true;
 	}
-	
+
+	/**
+	 * The update method for world objects
+	 */
 	public void update() {
-		
 	}
 
+	/**
+	 * The method to check whether a world object is "alive". All objects are alive
+	 * by default/unless method is overriden.
+	 * 
+	 * @return true by default
+	 */
 	public boolean isAlive() {
 		return true;
 	}
-	
-	
-	
-	
-//
-//	/**
-//	 * 
-//	 * @param Other entity to test
-//	 * @return Whether or not this has one of it's corners inside the inputted Entity
-//	 */
-//	private boolean isCornerInsideEntity(WorldObject otherEntity) {
-//
-//		// Entity must be colliding when corner of one entity is inside the other
-//
-//		// Checking if otherEntity has a corner inside this Entity
-//
-//		// Top Left corner
-//		if (this.isWithinEntity(otherEntity.getXCoord(), otherEntity.getYCoord()))
-//			return true;
-//		// Top Right corner
-//		if (this.isWithinEntity(otherEntity.getXCoord() + otherEntity.getWidth(), otherEntity.getYCoord()))
-//			return true;
-//		// Bottom Left corner
-//		if (this.isWithinEntity(otherEntity.getXCoord(), otherEntity.getYCoord() + otherEntity.getHeight()))
-//			return true;
-//		if (this.isWithinEntity(otherEntity.getXCoord() + otherEntity.getWidth(),
-//				otherEntity.getYCoord() + otherEntity.getHeight()))
-//			return true;
-//
-//		return false;
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * @param otherEntity to test
-//	 * @return Whether or not the entities are colliding at the moment
-//	 */
-//	public boolean isCollidingWith(WorldObject otherEntity) {
-//
-//		// Entity must be colliding when corner of one entity is inside the other
-//		return this.isCornerInsideEntity(otherEntity) || otherEntity.isCornerInsideEntity(this);
-//	}
-//
-//	/**
-//	 * 
-//	 * @param x to check
-//	 * @param y to check
-//	 * @return whether or not the inputed coordinates are inside the Entity
-//	 */
-//	public boolean isWithinEntity(int x, int y) {
-//
-//		// checking x
-//
-//		if (x >= getXCoord() && x <= getXCoord() + getWidth()) {
-//			if (y >= getYCoord() && y <= getYCoord() + getHeight()) {
-//				return true;
-//			}
-//		}
-//
-//		return false;
-//	}
 
 }

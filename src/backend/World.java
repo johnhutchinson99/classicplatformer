@@ -42,57 +42,101 @@ public class World {
 		worldStartY = startY;
 	}
 
-//	public World(int maxX, int maxY, int startX, int startY, int finalX, int finalY,boolean isWater) {
-//		worldMaxXCoord = maxX;
-//		worldMaxYCoord = maxY;
-//		startXCoord = startX;
-//		startYCoord = startY;
-//		goalXCoord = finalX;
-//		goalYCoord = finalY;
-//	}
-
+	/**
+	 * Add score points to the world's count of coins collected.
+	 * 
+	 * @param points - the score points to add, usually the coin value
+	 */
 	public void addToCoinCount(int points) {
 		coinsCount += points;
 	}
 
+	/**
+	 * Reset the world's count of coins collected
+	 */
 	public void resetCoinsCount() {
 		coinsCount = 0;
 	}
 
+	/**
+	 * Getter for the count of coins collected (coinsCount)
+	 * 
+	 * @return coinsCount - the count of coins collected (in score points)
+	 */
 	public int getCoinsCount() {
 		return coinsCount;
 	}
 
+	/**
+	 * Getter for world width
+	 * 
+	 * @return world width as an int
+	 */
 	public int getWorldWidth() {
 		return worldWidth;
 	}
 
+	/**
+	 * Getter for world height
+	 * 
+	 * @return world height as an int
+	 */
 	public int getWorldHeight() {
 		return worldHeight;
 	}
 
+	/**
+	 * Getter for array list that contains the world's enemies
+	 * 
+	 * @return listOfEnemies - a list of enemies in the world
+	 */
 	public ArrayList<Enemy> getEnemyList() {
 		return listOfEnemies;
 	}
 
-	public void setEndPoint(EndPoint e) {
-		endPoint = e;
+	/**
+	 * Setter for the world's end point/desired goal location
+	 * 
+	 * @param end - the endpoint of the world
+	 */
+	public void setEndPoint(EndPoint end) {
+		endPoint = end;
 	}
 
+	/**
+	 * Getter for the world's end point/desired goal location
+	 * 
+	 * @return endPoint - the endpoint of the world
+	 */
 	public EndPoint getEndPoint() {
 		return endPoint;
 	}
 
-	public void addPlayer(Player p) {
-		thePlayer = p;
+	/**
+	 * Add a player to the world
+	 * 
+	 * @param player - the player to add to the world
+	 */
+	public void addPlayer(Player player) {
+		thePlayer = player;
 	}
 
+	/**
+	 * Getter for the world's player
+	 * 
+	 * @return thePlayer - the world's player
+	 */
 	public Player getPlayer() {
 		return thePlayer;
 	}
 
-	public void addEnemy(EnemyGUI e) {
-		listOfEnemies.add(e);
+	/**
+	 * Add enemies to the list of enemies in the world
+	 * 
+	 * @param enemy - the enemy to add to the list of enemies in the world
+	 */
+	public void addEnemy(EnemyGUI enemy) {
+		listOfEnemies.add(enemy);
 	}
 
 	public void addPlatform(Platform p) {
@@ -110,17 +154,6 @@ public class World {
 		return returnedListOfEnemies;
 	}
 
-//	/**
-//	 * Getter for platforms (the arraylist containing all platforms in the world).
-//	 * 
-//	 * @return platforms - a list of platforms.
-//	 */
-//	public ArrayList<Platform> getPlatforms() {
-//		
-//
-//		return platforms;
-//	}
-//
 	/**
 	 * Adds the given enemy to the world's list of enemies.
 	 * 
@@ -140,6 +173,16 @@ public class World {
 		listOfEnemies.remove(anEnemy);
 	}
 
+	/**
+	 * Collision detection method between to world objects. Does the collection
+	 * method of the second object with the first passed as a parameter.
+	 * 
+	 * @param object1 - the first object to check whether collision will occur with.
+	 *                The object that will be acted upon.
+	 * @param object2 - the second object to check whether collision will occur
+	 *                with. The object that will act upon the other object.
+	 * @return boolean - true if colliding, false if not.
+	 */
 	public boolean isCollide(WorldObject object1, WorldObject object2) {
 
 		WorldObject smallerWidthObject, largerWidthObject, smallerHeightObject, largerHeightObject;
@@ -188,6 +231,16 @@ public class World {
 		}
 	}
 
+	/**
+	 * Check if a world object is colliding with a platform at a given x and y
+	 * coordinate (can be used to check whether they will collide at some future
+	 * point).
+	 * 
+	 * @param o      - the object to check whether they will collide with platform
+	 * @param xCoord - the x coordinate of the object to check at
+	 * @param yCoord - the y coordinate of the object to check at
+	 * @return willCollide - true if colliding, false if not
+	 */
 	public boolean collidePlatform(WorldObject o, int xCoord, int yCoord) {
 
 		boolean willCollide = false;
@@ -197,6 +250,7 @@ public class World {
 
 		for (Platform p : platforms) {
 
+			// First determine the smaller width object
 			WorldObject largerWidthObject;
 			WorldObject smallerWidthObject;
 
@@ -205,6 +259,8 @@ public class World {
 			int smallLeft;
 			int smallRight;
 
+			// Check whether the horizontal edge of the smaller is within that of the larger
+			// object (i.e. colliding in the x direction)
 			if (p.getWidth() > objectWidth) {
 				largerWidthObject = p;
 				smallerWidthObject = o;
@@ -221,6 +277,7 @@ public class World {
 				smallRight = smallerWidthObject.getxCoord() + smallerWidthObject.getWidth();
 			}
 
+			// Check for which object has the smaller height
 			if ((largeLeft <= smallLeft && smallLeft <= largeRight)
 					|| (largeLeft <= smallRight && smallRight <= largeRight)) {
 
@@ -231,6 +288,8 @@ public class World {
 				int smallTop;
 				int smallBottom;
 
+				// Check whether vertical edge of smaller height is with the larger object
+				// (colliding in y direction)
 				if (p.getHeight() > objectHeight) {
 					largerHeightObject = p;
 					smallerHeightObject = o;
@@ -247,6 +306,8 @@ public class World {
 					smallBottom = smallerHeightObject.getyCoord() + smallerHeightObject.getHeight();
 				}
 
+				// If colliding in and horizontal vertical directions, return true that it will
+				// collide
 				if ((largeTop <= smallTop && smallTop <= largeBottom)
 						|| (largeTop <= smallBottom && smallBottom <= largeBottom)) {
 					willCollide = true;

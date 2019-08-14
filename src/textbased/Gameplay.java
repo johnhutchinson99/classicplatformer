@@ -129,7 +129,7 @@ public class Gameplay {
 				+ "The symbol O represents the goal destination.\n" + "The symbol E represents an enemy.\n"
 				+ "If you touch an enemy before reaching the final destination, \n" + "  then you die/lose.\n"
 				+ "At each time, you will have the options to move left/right, \n"
-				+ "  jump, or kill an enemy in a surrounding square. \n" + "Good luck.\n "
+				+ "  jump, or kill an enemy in a surrounding square. \n" + "Good luck.\n\n "
 
 		);
 	}
@@ -143,26 +143,14 @@ public class Gameplay {
 	public static void main(String[] args) {
 
 		Gameplay game = new Gameplay();
-
 		LevelOne levelOne = new LevelOne();
 		LevelTwo levelTwo = new LevelTwo();
 
 		// Game Intro / Instructions
-		System.out.println("Welcome to The-Game-That-Does-Not-Have-a-Name-Yet! \n");
-		game.delayGame(1000);
+		System.out.println("Welcome to Game Man! \n");
 		game.printInstructions();
-		game.delayGame(1000);
 
-		// Ask for player name (to be utilized for later story-mode)
-		// System.out.print("To begin, please enter your name: ");
-		// Scanner keyboardInput = new Scanner(System.in);
-		// String name = keyboardInput.next();
-
-		// Print or announce gameplay begins
-		System.out.print("Let the game begin!\n");
-
-		// Start playing level one (we only have 1 level in this demo)
-		// After playing the level, announce whether the player has won or lost.
+		// Begin to play the levels, print whether they have won or lost
 		if (levelOne.playLevelOne() && levelTwo.playLevelTwo()) {
 			System.out.print("CONGRATULATIONS! YOU HAVE WON!");
 		} else {

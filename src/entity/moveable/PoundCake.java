@@ -1,15 +1,31 @@
 package entity.moveable;
+
 import backend.World;
 
-public class PoundCake extends EnemyGUI{  //enemy type1:move around in an area, go back when touch Obstructs
+/**
+ * Creates the pound cake enemy which moves back and forth within given x
+ * coordinates.
+ */
 
-	private boolean canLeft = true;		
+public class PoundCake extends EnemyGUI {
+
+	private boolean canLeft = true;
 	private boolean canRight = true;
 	private boolean onLand = false;
 	private boolean isLeft = true;
 	private boolean isALive;
-	//Thread t = new Thread();
 	
+	public PoundCake(World newWorld, int enemyXCoord, int enemyYCoord, boolean isLeft, int leftMax, int rightMax,
+			int width, int height) {
+		super(enemyXCoord, enemyYCoord, width, height, newWorld, leftMax, rightMax);
+		this.isLeft = isLeft;
+		isALive = true;
+	}
+
+	/**
+	 * Update method which moves the enemy / makes the enemy go horizontally back
+	 * and forth based on the state of the enemy.
+	 */
 	@Override
 	public void update() {
 		if (this.getxCoord() >= getRightMax()) {
@@ -18,21 +34,14 @@ public class PoundCake extends EnemyGUI{  //enemy type1:move around in an area, 
 		if (this.getxCoord() <= getLeftMax()) {
 			isLeft = false;
 		}
-		
+
 		if (isLeft == true) {
-			supersetxCoord(getxCoord()-1);
+			supersetxCoord(getxCoord() - 1);
 		}
 		if (isLeft == false) {
-			supersetxCoord(getxCoord()+1);
+			supersetxCoord(getxCoord() + 1);
 		}
 		super.update();
 	}
-		
-		public PoundCake(World newWorld,int enemyXCoord,int enemyYCoord,boolean isLeft,int leftMax,int rightMax, int width, int height) {
-			super(enemyXCoord,enemyYCoord, width, height, newWorld, leftMax, rightMax);
-			this.isLeft = isLeft;
-			isALive = true;
-		}
-
 
 }
