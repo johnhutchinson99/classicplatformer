@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="backend.PhysicsEntityTest" project="classicplatformer" 
     file="/classicplatformer/src/backend/PhysicsEntityTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1018" y="655"/>    
+    <position height="-1" width="-1" x="1583" y="625"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="backend.World" project="classicplatformer" 
     file="/classicplatformer/src/backend/World.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="684" y="788"/>    
+    <position height="-1" width="-1" x="679" y="753"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="backend.WorldObject" project="classicplatformer" 
     file="/classicplatformer/src/backend/WorldObject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="475" width="184" x="374" y="31"/>    
+    <position height="-1" width="-1" x="480" y="222"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="entity.fixed.Coin" project="classicplatformer" 
     file="/classicplatformer/src/entity/fixed/Coin.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="83" y="1247"/>    
+    <position height="-1" width="-1" x="91" y="1052"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="entity.fixed.Platform" project="classicplatformer" 
     file="/classicplatformer/src/entity/fixed/Platform.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="278" y="1202"/>    
+    <position height="-1" width="-1" x="278" y="1077"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="entity.fixed.EndPoint" project="classicplatformer" 
     file="/classicplatformer/src/entity/fixed/EndPoint.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="460" y="1211"/>    
+    <position height="-1" width="-1" x="455" y="1084"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="entity.moveable.DirtCube" project="classicplatformer" 
     file="/classicplatformer/src/entity/moveable/DirtCube.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="803" y="2139"/>    
+    <position height="-1" width="-1" x="866" y="2236"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="entity.moveable.EnemyGUI" project="classicplatformer" 
     file="/classicplatformer/src/entity/moveable/EnemyGUI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="764" y="1831"/>    
+    <position height="-1" width="-1" x="609" y="1837"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="entity.moveable.Enemy" project="classicplatformer" 
     file="/classicplatformer/src/entity/moveable/Enemy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="599" y="1413"/>    
+    <position height="-1" width="-1" x="920" y="1517"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="entity.moveable.Mace" project="classicplatformer" 
     file="/classicplatformer/src/entity/moveable/Mace.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1064" y="2148"/>    
+    <position height="-1" width="-1" x="1208" y="2135"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="entity.moveable.Bullet" project="classicplatformer" 
     file="/classicplatformer/src/entity/moveable/Bullet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1318" y="1398"/>    
+    <position height="-1" width="-1" x="1262" y="1400"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="entity.moveable.Player" project="classicplatformer" 
     file="/classicplatformer/src/entity/moveable/Player.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="948" y="1478"/>    
+    <position height="-1" width="-1" x="938" y="751"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -227,127 +227,151 @@
     </display>  
   </class>  
   <generalization id="26">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <association id="28">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="29" name="endPoint"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <association id="34">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="35" name="world"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="38">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="39" name="listOfEnemies"/>      
-      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="41">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <generalization id="42">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <generalization id="43">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="44">    
+  <generalization id="27">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <generalization id="45">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="46">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="47" name="platforms"/>      
-      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="50" name="enemyList"/>      
-      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <generalization id="53">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <generalization id="54">    
+  <generalization id="28">    
     <end type="SOURCE" refId="24"/>    
     <end type="TARGET" refId="23"/>  
   </generalization>  
-  <generalization id="55">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="20"/>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="56">    
+  <association id="30">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="57" name="thePlayer"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
+      <attribute id="31" name="thePlayer">        
+        <position height="0" width="0" x="-10" y="-727"/>      
+      </attribute>      
+      <multiplicity id="32" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-10" y="-727"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
   </generalization>  
-  <generalization id="60">    
+  <association id="34">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="35" name="listOfEnemies">        
+        <position height="0" width="0" x="321" y="104"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="321" y="104"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <association id="40">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="41" name="enemyList">        
+        <position height="0" width="0" x="-155" y="6"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-155" y="6"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="44">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="45" name="endPoint">        
+        <position height="0" width="0" x="-5" y="-127"/>      
+      </attribute>      
+      <multiplicity id="46" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-5" y="-127"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <association id="48">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="49" name="world">        
+        <position height="0" width="0" x="-5" y="-35"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-5" y="-35"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="51">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <generalization id="61">    
+  <generalization id="52">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="55">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="58">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="59" name="platforms">        
+        <position height="0" width="0" x="0" y="-125"/>      
+      </attribute>      
+      <multiplicity id="60" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="-125"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="61">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
   <generalization id="62">    
-    <end type="SOURCE" refId="19"/>    
+    <end type="SOURCE" refId="21"/>    
     <end type="TARGET" refId="20"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
