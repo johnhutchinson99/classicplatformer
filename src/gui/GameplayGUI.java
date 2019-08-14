@@ -759,6 +759,8 @@ public class GameplayGUI extends Application {
 			music.play();
 			music.setVolume(0.4);
 		}catch(Exception e){//THIS IS TERRIBLE. REDO TODO
+			throw e;
+		}
 		
 		
 		AnimationTimer timer = new AnimationTimer() {
@@ -901,6 +903,7 @@ public class GameplayGUI extends Application {
 					level2.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 3) {
+					currentScore += 500;
 					win.create(primaryStage);
 					this.start();
 				} else if (currentLevel == 99) {

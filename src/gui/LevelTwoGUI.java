@@ -117,6 +117,8 @@ public class LevelTwoGUI extends GameplayGUI {
 		createPlatform( root, levelTwo, platformGUIMap, 420, 130+450, 100, 20);
 		createPlatform( root, levelTwo, platformGUIMap, 580, 170+450, 100, 20);
 		
+		// Create the EndPoint for the world
+		createEndPoint(root, levelTwo, worldObjectMap, 150, 0, 50, 50);
 		
 		// Create coins
 		createCoin(root, levelTwo, worldObjectMap, 20, 380, 25, 25);
@@ -126,12 +128,10 @@ public class LevelTwoGUI extends GameplayGUI {
 		createCoin(root, levelTwo, worldObjectMap, 240, 750, 25, 25);
 		createCoin(root, levelTwo, worldObjectMap, 770, 630, 25, 25);
 		createCoin(root, levelTwo, worldObjectMap, 399, 510, 25, 25);
+		createCoin(root, levelTwo, worldObjectMap, 162, 10, 25, 25);
 		
 		
 
-		// Create the EndPoint for the world
-		createEndPoint(root, levelTwo, worldObjectMap, 150, 0, 50, 50);
-		
 		// Call the keyboard listener for the level
 		gameAnimation(stage, scene, player, iv, worldObjectMap, platformGUIMap,bullet,bulletRect, movingBackground);
 		

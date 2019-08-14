@@ -13,9 +13,6 @@ import backend.WorldObject;
 
 public class Enemy extends PhysicsEntity {
 
-	// TODO why is their another enemyList here?? Shouldn't it use the one in world??
-	
-
 	private boolean isAlive;
 
 	public Enemy(World newWorld, int width, int height) {

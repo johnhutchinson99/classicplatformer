@@ -13,7 +13,6 @@ import entity.moveable.Player;
  * 
  */
 
-// TODO make instances private?
 
 public class LevelOne extends Gameplay {
 
