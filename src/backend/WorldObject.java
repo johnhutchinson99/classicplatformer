@@ -20,10 +20,21 @@ public abstract class WorldObject {
 	private int height;
 	private World world;
 
+	/**
+	 * Default constructor for world object.
+	 */
 	public WorldObject() {
 
 	}
 
+	/**
+	 * Constructor for world object
+	 * 
+	 * @param x         - the x coordinate to set the world object to
+	 * @param y         - the y coordinate to set the world object to
+	 * @param newWidth  - the width of the world object
+	 * @param newHeight - the height of the world object
+	 */
 	public WorldObject(int x, int y, int newWidth, int newHeight) {
 		xCoord = x;
 		yCoord = y;
@@ -35,11 +46,25 @@ public abstract class WorldObject {
 		}
 	}
 
+	/**
+	 * Constructor for world object
+	 * 
+	 * @param x         - the x coordinate to set the world object to
+	 * @param y         - the y coordinate to set the world object to
+	 * @param newWidth  - the width of the world object
+	 * @param newHeight - the height of the world object
+	 * @param aWorld    - the world the world object is in
+	 */
 	public WorldObject(int x, int y, int newWidth, int newHeight, World aWorld) {
 		this(x, y, newWidth, newHeight);
 		world = aWorld;
 	}
 
+	/**
+	 * Copy constructor for the world object
+	 * 
+	 * @param toCopy - the worldobject to copy from
+	 */
 	public WorldObject(WorldObject toCopy) {
 		xCoord = toCopy.xCoord;
 		yCoord = toCopy.yCoord;

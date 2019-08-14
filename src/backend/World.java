@@ -30,11 +30,21 @@ public class World {
 	private int worldStartY;
 	private EndPoint endPoint = new EndPoint(0, 0, 0, 0);
 
+	/**
+	 * Default constructor for world
+	 */
 	public World() {
 		worldWidth = Integer.MAX_VALUE;
 		worldHeight = Integer.MAX_VALUE;
 	}
-
+	
+	/**
+	 * Constructor for world.
+	 * @param width - the world width
+	 * @param height - the world height
+	 * @param startX - the starting x position of players in the world
+	 * @param startY - the starting y position of players in the world
+	 */
 	public World(int width, int height, int startX, int startY) {
 		worldWidth = width;
 		worldHeight = height;

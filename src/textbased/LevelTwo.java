@@ -20,9 +20,22 @@ public class LevelTwo extends Gameplay {
 
 	private boolean levelWin;
 
+	/**
+	 * Default constructor for level two
+	 */
 	public LevelTwo() {
 	}
 
+	/**
+	 * Constructor for level one
+	 * 
+	 * @param worldMaxX    - the world's max x coordinate / width
+	 * @param worldMaxY    - the world's max y coordinate / height
+	 * @param playerStartX - the player's starting x location/coordinate
+	 * @param playerStartY - the player's starting y location/coordinate
+	 * @param playerFinalX - the player's goal x location/coordinate
+	 * @param playerFinalY - the player's goal y location/coordinate
+	 */
 	public LevelTwo(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX,
 			int playerFinalY) {
 	}

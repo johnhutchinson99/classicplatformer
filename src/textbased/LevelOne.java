@@ -1,4 +1,5 @@
 package textbased;
+
 import backend.World;
 import entity.fixed.EndPoint;
 import entity.moveable.Enemy;
@@ -13,14 +14,26 @@ import entity.moveable.Player;
  * 
  */
 
-
 public class LevelOne extends Gameplay {
 
 	private boolean levelWin;
 
+	/**
+	 * Default constructor for level one
+	 */
 	public LevelOne() {
 	}
 
+	/**
+	 * Constructor for level one
+	 * 
+	 * @param worldMaxX    - the world's max x coordinate / width
+	 * @param worldMaxY    - the world's max y coordinate / height
+	 * @param playerStartX - the player's starting x location/coordinate
+	 * @param playerStartY - the player's starting y location/coordinate
+	 * @param playerFinalX - the player's goal x location/coordinate
+	 * @param playerFinalY - the player's goal y location/coordinate
+	 */
 	public LevelOne(int worldMaxX, int worldMaxY, int playerStartX, int playerStartY, int playerFinalX,
 			int playerFinalY) {
 	}
@@ -40,11 +53,11 @@ public class LevelOne extends Gameplay {
 		World levelOne = new World(20, 3, 0, 0);
 
 		// Add the end point for the level
-		EndPoint endPoint = new EndPoint(18,0,0,0);
+		EndPoint endPoint = new EndPoint(18, 0, 0, 0);
 		levelOne.setEndPoint(endPoint);
-		
+
 		// Create the player and add them to the level world
-		Player player = new Player(0,0,0,0,levelOne);
+		Player player = new Player(0, 0, 0, 0, levelOne);
 		levelOne.addPlayer(player);
 
 		// Add enemies
@@ -61,7 +74,7 @@ public class LevelOne extends Gameplay {
 		// The loop which "plays" the game (i.e. draws then asks for user input)
 		// Until the player dies or has reached the goal destination
 		while (player.isAlive() && !levelOne.isCollide(player, endPoint)) {
-			for(Enemy aEnemy: levelOne.getListOfEnemies()) {
+			for (Enemy aEnemy : levelOne.getListOfEnemies()) {
 				levelOne.isCollide(player, aEnemy);
 			}
 			super.drawWorld(player, levelOne);
