@@ -71,7 +71,7 @@ To compile and run this project, you must have [Java SE Development Kit 8](https
  ## References
  The following sources were used for graphics.
  
-Background and platforms: 
+### Background and platforms: 
 
 https://opengameart.org/content/bevouliin-free-mountain-game-background-for-game-developers (Accessed Aug 06/2019)
 
@@ -81,7 +81,7 @@ https://bayat.itch.io/platform-game-assets?download (Accessed Aug 10/2019)
 
 https://opengameart.org/content/wooden-sign-game-decoration (Accessed Aug 06/2019)
  
-Enemies:
+### Enemies:
 
 http://www.aigei.com/s?q=%E5%86%92%E9%99%A9%E5%B2%9B&type=game&term=gif (Accessed Aug 06/2019)
 
@@ -89,12 +89,12 @@ https://opengameart.org/content/chocolate-monster-sprite-sheets (Accessed Aug 10
 
 https://bayat.itch.io/platform-game-assets?download (Accessed Aug 10/2019)
 
-Player:
+### Player:
 
 https://giphy.com/stickers/creepy-walking-s6hx6Pcg8o8j6 (Accessed Aug 06/2019)
 
 
-Sounds:
+### Sounds:
 
 Gun sound: https://www.zapsplat.com/music/science-fiction-weapon-gun-blaster-gunshot-2/ (Accessed Aug 11/2019)
 
